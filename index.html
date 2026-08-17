@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-  <meta name="description" content="THE BDCF CREW — Official GTA Online Syndicate, Community Headquarters & Los Santos Weekly Portal." />
+  <meta name="description" content="THE BDCF CREW — Official GTA Online Syndicate, Video Theater, Recruitment & Los Santos Weekly Portal." />
   <meta name="theme-color" content="#07090e" />
   <title>THE BDCF CREW | Official GTA Online Syndicate</title>
 
-  <!-- Google Fonts: Montserrat (Headers) & Inter (Body) & JetBrains Mono (Tech/Status) -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@800;900&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -20,7 +20,6 @@
   <div class="ambient-mesh">
     <div class="mesh-orb orb-pink"></div>
     <div class="mesh-orb orb-cyan"></div>
-    <div class="mesh-orb orb-purple"></div>
   </div>
   <div class="grid-texture"></div>
 
@@ -35,10 +34,12 @@
         </div>
       </div>
 
-      <div class="header-status-pill">
-        <span class="live-dot-pulse"></span>
-        <span class="status-txt">HQ SYSTEM LIVE</span>
-        <span class="version-pill">v1.4.0</span>
+      <div class="header-nav-actions">
+        <a href="#theater" class="nav-btn">🎬 Theater</a>
+        <a href="./LosSantosWeekly/" class="nav-btn btn-weekly">🌴 Weekly Hub</a>
+        <a href="https://forms.gle/oXgaNAtLArsshFyQ7" target="_blank" rel="noopener noreferrer" class="nav-btn btn-join">
+          <span>📝 Join Crew</span>
+        </a>
       </div>
     </div>
   </header>
@@ -49,7 +50,6 @@
     <!-- HERO SECTION -->
     <section class="hero-center">
       
-      <!-- Crew Crest Badge -->
       <div class="crest-badge">
         <div class="crest-inner">
           <span class="crest-icon">🌴</span>
@@ -58,139 +58,188 @@
         </div>
       </div>
 
-      <div class="status-banner">
-        <span class="status-icon">⚡</span>
-        <span>OFFICIAL CREW HEADQUARTERS</span>
-      </div>
-
       <h1 class="hero-headline">
         THE <span class="text-gradient">BDCF</span> CREW
       </h1>
 
       <p class="hero-lead">
-        Dominating Los Santos &amp; Blaine County. Track live weekly bonuses, organize high-stakes heists, and roll with the syndicate.
+        Official GTA Online Syndicate &amp; Operations Headquarters. Watch crew video highlights, track weekly updates, or apply to join our ranks.
       </p>
 
-      <!-- FEATURED LIVE PORTAL HERO CARD -->
-      <div class="live-feature-card">
-        <div class="feature-card-glow"></div>
-        <div class="feature-card-content">
-          
-          <div class="feature-meta-row">
-            <div class="feature-status-badge">
-              <span class="live-ping"></span>
-              <span>LIVE GTA ONLINE HUB</span>
-            </div>
-            <span class="feature-tag">🔥 ACTIVE EVENT TRACKER</span>
-          </div>
-
-          <div class="feature-body-grid">
-            <div class="feature-left">
-              <div class="feature-title-wrap">
-                <span class="hub-icon">🌴</span>
-                <div>
-                  <h2 class="feature-title">Los Santos Weekly Hub</h2>
-                  <p class="feature-subtitle">Live reset timer, multiplier bonuses, vehicle challenges, salvage robberies &amp; 1-click Google Sheets sync.</p>
-                </div>
-              </div>
-
-              <!-- Mini Feature Highlights Pill Bar -->
-              <div class="quick-highlights">
-                <span class="highlight-chip">🎡 Lucky Wheel Podium</span>
-                <span class="highlight-chip">🏁 Prize Ride Challenge</span>
-                <span class="highlight-chip">🏗️ Salvage Yard Robberies</span>
-                <span class="highlight-chip">💰 4X / 3X Multipliers</span>
-                <span class="highlight-chip">📊 Google Sheets Sync</span>
-              </div>
-            </div>
-
-            <div class="feature-right">
-              <a href="./LosSantosWeekly/" class="cta-launch-button" id="launchHubBtn">
-                <span class="cta-text">ENTER LOS SANTOS WEEKLY</span>
-                <span class="cta-arrow">➔</span>
-              </a>
-              <span class="cta-subtext">Direct Portal Access • No Login Required</span>
-            </div>
-          </div>
-
-        </div>
+      <div class="hero-action-pills">
+        <a href="#theater" class="hero-pill-btn">🎬 Watch Crew Videos</a>
+        <a href="./LosSantosWeekly/" class="hero-pill-btn pill-cyan">🌴 Los Santos Weekly Hub</a>
+        <a href="#join" class="hero-pill-btn pill-pink">📝 How to Join Us</a>
       </div>
 
     </section>
 
-    <!-- CREW ROADMAP & OPERATIONS SECTION -->
-    <section class="roadmap-section">
+    <!-- =========================================================================
+         SECTION 1: BDCF CREW VIDEO THEATER
+         ========================================================================= -->
+    <section id="theater" class="theater-section">
       <div class="section-title-wrap">
-        <span class="section-title-icon">🚧</span>
-        <div>
-          <h3 class="section-title">Syndicate Operations &amp; Modules</h3>
-          <p class="section-subtitle">Features in active development for The BDCF Crew</p>
-        </div>
+        <div class="section-badge">🎬 BDCF CINEMA</div>
+        <h2 class="section-title">Crew Video Theater</h2>
+        <p class="section-subtitle">Watch our latest heist runs, car meet showcases, and GTA community moments</p>
       </div>
 
-      <div class="roadmap-grid">
+      <div class="theater-card">
         
-        <!-- Module 1: Car Meets -->
-        <div class="roadmap-card">
-          <div class="card-top">
-            <div class="card-icon-wrap icon-car">🏎️</div>
-            <span class="badge-stage">COMING SOON</span>
+        <!-- Main Video Screen -->
+        <div class="video-screen-wrapper">
+          <iframe 
+            id="mainTheaterPlayer"
+            src="https://www.youtube-nocookie.com/embed/QkkoHA7PEJU?rel=0&modestbranding=1" 
+            title="BDCF Crew Theater Player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <!-- Video Info Bar -->
+        <div class="video-meta-bar">
+          <div class="video-meta-left">
+            <span class="now-playing-tag">▶ NOW PLAYING</span>
+            <h3 id="currentVideoTitle" class="video-current-title">GTA Online: Los Santos Summer Heists &amp; Crew Operations</h3>
+            <p id="currentVideoDesc" class="video-current-desc">High-stakes syndicate heists, getaway chases, and crew combat highlights across Blaine County.</p>
           </div>
-          <h4 class="card-heading">LS Car Meets &amp; Garage</h4>
-          <p class="card-desc">
-            Organized crew car meets, drag series, stance battles, and community garage livery spotlights.
-          </p>
-          <div class="card-bottom">
-            <span class="tag-label">Street &amp; Stance</span>
-            <span class="tag-status status-in-progress">● In Progress</span>
+          <div class="video-meta-right">
+            <span class="theater-hd-badge">4K ULTRA HD</span>
           </div>
         </div>
 
-        <!-- Module 2: Heist Squads -->
-        <div class="roadmap-card">
-          <div class="card-top">
-            <div class="card-icon-wrap icon-heist">💼</div>
-            <span class="badge-stage">COMING SOON</span>
+        <!-- Playlist Selector Tabs -->
+        <div class="playlist-container">
+          <div class="playlist-header">
+            <span>📺 Select Video to Play:</span>
           </div>
-          <h4 class="card-heading">Heist Strike Teams</h4>
-          <p class="card-desc">
-            Coordinated crews for Cayo Perico, Diamond Casino, Doomsday, and Criminal Mastermind completions.
-          </p>
-          <div class="card-bottom">
-            <span class="tag-label">Maximum Payouts</span>
-            <span class="tag-status status-in-progress">● In Progress</span>
+          <div class="playlist-grid" id="playlistGrid">
+            
+            <button class="playlist-item active" data-video-id="QkkoHA7PEJU" data-title="GTA Online: Los Santos Summer Heists &amp; Crew Operations" data-desc="High-stakes syndicate heists, getaway chases, and crew combat highlights across Blaine County.">
+              <span class="item-icon">💼</span>
+              <div class="item-text">
+                <span class="item-title">Heist Ops &amp; Strikes</span>
+                <span class="item-duration">Action &amp; Heists</span>
+              </div>
+            </button>
+
+            <button class="playlist-item" data-video-id="B_Z7Z4nS8c8" data-title="BDCF Crew Car Meets &amp; Stance Garage Builds" data-desc="Custom stance builds, drift lines, drag races, and exclusive crew liveries at the LS Car Meet.">
+              <span class="item-icon">🏎️</span>
+              <div class="item-text">
+                <span class="item-title">LS Car Meets &amp; Builds</span>
+                <span class="item-duration">Stance &amp; Speed</span>
+              </div>
+            </button>
+
+            <button class="playlist-item" data-video-id="K_Z71cQ7b0E" data-title="Funny Moments, Fails &amp; Freemode Chaos" data-desc="The funniest moments, jet dogfights, ramp stunts, and chaotic freemode wars with the crew.">
+              <span class="item-icon">⚡</span>
+              <div class="item-text">
+                <span class="item-title">Crew Chaos &amp; Fails</span>
+                <span class="item-duration">Funny Moments</span>
+              </div>
+            </button>
+
+            <button class="playlist-item" data-video-id="V6Z6jR2X1vY" data-title="Los Santos Nights: Cinematic Showcase" data-desc="Atmospheric 4K cinematic tour of Los Santos nightlife, skyline views, and syndicate headquarters.">
+              <span class="item-icon">🌴</span>
+              <div class="item-text">
+                <span class="item-title">Los Santos Cinematics</span>
+                <span class="item-duration">Atmospheric</span>
+              </div>
+            </button>
+
           </div>
         </div>
 
-        <!-- Module 3: Business Network -->
-        <div class="roadmap-card">
-          <div class="card-top">
-            <div class="card-icon-wrap icon-business">📦</div>
-            <span class="badge-stage">COMING SOON</span>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 2: FEATURED LOS SANTOS WEEKLY TRACKER
+         ========================================================================= -->
+    <section class="weekly-featured-section">
+      <div class="weekly-card">
+        <div class="weekly-left">
+          <div class="weekly-badge">
+            <span class="live-ping"></span>
+            <span>LIVE UPDATE HUB</span>
           </div>
-          <h4 class="card-heading">Safe Business Network</h4>
-          <p class="card-desc">
-            Bunker, Nightclub, and Special Cargo sell lobbies backed by full crew escort protection.
+          <h2 class="weekly-title">🌴 Los Santos Weekly Tracker</h2>
+          <p class="weekly-desc">
+            Never miss a GTA Online reset. Check this week's Casino Podium car, LS Car Meet Prize Ride, Salvage Yard robberies, 4X/3X bonus multipliers, and 1-click Google Sheets sync.
           </p>
-          <div class="card-bottom">
-            <span class="tag-label">Protected Lobbies</span>
-            <span class="tag-status status-planned">○ Planned</span>
+          <div class="weekly-chips">
+            <span class="chip">🎡 Lucky Wheel Podium</span>
+            <span class="chip">🏁 Prize Ride Challenge</span>
+            <span class="chip">💰 4X &amp; 3X Multipliers</span>
+            <span class="chip">📊 Google Sheets Sync</span>
           </div>
         </div>
 
-        <!-- Module 4: Discord & Comms -->
-        <div class="roadmap-card">
-          <div class="card-top">
-            <div class="card-icon-wrap icon-discord">🎙️</div>
-            <span class="badge-stage">COMING SOON</span>
+        <div class="weekly-right">
+          <a href="./LosSantosWeekly/" class="btn-launch-weekly">
+            <span>LAUNCH WEEKLY TRACKER</span>
+            <span class="btn-arrow">➔</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 3: HOW TO JOIN THE BDCF CREW
+         ========================================================================= -->
+    <section id="join" class="join-section">
+      <div class="section-title-wrap">
+        <div class="section-badge badge-join">🎮 RECRUITMENT OPEN</div>
+        <h2 class="section-title">How to Join The BDCF Crew</h2>
+        <p class="section-subtitle">Join our active syndicate for heist payouts, car meets, and protected business lobbies</p>
+      </div>
+
+      <div class="join-card">
+        <div class="steps-grid">
+          
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <div class="step-icon">📝</div>
+            <h3 class="step-title">Submit Application</h3>
+            <p class="step-desc">
+              Fill out the official 1-minute BDCF Crew application form with your gaming tag and platform.
+            </p>
           </div>
-          <h4 class="card-heading">Crew Discord &amp; LFG</h4>
-          <p class="card-desc">
-            Official voice channels, daily LFG matchmaking, event calendars, and crew rank progression.
-          </p>
-          <div class="card-bottom">
-            <span class="tag-label">Community</span>
-            <span class="tag-status status-planned">○ Planned</span>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-icon">📩</div>
+            <h3 class="step-title">Accept Social Club Invite</h3>
+            <p class="step-desc">
+              Our officers will send your official <strong>[BDCF]</strong> crew invite on Rockstar Games Social Club.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-icon">🏎️</div>
+            <h3 class="step-title">Roll With The Crew</h3>
+            <p class="step-desc">
+              Drop into crew sessions, join our voice channels, get max heist cuts, and hit the streets!
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Join Form CTA Box -->
+        <div class="join-cta-banner">
+          <div class="cta-banner-text">
+            <h3>Ready to Join The Syndicate?</h3>
+            <p>Applications are reviewed daily. All active GTA Online players on PC &amp; Consoles are welcome.</p>
+          </div>
+          <div class="cta-banner-action">
+            <a href="https://forms.gle/oXgaNAtLArsshFyQ7" target="_blank" rel="noopener noreferrer" class="btn-apply-now">
+              <span>APPLY TO JOIN CREW NOW</span>
+              <span class="btn-arrow">➔</span>
+            </a>
+            <span class="form-url-note">Official Google Form: forms.gle/oXgaNAtLArsshFyQ7</span>
           </div>
         </div>
 
@@ -204,14 +253,42 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="footer-logo">[BDCF] THE BDCF CREW</span>
-        <p class="footer-copy">Built for GTA Online. All GTA trademarks belong to Rockstar Games / Take-Two Interactive.</p>
+        <p class="footer-copy">Official GTA Online Syndicate Portal. All GTA trademarks belong to Rockstar Games / Take-Two Interactive.</p>
       </div>
 
       <div class="footer-links">
-        <a href="./LosSantosWeekly/" class="footer-link-highlight">🌴 Los Santos Weekly Hub ➔</a>
+        <a href="https://forms.gle/oXgaNAtLArsshFyQ7" target="_blank" rel="noopener noreferrer" class="footer-link">📝 Application Form</a>
+        <a href="./LosSantosWeekly/" class="footer-link footer-link-highlight">🌴 Los Santos Weekly Hub ➔</a>
       </div>
     </div>
   </footer>
+
+  <!-- SCRIPT FOR THEATER SWITCHER -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const player = document.getElementById('mainTheaterPlayer');
+      const titleEl = document.getElementById('currentVideoTitle');
+      const descEl = document.getElementById('currentVideoDesc');
+      const playlistButtons = document.querySelectorAll('.playlist-item');
+
+      playlistButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          playlistButtons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const videoId = btn.dataset.videoId;
+          const title = btn.dataset.title;
+          const desc = btn.dataset.desc;
+
+          if (videoId && player) {
+            player.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+          }
+          if (title && titleEl) titleEl.textContent = title;
+          if (desc && descEl) descEl.textContent = desc;
+        });
+      });
+    });
+  </script>
 
 </body>
 </html>

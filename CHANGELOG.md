@@ -1,5 +1,10 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [1.5.0] - 2026-08-17
+- **BDCF Crew Video Theater**: Added interactive cinema lounge with switchable YouTube video playlist.
+- **Join The BDCF Crew Recruitment**: Added clear 3-step application guide and high-converting CTA to the official Google Form (`forms.gle/oXgaNAtLArsshFyQ7`).
+- **Streamlined Layout**: Cleaned up the main portal into 3 core sections (Theater, Weekly Hub, and Join Us).
+
 ## [1.4.1] - 2026-08-17
 - **Polished AAA Coming Soon UI**: Replaced generic effects with a sleek, dark cyber-noir design, ambient mesh glows, and direct launch button.
 
