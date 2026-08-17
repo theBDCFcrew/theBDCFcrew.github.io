@@ -1,5 +1,10 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [1.9.1] - 2026-08-17
+- **Playlist → Individual Clips Importer**: Replaced "Master Playlist Embed" mode with a smarter importer — paste a playlist URL, click "🔍 Fetch Videos", preview the full list with real titles, then click "⚡ Import All Clips" to add them all as individual cards in the Theater grid.
+- **RSS-Powered Video Fetch**: New `fetchPlaylistVideos()` engine pulls individual video IDs and titles from YouTube's public RSS feed (`/feeds/videos.xml`) via a CORS proxy — no API key needed.
+- **Scrollable Video Preview**: Fetched video list shows in a scrollable purple-bordered panel with numbered titles before import.
+
 ## [1.9.0] - 2026-08-17
 - **Real GTAO Bloopers Playlist**: Replaced all 4 placeholder fake videos with the authentic 10-clip GTAO Bloopers playlist from `@BrianDivaCox`, with real titles fetched via YouTube oEmbed API.
 - **Auto-Load Playlist Feature**: Added "🔍 Fetch Info" button in Admin → Import Playlist (Option 1) — paste any YouTube Playlist URL to instantly preview the playlist title and author before activating it in the Theater.

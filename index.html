@@ -38,7 +38,7 @@
         <div class="header-status-pill">
           <span class="live-dot-pulse"></span>
           <span class="status-txt">HQ LIVE</span>
-          <span class="version-pill">v1.9.0</span>
+          <span class="version-pill">v1.9.1</span>
         </div>
         <button id="openAdminBtn" class="btn-admin-header" title="Open BDCF Admin Menu">
           <span>⚙️ Admin</span>
@@ -293,38 +293,45 @@
           <p>Easily import all your YouTube videos at once without adding them one-by-one!</p>
         </div>
 
-        <!-- Option A: Direct YouTube Playlist Mode -->
+        <!-- Option A: Import YouTube Playlist as Individual Clips -->
         <div class="import-box">
           <div class="import-box-header">
             <span class="import-box-tag">OPTION 1</span>
-            <h5>📺 Auto-Load YouTube Playlist</h5>
+            <h5>📺 Import YouTube Playlist as Clips</h5>
           </div>
           <p class="import-box-desc">
-            Paste any YouTube Playlist URL and click <strong>🔍 Fetch Info</strong> to auto-load the playlist title. Then click <strong>▶ Activate</strong> to set it as the Theater player!
+            Paste any YouTube Playlist URL. Click <strong>🔍 Fetch Videos</strong> to auto-load all the clips with their real titles — then import them all directly into your Theater grid!
           </p>
-          <form id="playlistEmbedForm" class="admin-form">
+          <div class="admin-form">
             <div class="form-group">
               <label for="ytPlaylistUrl">YouTube Playlist URL or Playlist ID:</label>
               <div class="input-with-btn">
                 <input type="text" id="ytPlaylistUrl" placeholder="e.g. https://www.youtube.com/playlist?list=PLxxxxxxxxxxxxxxx" />
-                <button type="button" id="fetchPlaylistInfoBtn" class="btn btn-secondary">🔍 Fetch Info</button>
+                <button type="button" id="fetchPlaylistInfoBtn" class="btn btn-secondary">🔍 Fetch Videos</button>
               </div>
               <small class="form-hint">Supports full playlist links with <code>list=PL...</code> or raw Playlist IDs starting with <code>PL...</code></small>
             </div>
-            <!-- Playlist Info Preview (hidden until fetched) -->
+
+            <!-- Playlist Preview (hidden until fetched) -->
             <div id="playlistPreviewBox" class="playlist-preview-box" style="display:none;">
-              <div class="preview-label">📋 PLAYLIST DETECTED</div>
+              <div class="preview-label">📋 PLAYLIST LOADED</div>
               <div class="preview-title" id="previewPlaylistTitle">—</div>
               <div class="preview-meta">
                 <span>By: <strong id="previewPlaylistAuthor">—</strong></span>
-                <span class="preview-id-tag">ID: <code id="previewPlaylistId">—</code></span>
+                <span id="previewVideoCount" class="preview-id-tag">0 videos found</span>
+              </div>
+              <!-- Fetched Video List -->
+              <div id="fetchedVideoList" class="fetched-video-list"></div>
+              <!-- Import Action Row -->
+              <div class="form-row" style="margin-top:12px;">
+                <select id="playlistImportAction" class="flex-1" style="padding:8px 10px; background: rgba(255,255,255,0.06); border:1px solid var(--border-purple); border-radius:6px; color:#fff; font-size:13px;">
+                  <option value="append">Append to existing playlist</option>
+                  <option value="replace">Replace entire playlist</option>
+                </select>
+                <button type="button" id="importPlaylistAsClipsBtn" class="btn btn-accent">⚡ Import All Clips</button>
               </div>
             </div>
-            <div class="form-row">
-              <button type="submit" class="btn btn-accent flex-1">▶ Activate as Theater Playlist</button>
-              <button type="button" id="clearPlaylistModeBtn" class="btn btn-secondary">Switch to Individual Clips</button>
-            </div>
-          </form>
+          </div>
         </div>
 
 
@@ -643,24 +650,45 @@
         return `BDCF Video (${videoId})`;
       }
 
-      // ── Fetch YouTube Playlist Title using public oEmbed ──
-      async function fetchPlaylistInfo(playlistId) {
+      // ── Fetch YouTube Playlist Info + All Videos via RSS ──
+      async function fetchPlaylistVideos(playlistId) {
+        const result = { title: `Playlist (${playlistId})`, author: 'Unknown', videos: [] };
+
+        // Step 1: Get playlist title via oEmbed
         try {
           const playlistUrl = `https://www.youtube.com/playlist?list=${playlistId}`;
           const oembedUrl = `https://www.youtube.com/oembed?url=${encodeURIComponent(playlistUrl)}&format=json`;
           const res = await fetch(oembedUrl);
           if (res.ok) {
             const data = await res.json();
-            return {
-              title: data.title || `YouTube Playlist (${playlistId})`,
-              author: data.author_name || 'Unknown'
-            };
+            result.title = data.title || result.title;
+            result.author = data.author_name || 'Unknown';
           }
-        } catch (e) {
-          // oEmbed may not support all playlists
-        }
-        return { title: `YouTube Playlist (${playlistId})`, author: 'Unknown' };
+        } catch (e) { /* oEmbed failed, use fallback title */ }
+
+        // Step 2: Fetch video IDs + titles from YouTube RSS via CORS proxy
+        try {
+          const rssUrl = `https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`;
+          const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`;
+          const res = await fetch(proxyUrl);
+          if (res.ok) {
+            const data = await res.json();
+            const xml = data.contents || '';
+            // Parse video IDs from <yt:videoId> tags
+            const idMatches = [...xml.matchAll(/<yt:videoId>([^<]+)<\/yt:videoId>/g)];
+            // Parse titles from <title> tags (skip the first one which is playlist title)
+            const titleMatches = [...xml.matchAll(/<title>([^<]*)<\/title>/g)].slice(1);
+
+            result.videos = idMatches.map((m, i) => ({
+              id: m[1].trim(),
+              title: titleMatches[i] ? titleMatches[i][1].trim() : `Clip ${i + 1}`,
+            }));
+          }
+        } catch (e) { /* RSS fetch failed */ }
+
+        return result;
       }
+
 
 
       // ── Render Theater & Page ──
@@ -907,27 +935,9 @@
         });
       });
 
-      // ── Form: Option 1 - Auto-Load YouTube Playlist ──
-      const playlistEmbedForm = document.getElementById('playlistEmbedForm');
-      if (playlistEmbedForm) {
-        playlistEmbedForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          const raw = document.getElementById('ytPlaylistUrl').value;
-          const plistId = extractPlaylistId(raw);
+      // ── Option 1: Fetch Playlist Videos → Show Preview → Import as Individual Clips ──
+      let _fetchedPlaylistVideos = []; // store fetched videos between button clicks
 
-          if (!plistId) {
-            alert("Could not extract a valid YouTube Playlist ID. Please ensure the link contains 'list=PL...' or starts with 'PL...'");
-            return;
-          }
-
-          config.activePlaylistId = plistId;
-          saveConfig();
-          showToast(`✅ YouTube Playlist mode activated! (${plistId})`, "success");
-          closeModal();
-        });
-      }
-
-      // ── Fetch Playlist Info Button ──
       const fetchPlaylistInfoBtn = document.getElementById('fetchPlaylistInfoBtn');
       if (fetchPlaylistInfoBtn) {
         fetchPlaylistInfoBtn.addEventListener('click', async () => {
@@ -939,41 +949,94 @@
 
           const plistId = extractPlaylistId(raw);
           if (!plistId) {
-            showToast("❌ Could not find a valid Playlist ID in that URL. Make sure it contains list=PL...", "error");
+            showToast("❌ Could not find a valid Playlist ID. Make sure the URL contains list=PL...", "error");
             return;
           }
 
           fetchPlaylistInfoBtn.disabled = true;
-          fetchPlaylistInfoBtn.textContent = "⏳ Loading...";
+          fetchPlaylistInfoBtn.textContent = "⏳ Fetching...";
 
-          const info = await fetchPlaylistInfo(plistId);
+          const info = await fetchPlaylistVideos(plistId);
+          _fetchedPlaylistVideos = info.videos;
 
           fetchPlaylistInfoBtn.disabled = false;
-          fetchPlaylistInfoBtn.textContent = "🔍 Fetch Info";
+          fetchPlaylistInfoBtn.textContent = "🔍 Fetch Videos";
 
           // Show preview box
           const previewBox = document.getElementById('playlistPreviewBox');
           const previewTitle = document.getElementById('previewPlaylistTitle');
           const previewAuthor = document.getElementById('previewPlaylistAuthor');
-          const previewId = document.getElementById('previewPlaylistId');
+          const previewCount = document.getElementById('previewVideoCount');
+          const fetchedList = document.getElementById('fetchedVideoList');
 
           if (previewBox) previewBox.style.display = 'block';
           if (previewTitle) previewTitle.textContent = info.title;
           if (previewAuthor) previewAuthor.textContent = info.author;
-          if (previewId) previewId.textContent = plistId;
 
-          showToast(`✅ Found: "${info.title}" — click Activate to load it!`, "success");
+          if (info.videos.length > 0) {
+            if (previewCount) previewCount.textContent = `${info.videos.length} videos found`;
+            if (fetchedList) {
+              fetchedList.innerHTML = info.videos.map((v, i) => `
+                <div class="fetched-video-item">
+                  <span class="fetched-v-num">${i + 1}</span>
+                  <span class="fetched-v-title">${escapeHTML(v.title)}</span>
+                  <code class="fetched-v-id">${v.id}</code>
+                </div>
+              `).join('');
+            }
+            showToast(`✅ Found ${info.videos.length} videos in "${info.title}" — click Import!`, "success");
+          } else {
+            if (previewCount) previewCount.textContent = "⚠️ No videos found via RSS (playlist may be private)";
+            if (fetchedList) fetchedList.innerHTML = `<p class="text-sm text-muted" style="margin-top:8px;">Could not fetch individual videos. Try using Option 2 (Bulk Links) instead.</p>`;
+            showToast("⚠️ Could not fetch video list. Try Option 2 for private playlists.", "info");
+          }
         });
       }
 
-      const clearPlaylistModeBtn = document.getElementById('clearPlaylistModeBtn');
-      if (clearPlaylistModeBtn) {
-        clearPlaylistModeBtn.addEventListener('click', () => {
+      const importPlaylistAsClipsBtn = document.getElementById('importPlaylistAsClipsBtn');
+      if (importPlaylistAsClipsBtn) {
+        importPlaylistAsClipsBtn.addEventListener('click', () => {
+          if (!_fetchedPlaylistVideos || _fetchedPlaylistVideos.length === 0) {
+            showToast("No videos to import. Click Fetch Videos first.", "info");
+            return;
+          }
+
+          const actionType = document.getElementById('playlistImportAction').value || 'append';
+          const playlistTitle = document.getElementById('previewPlaylistTitle').textContent || 'Imported';
+
+          const newItems = _fetchedPlaylistVideos.map((v, i) => ({
+            id: v.id,
+            title: v.title || `${playlistTitle} — Clip ${i + 1}`,
+            icon: "🎬",
+            tag: playlistTitle,
+            desc: `From playlist: ${playlistTitle}`
+          }));
+
+          if (actionType === 'replace') {
+            config.videos = newItems;
+          } else {
+            // Deduplicate by id
+            const existingIds = new Set(config.videos.map(v => v.id));
+            const uniqueNew = newItems.filter(v => !existingIds.has(v.id));
+            config.videos = [...uniqueNew, ...config.videos];
+          }
+
           config.activePlaylistId = '';
+          config.activeVideoId = newItems[0].id;
           saveConfig();
-          showToast("Switched back to Individual Clips mode", "info");
+          _fetchedPlaylistVideos = [];
+
+          // Reset UI
+          const previewBox = document.getElementById('playlistPreviewBox');
+          if (previewBox) previewBox.style.display = 'none';
+          document.getElementById('ytPlaylistUrl').value = '';
+
+          showToast(`🎉 Imported ${newItems.length} clips into your Theater!`, "success");
+          switchAdminTab('tab-videos');
+          closeModal();
         });
       }
+
 
 
       // ── Form: Option 2 - Bulk Multi-Link Video Importer Form ──

@@ -1204,6 +1204,51 @@ body.crew-portal-body {
   font-size: 11px;
 }
 
+/* Fetched Video List in Playlist Preview */
+.fetched-video-list {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.2);
+  padding: 6px;
+}
+
+.fetched-video-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.fetched-v-num {
+  font-family: var(--font-tech);
+  font-size: 10px;
+  color: #a855f7;
+  min-width: 18px;
+  font-weight: 800;
+}
+
+.fetched-v-title {
+  flex: 1;
+  color: #e2e8f0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fetched-v-id {
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  flex-shrink: 0;
+}
+
 
 /* Video List in Admin */
 .admin-video-list {
