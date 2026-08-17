@@ -38,7 +38,13 @@
         <div class="header-status-pill">
           <span class="live-dot-pulse"></span>
           <span class="status-txt">HQ LIVE</span>
-          <span class="version-pill">v2.0.0</span>
+          <span class="version-pill">v2.1.0</span>
+        </div>
+        <!-- Live Visitor Counter -->
+        <div class="live-counter-pill" id="liveCounterPill" title="Crew members viewing right now">
+          <span class="live-counter-dot"></span>
+          <span id="liveCountDisplay">—</span>
+          <span class="live-counter-label">online</span>
         </div>
         <button id="openAdminBtn" class="btn-admin-header" title="Open BDCF Admin Menu">
           <span>⚙️ Admin</span>
@@ -238,6 +244,21 @@
       <div class="footer-brand">
         <span class="footer-logo">[BDCF] THE BDCF CREW</span>
         <p class="footer-copy">Official GTA Online Syndicate Portal. All GTA trademarks belong to Rockstar Games / Take-Two Interactive.</p>
+      </div>
+
+      <!-- Site Stats Strip -->
+      <div class="footer-stats">
+        <div class="footer-stat-item">
+          <span class="footer-stat-icon">👁</span>
+          <span id="totalViewsDisplay">—</span>
+          <span class="footer-stat-label">Total Views</span>
+        </div>
+        <div class="footer-stat-divider"></div>
+        <div class="footer-stat-item">
+          <span class="footer-stat-icon">👥</span>
+          <span id="footerLiveCount">—</span>
+          <span class="footer-stat-label">Online Now</span>
+        </div>
       </div>
 
       <div class="footer-links">
@@ -1232,8 +1253,11 @@
     import { initializeApp }        from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
     import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut }
                                     from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
-    import { getFirestore, doc, getDoc }
-                                    from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+    import {
+      getFirestore, doc, getDoc, setDoc, updateDoc, deleteDoc,
+      collection, onSnapshot, query, where,
+      serverTimestamp, increment, Timestamp
+    }                               from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
     const firebaseConfig = {
       apiKey:            "AIzaSyBkOfgA2gmuns2-X--EYu1D0TeiPFN7w-U",
@@ -1376,6 +1400,91 @@
         window._bdcfSignIn();
       }
     };
+
+    // ══════════════════════════════════════════════
+    //  LIVE VISITOR COUNTER + TOTAL PAGE VIEW COUNTER
+    // ══════════════════════════════════════════════
+
+    // Format large numbers nicely (1234 → 1.2K)
+    function fmtCount(n) {
+      if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+      if (n >= 1000)    return (n / 1000).toFixed(1) + 'K';
+      return String(n);
+    }
+
+    function updateCounterDisplays(live, total) {
+      const liveHeader  = document.getElementById('liveCountDisplay');
+      const liveFooter  = document.getElementById('footerLiveCount');
+      const totalFooter = document.getElementById('totalViewsDisplay');
+      if (live  !== null) {
+        const txt = fmtCount(live);
+        if (liveHeader)  liveHeader.textContent  = txt;
+        if (liveFooter)  liveFooter.textContent  = txt;
+      }
+      if (total !== null) {
+        if (totalFooter) totalFooter.textContent = fmtCount(total);
+      }
+    }
+
+    async function initCounters() {
+      try {
+        // ── 1. Total Page Views ──
+        const statsRef = doc(db, 'stats', 'siteStats');
+        // Increment on every page load
+        await setDoc(statsRef, { totalViews: increment(1) }, { merge: true });
+
+        // Watch the stats doc in real-time so it updates without refresh
+        onSnapshot(statsRef, (snap) => {
+          if (snap.exists()) {
+            updateCounterDisplays(null, snap.data().totalViews || 0);
+          }
+        });
+
+        // ── 2. Live Visitor Presence ──
+        // Each tab gets a unique session ID
+        const sessionId  = `sess_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`;
+        const sessionRef = doc(db, 'sessions', sessionId);
+
+        // Register this session
+        await setDoc(sessionRef, {
+          active:    true,
+          createdAt: serverTimestamp(),
+          lastSeen:  serverTimestamp()
+        });
+
+        // Heartbeat every 45s to keep session alive
+        const heartbeat = setInterval(async () => {
+          try {
+            await updateDoc(sessionRef, { lastSeen: serverTimestamp() });
+          } catch (_) {}
+        }, 45000);
+
+        // Clean up session when tab closes
+        window.addEventListener('beforeunload', () => {
+          clearInterval(heartbeat);
+          deleteDoc(sessionRef).catch(() => {});
+        });
+
+        // Watch sessions active in the last 2 minutes
+        const twoMinAgo = () => Timestamp.fromDate(new Date(Date.now() - 2 * 60 * 1000));
+        onSnapshot(
+          query(collection(db, 'sessions'), where('lastSeen', '>', twoMinAgo())),
+          (snap) => {
+            updateCounterDisplays(snap.size, null);
+          }
+        );
+
+      } catch (err) {
+        // Firestore not set up yet — hide counter pills gracefully
+        console.warn('[BDCF Counters] Firestore not ready:', err.message);
+        const pill = document.getElementById('liveCounterPill');
+        if (pill) pill.style.display = 'none';
+      }
+    }
+
+    // Start counters immediately (no auth required)
+    initCounters();
+
   </script>
 
 </body>

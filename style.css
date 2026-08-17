@@ -960,6 +960,83 @@ body.crew-portal-body {
   border-color: var(--border-purple);
 }
 
+/* ── Live Visitor Counter Pill (header) ── */
+.live-counter-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(147, 51, 234, 0.12);
+  border: 1px solid rgba(147, 51, 234, 0.35);
+  border-radius: var(--radius-full);
+  padding: 4px 10px 4px 8px;
+  font-family: var(--font-tech);
+  font-size: 12px;
+  font-weight: 700;
+  color: #c084fc;
+  cursor: default;
+  transition: all 0.3s ease;
+}
+
+.live-counter-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #a855f7;
+  box-shadow: 0 0 6px #a855f7;
+  animation: live-pulse 1.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+
+.live-counter-label {
+  font-size: 10px;
+  color: rgba(192, 132, 252, 0.6);
+  font-weight: 600;
+}
+
+/* ── Footer Stats Strip ── */
+.footer-stats {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(147, 51, 234, 0.06);
+  border: 1px solid rgba(147, 51, 234, 0.2);
+  border-radius: var(--radius-full);
+  padding: 6px 16px;
+}
+
+.footer-stat-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-tech);
+  font-size: 12px;
+  font-weight: 700;
+  color: #c084fc;
+}
+
+.footer-stat-icon {
+  font-size: 13px;
+}
+
+.footer-stat-label {
+  font-size: 10px;
+  color: rgba(192, 132, 252, 0.55);
+  font-weight: 600;
+}
+
+.footer-stat-divider {
+  width: 1px;
+  height: 16px;
+  background: rgba(147, 51, 234, 0.3);
+}
+
+}
+
 /* =========================================================================
    ADMIN MODAL STYLING & IMPORTER BOXES
    ========================================================================= */

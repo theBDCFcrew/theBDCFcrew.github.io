@@ -1,5 +1,12 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [2.1.0] - 2026-08-17
+- **Live Visitor Counter**: Purple pulsing pill in the site header shows how many people are viewing the site right now in real-time, powered by Firestore session presence.
+- **Total Page View Counter**: Footer stats strip tracks and displays cumulative page views using Firestore atomic increment — updates live without refresh.
+- **Session Heartbeat**: Each visitor tab registers a Firestore session document and sends a heartbeat every 45 seconds; sessions expire after 2 minutes of inactivity.
+- **Graceful Degradation**: Counter pill auto-hides if Firestore is not yet configured, preventing visible errors.
+- **Footer Stats Bar**: New purple stats bar in the footer shows both Online Now and Total Views side-by-side.
+
 ## [2.0.0] - 2026-08-17
 - **Firebase Google Auth Admin Gate**: Admin Menu is now locked behind Google Sign-In via Firebase Authentication.
 - **Firestore Admin Allowlist**: Authorized users stored in Firestore `admins/{uid}` collection — add/remove officers instantly from Firebase Console with no code changes.
