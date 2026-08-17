@@ -1,6 +1,18 @@
 # 🌴 Los Santos Weekly — Changelog
 
-## [2.2.0] - 2026-08-17
+## [3.0.0] - 2026-08-17
+- **Multi-Playlist Category Theater System**: Rebuilt the BDCF Theater with 5 authentic GTAO series category cards:
+  - 🌴 **GTAO: Crew** (15 clips) — Syndicate operations, combat training, heists & missions
+  - 😂 **GTAO Bloopers** (13 clips) — Fails, funny chaos, driving over mines & friendly fire
+  - 🃏 **GTAO Meet n Greet** (3 clips) — Encounters with famous pop-culture characters like The Joker
+  - 🎯 **GTAO Tricks** (15 clips) — Stunts, precision jumps, aerial trickshots & vehicle skills
+  - ⚡ **GTAO Glitches** (5 clips) — Secret spots, wallbreaches & physics bugs
+- **Dynamic Category Switching**: Clicking any series card illuminates it with a glowing neon purple gradient and instantly loads its clips into the drawer below.
+- **Auto-Play on Category Switch**: Switching series immediately queues and starts playing that series' featured clip.
+- **Admin Series & Categories Manager**: Create new category boxes from any YouTube playlist URL, manage series, delete clips, and add single videos to targeted categories.
+- **Clip Badging**: Numbered badges (`#1`, `#2`, ...) and active video highlights.
+
+## [2.2.1] - 2026-08-17
 - **Commander Master Authorization**: Linked Commander UID and verified Google account for permanent Commander privileges.
 - **Selectable & Copyable Popups**: All toast notifications, popup messages, and code snippets now allow easy text selection with mouse hover-pause timer so notifications never vanish while copying.
 
