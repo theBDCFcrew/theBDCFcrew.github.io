@@ -1,0 +1,26 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Admin Allowlist ──
+    // Only authenticated users can read their own admin record to verify access.
+    // Writes are blocked from the client (manage admins via Firebase Console).
+    match /admins/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow write: if false;
+    }
+
+    // ── Site View Counter ──
+    // Allows public read & atomic increment for total page views.
+    match /stats/{doc} {
+      allow read, write: if true;
+    }
+
+    // ── Live Visitor Sessions ──
+    // Allows public read, heartbeat updates, and session creation/deletion for active presence.
+    match /sessions/{sessionId} {
+      allow read, write: if true;
+    }
+  }
+}

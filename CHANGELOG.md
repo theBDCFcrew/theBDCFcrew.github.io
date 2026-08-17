@@ -1,5 +1,9 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [2.1.1] - 2026-08-17
+- **Live Firestore Deployment**: Automated deployment of `firestore.rules`, `.firebaserc`, and `firebase.json` via Firebase CLI directly to `the-bdcf-crew`.
+- **Database Initialization**: Enabled Cloud Firestore and deployed security rules for `admins`, `stats` (page views), and `sessions` (live visitors).
+
 ## [2.1.0] - 2026-08-17
 - **Live Visitor Counter**: Purple pulsing pill in the site header shows how many people are viewing the site right now in real-time, powered by Firestore session presence.
 - **Total Page View Counter**: Footer stats strip tracks and displays cumulative page views using Firestore atomic increment — updates live without refresh.
