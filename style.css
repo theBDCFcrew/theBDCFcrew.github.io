@@ -1655,13 +1655,35 @@ body.crew-portal-body {
   border-radius: var(--radius-md);
   font-family: var(--font-header);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 15px var(--crew-purple-glow);
   animation: toastIn 0.25s ease;
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  cursor: text;
+  max-width: 420px;
+  word-break: break-word;
+}
+
+.toast code {
+  user-select: all !important;
+  -webkit-user-select: all !important;
+  background: rgba(147, 51, 234, 0.25);
+  border: 1px solid rgba(147, 51, 234, 0.5);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #c084fc;
+  cursor: pointer;
+}
+
+.toast.toast-error {
+  border-color: #ef4444;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(239, 68, 68, 0.3);
 }
 
 .toast.toast-success { border-color: #10b981; }
 .toast.toast-info { border-color: var(--crew-purple-light); }
+
 
 .toast-fadeout {
   opacity: 0;

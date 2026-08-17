@@ -4,15 +4,19 @@ service cloud.firestore {
   match /databases/{database}/documents {
 
     // ── Admin Allowlist ──
-    // Commander (briandivacox@gmail.com) has full read/write access to manage admins.
+    // Commander (briandivacox@gmail.com / UID: tT6YYY5VfuaK4jqlFuVPpWVyfY02) has full read/write access to manage admins.
     // Officers can verify their own admin status.
     match /admins/{docId} {
       allow read: if request.auth != null && (
+        request.auth.uid == 'tT6YYY5VfuaK4jqlFuVPpWVyfY02' ||
         request.auth.token.email.lower() == 'briandivacox@gmail.com' ||
         request.auth.uid == docId ||
         request.auth.token.email.lower() == docId.lower()
       );
-      allow write: if request.auth != null && request.auth.token.email.lower() == 'briandivacox@gmail.com';
+      allow write: if request.auth != null && (
+        request.auth.uid == 'tT6YYY5VfuaK4jqlFuVPpWVyfY02' ||
+        request.auth.token.email.lower() == 'briandivacox@gmail.com'
+      );
     }
 
     // ── Site View Counter ──

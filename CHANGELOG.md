@@ -1,5 +1,9 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [2.2.0] - 2026-08-17
+- **UID & Email Master Authorization**: Embedded Brian's UID `tT6YYY5VfuaK4jqlFuVPpWVyfY02` and Email `BrianDivaCox@gmail.com` as permanent Commander credentials.
+- **Selectable & Copyable Popups**: All toast notifications, popup messages, and code snippets now allow easy text selection with mouse hover-pause timer so notifications never vanish while copying.
+
 ## [2.1.3] - 2026-08-17
 - **Master Commander Google Auth**: Hardcoded `BrianDivaCox@gmail.com` as Master Commander with instant Google Sign-In access and zero database prerequisites.
 - **Auto-Sync to Firestore**: Automatically syncs Commander login and creates admin document in Firestore upon first sign-in.

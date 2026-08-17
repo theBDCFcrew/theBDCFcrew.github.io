@@ -38,7 +38,7 @@
         <div class="header-status-pill">
           <span class="live-dot-pulse"></span>
           <span class="status-txt">HQ LIVE</span>
-          <span class="version-pill">v2.1.3</span>
+          <span class="version-pill">v2.2.0</span>
         </div>
         <!-- Live Visitor Counter -->
         <div class="live-counter-pill" id="liveCounterPill" title="Crew members viewing right now">
@@ -894,18 +894,38 @@
           .replace(/'/g, '&#039;');
       }
 
-      function showToast(msg, type = 'info') {
+      function showToast(msg, type = 'info', duration = 4000) {
         const container = document.getElementById('toastContainer');
         if (!container) return;
         const toast = document.createElement('div');
         toast.className = `toast toast-${type}`;
-        toast.textContent = msg;
+        toast.innerHTML = msg;
+        
+        let timer = null;
+        let remaining = duration;
+        let start = Date.now();
+
+        const startTimer = (dur) => {
+          timer = setTimeout(() => {
+            toast.classList.add('toast-fadeout');
+            setTimeout(() => toast.remove(), 300);
+          }, dur);
+        };
+
+        toast.addEventListener('mouseenter', () => {
+          clearTimeout(timer);
+          remaining -= (Date.now() - start);
+        });
+
+        toast.addEventListener('mouseleave', () => {
+          start = Date.now();
+          startTimer(Math.max(remaining, 1500));
+        });
+
+        startTimer(duration);
         container.appendChild(toast);
-        setTimeout(() => {
-          toast.classList.add('toast-fadeout');
-          setTimeout(() => toast.remove(), 300);
-        }, 3500);
       }
+
 
       // ── Admin Modal Interactions ──
       const adminModal = document.getElementById('adminModal');
@@ -1308,22 +1328,42 @@
       if (signOutEl) signOutEl.style.display = 'none';
     }
 
-    // ── Toast helper (mirrors the main script's implementation) ──
+    // ── Toast helper with hover-pause & selectable text ──
     function firebaseToast(msg, type = 'info', duration = 5000) {
       const container = document.getElementById('toastContainer');
       if (!container) return;
       const toast = document.createElement('div');
       toast.className = `toast toast-${type}`;
       toast.innerHTML = msg;
+
+      let timer = null;
+      let remaining = duration;
+      let start = Date.now();
+
+      const startTimer = (dur) => {
+        timer = setTimeout(() => {
+          toast.classList.add('toast-fadeout');
+          setTimeout(() => toast.remove(), 300);
+        }, dur);
+      };
+
+      toast.addEventListener('mouseenter', () => {
+        clearTimeout(timer);
+        remaining -= (Date.now() - start);
+      });
+
+      toast.addEventListener('mouseleave', () => {
+        start = Date.now();
+        startTimer(Math.max(remaining, 1500));
+      });
+
+      startTimer(duration);
       container.appendChild(toast);
-      setTimeout(() => {
-        toast.classList.add('toast-fadeout');
-        setTimeout(() => toast.remove(), 300);
-      }, duration);
     }
 
-    // ── Master Commanders (Always Authorized) ──
-    const MASTER_COMMANDERS = ['briandivacox@gmail.com'];
+    // ── Master Commanders (Always Authorized by UID or Email) ──
+    const MASTER_COMMANDERS_UIDS = ['tT6YYY5VfuaK4jqlFuVPpWVyfY02'];
+    const MASTER_COMMANDERS_EMAILS = ['briandivacox@gmail.com'];
 
     // ── Auth State Watcher ──
     onAuthStateChanged(auth, async (user) => {
@@ -1340,8 +1380,8 @@
         let isAdmin = false;
         let adminRole = 'Officer';
 
-        // 1. Check Master Commander allowlist (Instant Access)
-        if (MASTER_COMMANDERS.includes(emailLower)) {
+        // 1. Check Master Commander allowlist (Instant Access by UID or Email)
+        if (MASTER_COMMANDERS_UIDS.includes(user.uid) || MASTER_COMMANDERS_EMAILS.includes(emailLower)) {
           isAdmin = true;
           adminRole = 'Commander';
           // Auto-save to Firestore so database record is initialized
@@ -1387,9 +1427,9 @@
         }
       } catch (err) {
         console.error('[BDCF Auth] Firestore check error:', err);
-        // If Firestore read fails but email is Master Commander, still grant access!
+        // If Firestore read fails but user is Master Commander, still grant access!
         const emailLower = (user.email || '').toLowerCase();
-        if (MASTER_COMMANDERS.includes(emailLower)) {
+        if (MASTER_COMMANDERS_UIDS.includes(user.uid) || MASTER_COMMANDERS_EMAILS.includes(emailLower)) {
           window._bdcfIsAdmin = true;
           window._bdcfUser    = user;
           updateAdminButton(user, true);
@@ -1402,6 +1442,7 @@
         }
       }
     });
+
 
     // ── Sign In via Google Popup ──
     window._bdcfSignIn = async () => {
