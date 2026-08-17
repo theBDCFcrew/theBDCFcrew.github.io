@@ -1,5 +1,11 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.1.0] - 2026-08-17
+- **Live YouTube Playlist Auto-Sync Engine**: The portal now automatically connects with YouTube's live RSS feed on series switch and initial page load to detect newly uploaded videos.
+- **Instant Deduplication & Auto-Prepend**: New YouTube uploads are automatically detected and placed at the top of their corresponding Category Box with zero manual configuration.
+- **🔄 Sync with YouTube Button**: Added an interactive sync button in the Theater series header with rotation spin animation so visitors and admins can force an instant refresh on demand.
+- **🔄 Sync All Series with YouTube**: Added bulk sync tool in the Admin Categories manager to scan and update all series simultaneously.
+
 ## [3.0.0] - 2026-08-17
 - **Multi-Playlist Category Theater System**: Rebuilt the BDCF Theater with 5 authentic GTAO series category cards:
   - 🌴 **GTAO: Crew** (15 clips) — Syndicate operations, combat training, heists & missions

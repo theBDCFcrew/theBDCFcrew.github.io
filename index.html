@@ -38,7 +38,7 @@
         <div class="header-status-pill">
           <span class="live-dot-pulse"></span>
           <span class="status-txt">HQ LIVE</span>
-          <span class="version-pill">v3.0.0</span>
+          <span class="version-pill">v3.1.0</span>
         </div>
         <!-- Live Visitor Counter -->
         <div class="live-counter-pill" id="liveCounterPill" title="Crew members viewing right now">
@@ -155,8 +155,13 @@
             </div>
             <div class="playlist-header-actions">
               <span class="clips-count-pill" id="clipsCountPill">15 Clips</span>
+              <button id="syncPlaylistBtn" class="btn-sync-series" title="Check YouTube for newly uploaded clips in this series">
+                <span class="sync-icon">🔄</span>
+                <span>Sync with YouTube</span>
+              </button>
               <button id="managePlaylistBtn" class="btn-manage-playlist">⚙️ Manage Series</button>
             </div>
+
           </div>
           <div class="playlist-grid" id="playlistGrid">
             <!-- Rendered dynamically via JS -->
@@ -330,12 +335,18 @@
 
       <!-- TAB 1: MANAGE SERIES CATEGORIES & VIDEOS -->
       <div id="tab-categories" class="admin-tab-pane active">
-        <div class="admin-section-info">
-          <h4>Playlist Categories &amp; Series (<span id="adminCategoryCount">5</span>)</h4>
-          <p>Click any category to manage its videos, reorder, change active series, or delete.</p>
+        <div class="admin-section-info" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div>
+            <h4>Playlist Categories &amp; Series (<span id="adminCategoryCount">5</span>)</h4>
+            <p>Click any category to manage its videos, reorder, change active series, or delete.</p>
+          </div>
+          <button type="button" id="syncAllSeriesBtn" class="btn btn-secondary btn-sm" style="font-size:11px; padding:6px 12px;">
+            🔄 Sync All with YouTube
+          </button>
         </div>
 
         <div class="admin-categories-list" id="adminCategoriesList">
+
           <!-- Rendered dynamically -->
         </div>
       </div>
@@ -726,6 +737,73 @@
         return result;
       }
 
+      // ── Live YouTube Auto-Sync Engine ──
+      async function syncCategoryWithYouTube(catId, showFeedback = false) {
+        const cat = config.categories.find(c => c.id === catId);
+        if (!cat || !cat.playlistId || !cat.playlistId.startsWith('PL')) {
+          if (showFeedback) showToast("This category does not have a linked YouTube Playlist ID.", "info");
+          return 0;
+        }
+
+        const syncBtn = document.getElementById('syncPlaylistBtn');
+        if (syncBtn) syncBtn.classList.add('is-syncing');
+
+        try {
+          const fresh = await fetchPlaylistVideos(cat.playlistId);
+          if (fresh.videos && fresh.videos.length > 0) {
+            const existingIds = new Set((cat.videos || []).map(v => v.id));
+            const newVideos = fresh.videos.filter(v => !existingIds.has(v.id));
+
+            if (newVideos.length > 0) {
+              // Prepend newly uploaded videos to this category
+              cat.videos = [...newVideos, ...(cat.videos || [])];
+              saveConfig();
+              if (showFeedback) {
+                showToast(`🎉 Pulled ${newVideos.length} new clip(s) for "${cat.title}" from YouTube!`, 'success', 4500);
+              }
+              return newVideos.length;
+            } else {
+              if (showFeedback) {
+                showToast(`✅ "${cat.title}" is already completely up-to-date with YouTube!`, 'info', 3000);
+              }
+              return 0;
+            }
+          }
+        } catch (e) {
+          if (showFeedback) showToast("⚠️ Could not reach YouTube RSS right now.", "error");
+        } finally {
+          if (syncBtn) syncBtn.classList.remove('is-syncing');
+        }
+        return 0;
+      }
+
+      async function syncAllCategoriesWithYouTube() {
+        const syncAllBtn = document.getElementById('syncAllSeriesBtn');
+        if (syncAllBtn) {
+          syncAllBtn.disabled = true;
+          syncAllBtn.textContent = "⏳ Syncing all series...";
+        }
+
+        let totalNew = 0;
+        for (const cat of config.categories) {
+          if (cat.playlistId && cat.playlistId.startsWith('PL')) {
+            const count = await syncCategoryWithYouTube(cat.id, false);
+            totalNew += count;
+          }
+        }
+
+        if (syncAllBtn) {
+          syncAllBtn.disabled = false;
+          syncAllBtn.textContent = "🔄 Sync All with YouTube";
+        }
+
+        if (totalNew > 0) {
+          showToast(`🎉 Sync complete! Added ${totalNew} new clips across all series!`, 'success', 5000);
+        } else {
+          showToast(`✅ All ${config.categories.length} series are completely up-to-date!`, 'info', 3500);
+        }
+      }
+
       // ── Set Active Category (Loads all videos for that series) ──
       function setActiveCategory(catId, autoplay = true) {
         config.activeCategoryId = catId;
@@ -736,7 +814,11 @@
         saveConfig();
         updatePlayerDisplay(autoplay);
         showToast(`📂 Loaded series: <strong>${cat.title}</strong>`, 'info', 2500);
+
+        // Background auto-sync to check for fresh YouTube uploads silently
+        syncCategoryWithYouTube(catId, false);
       }
+
 
       // ── Set Active Video ──
       function setActiveVideo(id, autoplay = false) {
@@ -1260,9 +1342,32 @@
         });
       }
 
+      // ── Sync Buttons Listeners ──
+      const syncPlaylistBtn = document.getElementById('syncPlaylistBtn');
+      if (syncPlaylistBtn) {
+        syncPlaylistBtn.addEventListener('click', () => {
+          syncCategoryWithYouTube(config.activeCategoryId, true);
+        });
+      }
+
+      const syncAllSeriesBtn = document.getElementById('syncAllSeriesBtn');
+      if (syncAllSeriesBtn) {
+        syncAllSeriesBtn.addEventListener('click', () => {
+          syncAllCategoriesWithYouTube();
+        });
+      }
+
       renderAll();
 
+      // Silent background auto-sync for active category after page load
+      setTimeout(() => {
+        if (config.activeCategoryId) {
+          syncCategoryWithYouTube(config.activeCategoryId, false);
+        }
+      }, 2500);
+
     })();
+
   </script>
 
   <!-- =========================================================================
