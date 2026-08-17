@@ -496,6 +496,30 @@ body.crew-portal-body {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
+}
+
+.channel-link-badge {
+  text-decoration: none;
+  font-family: var(--font-header);
+  font-size: 11px;
+  font-weight: 800;
+  color: #fff;
+  background: rgba(255, 0, 0, 0.15);
+  border: 1px solid rgba(255, 0, 0, 0.4);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.channel-link-badge:hover {
+  background: #ff0000;
+  border-color: #ff0000;
+  box-shadow: 0 0 14px rgba(255, 0, 0, 0.5);
+  transform: translateY(-1px);
 }
 
 .theater-hd-badge {

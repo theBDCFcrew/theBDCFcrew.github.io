@@ -1,5 +1,8 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [1.8.1] - 2026-08-17
+- **Official YouTube Channel Badge**: Linked Brian Cox's official YouTube channel (`youtube.com/@BrianDivaCox`) directly into the BDCF Theater Player.
+
 ## [1.8.0] - 2026-08-17
 - **YouTube Playlist Embed Mode**: Added 1-click official YouTube playlist embedding with auto-play and full clip drawer (`embed/videoseries?list=...`).
 - **Bulk Multi-Link Video Importer**: Paste 10+ YouTube links at once; the system extracts all IDs and fetches titles automatically via oEmbed.
