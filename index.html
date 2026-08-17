@@ -38,7 +38,7 @@
         <div class="header-status-pill">
           <span class="live-dot-pulse"></span>
           <span class="status-txt">HQ LIVE</span>
-          <span class="version-pill">v1.7.0</span>
+          <span class="version-pill">v1.8.0</span>
         </div>
         <button id="openAdminBtn" class="btn-admin-header" title="Open BDCF Admin Menu">
           <span>⚙️ Admin</span>
@@ -108,7 +108,7 @@
         <!-- Video Info Bar -->
         <div class="video-meta-bar">
           <div class="video-meta-left">
-            <span class="now-playing-tag">▶ NOW PLAYING</span>
+            <span class="now-playing-tag" id="nowPlayingTag">▶ NOW PLAYING</span>
             <h3 id="currentVideoTitle" class="video-current-title">The BDCF Crew: Official GTA Online Showcase</h3>
             <p id="currentVideoDesc" class="video-current-desc">Official BDCF Crew operations, heists, and car meet showcase in Los Santos.</p>
           </div>
@@ -118,10 +118,13 @@
         </div>
 
         <!-- Playlist Selector Tabs -->
-        <div class="playlist-container">
+        <div class="playlist-container" id="playlistContainer">
           <div class="playlist-header">
-            <span>📺 Select Video to Play:</span>
-            <button id="managePlaylistBtn" class="btn-manage-playlist">+ Manage Playlist</button>
+            <span id="playlistHeaderLabel">📺 Select Video to Play:</span>
+            <div class="playlist-header-actions">
+              <button id="importPlaylistQuickBtn" class="btn-import-quick">📥 Import Playlist / Bulk Links</button>
+              <button id="managePlaylistBtn" class="btn-manage-playlist">⚙️ Manage</button>
+            </div>
           </div>
           <div class="playlist-grid" id="playlistGrid">
             <!-- Rendered dynamically via JS from localStorage or default data -->
@@ -251,7 +254,7 @@
         <span class="admin-header-icon">⚙️</span>
         <div>
           <h3>BDCF Crew Admin Menu</h3>
-          <p class="text-xs text-muted">Manage Theater Videos, Join Form Link, and Portal Settings</p>
+          <p class="text-xs text-muted">Manage Theater Videos, Import Playlists, and Portal Settings</p>
         </div>
       </div>
       <button id="closeAdminModalBtn" class="admin-close-btn" aria-label="Close Admin Menu">&times;</button>
@@ -261,16 +264,17 @@
       
       <!-- Admin Navigation Tabs -->
       <div class="admin-tabs-bar">
-        <button class="admin-tab-btn active" data-tab="tab-videos">🎬 Manage Videos</button>
-        <button class="admin-tab-btn" data-tab="tab-add-video">➕ Add New Video</button>
-        <button class="admin-tab-btn" data-tab="tab-settings">⚙️ Crew Settings &amp; Form</button>
-        <button class="admin-tab-btn" data-tab="tab-export">💾 Export Code / Backup</button>
+        <button class="admin-tab-btn active" data-tab="tab-videos">🎬 Videos</button>
+        <button class="admin-tab-btn" data-tab="tab-import-playlist">📥 Import Playlist / Bulk</button>
+        <button class="admin-tab-btn" data-tab="tab-add-video">➕ Add Single Video</button>
+        <button class="admin-tab-btn" data-tab="tab-settings">⚙️ Crew Settings</button>
+        <button class="admin-tab-btn" data-tab="tab-export">💾 Export / Backup</button>
       </div>
 
       <!-- TAB 1: MANAGE EXISTING VIDEOS -->
       <div id="tab-videos" class="admin-tab-pane active">
         <div class="admin-section-info">
-          <h4>Current Playlist Videos</h4>
+          <h4>Current Playlist Videos (<span id="adminVideoCount">0</span>)</h4>
           <p>Reorder, edit details, set active video, or delete videos from the BDCF Theater.</p>
         </div>
 
@@ -279,11 +283,80 @@
         </div>
       </div>
 
-      <!-- TAB 2: ADD NEW VIDEO -->
+      <!-- TAB 2: IMPORT PLAYLIST / BULK LINKS -->
+      <div id="tab-import-playlist" class="admin-tab-pane">
+        <div class="admin-section-info">
+          <h4>Import YouTube Playlist or Bulk Video Links</h4>
+          <p>Easily import all your YouTube videos at once without adding them one-by-one!</p>
+        </div>
+
+        <!-- Option A: Direct YouTube Playlist Mode -->
+        <div class="import-box">
+          <div class="import-box-header">
+            <span class="import-box-tag">OPTION 1</span>
+            <h5>📺 Direct YouTube Playlist Embed</h5>
+          </div>
+          <p class="import-box-desc">
+            Paste a full YouTube Playlist URL or Playlist ID. The Theater will load the entire YouTube playlist player with all clips and playlist drawer!
+          </p>
+          <form id="playlistEmbedForm" class="admin-form">
+            <div class="form-group">
+              <label for="ytPlaylistUrl">YouTube Playlist URL or Playlist ID:</label>
+              <input type="text" id="ytPlaylistUrl" placeholder="e.g. https://www.youtube.com/playlist?list=PLxxxxxxxxxxxxxxx" />
+              <small class="form-hint">Supports full playlist links with <code>list=PL...</code> or raw Playlist IDs starting with <code>PL...</code></small>
+            </div>
+            <div class="form-row">
+              <button type="submit" class="btn btn-accent flex-1">▶ Set as Main Playlist Player</button>
+              <button type="button" id="clearPlaylistModeBtn" class="btn btn-secondary">Switch to Individual Clips</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Option B: Bulk Multi-Link Pasting -->
+        <div class="import-box mt-4">
+          <div class="import-box-header">
+            <span class="import-box-tag">OPTION 2</span>
+            <h5>📋 Bulk Multi-Link Pasting</h5>
+          </div>
+          <p class="import-box-desc">
+            Paste a list of multiple YouTube video links (one URL per line). The system will automatically extract all IDs and add them all to your playlist grid!
+          </p>
+          <form id="bulkLinksForm" class="admin-form">
+            <div class="form-group">
+              <label for="bulkLinksInput">Paste Multiple YouTube URLs (1 per line):</label>
+              <textarea id="bulkLinksInput" rows="5" placeholder="https://youtu.be/jgp3oTp5WVU&#10;https://youtu.be/QkkoHA7PEJU&#10;https://www.youtube.com/watch?v=B_Z7Z4nS8c8"></textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group flex-1">
+                <label for="bulkCategory">Default Category / Icon:</label>
+                <select id="bulkCategory">
+                  <option value="🌴">🌴 Official Showcase</option>
+                  <option value="💼">💼 Heists &amp; Strikes</option>
+                  <option value="🏎️">🏎️ Car Meets &amp; Stance</option>
+                  <option value="⚡">⚡ Funny Moments &amp; Fails</option>
+                  <option value="🎮">🎮 Crew Gameplay</option>
+                </select>
+              </div>
+              <div class="form-group flex-1">
+                <label for="bulkActionType">Action:</label>
+                <select id="bulkActionType">
+                  <option value="append">Append (Add to existing)</option>
+                  <option value="replace">Replace entire playlist</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-accent full-width" id="importBulkBtn">
+              ⚡ Import All Video Links
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- TAB 3: ADD SINGLE VIDEO -->
       <div id="tab-add-video" class="admin-tab-pane">
         <div class="admin-section-info">
-          <h4>Add a YouTube Video to Theater</h4>
-          <p>Paste any YouTube URL or Video ID below. It will instantly be added to the Theater playlist.</p>
+          <h4>Add a Single YouTube Video</h4>
+          <p>Paste any YouTube URL or Video ID below. It will be added to the Theater playlist.</p>
         </div>
 
         <form id="addVideoForm" class="admin-form">
@@ -327,7 +400,7 @@
         </form>
       </div>
 
-      <!-- TAB 3: CREW SETTINGS & FORM -->
+      <!-- TAB 4: CREW SETTINGS & FORM -->
       <div id="tab-settings" class="admin-tab-pane">
         <div class="admin-section-info">
           <h4>Recruitment &amp; Portal Settings</h4>
@@ -357,7 +430,7 @@
         </form>
       </div>
 
-      <!-- TAB 4: EXPORT / BACKUP -->
+      <!-- TAB 5: EXPORT / BACKUP -->
       <div id="tab-export" class="admin-tab-pane">
         <div class="admin-section-info">
           <h4>Export / Reset Data</h4>
@@ -385,7 +458,7 @@
   <div id="toastContainer" class="toast-container"></div>
 
   <!-- =========================================================================
-       CORE SCRIPT: THEATER ENGINE, TAB SWITCHER & ADMIN MENU
+       CORE SCRIPT: THEATER ENGINE, PLAYLIST IMPORTER & ADMIN MENU
        ========================================================================= -->
   <script>
     (function () {
@@ -397,6 +470,7 @@
         crewTag: "BDCF",
         crewMotto: "Official GTA Online Syndicate & Operations Headquarters. Watch crew video highlights, track weekly updates, or apply to join our ranks.",
         activeVideoId: "jgp3oTp5WVU",
+        activePlaylistId: "", // Optional YouTube Playlist ID
         videos: [
           {
             id: "jgp3oTp5WVU",
@@ -483,7 +557,32 @@
         if (/^[a-zA-Z0-9_-]{11}$/.test(trimmed)) return trimmed;
         const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/i;
         const match = trimmed.match(regex);
-        return match ? match[1] : trimmed;
+        return match ? match[1] : (trimmed.length === 11 ? trimmed : '');
+      }
+
+      // ── Extract YouTube Playlist ID ──
+      function extractPlaylistId(urlOrId) {
+        if (!urlOrId) return '';
+        const trimmed = urlOrId.trim();
+        if (/^(PL|UU|FL|RD|UL)[a-zA-Z0-9_-]+$/.test(trimmed)) return trimmed;
+        const regex = /[?&]list=([a-zA-Z0-9_-]+)/i;
+        const match = trimmed.match(regex);
+        return match ? match[1] : '';
+      }
+
+      // ── Fetch YouTube Title using public oEmbed ──
+      async function fetchYouTubeTitle(videoId) {
+        try {
+          const url = `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`;
+          const res = await fetch(url);
+          if (res.ok) {
+            const data = await res.json();
+            return data.title || `BDCF Video (${videoId})`;
+          }
+        } catch (e) {
+          // Fallback if CORS prevents direct oembed
+        }
+        return `BDCF Video (${videoId})`;
       }
 
       // ── Render Theater & Page ──
@@ -502,26 +601,48 @@
 
         // Render Playlist
         const playlistGrid = document.getElementById('playlistGrid');
-        if (playlistGrid) {
-          playlistGrid.innerHTML = config.videos.map(v => {
-            const isActive = v.id === config.activeVideoId;
-            return `
-              <button class="playlist-item ${isActive ? 'active' : ''}" data-video-id="${v.id}">
-                <span class="item-icon">${v.icon || '🎬'}</span>
-                <div class="item-text">
-                  <span class="item-title">${escapeHTML(v.title)}</span>
-                  <span class="item-duration">${escapeHTML(v.tag || 'Video')}</span>
-                </div>
-              </button>
-            `;
-          }).join('');
+        const countEl = document.getElementById('adminVideoCount');
+        if (countEl) countEl.textContent = config.videos ? config.videos.length : 0;
 
-          playlistGrid.querySelectorAll('.playlist-item').forEach(btn => {
-            btn.addEventListener('click', () => {
-              const id = btn.dataset.videoId;
-              if (id) setActiveVideo(id, true);
+        if (playlistGrid) {
+          if (config.activePlaylistId) {
+            // In YouTube Playlist Mode
+            playlistGrid.innerHTML = `
+              <div class="playlist-mode-banner">
+                <span class="badge-mode">📺 YOUTUBE PLAYLIST MODE ACTIVE</span>
+                <p class="text-sm">Playing official playlist (<code>${config.activePlaylistId}</code>). Use player controls or click below to switch to individual video clips.</p>
+                <button id="switchBackToClipsBtn" class="btn btn-secondary btn-sm mt-2">Switch to Individual Clips Grid</button>
+              </div>
+            `;
+            const backBtn = document.getElementById('switchBackToClipsBtn');
+            if (backBtn) {
+              backBtn.addEventListener('click', () => {
+                config.activePlaylistId = '';
+                saveConfig();
+                showToast("Switched to individual video clips", "info");
+              });
+            }
+          } else {
+            playlistGrid.innerHTML = config.videos.map(v => {
+              const isActive = v.id === config.activeVideoId;
+              return `
+                <button class="playlist-item ${isActive ? 'active' : ''}" data-video-id="${v.id}">
+                  <span class="item-icon">${v.icon || '🎬'}</span>
+                  <div class="item-text">
+                    <span class="item-title">${escapeHTML(v.title)}</span>
+                    <span class="item-duration">${escapeHTML(v.tag || 'Video')}</span>
+                  </div>
+                </button>
+              `;
+            }).join('');
+
+            playlistGrid.querySelectorAll('.playlist-item').forEach(btn => {
+              btn.addEventListener('click', () => {
+                const id = btn.dataset.videoId;
+                if (id) setActiveVideo(id, true);
+              });
             });
-          });
+          }
         }
 
         updatePlayerDisplay(false);
@@ -532,22 +653,36 @@
       }
 
       function setActiveVideo(id, autoplay = false) {
+        config.activePlaylistId = ''; // clear playlist mode
         config.activeVideoId = id;
         saveConfig();
         updatePlayerDisplay(autoplay);
       }
 
       function updatePlayerDisplay(autoplay = false) {
-        const activeVideo = config.videos.find(v => v.id === config.activeVideoId) || config.videos[0];
-        if (!activeVideo) return;
-
         const player = document.getElementById('mainTheaterPlayer');
         const titleEl = document.getElementById('currentVideoTitle');
         const descEl = document.getElementById('currentVideoDesc');
+        const tagEl = document.getElementById('nowPlayingTag');
+
+        if (config.activePlaylistId) {
+          // Playlist embed mode
+          if (player) {
+            player.src = `https://www.youtube-nocookie.com/embed/videoseries?list=${config.activePlaylistId}&rel=0&modestbranding=1${autoplay ? '&autoplay=1' : ''}`;
+          }
+          if (tagEl) tagEl.textContent = "▶ YOUTUBE PLAYLIST ACTIVE";
+          if (titleEl) titleEl.textContent = "BDCF Crew: Official YouTube Playlist";
+          if (descEl) descEl.textContent = `Streaming entire YouTube playlist collection (ID: ${config.activePlaylistId}). Click player playlist icon (top-right of video) to browse all clips.`;
+          return;
+        }
+
+        const activeVideo = config.videos.find(v => v.id === config.activeVideoId) || config.videos[0];
+        if (!activeVideo) return;
 
         if (player) {
           player.src = `https://www.youtube-nocookie.com/embed/${activeVideo.id}?rel=0&modestbranding=1${autoplay ? '&autoplay=1' : ''}`;
         }
+        if (tagEl) tagEl.textContent = "▶ NOW PLAYING";
         if (titleEl) titleEl.textContent = activeVideo.title;
         if (descEl) descEl.textContent = activeVideo.desc || '';
 
@@ -562,12 +697,12 @@
         if (!listEl) return;
 
         if (config.videos.length === 0) {
-          listEl.innerHTML = `<div class="text-muted text-sm" style="padding: 20px; text-align: center;">No videos in playlist. Click "Add New Video" to add one!</div>`;
+          listEl.innerHTML = `<div class="text-muted text-sm" style="padding: 20px; text-align: center;">No videos in playlist. Click "Import Playlist / Bulk" or "Add Single Video" to populate your theater!</div>`;
           return;
         }
 
         listEl.innerHTML = config.videos.map((v, idx) => {
-          const isActive = v.id === config.activeVideoId;
+          const isActive = !config.activePlaylistId && v.id === config.activeVideoId;
           return `
             <div class="admin-video-item ${isActive ? 'is-active' : ''}">
               <div class="admin-v-icon">${v.icon || '🎬'}</div>
@@ -581,7 +716,7 @@
                 </div>
               </div>
               <div class="admin-v-actions">
-                ${!isActive ? `<button class="btn-sm btn-accent set-active-btn" data-id="${v.id}">▶ Play Now</button>` : ''}
+                ${!isActive ? `<button class="btn-sm btn-accent set-active-btn" data-id="${v.id}">▶ Play</button>` : ''}
                 <button class="btn-sm btn-danger delete-video-btn" data-index="${idx}" title="Delete Video">🗑️</button>
               </div>
             </div>
@@ -642,6 +777,7 @@
       const openAdminBtn = document.getElementById('openAdminBtn');
       const footerAdminBtn = document.getElementById('footerAdminBtn');
       const managePlaylistBtn = document.getElementById('managePlaylistBtn');
+      const importQuickBtn = document.getElementById('importPlaylistQuickBtn');
       const closeAdminBtn = document.getElementById('closeAdminModalBtn');
 
       function openModal(defaultTab = 'tab-videos') {
@@ -651,9 +787,12 @@
         const joinInput = document.getElementById('settingJoinFormUrl');
         const tagInput = document.getElementById('settingCrewTag');
         const mottoInput = document.getElementById('settingCrewMotto');
+        const playlistInput = document.getElementById('ytPlaylistUrl');
+
         if (joinInput) joinInput.value = config.joinFormUrl || '';
         if (tagInput) tagInput.value = config.crewTag || 'BDCF';
         if (mottoInput) mottoInput.value = config.crewMotto || '';
+        if (playlistInput) playlistInput.value = config.activePlaylistId ? `https://www.youtube.com/playlist?list=${config.activePlaylistId}` : '';
 
         if (adminModal) adminModal.style.display = 'flex';
         if (adminOverlay) adminOverlay.style.display = 'block';
@@ -666,7 +805,8 @@
 
       if (openAdminBtn) openAdminBtn.addEventListener('click', () => openModal('tab-videos'));
       if (footerAdminBtn) footerAdminBtn.addEventListener('click', () => openModal('tab-videos'));
-      if (managePlaylistBtn) managePlaylistBtn.addEventListener('click', () => openModal('tab-add-video'));
+      if (managePlaylistBtn) managePlaylistBtn.addEventListener('click', () => openModal('tab-videos'));
+      if (importQuickBtn) importQuickBtn.addEventListener('click', () => openModal('tab-import-playlist'));
       if (closeAdminBtn) closeAdminBtn.addEventListener('click', closeModal);
       if (adminOverlay) adminOverlay.addEventListener('click', closeModal);
 
@@ -689,7 +829,104 @@
         });
       });
 
-      // ── Form 1: Add Video Form ──
+      // ── Form: Option 1 - Direct YouTube Playlist Embed Form ──
+      const playlistEmbedForm = document.getElementById('playlistEmbedForm');
+      if (playlistEmbedForm) {
+        playlistEmbedForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const raw = document.getElementById('ytPlaylistUrl').value;
+          const plistId = extractPlaylistId(raw);
+
+          if (!plistId) {
+            alert("Could not extract a valid YouTube Playlist ID. Please ensure the link contains 'list=PL...' or starts with 'PL...'");
+            return;
+          }
+
+          config.activePlaylistId = plistId;
+          saveConfig();
+          showToast(`✅ YouTube Playlist mode activated! (${plistId})`, "success");
+          closeModal();
+        });
+      }
+
+      const clearPlaylistModeBtn = document.getElementById('clearPlaylistModeBtn');
+      if (clearPlaylistModeBtn) {
+        clearPlaylistModeBtn.addEventListener('click', () => {
+          config.activePlaylistId = '';
+          saveConfig();
+          showToast("Switched back to Individual Clips mode", "info");
+        });
+      }
+
+      // ── Form: Option 2 - Bulk Multi-Link Video Importer Form ──
+      const bulkLinksForm = document.getElementById('bulkLinksForm');
+      if (bulkLinksForm) {
+        bulkLinksForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const text = document.getElementById('bulkLinksInput').value;
+          const defaultCat = document.getElementById('bulkCategory').value || '🌴';
+          const actionType = document.getElementById('bulkActionType').value || 'append';
+          const importBtn = document.getElementById('importBulkBtn');
+
+          if (!text.trim()) {
+            alert("Please paste at least one YouTube link.");
+            return;
+          }
+
+          // Split by newline or whitespace
+          const lines = text.split(/[\r\n,]+/).map(s => s.trim()).filter(Boolean);
+          const newItems = [];
+          const seenIds = new Set();
+
+          importBtn.disabled = true;
+          importBtn.textContent = "⏳ Parsing & Fetching Titles...";
+
+          for (let i = 0; i < lines.length; i++) {
+            const line = lines[i];
+            const vId = extractYouTubeId(line);
+            if (vId && !seenIds.has(vId)) {
+              seenIds.add(vId);
+              // Attempt to fetch title via oembed
+              let title = `BDCF Video #${i + 1}`;
+              try {
+                title = await fetchYouTubeTitle(vId);
+              } catch (err) {}
+
+              newItems.push({
+                id: vId,
+                title: title,
+                icon: defaultCat,
+                tag: "Imported Clip",
+                desc: `Video ID: ${vId}`
+              });
+            }
+          }
+
+          importBtn.disabled = false;
+          importBtn.textContent = "⚡ Import All Video Links";
+
+          if (newItems.length === 0) {
+            alert("No valid YouTube video links found in your pasted text. Please check the URLs.");
+            return;
+          }
+
+          if (actionType === 'replace') {
+            config.videos = newItems;
+          } else {
+            config.videos = [...newItems, ...config.videos];
+          }
+
+          config.activePlaylistId = ''; // Reset to clips mode
+          config.activeVideoId = newItems[0].id;
+          saveConfig();
+
+          bulkLinksForm.reset();
+          showToast(`🎉 Successfully imported ${newItems.length} videos into your Theater!`, "success");
+          switchAdminTab('tab-videos');
+        });
+      }
+
+      // ── Form: Single Video Form ──
       const addVideoForm = document.getElementById('addVideoForm');
       if (addVideoForm) {
         addVideoForm.addEventListener('submit', (e) => {
@@ -715,16 +952,17 @@
           };
 
           config.videos.unshift(newVideo);
+          config.activePlaylistId = '';
           config.activeVideoId = videoId;
           saveConfig();
 
           addVideoForm.reset();
-          showToast("✅ New video added & set as active!", "success");
+          showToast("✅ Video added & set as active!", "success");
           switchAdminTab('tab-videos');
         });
       }
 
-      // ── Form 2: Crew Settings Form ──
+      // ── Form: Crew Settings Form ──
       const crewSettingsForm = document.getElementById('crewSettingsForm');
       if (crewSettingsForm) {
         crewSettingsForm.addEventListener('submit', (e) => {

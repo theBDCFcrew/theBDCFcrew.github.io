@@ -1,5 +1,10 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [1.8.0] - 2026-08-17
+- **YouTube Playlist Embed Mode**: Added 1-click official YouTube playlist embedding with auto-play and full clip drawer (`embed/videoseries?list=...`).
+- **Bulk Multi-Link Video Importer**: Paste 10+ YouTube links at once; the system extracts all IDs and fetches titles automatically via oEmbed.
+- **Quick Import Action**: Added direct `📥 Import Playlist / Bulk Links` button in the Theater header.
+
 ## [1.7.0] - 2026-08-17
 - **Streamlined Tab Navigation**: Replaced the long scrolling page with 3 clean tabs (Video Theater, Los Santos Weekly, Join The Crew).
 - **Eliminated Duplicate Buttons**: Removed redundant pill buttons and repetitive links across the header, hero, and cards for a clean, focused UI.

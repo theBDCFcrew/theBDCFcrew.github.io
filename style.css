@@ -1,6 +1,6 @@
 /**
  * 🎮 THE BDCF CREW — OFFICIAL GTA ONLINE PORTAL
- * Signature BDCF Syndicate Purple Tabbed Design System
+ * Signature BDCF Syndicate Purple Tabbed Design System with YouTube Playlist Importer
  */
 
 :root {
@@ -48,6 +48,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body.crew-portal-body {
   background-color: var(--bg-dark);
   color: var(--text-main);
@@ -59,7 +63,7 @@ body.crew-portal-body {
   flex-direction: column;
 }
 
-/* ── Ambient Background Mesh (BDCF Purple Glows) ── */
+/* ── Ambient Background Mesh ── */
 .ambient-mesh {
   position: fixed;
   top: 0;
@@ -517,6 +521,8 @@ body.crew-portal-body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .playlist-header span {
@@ -528,28 +534,73 @@ body.crew-portal-body {
   text-transform: uppercase;
 }
 
-.btn-manage-playlist {
-  background: transparent;
+.playlist-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-import-quick {
+  background: rgba(168, 85, 247, 0.15);
   border: 1px solid var(--border-purple);
   color: var(--crew-purple-neon);
+  font-family: var(--font-header);
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-import-quick:hover {
+  background: var(--crew-purple-light);
+  color: #fff;
+}
+
+.btn-manage-playlist {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
   font-family: var(--font-tech);
   font-size: 11px;
   font-weight: 700;
-  padding: 3px 10px;
+  padding: 4px 10px;
   border-radius: var(--radius-full);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .btn-manage-playlist:hover {
-  background: rgba(168, 85, 247, 0.15);
   color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .playlist-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 12px;
+}
+
+.playlist-mode-banner {
+  grid-column: 1 / -1;
+  background: rgba(168, 85, 247, 0.1);
+  border: 1px dashed var(--border-purple);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  text-align: center;
+}
+
+.badge-mode {
+  display: inline-block;
+  font-family: var(--font-tech);
+  font-size: 11px;
+  font-weight: 800;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.15);
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  margin-bottom: 8px;
 }
 
 .playlist-item {
@@ -886,7 +937,7 @@ body.crew-portal-body {
 }
 
 /* =========================================================================
-   ADMIN MODAL STYLING
+   ADMIN MODAL STYLING & IMPORTER BOXES
    ========================================================================= */
 .admin-modal-overlay {
   display: none;
@@ -908,7 +959,7 @@ body.crew-portal-body {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 92%;
-  max-width: 680px;
+  max-width: 720px;
   max-height: 88vh;
   background: #0f1423;
   border: 1px solid var(--border-purple);
@@ -1029,6 +1080,50 @@ body.crew-portal-body {
 .admin-section-info p {
   font-size: 12px;
   color: var(--text-muted);
+}
+
+/* Importer Boxes */
+.import-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-purple);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.import-box.mt-4 {
+  margin-top: 18px;
+}
+
+.import-box-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.import-box-tag {
+  font-family: var(--font-tech);
+  font-size: 9px;
+  font-weight: 800;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+}
+
+.import-box-header h5 {
+  font-family: var(--font-header);
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.import-box-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  line-height: 1.4;
 }
 
 /* Video List in Admin */
@@ -1186,6 +1281,11 @@ body.crew-portal-body {
 .form-hint {
   font-size: 11px;
   color: var(--text-sub);
+}
+
+.form-hint code {
+  color: var(--accent-cyan);
+  font-family: var(--font-tech);
 }
 
 .code-textarea {
