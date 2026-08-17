@@ -37,9 +37,12 @@
       <div class="header-nav-actions">
         <a href="#theater" class="nav-btn">🎬 Theater</a>
         <a href="./LosSantosWeekly/" class="nav-btn btn-weekly">🌴 Weekly Hub</a>
-        <a href="https://forms.gle/oXgaNAtLArsshFyQ7" target="_blank" rel="noopener noreferrer" class="nav-btn btn-join">
+        <a href="https://forms.gle/oXgaNAtLArsshFyQ7" target="_blank" rel="noopener noreferrer" class="nav-btn btn-join" id="navJoinBtn">
           <span>📝 Join Crew</span>
         </a>
+        <button id="openAdminBtn" class="nav-btn btn-admin" title="Open BDCF Crew Admin Menu">
+          <span>⚙️ Admin</span>
+        </button>
       </div>
     </div>
   </header>
@@ -53,7 +56,7 @@
       <div class="crest-badge">
         <div class="crest-inner">
           <span class="crest-icon">🌴</span>
-          <span class="crest-title">BDCF</span>
+          <span class="crest-title" id="displayCrewTag">BDCF</span>
           <span class="crest-sub">EST. 2026</span>
         </div>
       </div>
@@ -62,7 +65,7 @@
         THE <span class="text-gradient">BDCF</span> CREW
       </h1>
 
-      <p class="hero-lead">
+      <p class="hero-lead" id="displayCrewMotto">
         Official GTA Online Syndicate &amp; Operations Headquarters. Watch crew video highlights, track weekly updates, or apply to join our ranks.
       </p>
 
@@ -90,7 +93,7 @@
         <div class="video-screen-wrapper">
           <iframe 
             id="mainTheaterPlayer"
-            src="https://www.youtube-nocookie.com/embed/QkkoHA7PEJU?rel=0&modestbranding=1" 
+            src="https://www.youtube-nocookie.com/embed/jgp3oTp5WVU?rel=0&modestbranding=1" 
             title="BDCF Crew Theater Player" 
             frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -102,11 +105,12 @@
         <div class="video-meta-bar">
           <div class="video-meta-left">
             <span class="now-playing-tag">▶ NOW PLAYING</span>
-            <h3 id="currentVideoTitle" class="video-current-title">GTA Online: Los Santos Summer Heists &amp; Crew Operations</h3>
-            <p id="currentVideoDesc" class="video-current-desc">High-stakes syndicate heists, getaway chases, and crew combat highlights across Blaine County.</p>
+            <h3 id="currentVideoTitle" class="video-current-title">The BDCF Crew: Official GTA Online Showcase</h3>
+            <p id="currentVideoDesc" class="video-current-desc">Official BDCF Crew operations, heists, and car meet showcase in Los Santos.</p>
           </div>
           <div class="video-meta-right">
             <span class="theater-hd-badge">4K ULTRA HD</span>
+            <button id="quickEditVideoBtn" class="btn-quick-edit" title="Edit this video in Admin Menu">⚙️ Edit</button>
           </div>
         </div>
 
@@ -114,41 +118,10 @@
         <div class="playlist-container">
           <div class="playlist-header">
             <span>📺 Select Video to Play:</span>
+            <button id="managePlaylistBtn" class="btn-manage-playlist">+ Manage Videos</button>
           </div>
           <div class="playlist-grid" id="playlistGrid">
-            
-            <button class="playlist-item active" data-video-id="QkkoHA7PEJU" data-title="GTA Online: Los Santos Summer Heists &amp; Crew Operations" data-desc="High-stakes syndicate heists, getaway chases, and crew combat highlights across Blaine County.">
-              <span class="item-icon">💼</span>
-              <div class="item-text">
-                <span class="item-title">Heist Ops &amp; Strikes</span>
-                <span class="item-duration">Action &amp; Heists</span>
-              </div>
-            </button>
-
-            <button class="playlist-item" data-video-id="B_Z7Z4nS8c8" data-title="BDCF Crew Car Meets &amp; Stance Garage Builds" data-desc="Custom stance builds, drift lines, drag races, and exclusive crew liveries at the LS Car Meet.">
-              <span class="item-icon">🏎️</span>
-              <div class="item-text">
-                <span class="item-title">LS Car Meets &amp; Builds</span>
-                <span class="item-duration">Stance &amp; Speed</span>
-              </div>
-            </button>
-
-            <button class="playlist-item" data-video-id="K_Z71cQ7b0E" data-title="Funny Moments, Fails &amp; Freemode Chaos" data-desc="The funniest moments, jet dogfights, ramp stunts, and chaotic freemode wars with the crew.">
-              <span class="item-icon">⚡</span>
-              <div class="item-text">
-                <span class="item-title">Crew Chaos &amp; Fails</span>
-                <span class="item-duration">Funny Moments</span>
-              </div>
-            </button>
-
-            <button class="playlist-item" data-video-id="V6Z6jR2X1vY" data-title="Los Santos Nights: Cinematic Showcase" data-desc="Atmospheric 4K cinematic tour of Los Santos nightlife, skyline views, and syndicate headquarters.">
-              <span class="item-icon">🌴</span>
-              <div class="item-text">
-                <span class="item-title">Los Santos Cinematics</span>
-                <span class="item-duration">Atmospheric</span>
-              </div>
-            </button>
-
+            <!-- Rendered dynamically via JS from localStorage or default data -->
           </div>
         </div>
 
@@ -235,11 +208,11 @@
             <p>Applications are reviewed daily. All active GTA Online players on PC &amp; Consoles are welcome.</p>
           </div>
           <div class="cta-banner-action">
-            <a href="https://forms.gle/oXgaNAtLArsshFyQ7" target="_blank" rel="noopener noreferrer" class="btn-apply-now">
+            <a href="https://forms.gle/oXgaNAtLArsshFyQ7" target="_blank" rel="noopener noreferrer" class="btn-apply-now" id="joinCtaBtn">
               <span>APPLY TO JOIN CREW NOW</span>
               <span class="btn-arrow">➔</span>
             </a>
-            <span class="form-url-note">Official Google Form: forms.gle/oXgaNAtLArsshFyQ7</span>
+            <span class="form-url-note" id="formUrlNote">Official Google Form: forms.gle/oXgaNAtLArsshFyQ7</span>
           </div>
         </div>
 
@@ -257,37 +230,549 @@
       </div>
 
       <div class="footer-links">
-        <a href="https://forms.gle/oXgaNAtLArsshFyQ7" target="_blank" rel="noopener noreferrer" class="footer-link">📝 Application Form</a>
+        <a href="https://forms.gle/oXgaNAtLArsshFyQ7" target="_blank" rel="noopener noreferrer" class="footer-link" id="footerJoinLink">📝 Application Form</a>
         <a href="./LosSantosWeekly/" class="footer-link footer-link-highlight">🌴 Los Santos Weekly Hub ➔</a>
+        <button id="footerAdminBtn" class="footer-admin-btn">⚙️ Admin Menu</button>
       </div>
     </div>
   </footer>
 
-  <!-- SCRIPT FOR THEATER SWITCHER -->
+  <!-- =========================================================================
+       MODAL: BDCF CREW ADMIN MENU
+       ========================================================================= -->
+  <div id="adminModalOverlay" class="admin-modal-overlay"></div>
+  <div id="adminModal" class="admin-modal-container">
+    
+    <div class="admin-modal-header">
+      <div class="admin-title-wrap">
+        <span class="admin-header-icon">⚙️</span>
+        <div>
+          <h3>BDCF Crew Admin Menu</h3>
+          <p class="text-xs text-muted">Manage Theater Videos, Join Form Link, and Portal Settings</p>
+        </div>
+      </div>
+      <button id="closeAdminModalBtn" class="admin-close-btn" aria-label="Close Admin Menu">&times;</button>
+    </div>
+
+    <div class="admin-modal-body">
+      
+      <!-- Admin Navigation Tabs -->
+      <div class="admin-tabs-bar">
+        <button class="admin-tab-btn active" data-tab="tab-videos">🎬 Manage Videos</button>
+        <button class="admin-tab-btn" data-tab="tab-add-video">➕ Add New Video</button>
+        <button class="admin-tab-btn" data-tab="tab-settings">⚙️ Crew Settings &amp; Form</button>
+        <button class="admin-tab-btn" data-tab="tab-export">💾 Export Code / Backup</button>
+      </div>
+
+      <!-- TAB 1: MANAGE EXISTING VIDEOS -->
+      <div id="tab-videos" class="admin-tab-pane active">
+        <div class="admin-section-info">
+          <h4>Current Playlist Videos</h4>
+          <p>Reorder, edit details, set active video, or delete videos from the BDCF Theater.</p>
+        </div>
+
+        <div class="admin-video-list" id="adminVideoList">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- TAB 2: ADD NEW VIDEO -->
+      <div id="tab-add-video" class="admin-tab-pane">
+        <div class="admin-section-info">
+          <h4>Add a YouTube Video to Theater</h4>
+          <p>Paste any YouTube URL or Video ID below. It will instantly be added to the Theater playlist.</p>
+        </div>
+
+        <form id="addVideoForm" class="admin-form">
+          <div class="form-group">
+            <label for="newVideoUrl">YouTube Video URL or Video ID: *</label>
+            <input type="text" id="newVideoUrl" placeholder="e.g. https://youtu.be/jgp3oTp5WVU or jgp3oTp5WVU" required />
+            <small class="form-hint">Supports full URLs (youtube.com/watch?v=...), short URLs (youtu.be/...), or raw IDs.</small>
+          </div>
+
+          <div class="form-group">
+            <label for="newVideoTitle">Video Title: *</label>
+            <input type="text" id="newVideoTitle" placeholder="e.g. BDCF Crew Heist Compilation #1" required />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label for="newVideoCategory">Category / Icon:</label>
+              <select id="newVideoCategory">
+                <option value="💼">💼 Heists &amp; Strikes</option>
+                <option value="🏎️">🏎️ Car Meets &amp; Stance</option>
+                <option value="⚡">⚡ Funny Moments &amp; Fails</option>
+                <option value="🌴">🌴 Los Santos Cinematics</option>
+                <option value="🎮">🎮 Crew Gameplay &amp; Streams</option>
+                <option value="🔥">🔥 PvP &amp; Combat</option>
+              </select>
+            </div>
+            <div class="form-group flex-1">
+              <label for="newVideoSub">Subtitle / Tag:</label>
+              <input type="text" id="newVideoSub" placeholder="e.g. Action &amp; Heists" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="newVideoDesc">Description:</label>
+            <textarea id="newVideoDesc" rows="3" placeholder="Brief summary of the video content..."></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-accent full-width">➕ Add Video to Playlist</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- TAB 3: CREW SETTINGS & FORM -->
+      <div id="tab-settings" class="admin-tab-pane">
+        <div class="admin-section-info">
+          <h4>Recruitment &amp; Portal Settings</h4>
+          <p>Update your Google Form application URL and crew branding information.</p>
+        </div>
+
+        <form id="crewSettingsForm" class="admin-form">
+          <div class="form-group">
+            <label for="settingJoinFormUrl">Google Form Application Link: *</label>
+            <input type="url" id="settingJoinFormUrl" value="https://forms.gle/oXgaNAtLArsshFyQ7" required />
+            <small class="form-hint">The "Join Crew" and "Apply to Join" buttons will open this link.</small>
+          </div>
+
+          <div class="form-group">
+            <label for="settingCrewTag">Crew Tag:</label>
+            <input type="text" id="settingCrewTag" value="BDCF" maxlength="6" />
+          </div>
+
+          <div class="form-group">
+            <label for="settingCrewMotto">Crew Headline / Motto:</label>
+            <textarea id="settingCrewMotto" rows="3">Official GTA Online Syndicate &amp; Operations Headquarters. Watch crew video highlights, track weekly updates, or apply to join our ranks.</textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-accent full-width">💾 Save Portal Settings</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- TAB 4: EXPORT / BACKUP -->
+      <div id="tab-export" class="admin-tab-pane">
+        <div class="admin-section-info">
+          <h4>Export / Reset Data</h4>
+          <p>Your changes are saved locally in your browser. You can export the JSON configuration or reset to defaults.</p>
+        </div>
+
+        <div class="admin-form">
+          <div class="form-group">
+            <label>Current Configuration (JSON):</label>
+            <textarea id="exportJsonTextarea" rows="8" readonly class="code-textarea"></textarea>
+          </div>
+
+          <div class="form-actions-row">
+            <button id="copyJsonConfigBtn" class="btn btn-secondary flex-1">📋 Copy JSON Config</button>
+            <button id="resetAllDefaultsBtn" class="btn btn-danger flex-1">🧹 Reset to Defaults</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- =========================================================================
+       CORE SCRIPT: THEATER ENGINE & ADMIN MENU
+       ========================================================================= -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const player = document.getElementById('mainTheaterPlayer');
-      const titleEl = document.getElementById('currentVideoTitle');
-      const descEl = document.getElementById('currentVideoDesc');
-      const playlistButtons = document.querySelectorAll('.playlist-item');
+    (function () {
+      'use strict';
 
-      playlistButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          playlistButtons.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-
-          const videoId = btn.dataset.videoId;
-          const title = btn.dataset.title;
-          const desc = btn.dataset.desc;
-
-          if (videoId && player) {
-            player.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+      // ── Default State ──
+      const DEFAULT_PORTAL_CONFIG = {
+        joinFormUrl: "https://forms.gle/oXgaNAtLArsshFyQ7",
+        crewTag: "BDCF",
+        crewMotto: "Official GTA Online Syndicate & Operations Headquarters. Watch crew video highlights, track weekly updates, or apply to join our ranks.",
+        activeVideoId: "jgp3oTp5WVU",
+        videos: [
+          {
+            id: "jgp3oTp5WVU",
+            title: "The BDCF Crew: Official GTA Online Showcase",
+            icon: "🌴",
+            tag: "Official Showcase",
+            desc: "Official BDCF Crew operations, heists, and car meet showcase in Los Santos."
+          },
+          {
+            id: "QkkoHA7PEJU",
+            title: "GTA Online: Los Santos Summer Heists & Crew Operations",
+            icon: "💼",
+            tag: "Action & Heists",
+            desc: "High-stakes syndicate heists, getaway chases, and crew combat highlights across Blaine County."
+          },
+          {
+            id: "B_Z7Z4nS8c8",
+            title: "BDCF Crew Car Meets & Stance Garage Builds",
+            icon: "🏎️",
+            tag: "Stance & Speed",
+            desc: "Custom stance builds, drift lines, drag races, and exclusive crew liveries at the LS Car Meet."
+          },
+          {
+            id: "K_Z71cQ7b0E",
+            title: "Funny Moments, Fails & Freemode Chaos",
+            icon: "⚡",
+            tag: "Funny Moments",
+            desc: "The funniest moments, jet dogfights, ramp stunts, and chaotic freemode wars with the crew."
           }
-          if (title && titleEl) titleEl.textContent = title;
-          if (desc && descEl) descEl.textContent = desc;
+        ]
+      };
+
+      let config = loadConfig();
+
+      function loadConfig() {
+        try {
+          const saved = localStorage.getItem('bdcf_portal_config');
+          if (saved) {
+            const parsed = JSON.parse(saved);
+            if (parsed && Array.isArray(parsed.videos) && parsed.videos.length > 0) {
+              return parsed;
+            }
+          }
+        } catch (e) {
+          console.error("Error reading saved config", e);
+        }
+        return JSON.parse(JSON.stringify(DEFAULT_PORTAL_CONFIG));
+      }
+
+      function saveConfig() {
+        localStorage.setItem('bdcf_portal_config', JSON.stringify(config));
+        renderAll();
+      }
+
+      // ── Extract YouTube Video ID from any URL format ──
+      function extractYouTubeId(urlOrId) {
+        if (!urlOrId) return '';
+        const trimmed = urlOrId.trim();
+        // Check standard 11 char ID
+        if (/^[a-zA-Z0-9_-]{11}$/.test(trimmed)) return trimmed;
+        
+        // Regex for youtu.be / youtube.com / shorts / embed
+        const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/i;
+        const match = trimmed.match(regex);
+        return match ? match[1] : trimmed;
+      }
+
+      // ── Render Theater & Page ──
+      function renderAll() {
+        // Update Join Form URLs
+        const joinUrl = config.joinFormUrl || "https://forms.gle/oXgaNAtLArsshFyQ7";
+        const navJoinBtn = document.getElementById('navJoinBtn');
+        const joinCtaBtn = document.getElementById('joinCtaBtn');
+        const footerJoinLink = document.getElementById('footerJoinLink');
+        const formUrlNote = document.getElementById('formUrlNote');
+
+        if (navJoinBtn) navJoinBtn.href = joinUrl;
+        if (joinCtaBtn) joinCtaBtn.href = joinUrl;
+        if (footerJoinLink) footerJoinLink.href = joinUrl;
+        if (formUrlNote) formUrlNote.textContent = `Official Google Form: ${joinUrl.replace(/^https?:\/\//, '')}`;
+
+        // Update Crew Tag & Motto
+        const tagEl = document.getElementById('displayCrewTag');
+        const mottoEl = document.getElementById('displayCrewMotto');
+        if (tagEl) tagEl.textContent = config.crewTag || "BDCF";
+        if (mottoEl) mottoEl.textContent = config.crewMotto || DEFAULT_PORTAL_CONFIG.crewMotto;
+
+        // Render Playlist
+        const playlistGrid = document.getElementById('playlistGrid');
+        if (playlistGrid) {
+          playlistGrid.innerHTML = config.videos.map(v => {
+            const isActive = v.id === config.activeVideoId;
+            return `
+              <button class="playlist-item ${isActive ? 'active' : ''}" data-video-id="${v.id}">
+                <span class="item-icon">${v.icon || '🎬'}</span>
+                <div class="item-text">
+                  <span class="item-title">${escapeHTML(v.title)}</span>
+                  <span class="item-duration">${escapeHTML(v.tag || 'Video')}</span>
+                </div>
+              </button>
+            `;
+          }).join('');
+
+          // Playlist click handlers
+          playlistGrid.querySelectorAll('.playlist-item').forEach(btn => {
+            btn.addEventListener('click', () => {
+              const id = btn.dataset.videoId;
+              if (id) {
+                setActiveVideo(id, true);
+              }
+            });
+          });
+        }
+
+        // Update Active Video Player
+        updatePlayerDisplay(false);
+
+        // Update Admin Video List
+        renderAdminVideoList();
+
+        // Update Export Textarea
+        const exportArea = document.getElementById('exportJsonTextarea');
+        if (exportArea) {
+          exportArea.value = JSON.stringify(config, null, 2);
+        }
+      }
+
+      function setActiveVideo(id, autoplay = false) {
+        config.activeVideoId = id;
+        saveConfig();
+        updatePlayerDisplay(autoplay);
+      }
+
+      function updatePlayerDisplay(autoplay = false) {
+        const activeVideo = config.videos.find(v => v.id === config.activeVideoId) || config.videos[0];
+        if (!activeVideo) return;
+
+        const player = document.getElementById('mainTheaterPlayer');
+        const titleEl = document.getElementById('currentVideoTitle');
+        const descEl = document.getElementById('currentVideoDesc');
+
+        if (player) {
+          player.src = `https://www.youtube-nocookie.com/embed/${activeVideo.id}?rel=0&modestbranding=1${autoplay ? '&autoplay=1' : ''}`;
+        }
+        if (titleEl) titleEl.textContent = activeVideo.title;
+        if (descEl) descEl.textContent = activeVideo.desc || '';
+
+        // Update active class on playlist buttons
+        document.querySelectorAll('#playlistGrid .playlist-item').forEach(btn => {
+          if (btn.dataset.videoId === activeVideo.id) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      }
+
+      // ── Render Admin Videos List ──
+      function renderAdminVideoList() {
+        const listEl = document.getElementById('adminVideoList');
+        if (!listEl) return;
+
+        if (config.videos.length === 0) {
+          listEl.innerHTML = `<div class="text-muted text-sm" style="padding: 20px; text-align: center;">No videos in playlist. Click "Add New Video" to add one!</div>`;
+          return;
+        }
+
+        listEl.innerHTML = config.videos.map((v, idx) => {
+          const isActive = v.id === config.activeVideoId;
+          return `
+            <div class="admin-video-item ${isActive ? 'is-active' : ''}">
+              <div class="admin-v-icon">${v.icon || '🎬'}</div>
+              <div class="admin-v-details">
+                <div class="admin-v-title">${escapeHTML(v.title)}</div>
+                <div class="admin-v-meta">
+                  <span>ID: <code>${v.id}</code></span>
+                  <span>•</span>
+                  <span>Tag: ${escapeHTML(v.tag || 'General')}</span>
+                  ${isActive ? '<span class="active-badge">⭐ NOW PLAYING</span>' : ''}
+                </div>
+              </div>
+              <div class="admin-v-actions">
+                ${!isActive ? `<button class="btn-sm btn-accent set-active-btn" data-id="${v.id}">▶ Play Now</button>` : ''}
+                <button class="btn-sm btn-danger delete-video-btn" data-index="${idx}" title="Delete Video">🗑️</button>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        // Bind admin actions
+        listEl.querySelectorAll('.set-active-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const id = btn.dataset.id;
+            if (id) {
+              setActiveVideo(id, true);
+              showToast("⭐ Set active video in Theater!", "success");
+            }
+          });
+        });
+
+        listEl.querySelectorAll('.delete-video-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const idx = parseInt(btn.dataset.index, 10);
+            if (!isNaN(idx) && confirm("Are you sure you want to remove this video from the playlist?")) {
+              const removed = config.videos.splice(idx, 1);
+              if (removed[0] && removed[0].id === config.activeVideoId) {
+                config.activeVideoId = config.videos[0] ? config.videos[0].id : '';
+              }
+              saveConfig();
+              showToast("🗑️ Video removed from playlist", "info");
+            }
+          });
+        });
+      }
+
+      function escapeHTML(str) {
+        if (!str) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      function showToast(msg, type = 'info') {
+        const container = document.getElementById('toastContainer');
+        if (!container) return;
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+        toast.textContent = msg;
+        container.appendChild(toast);
+        setTimeout(() => {
+          toast.classList.add('toast-fadeout');
+          setTimeout(() => toast.remove(), 300);
+        }, 3500);
+      }
+
+      // ── Admin Modal Interactions ──
+      const adminModal = document.getElementById('adminModal');
+      const adminOverlay = document.getElementById('adminModalOverlay');
+      const openAdminBtn = document.getElementById('openAdminBtn');
+      const footerAdminBtn = document.getElementById('footerAdminBtn');
+      const quickEditVideoBtn = document.getElementById('quickEditVideoBtn');
+      const managePlaylistBtn = document.getElementById('managePlaylistBtn');
+      const closeAdminBtn = document.getElementById('closeAdminModalBtn');
+
+      function openModal(defaultTab = 'tab-videos') {
+        switchAdminTab(defaultTab);
+        renderAdminVideoList();
+        
+        // Sync Settings Form inputs
+        const joinInput = document.getElementById('settingJoinFormUrl');
+        const tagInput = document.getElementById('settingCrewTag');
+        const mottoInput = document.getElementById('settingCrewMotto');
+        if (joinInput) joinInput.value = config.joinFormUrl || '';
+        if (tagInput) tagInput.value = config.crewTag || 'BDCF';
+        if (mottoInput) mottoInput.value = config.crewMotto || '';
+
+        if (adminModal) adminModal.style.display = 'flex';
+        if (adminOverlay) adminOverlay.style.display = 'block';
+      }
+
+      function closeModal() {
+        if (adminModal) adminModal.style.display = 'none';
+        if (adminOverlay) adminOverlay.style.display = 'none';
+      }
+
+      if (openAdminBtn) openAdminBtn.addEventListener('click', () => openModal('tab-videos'));
+      if (footerAdminBtn) footerAdminBtn.addEventListener('click', () => openModal('tab-videos'));
+      if (quickEditVideoBtn) quickEditVideoBtn.addEventListener('click', () => openModal('tab-videos'));
+      if (managePlaylistBtn) managePlaylistBtn.addEventListener('click', () => openModal('tab-add-video'));
+      if (closeAdminBtn) closeAdminBtn.addEventListener('click', closeModal);
+      if (adminOverlay) adminOverlay.addEventListener('click', closeModal);
+
+      // Admin Tab Switching
+      function switchAdminTab(tabId) {
+        document.querySelectorAll('.admin-tab-btn').forEach(btn => {
+          if (btn.dataset.tab === tabId) btn.classList.add('active');
+          else btn.classList.remove('active');
+        });
+
+        document.querySelectorAll('.admin-tab-pane').forEach(pane => {
+          if (pane.id === tabId) pane.classList.add('active');
+          else pane.classList.remove('active');
+        });
+      }
+
+      document.querySelectorAll('.admin-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const tab = btn.dataset.tab;
+          if (tab) switchAdminTab(tab);
         });
       });
-    });
+
+      // ── Form 1: Add Video Form ──
+      const addVideoForm = document.getElementById('addVideoForm');
+      if (addVideoForm) {
+        addVideoForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const rawUrl = document.getElementById('newVideoUrl').value;
+          const title = document.getElementById('newVideoTitle').value;
+          const icon = document.getElementById('newVideoCategory').value;
+          const tag = document.getElementById('newVideoSub').value;
+          const desc = document.getElementById('newVideoDesc').value;
+
+          const videoId = extractYouTubeId(rawUrl);
+          if (!videoId) {
+            alert("Could not extract a valid YouTube video ID. Please check the URL.");
+            return;
+          }
+
+          const newVideo = {
+            id: videoId,
+            title: title.trim() || "BDCF Crew Video",
+            icon: icon || "🎬",
+            tag: tag.trim() || "Video",
+            desc: desc.trim() || ""
+          };
+
+          // Add to top of playlist and set active
+          config.videos.unshift(newVideo);
+          config.activeVideoId = videoId;
+          saveConfig();
+
+          addVideoForm.reset();
+          showToast("✅ New video added & set as active!", "success");
+          switchAdminTab('tab-videos');
+        });
+      }
+
+      // ── Form 2: Crew Settings Form ──
+      const crewSettingsForm = document.getElementById('crewSettingsForm');
+      if (crewSettingsForm) {
+        crewSettingsForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const formUrl = document.getElementById('settingJoinFormUrl').value.trim();
+          const tag = document.getElementById('settingCrewTag').value.trim();
+          const motto = document.getElementById('settingCrewMotto').value.trim();
+
+          if (formUrl) config.joinFormUrl = formUrl;
+          if (tag) config.crewTag = tag;
+          if (motto) config.crewMotto = motto;
+
+          saveConfig();
+          showToast("💾 Portal & Recruitment settings saved!", "success");
+          closeModal();
+        });
+      }
+
+      // ── Export / Backup Buttons ──
+      const copyJsonBtn = document.getElementById('copyJsonConfigBtn');
+      if (copyJsonBtn) {
+        copyJsonBtn.addEventListener('click', () => {
+          const exportArea = document.getElementById('exportJsonTextarea');
+          if (exportArea) {
+            navigator.clipboard.writeText(exportArea.value).then(() => {
+              showToast("📋 JSON configuration copied to clipboard!", "success");
+            });
+          }
+        });
+      }
+
+      const resetDefaultsBtn = document.getElementById('resetAllDefaultsBtn');
+      if (resetDefaultsBtn) {
+        resetDefaultsBtn.addEventListener('click', () => {
+          if (confirm("Are you sure you want to reset all portal settings and video playlists back to defaults?")) {
+            config = JSON.parse(JSON.stringify(DEFAULT_PORTAL_CONFIG));
+            saveConfig();
+            showToast("🧹 Restored defaults", "info");
+            renderAll();
+          }
+        });
+      }
+
+      // Initialize on load
+      renderAll();
+
+    })();
   </script>
 
 </body>

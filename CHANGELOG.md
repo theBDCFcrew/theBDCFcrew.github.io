@@ -1,5 +1,10 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [1.6.0] - 2026-08-17
+- **BDCF Syndicate Purple Theme**: Integrated the crew's signature purple (`#9333ea` / `#a855f7`) across both the main portal and Los Santos Weekly.
+- **BDCF Admin Menu Engine**: Added full in-browser management modal to add/edit/delete YouTube videos, reorder playlists, update the Join Form URL, and edit crew announcements.
+- **Featured Video Updated**: Set primary theater showcase to `https://youtu.be/jgp3oTp5WVU`.
+
 ## [1.5.0] - 2026-08-17
 - **BDCF Crew Video Theater**: Added interactive cinema lounge with switchable YouTube video playlist.
 - **Join The BDCF Crew Recruitment**: Added clear 3-step application guide and high-converting CTA to the official Google Form (`forms.gle/oXgaNAtLArsshFyQ7`).
