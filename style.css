@@ -1,6 +1,6 @@
 /**
  * 🎮 THE BDCF CREW — OFFICIAL GTA ONLINE PORTAL
- * Signature BDCF Syndicate Purple Cyber-Noir Design System with Theater & Admin Engine
+ * Signature BDCF Syndicate Purple Tabbed Design System
  */
 
 :root {
@@ -19,9 +19,9 @@
   --accent-cyan: #06b6d4;
   --accent-cyan-glow: rgba(6, 182, 212, 0.4);
   
-  --accent-pink: #f43f5e;
   --accent-gold: #f59e0b;
   --accent-emerald: #10b981;
+  --accent-pink: #f43f5e;
   
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
@@ -46,10 +46,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 body.crew-portal-body {
@@ -126,10 +122,9 @@ body.crew-portal-body {
 
 /* ── Top Header ── */
 .portal-header {
-  position: sticky;
-  top: 0;
+  position: relative;
   z-index: 900;
-  background: rgba(7, 8, 15, 0.92);
+  background: rgba(7, 8, 15, 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-color);
@@ -186,64 +181,138 @@ body.crew-portal-body {
   letter-spacing: 1.5px;
 }
 
-.header-nav-actions {
+.header-actions {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.nav-btn {
-  text-decoration: none;
-  font-family: var(--font-header);
-  font-size: 12px;
-  font-weight: 700;
-  padding: 7px 14px;
-  border-radius: var(--radius-full);
-  color: var(--text-muted);
-  background: rgba(255, 255, 255, 0.05);
+.header-status-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border-color);
-  transition: all 0.2s ease;
-  white-space: nowrap;
-  cursor: pointer;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
 }
 
-.nav-btn:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
+.live-dot-pulse {
+  width: 7px;
+  height: 7px;
+  background: var(--accent-emerald);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-emerald);
+  animation: pulseDot 2s infinite;
 }
 
-.nav-btn.btn-weekly {
-  color: var(--accent-cyan);
-  border-color: rgba(6, 182, 212, 0.35);
-  background: rgba(6, 182, 212, 0.08);
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
 }
 
-.nav-btn.btn-weekly:hover {
-  background: rgba(6, 182, 212, 0.2);
-  color: #fff;
-}
-
-.nav-btn.btn-join {
-  background: linear-gradient(135deg, var(--crew-purple-light), var(--crew-purple-dark));
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 14px var(--crew-purple-glow);
-}
-
-.nav-btn.btn-join:hover {
-  box-shadow: 0 0 24px rgba(168, 85, 247, 0.75);
-  transform: translateY(-1px);
-}
-
-.nav-btn.btn-admin {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.15);
+.status-txt {
+  font-family: var(--font-tech);
+  font-size: 10px;
+  font-weight: 700;
   color: var(--text-muted);
+  letter-spacing: 0.5px;
 }
 
-.nav-btn.btn-admin:hover {
+.version-pill {
+  font-family: var(--font-tech);
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--crew-purple-neon);
+  background: rgba(168, 85, 247, 0.12);
+  padding: 1px 6px;
+  border-radius: var(--radius-full);
+}
+
+.btn-admin-header {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-muted);
+  font-family: var(--font-header);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-admin-header:hover {
   color: var(--crew-purple-neon);
   border-color: var(--border-purple);
+  background: rgba(168, 85, 247, 0.12);
+}
+
+/* ── Streamlined Navigation Tabs Bar ── */
+.portal-nav-bar {
+  position: sticky;
+  top: 0;
+  z-index: 850;
+  background: rgba(10, 14, 25, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.portal-nav-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 8px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  overflow-x: auto;
+}
+
+.portal-tab-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  font-family: var(--font-header);
+  font-size: 13px;
+  font-weight: 800;
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portal-tab-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.portal-tab-btn.active {
+  color: #fff;
+  background: linear-gradient(135deg, var(--crew-purple-light), var(--crew-purple-dark));
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 16px var(--crew-purple-glow);
+}
+
+/* ── Tab Panes ── */
+.portal-tab-pane {
+  display: none;
+  animation: fadeInPane 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portal-tab-pane.active {
+  display: block;
+}
+
+@keyframes fadeInPane {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ── Main Container ── */
@@ -252,28 +321,28 @@ body.crew-portal-body {
   z-index: 10;
   max-width: 1140px;
   margin: 0 auto;
-  padding: 30px 20px 70px;
+  padding: 24px 20px 70px;
   width: 100%;
   flex: 1;
 }
 
-/* ── Hero Center ── */
-.hero-center {
+/* ── Compact Hero ── */
+.hero-compact {
   text-align: center;
-  padding: 20px 0 45px;
+  padding: 10px 0 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .crest-badge {
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .crest-inner {
   background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(6, 182, 212, 0.12));
   border: 1px solid var(--border-purple);
-  padding: 8px 18px;
+  padding: 6px 16px;
   border-radius: var(--radius-md);
   display: inline-flex;
   align-items: center;
@@ -281,11 +350,11 @@ body.crew-portal-body {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 15px rgba(168, 85, 247, 0.2);
 }
 
-.crest-icon { font-size: 18px; }
+.crest-icon { font-size: 16px; }
 
 .crest-title {
   font-family: var(--font-header);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 900;
   color: #fff;
   letter-spacing: 1px;
@@ -302,13 +371,13 @@ body.crew-portal-body {
 
 .hero-headline {
   font-family: var(--font-header);
-  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
   font-weight: 900;
   letter-spacing: -1px;
   color: #fff;
   line-height: 1.1;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .text-gradient {
@@ -318,65 +387,16 @@ body.crew-portal-body {
 }
 
 .hero-lead {
-  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
-  color: var(--text-muted);
-  max-width: 640px;
-  line-height: 1.6;
-  margin-bottom: 28px;
-}
-
-.hero-action-pills {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-}
-
-.hero-pill-btn {
-  text-decoration: none;
-  font-family: var(--font-header);
   font-size: 13px;
-  font-weight: 800;
-  padding: 10px 20px;
-  border-radius: var(--radius-full);
-  color: #fff;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid var(--border-color);
-  transition: all 0.25s ease;
-}
-
-.hero-pill-btn:hover {
-  background: rgba(255, 255, 255, 0.16);
-  transform: translateY(-2px);
-}
-
-.hero-pill-btn.pill-cyan {
-  background: rgba(6, 182, 212, 0.15);
-  border-color: var(--border-cyan);
-  color: var(--accent-cyan);
-}
-
-.hero-pill-btn.pill-cyan:hover {
-  background: var(--accent-cyan);
-  color: #fff;
-  box-shadow: 0 0 15px var(--accent-cyan-glow);
-}
-
-.hero-pill-btn.pill-pink {
-  background: linear-gradient(135deg, var(--crew-purple-light), var(--crew-purple-dark));
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
-  box-shadow: 0 0 15px var(--crew-purple-glow);
-}
-
-.hero-pill-btn.pill-pink:hover {
-  box-shadow: 0 0 25px rgba(168, 85, 247, 0.75);
+  color: var(--text-muted);
+  max-width: 600px;
+  line-height: 1.5;
 }
 
 /* ── Section Titles ── */
 .section-title-wrap {
   text-align: center;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .section-badge {
@@ -389,23 +409,17 @@ body.crew-portal-body {
   border: 1px solid var(--border-purple);
   padding: 4px 12px;
   border-radius: var(--radius-full);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   letter-spacing: 1px;
-}
-
-.section-badge.badge-join {
-  color: var(--crew-purple-neon);
-  background: rgba(168, 85, 247, 0.12);
-  border-color: var(--border-purple);
 }
 
 .section-title {
   font-family: var(--font-header);
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
   font-weight: 900;
   color: #fff;
   letter-spacing: -0.5px;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .section-subtitle {
@@ -416,10 +430,6 @@ body.crew-portal-body {
 /* =========================================================================
    THEATER SECTION
    ========================================================================= */
-.theater-section {
-  margin-bottom: 60px;
-}
-
 .theater-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-purple);
@@ -494,24 +504,6 @@ body.crew-portal-body {
   padding: 4px 8px;
   border-radius: var(--radius-sm);
   white-space: nowrap;
-}
-
-.btn-quick-edit {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-color);
-  color: var(--text-muted);
-  font-family: var(--font-tech);
-  font-size: 10px;
-  font-weight: 700;
-  padding: 4px 8px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-quick-edit:hover {
-  color: #fff;
-  border-color: var(--border-purple);
 }
 
 /* Playlist Selector */
@@ -611,21 +603,17 @@ body.crew-portal-body {
 }
 
 /* =========================================================================
-   FEATURED WEEKLY SECTION
+   WEEKLY TAB CARD
    ========================================================================= */
-.weekly-featured-section {
-  margin-bottom: 60px;
-}
-
 .weekly-card {
   background: linear-gradient(135deg, rgba(14, 18, 34, 0.95), rgba(20, 26, 48, 0.95));
   border: 1px solid var(--border-cyan);
   border-radius: var(--radius-lg);
-  padding: 28px 32px;
+  padding: 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 24px;
+  gap: 28px;
   flex-wrap: wrap;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(6, 182, 212, 0.15);
 }
@@ -670,7 +658,7 @@ body.crew-portal-body {
   font-size: 13px;
   color: var(--text-muted);
   line-height: 1.5;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .weekly-chips {
@@ -717,12 +705,8 @@ body.crew-portal-body {
 }
 
 /* =========================================================================
-   HOW TO JOIN SECTION
+   HOW TO JOIN TAB
    ========================================================================= */
-.join-section {
-  margin-bottom: 60px;
-}
-
 .join-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-purple);
@@ -856,7 +840,7 @@ body.crew-portal-body {
   z-index: 10;
   background: rgba(7, 8, 15, 0.96);
   border-top: 1px solid var(--border-color);
-  padding: 24px 20px;
+  padding: 20px 20px;
   margin-top: auto;
 }
 
@@ -881,35 +865,6 @@ body.crew-portal-body {
   font-size: 11px;
   color: var(--text-sub);
   margin-top: 2px;
-}
-
-.footer-links {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.footer-link {
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: 600;
-  transition: color 0.2s ease;
-}
-
-.footer-link:hover {
-  color: #fff;
-}
-
-.footer-link-highlight {
-  color: var(--accent-cyan);
-  font-family: var(--font-header);
-  font-weight: 800;
-}
-
-.footer-link-highlight:hover {
-  color: #fff;
-  text-shadow: 0 0 10px var(--accent-cyan);
 }
 
 .footer-admin-btn {
@@ -1334,10 +1289,6 @@ body.crew-portal-body {
     flex-direction: column;
     align-items: stretch;
     gap: 12px;
-  }
-
-  .header-nav-actions {
-    justify-content: center;
   }
 
   .weekly-card, .join-cta-banner {

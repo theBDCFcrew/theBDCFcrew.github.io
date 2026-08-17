@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
   <meta name="description" content="THE BDCF CREW — Official GTA Online Syndicate, Video Theater, Recruitment & Los Santos Weekly Portal." />
-  <meta name="theme-color" content="#07090e" />
+  <meta name="theme-color" content="#07080f" />
   <title>THE BDCF CREW | Official GTA Online Syndicate</title>
 
   <!-- Google Fonts -->
@@ -34,25 +34,42 @@
         </div>
       </div>
 
-      <div class="header-nav-actions">
-        <a href="#theater" class="nav-btn">🎬 Theater</a>
-        <a href="./LosSantosWeekly/" class="nav-btn btn-weekly">🌴 Weekly Hub</a>
-        <a href="https://forms.gle/oXgaNAtLArsshFyQ7" target="_blank" rel="noopener noreferrer" class="nav-btn btn-join" id="navJoinBtn">
-          <span>📝 Join Crew</span>
-        </a>
-        <button id="openAdminBtn" class="nav-btn btn-admin" title="Open BDCF Crew Admin Menu">
+      <div class="header-actions">
+        <div class="header-status-pill">
+          <span class="live-dot-pulse"></span>
+          <span class="status-txt">HQ LIVE</span>
+          <span class="version-pill">v1.7.0</span>
+        </div>
+        <button id="openAdminBtn" class="btn-admin-header" title="Open BDCF Admin Menu">
           <span>⚙️ Admin</span>
         </button>
       </div>
     </div>
   </header>
 
+  <!-- STREAMLINED MAIN NAVIGATION TABS BAR -->
+  <nav class="portal-nav-bar">
+    <div class="portal-nav-container">
+      <button class="portal-tab-btn active" data-tab="tab-theater">
+        <span class="tab-icon">🎬</span>
+        <span class="tab-label">Video Theater</span>
+      </button>
+      <button class="portal-tab-btn" data-tab="tab-weekly">
+        <span class="tab-icon">🌴</span>
+        <span class="tab-label">Los Santos Weekly</span>
+      </button>
+      <button class="portal-tab-btn" data-tab="tab-join">
+        <span class="tab-icon">📝</span>
+        <span class="tab-label">Join The Crew</span>
+      </button>
+    </div>
+  </nav>
+
   <!-- MAIN CONTAINER -->
   <main class="portal-main">
 
-    <!-- HERO SECTION -->
-    <section class="hero-center">
-      
+    <!-- COMPACT HERO BANNER -->
+    <section class="hero-compact">
       <div class="crest-badge">
         <div class="crest-inner">
           <span class="crest-icon">🌴</span>
@@ -68,26 +85,13 @@
       <p class="hero-lead" id="displayCrewMotto">
         Official GTA Online Syndicate &amp; Operations Headquarters. Watch crew video highlights, track weekly updates, or apply to join our ranks.
       </p>
-
-      <div class="hero-action-pills">
-        <a href="#theater" class="hero-pill-btn">🎬 Watch Crew Videos</a>
-        <a href="./LosSantosWeekly/" class="hero-pill-btn pill-cyan">🌴 Los Santos Weekly Hub</a>
-        <a href="#join" class="hero-pill-btn pill-pink">📝 How to Join Us</a>
-      </div>
-
     </section>
 
     <!-- =========================================================================
-         SECTION 1: BDCF CREW VIDEO THEATER
+         TAB 1: BDCF CREW VIDEO THEATER
          ========================================================================= -->
-    <section id="theater" class="theater-section">
-      <div class="section-title-wrap">
-        <div class="section-badge">🎬 BDCF CINEMA</div>
-        <h2 class="section-title">Crew Video Theater</h2>
-        <p class="section-subtitle">Watch our latest heist runs, car meet showcases, and GTA community moments</p>
-      </div>
-
-      <div class="theater-card">
+    <div id="tab-theater" class="portal-tab-pane active">
+      <section class="theater-card">
         
         <!-- Main Video Screen -->
         <div class="video-screen-wrapper">
@@ -110,7 +114,6 @@
           </div>
           <div class="video-meta-right">
             <span class="theater-hd-badge">4K ULTRA HD</span>
-            <button id="quickEditVideoBtn" class="btn-quick-edit" title="Edit this video in Admin Menu">⚙️ Edit</button>
           </div>
         </div>
 
@@ -118,21 +121,21 @@
         <div class="playlist-container">
           <div class="playlist-header">
             <span>📺 Select Video to Play:</span>
-            <button id="managePlaylistBtn" class="btn-manage-playlist">+ Manage Videos</button>
+            <button id="managePlaylistBtn" class="btn-manage-playlist">+ Manage Playlist</button>
           </div>
           <div class="playlist-grid" id="playlistGrid">
             <!-- Rendered dynamically via JS from localStorage or default data -->
           </div>
         </div>
 
-      </div>
-    </section>
+      </section>
+    </div>
 
     <!-- =========================================================================
-         SECTION 2: FEATURED LOS SANTOS WEEKLY TRACKER
+         TAB 2: FEATURED LOS SANTOS WEEKLY TRACKER
          ========================================================================= -->
-    <section class="weekly-featured-section">
-      <div class="weekly-card">
+    <div id="tab-weekly" class="portal-tab-pane">
+      <section class="weekly-card">
         <div class="weekly-left">
           <div class="weekly-badge">
             <span class="live-ping"></span>
@@ -145,6 +148,7 @@
           <div class="weekly-chips">
             <span class="chip">🎡 Lucky Wheel Podium</span>
             <span class="chip">🏁 Prize Ride Challenge</span>
+            <span class="chip">🏗️ Salvage Robberies</span>
             <span class="chip">💰 4X &amp; 3X Multipliers</span>
             <span class="chip">📊 Google Sheets Sync</span>
           </div>
@@ -152,24 +156,25 @@
 
         <div class="weekly-right">
           <a href="./LosSantosWeekly/" class="btn-launch-weekly">
-            <span>LAUNCH WEEKLY TRACKER</span>
+            <span>ENTER LOS SANTOS WEEKLY</span>
             <span class="btn-arrow">➔</span>
           </a>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
     <!-- =========================================================================
-         SECTION 3: HOW TO JOIN THE BDCF CREW
+         TAB 3: HOW TO JOIN THE BDCF CREW
          ========================================================================= -->
-    <section id="join" class="join-section">
-      <div class="section-title-wrap">
-        <div class="section-badge badge-join">🎮 RECRUITMENT OPEN</div>
-        <h2 class="section-title">How to Join The BDCF Crew</h2>
-        <p class="section-subtitle">Join our active syndicate for heist payouts, car meets, and protected business lobbies</p>
-      </div>
+    <div id="tab-join" class="portal-tab-pane">
+      <section class="join-card">
+        
+        <div class="section-title-wrap">
+          <div class="section-badge badge-join">🎮 RECRUITMENT OPEN</div>
+          <h2 class="section-title">How to Join The BDCF Crew</h2>
+          <p class="section-subtitle">Join our active syndicate for heist payouts, car meets, and protected business lobbies</p>
+        </div>
 
-      <div class="join-card">
         <div class="steps-grid">
           
           <div class="step-card">
@@ -177,7 +182,7 @@
             <div class="step-icon">📝</div>
             <h3 class="step-title">Submit Application</h3>
             <p class="step-desc">
-              Fill out the official 1-minute BDCF Crew application form with your gaming tag and platform.
+              Fill out the quick 1-minute BDCF Crew application form with your gaming tag and platform.
             </p>
           </div>
 
@@ -216,8 +221,8 @@
           </div>
         </div>
 
-      </div>
-    </section>
+      </section>
+    </div>
 
   </main>
 
@@ -230,8 +235,6 @@
       </div>
 
       <div class="footer-links">
-        <a href="https://forms.gle/oXgaNAtLArsshFyQ7" target="_blank" rel="noopener noreferrer" class="footer-link" id="footerJoinLink">📝 Application Form</a>
-        <a href="./LosSantosWeekly/" class="footer-link footer-link-highlight">🌴 Los Santos Weekly Hub ➔</a>
         <button id="footerAdminBtn" class="footer-admin-btn">⚙️ Admin Menu</button>
       </div>
     </div>
@@ -335,7 +338,7 @@
           <div class="form-group">
             <label for="settingJoinFormUrl">Google Form Application Link: *</label>
             <input type="url" id="settingJoinFormUrl" value="https://forms.gle/oXgaNAtLArsshFyQ7" required />
-            <small class="form-hint">The "Join Crew" and "Apply to Join" buttons will open this link.</small>
+            <small class="form-hint">The "Apply to Join" button will open this link.</small>
           </div>
 
           <div class="form-group">
@@ -382,7 +385,7 @@
   <div id="toastContainer" class="toast-container"></div>
 
   <!-- =========================================================================
-       CORE SCRIPT: THEATER ENGINE & ADMIN MENU
+       CORE SCRIPT: THEATER ENGINE, TAB SWITCHER & ADMIN MENU
        ========================================================================= -->
   <script>
     (function () {
@@ -448,14 +451,36 @@
         renderAll();
       }
 
+      // ── Main Tab Switching Engine ──
+      const savedTab = localStorage.getItem('bdcf_active_tab') || 'tab-theater';
+      switchMainTab(savedTab);
+
+      document.querySelectorAll('.portal-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const tabId = btn.dataset.tab;
+          if (tabId) switchMainTab(tabId);
+        });
+      });
+
+      function switchMainTab(tabId) {
+        document.querySelectorAll('.portal-tab-btn').forEach(b => {
+          if (b.dataset.tab === tabId) b.classList.add('active');
+          else b.classList.remove('active');
+        });
+
+        document.querySelectorAll('.portal-tab-pane').forEach(p => {
+          if (p.id === tabId) p.classList.add('active');
+          else p.classList.remove('active');
+        });
+
+        localStorage.setItem('bdcf_active_tab', tabId);
+      }
+
       // ── Extract YouTube Video ID from any URL format ──
       function extractYouTubeId(urlOrId) {
         if (!urlOrId) return '';
         const trimmed = urlOrId.trim();
-        // Check standard 11 char ID
         if (/^[a-zA-Z0-9_-]{11}$/.test(trimmed)) return trimmed;
-        
-        // Regex for youtu.be / youtube.com / shorts / embed
         const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{11})/i;
         const match = trimmed.match(regex);
         return match ? match[1] : trimmed;
@@ -463,19 +488,13 @@
 
       // ── Render Theater & Page ──
       function renderAll() {
-        // Update Join Form URLs
         const joinUrl = config.joinFormUrl || "https://forms.gle/oXgaNAtLArsshFyQ7";
-        const navJoinBtn = document.getElementById('navJoinBtn');
         const joinCtaBtn = document.getElementById('joinCtaBtn');
-        const footerJoinLink = document.getElementById('footerJoinLink');
         const formUrlNote = document.getElementById('formUrlNote');
 
-        if (navJoinBtn) navJoinBtn.href = joinUrl;
         if (joinCtaBtn) joinCtaBtn.href = joinUrl;
-        if (footerJoinLink) footerJoinLink.href = joinUrl;
         if (formUrlNote) formUrlNote.textContent = `Official Google Form: ${joinUrl.replace(/^https?:\/\//, '')}`;
 
-        // Update Crew Tag & Motto
         const tagEl = document.getElementById('displayCrewTag');
         const mottoEl = document.getElementById('displayCrewMotto');
         if (tagEl) tagEl.textContent = config.crewTag || "BDCF";
@@ -497,28 +516,19 @@
             `;
           }).join('');
 
-          // Playlist click handlers
           playlistGrid.querySelectorAll('.playlist-item').forEach(btn => {
             btn.addEventListener('click', () => {
               const id = btn.dataset.videoId;
-              if (id) {
-                setActiveVideo(id, true);
-              }
+              if (id) setActiveVideo(id, true);
             });
           });
         }
 
-        // Update Active Video Player
         updatePlayerDisplay(false);
-
-        // Update Admin Video List
         renderAdminVideoList();
 
-        // Update Export Textarea
         const exportArea = document.getElementById('exportJsonTextarea');
-        if (exportArea) {
-          exportArea.value = JSON.stringify(config, null, 2);
-        }
+        if (exportArea) exportArea.value = JSON.stringify(config, null, 2);
       }
 
       function setActiveVideo(id, autoplay = false) {
@@ -541,17 +551,12 @@
         if (titleEl) titleEl.textContent = activeVideo.title;
         if (descEl) descEl.textContent = activeVideo.desc || '';
 
-        // Update active class on playlist buttons
         document.querySelectorAll('#playlistGrid .playlist-item').forEach(btn => {
-          if (btn.dataset.videoId === activeVideo.id) {
-            btn.classList.add('active');
-          } else {
-            btn.classList.remove('active');
-          }
+          if (btn.dataset.videoId === activeVideo.id) btn.classList.add('active');
+          else btn.classList.remove('active');
         });
       }
 
-      // ── Render Admin Videos List ──
       function renderAdminVideoList() {
         const listEl = document.getElementById('adminVideoList');
         if (!listEl) return;
@@ -583,7 +588,6 @@
           `;
         }).join('');
 
-        // Bind admin actions
         listEl.querySelectorAll('.set-active-btn').forEach(btn => {
           btn.addEventListener('click', () => {
             const id = btn.dataset.id;
@@ -637,7 +641,6 @@
       const adminOverlay = document.getElementById('adminModalOverlay');
       const openAdminBtn = document.getElementById('openAdminBtn');
       const footerAdminBtn = document.getElementById('footerAdminBtn');
-      const quickEditVideoBtn = document.getElementById('quickEditVideoBtn');
       const managePlaylistBtn = document.getElementById('managePlaylistBtn');
       const closeAdminBtn = document.getElementById('closeAdminModalBtn');
 
@@ -645,7 +648,6 @@
         switchAdminTab(defaultTab);
         renderAdminVideoList();
         
-        // Sync Settings Form inputs
         const joinInput = document.getElementById('settingJoinFormUrl');
         const tagInput = document.getElementById('settingCrewTag');
         const mottoInput = document.getElementById('settingCrewMotto');
@@ -664,12 +666,10 @@
 
       if (openAdminBtn) openAdminBtn.addEventListener('click', () => openModal('tab-videos'));
       if (footerAdminBtn) footerAdminBtn.addEventListener('click', () => openModal('tab-videos'));
-      if (quickEditVideoBtn) quickEditVideoBtn.addEventListener('click', () => openModal('tab-videos'));
       if (managePlaylistBtn) managePlaylistBtn.addEventListener('click', () => openModal('tab-add-video'));
       if (closeAdminBtn) closeAdminBtn.addEventListener('click', closeModal);
       if (adminOverlay) adminOverlay.addEventListener('click', closeModal);
 
-      // Admin Tab Switching
       function switchAdminTab(tabId) {
         document.querySelectorAll('.admin-tab-btn').forEach(btn => {
           if (btn.dataset.tab === tabId) btn.classList.add('active');
@@ -714,7 +714,6 @@
             desc: desc.trim() || ""
           };
 
-          // Add to top of playlist and set active
           config.videos.unshift(newVideo);
           config.activeVideoId = videoId;
           saveConfig();
@@ -769,7 +768,6 @@
         });
       }
 
-      // Initialize on load
       renderAll();
 
     })();

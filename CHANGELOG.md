@@ -1,5 +1,10 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [1.7.0] - 2026-08-17
+- **Streamlined Tab Navigation**: Replaced the long scrolling page with 3 clean tabs (Video Theater, Los Santos Weekly, Join The Crew).
+- **Eliminated Duplicate Buttons**: Removed redundant pill buttons and repetitive links across the header, hero, and cards for a clean, focused UI.
+- **Active Tab Memory**: Portal remembers your active tab across page refreshes.
+
 ## [1.6.0] - 2026-08-17
 - **BDCF Syndicate Purple Theme**: Integrated the crew's signature purple (`#9333ea` / `#a855f7`) across both the main portal and Los Santos Weekly.
 - **BDCF Admin Menu Engine**: Added full in-browser management modal to add/edit/delete YouTube videos, reorder playlists, update the Join Form URL, and edit crew announcements.
