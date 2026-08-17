@@ -4,10 +4,10 @@ service cloud.firestore {
   match /databases/{database}/documents {
 
     // ── Admin Allowlist ──
-    // Only authenticated users can read their own admin record to verify access.
+    // Allows authenticated users to verify if their UID or Email is in the admins collection.
     // Writes are blocked from the client (manage admins via Firebase Console).
-    match /admins/{uid} {
-      allow read: if request.auth != null && request.auth.uid == uid;
+    match /admins/{docId} {
+      allow read: if request.auth != null && (request.auth.uid == docId || request.auth.token.email == docId);
       allow write: if false;
     }
 

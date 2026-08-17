@@ -1,5 +1,10 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [2.1.2] - 2026-08-17
+- **Email & UID Admin Resolution**: Allowed admin authorization lookup by either Document ID = `email` (e.g. `brian@gmail.com`) or Document ID = `uid`.
+- **Improved Setup Experience**: Denial notification displays both copyable Email and UID for instant Firestore entry setup.
+- **Seeded Firestore Collections**: Initialized `stats/siteStats` and verified public real-time connection.
+
 ## [2.1.1] - 2026-08-17
 - **Live Firestore Deployment**: Automated deployment of `firestore.rules`, `.firebaserc`, and `firebase.json` via Firebase CLI directly to `the-bdcf-crew`.
 - **Database Initialization**: Enabled Cloud Firestore and deployed security rules for `admins`, `stats` (page views), and `sessions` (live visitors).

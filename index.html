@@ -38,7 +38,7 @@
         <div class="header-status-pill">
           <span class="live-dot-pulse"></span>
           <span class="status-txt">HQ LIVE</span>
-          <span class="version-pill">v2.1.1</span>
+          <span class="version-pill">v2.1.2</span>
         </div>
         <!-- Live Visitor Counter -->
         <div class="live-counter-pill" id="liveCounterPill" title="Crew members viewing right now">
@@ -1332,31 +1332,55 @@
         return;
       }
 
-      // User is signed in — check Firestore admins collection
+      // User is signed in — check Firestore admins collection by UID or Email
       try {
-        const adminSnap = await getDoc(doc(db, 'admins', user.uid));
-        if (adminSnap.exists()) {
+        const emailLower = (user.email || '').toLowerCase();
+        let isAdmin = false;
+        let adminData = null;
+
+        // Check UID document
+        const uidSnap = await getDoc(doc(db, 'admins', user.uid));
+        if (uidSnap.exists()) {
+          isAdmin = true;
+          adminData = uidSnap.data();
+        } else if (emailLower) {
+          // Check Email document
+          const emailSnap = await getDoc(doc(db, 'admins', emailLower));
+          if (emailSnap.exists()) {
+            isAdmin = true;
+            adminData = emailSnap.data();
+          }
+        }
+
+        if (isAdmin) {
           window._bdcfIsAdmin = true;
           window._bdcfUser    = user;
           updateAdminButton(user, true);
           showAuthBar(user);
+          firebaseToast(`👑 Welcome back, ${user.displayName || user.email}!`, 'success', 3000);
         } else {
           // Not on the admin list — deny and sign out
           await signOut(auth);
           window._bdcfIsAdmin = false;
           window._bdcfUser    = null;
           updateAdminButton(null, false);
-          // Show denial with copyable UID for bootstrap setup
+          // Show denial with copyable Email and UID for easy Firestore setup
           firebaseToast(
-            `❌ <strong>Access Denied.</strong> Your UID (click to copy):<br>
-             <code style="font-size:10px;cursor:pointer;user-select:all;" id="denyUid">${user.uid}</code>`,
-            'error', 10000
+            `❌ <strong>Access Denied.</strong> Add this account to Firestore <code>admins</code> collection:<br>
+             <strong>Email:</strong> <code style="font-size:11px;cursor:pointer;" id="denyEmail">${user.email}</code><br>
+             <strong>UID:</strong> <code style="font-size:10px;cursor:pointer;" id="denyUid">${user.uid}</code>`,
+            'error', 12000
           );
           setTimeout(() => {
-            const el = document.getElementById('denyUid');
-            if (el) el.addEventListener('click', () => {
+            const elUid = document.getElementById('denyUid');
+            const elEmail = document.getElementById('denyEmail');
+            if (elUid) elUid.addEventListener('click', () => {
               navigator.clipboard.writeText(user.uid);
               firebaseToast('📋 UID copied to clipboard!', 'success', 2500);
+            });
+            if (elEmail) elEmail.addEventListener('click', () => {
+              navigator.clipboard.writeText(user.email);
+              firebaseToast('📋 Email copied to clipboard!', 'success', 2500);
             });
           }, 100);
         }
@@ -1366,6 +1390,7 @@
         window._bdcfIsAdmin = false;
         firebaseToast('⚠️ Auth check failed. Check Firestore rules.', 'error');
       }
+
     });
 
     // ── Sign In via Google Popup ──
