@@ -1,5 +1,10 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [1.4.0] - 2026-08-17
+- **BDCF Crew Coming Soon Hub**: Created animated cyber-noir main landing page at `https://thebdcfcrew.github.io`.
+- **LosSantosWeekly Subfolder**: Moved Weekly Update Dashboard to dedicated `/LosSantosWeekly/` URL path.
+- **Cross-Navigation**: Added fast navigation pills between BDCF Crew HQ and Los Santos Weekly.
+
 ## [1.3.0] - 2026-08-14
 - **Strict Discount Filters**: Filtering by category (e.g. Properties, 100% Free, 40% Off) now strictly hides all unrelated items and showrooms.
 - **Category Icons**: Added clear icons for properties (🏢), weapons (🔫), clothes (👕), free items (🎁), and vehicles (🚗).

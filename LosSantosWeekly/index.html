@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <meta name="description" content="🌴 Los Santos Weekly — Streamlined GTA Online Weekly Bonuses, Discounts, Salvage Yard Robberies, Daily Objectives, and Google Sheets Sync." />
+  <meta name="theme-color" content="#0b0f19" />
+  <title>🌴 Los Santos Weekly | GTA Online Hub</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="dark-theme">
+
+  <!-- TOP NAVBAR -->
+  <header class="top-nav">
+    <div class="nav-container">
+      <div class="brand-group">
+        <a href="../" class="crew-portal-pill" title="Back to BDCF Crew Headquarters">🎮 BDCF CREW</a>
+        <span class="brand-icon">🌴</span>
+        <div class="brand-text">
+          <div class="brand-title-wrap">
+            <h1 class="brand-title">Los Santos Weekly</h1>
+            <span class="version-badge">v1.4.0</span>
+          </div>
+          <span class="brand-subtitle">GTA ONLINE UPDATE HUB</span>
+        </div>
+      </div>
+
+      <div class="nav-status-group">
+        <div class="status-pill live-pill" title="Live data synced from r/gtaonline">
+          <span class="pulse-dot"></span>
+          <span id="liveStatusText">LIVE UPDATE</span>
+        </div>
+        <div class="status-pill date-pill" id="navDateRange">
+          📅 Aug 13 – Aug 20
+        </div>
+        <div class="status-pill countdown-pill" id="navCountdown" title="Time until next Thursday reset (5:00 AM ET)">
+          ⏳ Reset: <span id="countdownTimer" class="mono-timer">--d --h --m --s</span>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <button id="refreshRedditBtn" class="btn btn-secondary" title="Fetch newest update from Reddit">
+          <span class="btn-icon">🔄</span> <span class="btn-label">Sync Reddit</span>
+        </button>
+        <button id="openSheetsModalBtn" class="btn btn-accent" title="Export or push to Google Sheets">
+          <span class="btn-icon">📊</span> <span class="btn-label">Google Sheets</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- QUICK PROGRESS BAR -->
+    <div class="progress-bar-wrapper">
+      <div class="progress-info">
+        <span class="progress-label">🎯 Weekly Progress:</span>
+        <span class="progress-stats"><strong id="tasksCompletedCount">0</strong> of <span id="tasksTotalCount">14</span> Tasks Done (<span id="tasksPercent">0%</span>)</span>
+      </div>
+      <div class="progress-track">
+        <div id="progressFill" class="progress-fill" style="width: 0%;"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- STREAMLINED MAIN TAB SWITCHER -->
+  <nav class="main-tabs-bar">
+    <div class="main-tabs-container">
+      <button class="main-tab-btn active" data-tab="tab-pane-tasks">
+        <span class="tab-icon">🎯</span>
+        <span class="tab-label">Weekly Tasks & Rides</span>
+      </button>
+      <button class="main-tab-btn" data-tab="tab-pane-daily">
+        <span class="tab-icon">📅</span>
+        <span class="tab-label">Daily Objectives</span>
+      </button>
+      <button class="main-tab-btn" data-tab="tab-pane-bonuses">
+        <span class="tab-icon">💰</span>
+        <span class="tab-label">Bonuses & Multipliers</span>
+      </button>
+      <button class="main-tab-btn" data-tab="tab-pane-discounts">
+        <span class="tab-icon">🏷️</span>
+        <span class="tab-label">Discounts & Deals</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <main class="container">
+
+    <!-- =========================================================================
+         TAB 1: WEEKLY TASKS & FEATURED RIDES
+         ========================================================================= -->
+    <div id="tab-pane-tasks" class="tab-pane active">
+      
+      <!-- Compact Hero Banner -->
+      <section class="hero-banner">
+        <div class="hero-content">
+          <div class="hero-badge" id="heroEventBadge">🔥 SPECIAL EVENT</div>
+          <h2 class="hero-title" id="heroEventTitle">Brand Wars Event (Week 1)</h2>
+          <p class="hero-description" id="heroEventDesc">
+            Boosted payouts on select Odd Jobs, Freemode Events, and Hotring Circuit Series Races. Weekly completion bonuses reset for a bigger initial payout on select Heists and Missions!
+          </p>
+
+          <div class="hero-quick-actions">
+            <button id="checkAllBtn" class="btn btn-outline-sm">✅ Mark All Done</button>
+            <button id="resetChecklistBtn" class="btn btn-outline-sm">🧹 Reset Checklist</button>
+            <button id="copySummaryBtn" class="btn btn-outline-sm">📋 Copy Summary</button>
+          </div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="stat-label">Next Reset Countdown</div>
+          <div class="stat-countdown" id="heroCountdown">--d --h --m</div>
+          <div class="stat-subtext">Resets every Thursday at 5:00 AM ET / 10:00 AM UTC</div>
+          <div class="stat-meta" id="redditSourceMeta">Source: r/gtaonline • Auto-Synced</div>
+        </div>
+      </section>
+
+      <!-- Featured Vehicles & Challenges Grid -->
+      <section class="section-block">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-icon">🏎️</span>
+            <div>
+              <h3 class="section-title">Weekly Challenges & Featured Vehicles</h3>
+              <p class="section-subtitle">Casino Podium, LS Car Meet Prize Ride, and Weekly Challenge</p>
+            </div>
+          </div>
+          <span class="badge badge-accent">Featured Rides</span>
+        </div>
+
+        <div class="grid-cards-3">
+          <!-- Podium Vehicle -->
+          <div class="card highlight-card gold-border">
+            <div class="card-header">
+              <span class="card-tag gold-tag">🎡 Lucky Wheel Podium</span>
+              <label class="task-checkbox-label">
+                <input type="checkbox" class="task-check" data-task-id="podium-spin" />
+                <span class="custom-checkbox"></span>
+                <span class="check-text">Claimed</span>
+              </label>
+            </div>
+            <div class="vehicle-title" id="podiumVehicleName">Pfister Astron</div>
+            <div class="vehicle-type">SUV / Luxury Performance</div>
+            <div class="card-footer-info">
+              <span>📍 Diamond Casino</span>
+              <span class="value-highlight">Free Spin Daily</span>
+            </div>
+          </div>
+
+          <!-- Prize Ride -->
+          <div class="card highlight-card cyan-border">
+            <div class="card-header">
+              <span class="card-tag cyan-tag">🏁 LS Car Meet Prize Ride</span>
+              <label class="task-checkbox-label">
+                <input type="checkbox" class="task-check" data-task-id="prize-ride" />
+                <span class="custom-checkbox"></span>
+                <span class="check-text">Completed</span>
+              </label>
+            </div>
+            <div class="vehicle-title" id="prizeRideVehicleName">Enus Deity</div>
+            <div class="challenge-condition" id="prizeRideCondition">
+              🎯 Condition: <strong>Place Top 4 in LS Car Meet Series 3 days in a row</strong>
+            </div>
+            <div class="card-footer-info">
+              <span>📍 LS Car Meet</span>
+              <span class="value-highlight">Exclusive Car</span>
+            </div>
+          </div>
+
+          <!-- Weekly Challenge -->
+          <div class="card highlight-card emerald-border">
+            <div class="card-header">
+              <span class="card-tag emerald-tag">🏆 Weekly Challenge</span>
+              <label class="task-checkbox-label">
+                <input type="checkbox" class="task-check" data-task-id="weekly-challenge" />
+                <span class="custom-checkbox"></span>
+                <span class="check-text">Done</span>
+              </label>
+            </div>
+            <div class="vehicle-title" id="weeklyChallengeTitle">Complete 3 Business Battles</div>
+            <div class="challenge-condition" id="weeklyChallengeReward">
+              🎁 Reward: <strong>Impotent Rage Sweatsuit + 2.5X GTA$250,000 Bonus</strong>
+            </div>
+            <div class="card-footer-info">
+              <span>⏰ Weekly Reset</span>
+              <span class="reward-pill">+$250,000</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Salvage Yard Robberies -->
+        <div class="section-header mt-4">
+          <div class="section-title-wrap">
+            <span class="section-icon">🏗️</span>
+            <div>
+              <h3 class="section-title">Salvage Yard Robbery Targets</h3>
+              <p class="section-subtitle">The 3 target robbery vehicles available for salvage or sale</p>
+            </div>
+          </div>
+          <span class="badge badge-warning">~$1,100,000+ Total</span>
+        </div>
+
+        <div class="grid-cards-3" id="salvageRobberiesContainer">
+          <!-- Rendered via JS -->
+        </div>
+
+        <!-- Time Trials & Test Track Grid -->
+        <div class="grid-cards-2 mt-4">
+          <div class="card">
+            <h4 class="card-inner-title">⏱️ Time Trials & Premium Races</h4>
+            <ul class="task-list" id="timeTrialsList">
+              <li class="task-item">
+                <label class="task-checkbox-label">
+                  <input type="checkbox" class="task-check" data-task-id="tt-regular" />
+                  <span class="custom-checkbox"></span>
+                  <div class="task-details">
+                    <strong>Regular Time Trial:</strong> <span id="regularTimeTrialName">End to End</span>
+                  </div>
+                </label>
+                <span class="reward-tag">$100K+</span>
+              </li>
+              <li class="task-item">
+                <label class="task-checkbox-label">
+                  <input type="checkbox" class="task-check" data-task-id="tt-hsw" />
+                  <span class="custom-checkbox"></span>
+                  <div class="task-details">
+                    <strong>HSW Time Trial:</strong> <span id="hswTimeTrialName">Terminal to Chiliad</span>
+                  </div>
+                </label>
+                <span class="reward-tag">$250K+</span>
+              </li>
+              <li class="task-item">
+                <label class="task-checkbox-label">
+                  <input type="checkbox" class="task-check" data-task-id="premium-race" />
+                  <span class="custom-checkbox"></span>
+                  <div class="task-details">
+                    <strong>Premium Race:</strong> <span id="premiumRaceName">A Sign of Things to Come</span>
+                  </div>
+                </label>
+                <span class="reward-tag">Triple RP</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4 class="card-inner-title">🏎️ LS Car Meet Test Track</h4>
+            <div class="test-rides-grid" id="testRidesList">
+              <div class="test-ride-pill">🚗 Vapid Clique Wagon</div>
+              <div class="test-ride-pill">🚗 Överflöd Autarch</div>
+              <div class="test-ride-pill">🚗 Pegassi Osiris</div>
+              <div class="test-ride-pill hsw-pill">⚡ HSW Premium: Karin S95</div>
+            </div>
+            <div class="card-note mt-3">
+              💡 Take test rides to the track inside LS Car Meet before buying!
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- =========================================================================
+         TAB 2: DAILY OBJECTIVES
+         ========================================================================= -->
+    <div id="tab-pane-daily" class="tab-pane">
+      <section class="section-block">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-icon">📅</span>
+            <div>
+              <h3 class="section-title">Daily Objectives Tracker (Thursday – Wednesday)</h3>
+              <p class="section-subtitle">Complete your daily challenge each day to maintain your streak for monthly GTA$ rewards</p>
+            </div>
+          </div>
+          <div class="section-action-pills">
+            <button id="checkAllDailyBtn" class="btn btn-outline-sm">Mark All Days Done</button>
+          </div>
+        </div>
+
+        <div class="daily-grid" id="dailyObjectivesContainer">
+          <!-- Daily objective cards injected via JS -->
+        </div>
+
+        <div class="card mt-4">
+          <h4 class="card-inner-title">💡 Daily Objectives Streak Rewards</h4>
+          <div class="grid-cards-3 mt-2">
+            <div class="streak-reward-box">
+              <strong>📅 Daily Reward:</strong>
+              <span>$30,000 + 5,000 RP</span>
+            </div>
+            <div class="streak-reward-box">
+              <strong>🔥 7-Day Streak:</strong>
+              <span>$150,000 + 20,000 RP</span>
+            </div>
+            <div class="streak-reward-box">
+              <strong>🏆 28-Day Monthly Streak:</strong>
+              <span>$750,000 + 50,000 RP</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- =========================================================================
+         TAB 3: BONUSES & MULTIPLIERS
+         ========================================================================= -->
+    <div id="tab-pane-bonuses" class="tab-pane">
+      <section class="section-block">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-icon">💰</span>
+            <div>
+              <h3 class="section-title">Weekly Bonuses & Multipliers</h3>
+              <p class="section-subtitle">Boosted payouts across all game modes, series, and business sales</p>
+            </div>
+          </div>
+          <div class="filter-pills" id="bonusFilterPills">
+            <!-- Dynamic filter pills generated via JS -->
+          </div>
+        </div>
+
+        <div class="bonuses-grid" id="bonusesContainer">
+          <!-- Dynamic bonus cards (5X, 4X, 3X, 2.5X, 2X, 1.5X, Speed Boosts) injected via JS -->
+        </div>
+      </section>
+    </div>
+
+    <!-- =========================================================================
+         TAB 4: DISCOUNTS & DEALS (INCLUDES SHOWROOMS & GUN VAN)
+         ========================================================================= -->
+    <div id="tab-pane-discounts" class="tab-pane">
+      
+      <!-- Discounts Section -->
+      <section class="section-block">
+        <div class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-icon">🏷️</span>
+            <div>
+              <h3 class="section-title">Weekly Discounts & Freebies</h3>
+              <p class="section-subtitle">Properties, vehicles, modifications, and claimable items</p>
+            </div>
+          </div>
+          <div class="search-filter-bar">
+            <div class="search-input-wrapper">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="discountSearchInput" placeholder="Search vehicles, properties, discounts..." />
+            </div>
+          </div>
+        </div>
+
+        <div class="discount-category-filters" id="discountCategoryFilters">
+          <button class="filter-pill active" data-cat="all">All Deals</button>
+          <button class="filter-pill free-pill" data-cat="free">🎁 100% FREE</button>
+          <button class="filter-pill" data-cat="50">🔥 50% Off</button>
+          <button class="filter-pill" data-cat="40">⚡ 40% Off</button>
+          <button class="filter-pill" data-cat="30">💰 30% Off</button>
+          <button class="filter-pill" data-cat="properties">🏢 Properties</button>
+          <button class="filter-pill" data-cat="vehicles">🚗 Vehicles</button>
+          <button class="filter-pill" data-cat="weapons">🔫 Weapons / Gun Van</button>
+        </div>
+
+        <div class="discounts-grid" id="discountsContainer">
+          <!-- Rendered via JS -->
+        </div>
+      </section>
+
+      <!-- Dealership Showrooms & Gun Van Stock -->
+      <section id="showroomsAndGunVanSection" class="section-block mt-4">
+        <div class="grid-cards-2">
+          <!-- Luxury Autos -->
+          <div class="card showroom-card">
+            <div class="showroom-header">
+              <h4>💎 Luxury Autos Showroom (Rockford Hills)</h4>
+              <span class="tag-gold">2 Exotic Vehicles</span>
+            </div>
+            <ul class="vehicle-showroom-list" id="luxuryAutosList">
+              <li>
+                <span class="car-bullet">🏎️</span>
+                <div class="car-info">
+                  <strong>Benefactor LRC GT</strong>
+                  <span class="car-sub">Sports / High-End</span>
+                </div>
+                <span class="inspect-tag">Test Drive</span>
+              </li>
+              <li>
+                <span class="car-bullet">🏎️</span>
+                <div class="car-info">
+                  <strong>Pfister X-treme</strong>
+                  <span class="car-sub">Supercar / Aero Track</span>
+                </div>
+                <span class="inspect-tag">Test Drive</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Simeon's PDM -->
+          <div class="card showroom-card">
+            <div class="showroom-header">
+              <h4>🏢 Premium Deluxe Motorsport (Simeon's)</h4>
+              <span class="tag-cyan">5 Featured Stock</span>
+            </div>
+            <ul class="vehicle-showroom-list" id="pdmList">
+              <li>
+                <span class="car-bullet">🚗</span>
+                <div class="car-info"><strong>Obey Tailgater S</strong> (Sports)</div>
+                <span class="discount-badge-sm">30% Off</span>
+              </li>
+              <li>
+                <span class="car-bullet">🚗</span>
+                <div class="car-info"><strong>Shitzu Keitora</strong> (Truck)</div>
+                <span class="discount-badge-sm">30% Off</span>
+              </li>
+              <li>
+                <span class="car-bullet">🚗</span>
+                <div class="car-info"><strong>Mammoth Patriot Mil-Spec</strong> (SUV)</div>
+                <span class="discount-badge-sm">30% Off</span>
+              </li>
+              <li>
+                <span class="car-bullet">🚗</span>
+                <div class="car-info"><strong>Benefactor Stirling GT</strong> (Classic)</div>
+                <span class="discount-badge-sm">30% Off</span>
+              </li>
+              <li>
+                <span class="car-bullet">🚗</span>
+                <div class="car-info"><strong>Progen GP1</strong> (Supercar)</div>
+                <span class="discount-badge-sm">30% Off</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Gun Van & GTA+ Grid -->
+        <div class="grid-cards-2 mt-4">
+          <div class="card">
+            <div class="showroom-header">
+              <h4>🔫 Gun Van Featured Stock</h4>
+              <span class="badge badge-accent">Daily Van</span>
+            </div>
+            <ul class="gun-van-list" id="gunVanWeaponsList">
+              <li class="free-weapon-item">
+                <div class="weapon-name">⚡ <strong>Unholy Hellbringer</strong></div>
+                <span class="tag-free">100% FREE</span>
+              </li>
+              <li>
+                <div class="weapon-name">🎯 <strong>Battle Rifle</strong></div>
+                <span class="tag-discount">50% OFF</span>
+              </li>
+              <li>
+                <div class="weapon-name">🔭 <strong>Precision Rifle</strong></div>
+                <span class="tag-gta-plus">40% OFF (GTA+)</span>
+              </li>
+              <li>
+                <div class="weapon-name">⚡ <strong>Railgun</strong></div>
+                <span class="tag-instock">In Stock</span>
+              </li>
+              <li>
+                <div class="weapon-name">🔫 <strong>Up-n-Atomizer</strong></div>
+                <span class="tag-instock">In Stock</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="showroom-header">
+              <h4>🎮 GTA+ & Twitch Drops</h4>
+              <span class="badge badge-gold">Special Perks</span>
+            </div>
+            <ul class="perks-list">
+              <li>📺 <strong>Twitch Drops:</strong> Sprunk Sweatsuit / eCola Tracksuit + $2,000,000</li>
+              <li>🚗 <strong>Gallivanter Warden:</strong> Free early claim for GTA+ members</li>
+              <li>💵 <strong>Monthly Maze Bank Deposit:</strong> $500,000 Cash</li>
+              <li>🏢 <strong>The Vinewood Club:</strong> 100-Car Garage Access</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="footer-brand-title">
+          <span>🌴 Los Santos Weekly Hub</span>
+          <span class="version-badge">v1.3.0</span>
+        </div>
+        <p>Built for automated GTA Online weekly update tracking & Google Sheets sync.</p>
+      </div>
+      <div class="footer-actions">
+        <button id="footerSyncBtn" class="btn btn-outline-sm">🔄 Sync Reddit</button>
+        <button id="footerSheetsBtn" class="btn btn-accent-sm">📊 Google Sheets</button>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <span>Data fetched directly from Reddit <code>r/gtaonline</code>. All GTA trademarks belong to Rockstar Games / Take-Two Interactive.</span>
+    </div>
+  </footer>
+
+  <!-- MODAL: GOOGLE SHEETS EXPORT & SYNC -->
+  <div id="sheetsModalOverlay" class="modal-overlay"></div>
+  <div id="sheetsModal" class="modal-container">
+    <div class="modal-header">
+      <div class="modal-title-wrap">
+        <span class="modal-icon">📊</span>
+        <div>
+          <h3>Export / Sync to Google Sheets</h3>
+          <p class="text-xs text-muted">Populate your "Weekly Update" tab automatically</p>
+        </div>
+      </div>
+      <button id="closeSheetsModalBtn" class="close-btn" aria-label="Close">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="modal-tabs">
+        <button class="modal-tab-btn active" data-tab="tab-clipboard">📋 1-Click Copy Data</button>
+        <button class="modal-tab-btn" data-tab="tab-script">⚡ Apps Script Setup</button>
+      </div>
+
+      <!-- Tab 1: Clipboard TSV -->
+      <div id="tab-clipboard" class="modal-tab-pane active">
+        <p class="text-sm">
+          Click below to copy this week's formatted table to your clipboard. Then simply go to your Google Sheet's <strong>Weekly Update</strong> tab and press <code>Ctrl + V</code> in cell <strong>A1</strong>!
+        </p>
+        
+        <div class="tsv-preview-box">
+          <textarea id="tsvDataPreview" readonly></textarea>
+        </div>
+
+        <div class="modal-footer-actions mt-3">
+          <button id="copyTsvBtn" class="btn btn-accent full-width">
+            📋 Copy Table Data for Google Sheets
+          </button>
+        </div>
+      </div>
+
+      <!-- Tab 2: Apps Script Code -->
+      <div id="tab-script" class="modal-tab-pane">
+        <p class="text-sm">
+          Want 100% hands-off automation every Thursday morning? Copy the Google Apps Script below into your Google Sheet's <strong>Extensions ➔ Apps Script</strong>:
+        </p>
+
+        <div class="code-preview-box">
+          <pre><code id="appsScriptCode"></code></pre>
+        </div>
+
+        <div class="modal-footer-actions mt-3">
+          <button id="copyScriptBtn" class="btn btn-secondary full-width">
+            📋 Copy Apps Script Code (GtaWeeklyUpdate.gs)
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- CORE SCRIPT -->
+  <script src="app.js"></script>
+</body>
+</html>
