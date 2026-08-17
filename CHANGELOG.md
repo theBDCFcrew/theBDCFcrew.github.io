@@ -1,7 +1,14 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [1.9.0] - 2026-08-17
+- **Real GTAO Bloopers Playlist**: Replaced all 4 placeholder fake videos with the authentic 10-clip GTAO Bloopers playlist from `@BrianDivaCox`, with real titles fetched via YouTube oEmbed API.
+- **Auto-Load Playlist Feature**: Added "🔍 Fetch Info" button in Admin → Import Playlist (Option 1) — paste any YouTube Playlist URL to instantly preview the playlist title and author before activating it in the Theater.
+- **Playlist Preview Box**: New animated purple preview panel shows playlist title, author, and ID when fetched, before committing the activation.
+- **fetchPlaylistInfo() Engine**: New async helper uses YouTube public oEmbed endpoint to resolve any playlist URL to its real display name — no API key required.
+
 ## [1.8.1] - 2026-08-17
 - **Official YouTube Channel Badge**: Linked Brian Cox's official YouTube channel (`youtube.com/@BrianDivaCox`) directly into the BDCF Theater Player.
+
 
 ## [1.8.0] - 2026-08-17
 - **YouTube Playlist Embed Mode**: Added 1-click official YouTube playlist embedding with auto-play and full clip drawer (`embed/videoseries?list=...`).

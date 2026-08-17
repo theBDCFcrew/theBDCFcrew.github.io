@@ -1150,6 +1150,61 @@ body.crew-portal-body {
   line-height: 1.4;
 }
 
+/* Input with inline button (for Fetch Info) */
+.input-with-btn {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.input-with-btn input {
+  flex: 1;
+}
+
+.input-with-btn .btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: 0 14px;
+}
+
+/* Playlist Preview Box */
+.playlist-preview-box {
+  background: rgba(147, 51, 234, 0.12);
+  border: 1px solid rgba(147, 51, 234, 0.4);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  margin: 12px 0;
+}
+
+.preview-label {
+  font-family: var(--font-tech);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #a855f7;
+  margin-bottom: 6px;
+}
+
+.preview-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.preview-meta {
+  display: flex;
+  gap: 14px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.preview-id-tag code {
+  color: #a855f7;
+  font-size: 11px;
+}
+
+
 /* Video List in Admin */
 .admin-video-list {
   display: flex;

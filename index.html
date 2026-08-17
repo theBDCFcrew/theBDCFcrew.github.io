@@ -38,7 +38,7 @@
         <div class="header-status-pill">
           <span class="live-dot-pulse"></span>
           <span class="status-txt">HQ LIVE</span>
-          <span class="version-pill">v1.8.0</span>
+          <span class="version-pill">v1.9.0</span>
         </div>
         <button id="openAdminBtn" class="btn-admin-header" title="Open BDCF Admin Menu">
           <span>⚙️ Admin</span>
@@ -297,23 +297,36 @@
         <div class="import-box">
           <div class="import-box-header">
             <span class="import-box-tag">OPTION 1</span>
-            <h5>📺 Direct YouTube Playlist Embed</h5>
+            <h5>📺 Auto-Load YouTube Playlist</h5>
           </div>
           <p class="import-box-desc">
-            Paste a full YouTube Playlist URL or Playlist ID. The Theater will load the entire YouTube playlist player with all clips and playlist drawer!
+            Paste any YouTube Playlist URL and click <strong>🔍 Fetch Info</strong> to auto-load the playlist title. Then click <strong>▶ Activate</strong> to set it as the Theater player!
           </p>
           <form id="playlistEmbedForm" class="admin-form">
             <div class="form-group">
               <label for="ytPlaylistUrl">YouTube Playlist URL or Playlist ID:</label>
-              <input type="text" id="ytPlaylistUrl" placeholder="e.g. https://www.youtube.com/playlist?list=PLxxxxxxxxxxxxxxx" />
+              <div class="input-with-btn">
+                <input type="text" id="ytPlaylistUrl" placeholder="e.g. https://www.youtube.com/playlist?list=PLxxxxxxxxxxxxxxx" />
+                <button type="button" id="fetchPlaylistInfoBtn" class="btn btn-secondary">🔍 Fetch Info</button>
+              </div>
               <small class="form-hint">Supports full playlist links with <code>list=PL...</code> or raw Playlist IDs starting with <code>PL...</code></small>
             </div>
+            <!-- Playlist Info Preview (hidden until fetched) -->
+            <div id="playlistPreviewBox" class="playlist-preview-box" style="display:none;">
+              <div class="preview-label">📋 PLAYLIST DETECTED</div>
+              <div class="preview-title" id="previewPlaylistTitle">—</div>
+              <div class="preview-meta">
+                <span>By: <strong id="previewPlaylistAuthor">—</strong></span>
+                <span class="preview-id-tag">ID: <code id="previewPlaylistId">—</code></span>
+              </div>
+            </div>
             <div class="form-row">
-              <button type="submit" class="btn btn-accent flex-1">▶ Set as Main Playlist Player</button>
+              <button type="submit" class="btn btn-accent flex-1">▶ Activate as Theater Playlist</button>
               <button type="button" id="clearPlaylistModeBtn" class="btn btn-secondary">Switch to Individual Clips</button>
             </div>
           </form>
         </div>
+
 
         <!-- Option B: Bulk Multi-Link Pasting -->
         <div class="import-box mt-4">
@@ -477,31 +490,73 @@
         videos: [
           {
             id: "jgp3oTp5WVU",
-            title: "The BDCF Crew: Official GTA Online Showcase",
-            icon: "🌴",
-            tag: "Official Showcase",
-            desc: "Official BDCF Crew operations, heists, and car meet showcase in Los Santos."
+            title: "always check with traffic control....",
+            icon: "😂",
+            tag: "GTAO Bloopers",
+            desc: "Classic BDCF blooper moment - always check with traffic control before takeoff!"
           },
           {
-            id: "QkkoHA7PEJU",
-            title: "GTA Online: Los Santos Summer Heists & Crew Operations",
-            icon: "💼",
-            tag: "Action & Heists",
-            desc: "High-stakes syndicate heists, getaway chases, and crew combat highlights across Blaine County."
+            id: "IyRBQ-k3Z4Y",
+            title: "Soulcrusher4217 & Thafkndwarf playing bumper cars",
+            icon: "🚗",
+            tag: "GTAO Bloopers",
+            desc: "Watch Soulcrusher4217 and Thafkndwarf go head-to-head in a wild bumper car session."
           },
           {
-            id: "B_Z7Z4nS8c8",
-            title: "BDCF Crew Car Meets & Stance Garage Builds",
-            icon: "🏎️",
-            tag: "Stance & Speed",
-            desc: "Custom stance builds, drift lines, drag races, and exclusive crew liveries at the LS Car Meet."
+            id: "urtAALWCRoc",
+            title: "Soulcrusher4217 vs Robotman510",
+            icon: "⚔️",
+            tag: "GTAO Bloopers",
+            desc: "An epic crew clash - Soulcrusher4217 takes on Robotman510 in GTA Online."
           },
           {
-            id: "K_Z71cQ7b0E",
-            title: "Funny Moments, Fails & Freemode Chaos",
-            icon: "⚡",
-            tag: "Funny Moments",
-            desc: "The funniest moments, jet dogfights, ramp stunts, and chaotic freemode wars with the crew."
+            id: "-CPoHZvI1eU",
+            title: "Thafkndwarf needs to watch where he is going Imagine driving over ur own mine...",
+            icon: "💥",
+            tag: "GTAO Bloopers",
+            desc: "Imagine driving over your own mine... Thafkndwarf definitely didn't see that coming!"
+          },
+          {
+            id: "SKoR1ggErcM",
+            title: "is Thafkndwarf trying to kill Brian",
+            icon: "🎯",
+            tag: "GTAO Bloopers",
+            desc: "Friendly fire or intentional? Thafkndwarf is getting dangerously close to Brian..."
+          },
+          {
+            id: "_UMo37C-hHQ",
+            title: "WTF is Thafkndwarf doing......",
+            icon: "🤯",
+            tag: "GTAO Bloopers",
+            desc: "Nobody knows what Thafkndwarf is doing, but we're all watching."
+          },
+          {
+            id: "cTsabs3BOUM",
+            title: "Crew Training: soul vs Brian, dwarf",
+            icon: "🏆",
+            tag: "GTAO Bloopers",
+            desc: "BDCF Crew combat training - Soulcrusher4217 takes on Brian and Thafkndwarf."
+          },
+          {
+            id: "P6l-D9xhLJg",
+            title: "Crew Training: BrianDivaCox vs thafkndwarf  ( jet attack )",
+            icon: "✈️",
+            tag: "GTAO Bloopers",
+            desc: "Aerial combat training - BrianDivaCox and Thafkndwarf go jet-to-jet in GTA Online."
+          },
+          {
+            id: "VlfcR71OAIo",
+            title: "blooper: BrianDivaCox \" I need help \"",
+            icon: "🆘",
+            tag: "GTAO Bloopers",
+            desc: "BrianDivaCox calls for backup in this hilarious in-game situation."
+          },
+          {
+            id: "QyRr_9VU4YE",
+            title: "Bloopers:  BrianDivaCox  hits just about everything!!",
+            icon: "💫",
+            tag: "GTAO Bloopers",
+            desc: "BrianDivaCox hits just about everything in Los Santos in this epic blooper reel."
           }
         ]
       };
@@ -587,6 +642,26 @@
         }
         return `BDCF Video (${videoId})`;
       }
+
+      // ── Fetch YouTube Playlist Title using public oEmbed ──
+      async function fetchPlaylistInfo(playlistId) {
+        try {
+          const playlistUrl = `https://www.youtube.com/playlist?list=${playlistId}`;
+          const oembedUrl = `https://www.youtube.com/oembed?url=${encodeURIComponent(playlistUrl)}&format=json`;
+          const res = await fetch(oembedUrl);
+          if (res.ok) {
+            const data = await res.json();
+            return {
+              title: data.title || `YouTube Playlist (${playlistId})`,
+              author: data.author_name || 'Unknown'
+            };
+          }
+        } catch (e) {
+          // oEmbed may not support all playlists
+        }
+        return { title: `YouTube Playlist (${playlistId})`, author: 'Unknown' };
+      }
+
 
       // ── Render Theater & Page ──
       function renderAll() {
@@ -832,7 +907,7 @@
         });
       });
 
-      // ── Form: Option 1 - Direct YouTube Playlist Embed Form ──
+      // ── Form: Option 1 - Auto-Load YouTube Playlist ──
       const playlistEmbedForm = document.getElementById('playlistEmbedForm');
       if (playlistEmbedForm) {
         playlistEmbedForm.addEventListener('submit', (e) => {
@@ -852,6 +927,45 @@
         });
       }
 
+      // ── Fetch Playlist Info Button ──
+      const fetchPlaylistInfoBtn = document.getElementById('fetchPlaylistInfoBtn');
+      if (fetchPlaylistInfoBtn) {
+        fetchPlaylistInfoBtn.addEventListener('click', async () => {
+          const raw = document.getElementById('ytPlaylistUrl').value.trim();
+          if (!raw) {
+            showToast("Please paste a YouTube Playlist URL first.", "info");
+            return;
+          }
+
+          const plistId = extractPlaylistId(raw);
+          if (!plistId) {
+            showToast("❌ Could not find a valid Playlist ID in that URL. Make sure it contains list=PL...", "error");
+            return;
+          }
+
+          fetchPlaylistInfoBtn.disabled = true;
+          fetchPlaylistInfoBtn.textContent = "⏳ Loading...";
+
+          const info = await fetchPlaylistInfo(plistId);
+
+          fetchPlaylistInfoBtn.disabled = false;
+          fetchPlaylistInfoBtn.textContent = "🔍 Fetch Info";
+
+          // Show preview box
+          const previewBox = document.getElementById('playlistPreviewBox');
+          const previewTitle = document.getElementById('previewPlaylistTitle');
+          const previewAuthor = document.getElementById('previewPlaylistAuthor');
+          const previewId = document.getElementById('previewPlaylistId');
+
+          if (previewBox) previewBox.style.display = 'block';
+          if (previewTitle) previewTitle.textContent = info.title;
+          if (previewAuthor) previewAuthor.textContent = info.author;
+          if (previewId) previewId.textContent = plistId;
+
+          showToast(`✅ Found: "${info.title}" — click Activate to load it!`, "success");
+        });
+      }
+
       const clearPlaylistModeBtn = document.getElementById('clearPlaylistModeBtn');
       if (clearPlaylistModeBtn) {
         clearPlaylistModeBtn.addEventListener('click', () => {
@@ -860,6 +974,7 @@
           showToast("Switched back to Individual Clips mode", "info");
         });
       }
+
 
       // ── Form: Option 2 - Bulk Multi-Link Video Importer Form ──
       const bulkLinksForm = document.getElementById('bulkLinksForm');
