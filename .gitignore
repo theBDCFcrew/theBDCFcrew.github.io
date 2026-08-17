@@ -1,0 +1,9 @@
+# Operating System & IDE Files
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+
+# Local backup archives (stored in root scratch)
+*.zip
