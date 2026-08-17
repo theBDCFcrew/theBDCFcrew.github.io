@@ -1,5 +1,10 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [2.1.3] - 2026-08-17
+- **Master Commander Google Auth**: Hardcoded `BrianDivaCox@gmail.com` as Master Commander with instant Google Sign-In access and zero database prerequisites.
+- **Auto-Sync to Firestore**: Automatically syncs Commander login and creates admin document in Firestore upon first sign-in.
+- **Updated Firestore Security Rules**: Granted `BrianDivaCox@gmail.com` full admin read/write permissions in cloud security rules.
+
 ## [2.1.2] - 2026-08-17
 - **Email & UID Admin Resolution**: Allowed admin authorization lookup by either Document ID = `email` (e.g. `brian@gmail.com`) or Document ID = `uid`.
 - **Improved Setup Experience**: Denial notification displays both copyable Email and UID for instant Firestore entry setup.

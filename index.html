@@ -38,7 +38,7 @@
         <div class="header-status-pill">
           <span class="live-dot-pulse"></span>
           <span class="status-txt">HQ LIVE</span>
-          <span class="version-pill">v2.1.2</span>
+          <span class="version-pill">v2.1.3</span>
         </div>
         <!-- Live Visitor Counter -->
         <div class="live-counter-pill" id="liveCounterPill" title="Crew members viewing right now">
@@ -1322,6 +1322,9 @@
       }, duration);
     }
 
+    // ── Master Commanders (Always Authorized) ──
+    const MASTER_COMMANDERS = ['briandivacox@gmail.com'];
+
     // ── Auth State Watcher ──
     onAuthStateChanged(auth, async (user) => {
       if (!user) {
@@ -1332,23 +1335,34 @@
         return;
       }
 
-      // User is signed in — check Firestore admins collection by UID or Email
       try {
         const emailLower = (user.email || '').toLowerCase();
         let isAdmin = false;
-        let adminData = null;
+        let adminRole = 'Officer';
 
-        // Check UID document
-        const uidSnap = await getDoc(doc(db, 'admins', user.uid));
-        if (uidSnap.exists()) {
+        // 1. Check Master Commander allowlist (Instant Access)
+        if (MASTER_COMMANDERS.includes(emailLower)) {
           isAdmin = true;
-          adminData = uidSnap.data();
-        } else if (emailLower) {
-          // Check Email document
-          const emailSnap = await getDoc(doc(db, 'admins', emailLower));
-          if (emailSnap.exists()) {
+          adminRole = 'Commander';
+          // Auto-save to Firestore so database record is initialized
+          setDoc(doc(db, 'admins', user.uid), {
+            name: user.displayName || 'BrianDivaCox',
+            email: user.email,
+            role: 'Commander',
+            lastLogin: serverTimestamp()
+          }, { merge: true }).catch(() => {});
+        } else {
+          // 2. Check Firestore admins collection for officers
+          const uidSnap = await getDoc(doc(db, 'admins', user.uid));
+          if (uidSnap.exists()) {
             isAdmin = true;
-            adminData = emailSnap.data();
+            adminRole = uidSnap.data().role || 'Officer';
+          } else if (emailLower) {
+            const emailSnap = await getDoc(doc(db, 'admins', emailLower));
+            if (emailSnap.exists()) {
+              isAdmin = true;
+              adminRole = emailSnap.data().role || 'Officer';
+            }
           }
         }
 
@@ -1357,40 +1371,36 @@
           window._bdcfUser    = user;
           updateAdminButton(user, true);
           showAuthBar(user);
-          firebaseToast(`👑 Welcome back, ${user.displayName || user.email}!`, 'success', 3000);
+          firebaseToast(`👑 Welcome back, ${adminRole} ${user.displayName || user.email}!`, 'success', 3500);
         } else {
           // Not on the admin list — deny and sign out
           await signOut(auth);
           window._bdcfIsAdmin = false;
           window._bdcfUser    = null;
           updateAdminButton(null, false);
-          // Show denial with copyable Email and UID for easy Firestore setup
           firebaseToast(
-            `❌ <strong>Access Denied.</strong> Add this account to Firestore <code>admins</code> collection:<br>
-             <strong>Email:</strong> <code style="font-size:11px;cursor:pointer;" id="denyEmail">${user.email}</code><br>
-             <strong>UID:</strong> <code style="font-size:10px;cursor:pointer;" id="denyUid">${user.uid}</code>`,
-            'error', 12000
+            `❌ <strong>Access Denied.</strong> Not an authorized BDCF officer.<br>
+             <strong>Email:</strong> <code>${user.email}</code><br>
+             <strong>UID:</strong> <code style="font-size:10px;" id="denyUid">${user.uid}</code>`,
+            'error', 10000
           );
-          setTimeout(() => {
-            const elUid = document.getElementById('denyUid');
-            const elEmail = document.getElementById('denyEmail');
-            if (elUid) elUid.addEventListener('click', () => {
-              navigator.clipboard.writeText(user.uid);
-              firebaseToast('📋 UID copied to clipboard!', 'success', 2500);
-            });
-            if (elEmail) elEmail.addEventListener('click', () => {
-              navigator.clipboard.writeText(user.email);
-              firebaseToast('📋 Email copied to clipboard!', 'success', 2500);
-            });
-          }, 100);
         }
       } catch (err) {
         console.error('[BDCF Auth] Firestore check error:', err);
-        await signOut(auth);
-        window._bdcfIsAdmin = false;
-        firebaseToast('⚠️ Auth check failed. Check Firestore rules.', 'error');
+        // If Firestore read fails but email is Master Commander, still grant access!
+        const emailLower = (user.email || '').toLowerCase();
+        if (MASTER_COMMANDERS.includes(emailLower)) {
+          window._bdcfIsAdmin = true;
+          window._bdcfUser    = user;
+          updateAdminButton(user, true);
+          showAuthBar(user);
+          firebaseToast(`👑 Welcome Commander ${user.displayName || user.email}!`, 'success', 3500);
+        } else {
+          await signOut(auth);
+          window._bdcfIsAdmin = false;
+          firebaseToast('⚠️ Auth check error. Please check your connection.', 'error');
+        }
       }
-
     });
 
     // ── Sign In via Google Popup ──
