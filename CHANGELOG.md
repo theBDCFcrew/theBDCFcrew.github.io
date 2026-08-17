@@ -1,5 +1,14 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [2.0.0] - 2026-08-17
+- **Firebase Google Auth Admin Gate**: Admin Menu is now locked behind Google Sign-In via Firebase Authentication.
+- **Firestore Admin Allowlist**: Authorized users stored in Firestore `admins/{uid}` collection — add/remove officers instantly from Firebase Console with no code changes.
+- **Auth State Persistence**: Officers stay signed in across page refreshes via Firebase session management.
+- **Auth Status Bar**: Admin modal header displays signed-in user avatar, display name, and ADMIN role badge.
+- **Sign Out Button**: One-click sign-out from within the Admin modal.
+- **Access Denial with UID**: Unauthorized sign-ins show a copyable UID in a toast for easy Firestore bootstrap setup.
+- **Auth-Aware Button**: Header "⚙️ Admin" button changes to "🔑 Admin Login" when signed out.
+
 ## [1.9.1] - 2026-08-17
 - **Playlist → Individual Clips Importer**: Replaced "Master Playlist Embed" mode with a smarter importer — paste a playlist URL, click "🔍 Fetch Videos", preview the full list with real titles, then click "⚡ Import All Clips" to add them all as individual cards in the Theater grid.
 - **RSS-Powered Video Fetch**: New `fetchPlaylistVideos()` engine pulls individual video IDs and titles from YouTube's public RSS feed (`/feeds/videos.xml`) via a CORS proxy — no API key needed.

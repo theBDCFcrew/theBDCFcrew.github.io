@@ -38,7 +38,7 @@
         <div class="header-status-pill">
           <span class="live-dot-pulse"></span>
           <span class="status-txt">HQ LIVE</span>
-          <span class="version-pill">v1.9.1</span>
+          <span class="version-pill">v2.0.0</span>
         </div>
         <button id="openAdminBtn" class="btn-admin-header" title="Open BDCF Admin Menu">
           <span>⚙️ Admin</span>
@@ -260,7 +260,16 @@
           <p class="text-xs text-muted">Manage Theater Videos, Import Playlists, and Portal Settings</p>
         </div>
       </div>
-      <button id="closeAdminModalBtn" class="admin-close-btn" aria-label="Close Admin Menu">&times;</button>
+      <div class="admin-header-right">
+        <!-- Auth Status Strip -->
+        <div id="adminAuthStatus" class="admin-auth-status" style="display:none;">
+          <span class="auth-avatar-circle" id="authAvatarCircle">?</span>
+          <span class="auth-user-name" id="authUserName">—</span>
+          <span class="auth-role-pill">ADMIN</span>
+        </div>
+        <button id="adminSignOutBtn" class="btn-sign-out" style="display:none;" title="Sign out of admin">🚪 Sign Out</button>
+        <button id="closeAdminModalBtn" class="admin-close-btn" aria-label="Close Admin Menu">&times;</button>
+      </div>
     </div>
 
     <div class="admin-modal-body">
@@ -904,17 +913,41 @@
         if (adminOverlay) adminOverlay.style.display = 'block';
       }
 
+      // Expose openModal for Firebase auth module to call
+      window._bdcfModalOpen = openModal;
+
       function closeModal() {
         if (adminModal) adminModal.style.display = 'none';
         if (adminOverlay) adminOverlay.style.display = 'none';
       }
+      window._bdcfModalClose = closeModal;
 
-      if (openAdminBtn) openAdminBtn.addEventListener('click', () => openModal('tab-videos'));
-      if (footerAdminBtn) footerAdminBtn.addEventListener('click', () => openModal('tab-videos'));
-      if (managePlaylistBtn) managePlaylistBtn.addEventListener('click', () => openModal('tab-videos'));
-      if (importQuickBtn) importQuickBtn.addEventListener('click', () => openModal('tab-import-playlist'));
+      // Route all admin buttons through Firebase auth gate
+      function handleAdminClick(defaultTab = 'tab-videos') {
+        if (typeof window._bdcfOpenAdmin === 'function') {
+          window._bdcfOpenAdmin(defaultTab);
+        } else {
+          // Firebase not loaded yet — show loading toast
+          showToast("⏳ Loading secure admin...", "info");
+        }
+      }
+
+      if (openAdminBtn) openAdminBtn.addEventListener('click', () => handleAdminClick('tab-videos'));
+      if (footerAdminBtn) footerAdminBtn.addEventListener('click', () => handleAdminClick('tab-videos'));
+      if (managePlaylistBtn) managePlaylistBtn.addEventListener('click', () => handleAdminClick('tab-videos'));
+      if (importQuickBtn) importQuickBtn.addEventListener('click', () => handleAdminClick('tab-import-playlist'));
       if (closeAdminBtn) closeAdminBtn.addEventListener('click', closeModal);
       if (adminOverlay) adminOverlay.addEventListener('click', closeModal);
+
+      // Sign Out button inside modal
+      const signOutBtn = document.getElementById('adminSignOutBtn');
+      if (signOutBtn) {
+        signOutBtn.addEventListener('click', () => {
+          if (typeof window._bdcfSignOut === 'function') window._bdcfSignOut();
+          closeModal();
+        });
+      }
+
 
       function switchAdminTab(tabId) {
         document.querySelectorAll('.admin-tab-btn').forEach(btn => {
@@ -1190,6 +1223,159 @@
       renderAll();
 
     })();
+  </script>
+
+  <!-- =========================================================================
+       FIREBASE GOOGLE AUTH — BDCF ADMIN GATE
+       ========================================================================= -->
+  <script type="module">
+    import { initializeApp }        from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+    import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut }
+                                    from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+    import { getFirestore, doc, getDoc }
+                                    from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+
+    const firebaseConfig = {
+      apiKey:            "AIzaSyBkOfgA2gmuns2-X--EYu1D0TeiPFN7w-U",
+      authDomain:        "the-bdcf-crew.firebaseapp.com",
+      projectId:         "the-bdcf-crew",
+      storageBucket:     "the-bdcf-crew.firebasestorage.app",
+      messagingSenderId: "798269256571",
+      appId:             "1:798269256571:web:4077fad17160ee72ec03de",
+      measurementId:     "G-2M4NW1GG54"
+    };
+
+    const app      = initializeApp(firebaseConfig);
+    const auth     = getAuth(app);
+    const db       = getFirestore(app);
+    const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: 'select_account' });
+
+    // ── Update the header Admin button appearance ──
+    function updateAdminButton(user, isAdmin) {
+      const headerBtn = document.getElementById('openAdminBtn');
+      const footerBtn = document.getElementById('footerAdminBtn');
+      if (!user) {
+        if (headerBtn) headerBtn.innerHTML = '<span>🔑 Admin Login</span>';
+        if (footerBtn) footerBtn.textContent = '🔑 Admin Login';
+      } else if (isAdmin) {
+        const initial = (user.displayName || user.email || '?')[0].toUpperCase();
+        if (headerBtn) headerBtn.innerHTML = `<span class="btn-avatar-initial">${initial}</span><span>⚙️ Admin</span>`;
+        if (footerBtn) footerBtn.textContent = '⚙️ Admin Menu';
+      }
+    }
+
+    // ── Show signed-in user info inside the admin modal header ──
+    function showAuthBar(user) {
+      const statusEl  = document.getElementById('adminAuthStatus');
+      const avatarEl  = document.getElementById('authAvatarCircle');
+      const nameEl    = document.getElementById('authUserName');
+      const signOutEl = document.getElementById('adminSignOutBtn');
+      if (statusEl)  statusEl.style.display  = 'flex';
+      if (signOutEl) signOutEl.style.display = 'inline-flex';
+      if (avatarEl)  avatarEl.textContent = (user.displayName || user.email || '?')[0].toUpperCase();
+      if (nameEl)    nameEl.textContent   = user.displayName || user.email;
+    }
+
+    function hideAuthBar() {
+      const statusEl  = document.getElementById('adminAuthStatus');
+      const signOutEl = document.getElementById('adminSignOutBtn');
+      if (statusEl)  statusEl.style.display  = 'none';
+      if (signOutEl) signOutEl.style.display = 'none';
+    }
+
+    // ── Toast helper (mirrors the main script's implementation) ──
+    function firebaseToast(msg, type = 'info', duration = 5000) {
+      const container = document.getElementById('toastContainer');
+      if (!container) return;
+      const toast = document.createElement('div');
+      toast.className = `toast toast-${type}`;
+      toast.innerHTML = msg;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.classList.add('toast-fadeout');
+        setTimeout(() => toast.remove(), 300);
+      }, duration);
+    }
+
+    // ── Auth State Watcher ──
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        window._bdcfIsAdmin = false;
+        window._bdcfUser    = null;
+        updateAdminButton(null, false);
+        hideAuthBar();
+        return;
+      }
+
+      // User is signed in — check Firestore admins collection
+      try {
+        const adminSnap = await getDoc(doc(db, 'admins', user.uid));
+        if (adminSnap.exists()) {
+          window._bdcfIsAdmin = true;
+          window._bdcfUser    = user;
+          updateAdminButton(user, true);
+          showAuthBar(user);
+        } else {
+          // Not on the admin list — deny and sign out
+          await signOut(auth);
+          window._bdcfIsAdmin = false;
+          window._bdcfUser    = null;
+          updateAdminButton(null, false);
+          // Show denial with copyable UID for bootstrap setup
+          firebaseToast(
+            `❌ <strong>Access Denied.</strong> Your UID (click to copy):<br>
+             <code style="font-size:10px;cursor:pointer;user-select:all;" id="denyUid">${user.uid}</code>`,
+            'error', 10000
+          );
+          setTimeout(() => {
+            const el = document.getElementById('denyUid');
+            if (el) el.addEventListener('click', () => {
+              navigator.clipboard.writeText(user.uid);
+              firebaseToast('📋 UID copied to clipboard!', 'success', 2500);
+            });
+          }, 100);
+        }
+      } catch (err) {
+        console.error('[BDCF Auth] Firestore check error:', err);
+        await signOut(auth);
+        window._bdcfIsAdmin = false;
+        firebaseToast('⚠️ Auth check failed. Check Firestore rules.', 'error');
+      }
+    });
+
+    // ── Sign In via Google Popup ──
+    window._bdcfSignIn = async () => {
+      try {
+        await signInWithPopup(auth, provider);
+      } catch (e) {
+        if (e.code !== 'auth/popup-closed-by-user') {
+          firebaseToast(`❌ Sign-in error: ${e.message}`, 'error');
+        }
+      }
+    };
+
+    // ── Sign Out ──
+    window._bdcfSignOut = async () => {
+      await signOut(auth);
+      window._bdcfIsAdmin = false;
+      window._bdcfUser    = null;
+      updateAdminButton(null, false);
+      hideAuthBar();
+      if (typeof window._bdcfModalClose === 'function') window._bdcfModalClose();
+      firebaseToast('👋 Signed out of BDCF Admin.', 'info');
+    };
+
+    // ── Open Admin (called by all admin buttons) ──
+    window._bdcfOpenAdmin = (defaultTab = 'tab-videos') => {
+      if (window._bdcfIsAdmin) {
+        if (typeof window._bdcfModalOpen === 'function') {
+          window._bdcfModalOpen(defaultTab);
+        }
+      } else {
+        window._bdcfSignIn();
+      }
+    };
   </script>
 
 </body>

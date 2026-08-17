@@ -1040,6 +1040,96 @@ body.crew-portal-body {
   color: #fff;
 }
 
+/* Admin header right side (auth status + close) */
+.admin-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Auth Status Strip */
+.admin-auth-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(147, 51, 234, 0.12);
+  border: 1px solid rgba(147, 51, 234, 0.35);
+  border-radius: 20px;
+  padding: 4px 12px 4px 6px;
+}
+
+.auth-avatar-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #9333ea, #6d28d9);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.auth-user-name {
+  font-size: 12px;
+  color: #e2e8f0;
+  font-weight: 600;
+  max-width: 120px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.auth-role-pill {
+  font-family: var(--font-tech);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #a855f7;
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+/* Sign Out Button */
+.btn-sign-out {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-sign-out:hover {
+  color: #f87171;
+  border-color: rgba(248, 113, 113, 0.4);
+  background: rgba(248, 113, 113, 0.08);
+}
+
+/* Admin button avatar initial (shown when signed in) */
+.btn-avatar-initial {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #9333ea, #6d28d9);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 2px;
+}
+
+
 .admin-modal-body {
   padding: 20px 24px 28px;
   overflow-y: auto;
