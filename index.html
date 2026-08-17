@@ -3,173 +3,194 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-  <meta name="description" content="🌴 The BDCF Crew — Official GTA Online Headquarters, Syndicate Hub & Los Santos Weekly Portal." />
-  <meta name="theme-color" content="#070a12" />
-  <title>THE BDCF CREW | GTA Online Headquarters</title>
+  <meta name="description" content="THE BDCF CREW — Official GTA Online Syndicate, Community Headquarters & Los Santos Weekly Portal." />
+  <meta name="theme-color" content="#07090e" />
+  <title>THE BDCF CREW | Official GTA Online Syndicate</title>
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts: Montserrat (Headers) & Inter (Body) & JetBrains Mono (Tech/Status) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@800;900&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="crew-body">
+<body class="crew-portal-body">
 
-  <!-- BACKGROUND ANIMATIONS -->
-  <div class="cyber-grid"></div>
-  <div class="ambient-glow glow-1"></div>
-  <div class="ambient-glow glow-2"></div>
-  <div class="ambient-glow glow-3"></div>
-  <div class="scanlines"></div>
+  <!-- LUXURY AMBIENT BACKGROUND GLOWS -->
+  <div class="ambient-mesh">
+    <div class="mesh-orb orb-pink"></div>
+    <div class="mesh-orb orb-cyan"></div>
+    <div class="mesh-orb orb-purple"></div>
+  </div>
+  <div class="grid-texture"></div>
 
-  <!-- TOP NAV -->
-  <header class="crew-nav">
-    <div class="crew-nav-inner">
-      <div class="crew-brand">
-        <span class="crew-tag-pill">[BDCF]</span>
-        <span class="crew-brand-name">THE BDCF CREW</span>
+  <!-- TOP HEADER -->
+  <header class="portal-header">
+    <div class="header-container">
+      <div class="header-brand">
+        <div class="crew-tag">[BDCF]</div>
+        <div class="brand-text-wrap">
+          <span class="brand-name">THE BDCF CREW</span>
+          <span class="brand-sub">SAN ANDREAS SYNDICATE</span>
+        </div>
       </div>
-      <div class="crew-nav-status">
-        <span class="status-indicator-dot"></span>
-        <span class="status-label">LOS SANTOS SYNDICATE</span>
-        <span class="version-tag">v1.4.0</span>
+
+      <div class="header-status-pill">
+        <span class="live-dot-pulse"></span>
+        <span class="status-txt">HQ SYSTEM LIVE</span>
+        <span class="version-pill">v1.4.0</span>
       </div>
     </div>
   </header>
 
-  <!-- MAIN WRAPPER -->
-  <main class="crew-main-container">
+  <!-- MAIN CONTAINER -->
+  <main class="portal-main">
 
     <!-- HERO SECTION -->
-    <section class="crew-hero">
+    <section class="hero-center">
       
-      <!-- Animated Crew Badge -->
-      <div class="crew-emblem-wrap">
-        <div class="crew-emblem-ring"></div>
-        <div class="crew-emblem-core">
-          <span class="emblem-tag">BDCF</span>
+      <!-- Crew Crest Badge -->
+      <div class="crest-badge">
+        <div class="crest-inner">
+          <span class="crest-icon">🌴</span>
+          <span class="crest-title">BDCF</span>
+          <span class="crest-sub">EST. 2026</span>
         </div>
       </div>
 
-      <!-- Title & Subtitle -->
-      <div class="hero-badge-pill">
-        <span class="pulse-icon">⚡</span>
-        <span>OFFICIAL HEADQUARTERS IN DEVELOPMENT</span>
+      <div class="status-banner">
+        <span class="status-icon">⚡</span>
+        <span>OFFICIAL CREW HEADQUARTERS</span>
       </div>
 
-      <h1 class="crew-hero-title">
-        THE <span class="gradient-text">BDCF</span> CREW
+      <h1 class="hero-headline">
+        THE <span class="text-gradient">BDCF</span> CREW
       </h1>
-      
-      <p class="crew-hero-subtitle">
-        Welcome to the official hub for <strong>The BDCF Crew</strong>. Dominating the streets, heists, and businesses of Los Santos and Blaine County.
+
+      <p class="hero-lead">
+        Dominating Los Santos &amp; Blaine County. Track live weekly bonuses, organize high-stakes heists, and roll with the syndicate.
       </p>
 
-      <!-- LIVE FEATURED PORTAL CARD (LOS SANTOS WEEKLY) -->
-      <div class="featured-portal-card">
-        <div class="portal-badge-row">
-          <span class="badge-live-online">
-            <span class="live-dot"></span> LIVE &amp; ONLINE
-          </span>
-          <span class="badge-accent-tag">🔥 FEATURED HUB</span>
-        </div>
+      <!-- FEATURED LIVE PORTAL HERO CARD -->
+      <div class="live-feature-card">
+        <div class="feature-card-glow"></div>
+        <div class="feature-card-content">
+          
+          <div class="feature-meta-row">
+            <div class="feature-status-badge">
+              <span class="live-ping"></span>
+              <span>LIVE GTA ONLINE HUB</span>
+            </div>
+            <span class="feature-tag">🔥 ACTIVE EVENT TRACKER</span>
+          </div>
 
-        <div class="portal-card-body">
-          <div class="portal-info">
-            <div class="portal-icon">🌴</div>
-            <div>
-              <h2 class="portal-title">Los Santos Weekly Hub</h2>
-              <p class="portal-desc">
-                Real-time GTA Online weekly updates, live Thursday reset countdown, dynamic multiplier payouts (4X/3X/2X), vehicle challenges, Salvage Yard robberies, and 1-click Google Sheets synchronization.
-              </p>
+          <div class="feature-body-grid">
+            <div class="feature-left">
+              <div class="feature-title-wrap">
+                <span class="hub-icon">🌴</span>
+                <div>
+                  <h2 class="feature-title">Los Santos Weekly Hub</h2>
+                  <p class="feature-subtitle">Live reset timer, multiplier bonuses, vehicle challenges, salvage robberies &amp; 1-click Google Sheets sync.</p>
+                </div>
+              </div>
+
+              <!-- Mini Feature Highlights Pill Bar -->
+              <div class="quick-highlights">
+                <span class="highlight-chip">🎡 Lucky Wheel Podium</span>
+                <span class="highlight-chip">🏁 Prize Ride Challenge</span>
+                <span class="highlight-chip">🏗️ Salvage Yard Robberies</span>
+                <span class="highlight-chip">💰 4X / 3X Multipliers</span>
+                <span class="highlight-chip">📊 Google Sheets Sync</span>
+              </div>
+            </div>
+
+            <div class="feature-right">
+              <a href="./LosSantosWeekly/" class="cta-launch-button" id="launchHubBtn">
+                <span class="cta-text">ENTER LOS SANTOS WEEKLY</span>
+                <span class="cta-arrow">➔</span>
+              </a>
+              <span class="cta-subtext">Direct Portal Access • No Login Required</span>
             </div>
           </div>
 
-          <div class="portal-cta-wrap">
-            <a href="./LosSantosWeekly/" class="btn-launch-hub">
-              <span>ENTER LOS SANTOS WEEKLY</span>
-              <span class="btn-arrow">➔</span>
-            </a>
-          </div>
         </div>
       </div>
 
     </section>
 
-    <!-- COMING SOON MODULES GRID -->
-    <section class="modules-section">
-      <div class="section-title-bar">
-        <span class="section-heading-icon">🚧</span>
+    <!-- CREW ROADMAP & OPERATIONS SECTION -->
+    <section class="roadmap-section">
+      <div class="section-title-wrap">
+        <span class="section-title-icon">🚧</span>
         <div>
-          <h3 class="section-heading">Crew Systems &amp; Roadmap</h3>
-          <p class="section-subheading">Features currently in development for the BDCF community</p>
+          <h3 class="section-title">Syndicate Operations &amp; Modules</h3>
+          <p class="section-subtitle">Features in active development for The BDCF Crew</p>
         </div>
       </div>
 
-      <div class="modules-grid">
+      <div class="roadmap-grid">
         
-        <!-- Card 1: Car Meets -->
-        <div class="module-card">
-          <div class="module-header">
-            <span class="module-icon">🏎️</span>
-            <span class="module-status-badge">COMING SOON</span>
+        <!-- Module 1: Car Meets -->
+        <div class="roadmap-card">
+          <div class="card-top">
+            <div class="card-icon-wrap icon-car">🏎️</div>
+            <span class="badge-stage">COMING SOON</span>
           </div>
-          <h4 class="module-title">Crew Car Meets &amp; Builds</h4>
-          <p class="module-desc">
-            Organized LS Car Meet showcases, drag races, drift lines, and custom crew livery garage spotlights.
+          <h4 class="card-heading">LS Car Meets &amp; Garage</h4>
+          <p class="card-desc">
+            Organized crew car meets, drag series, stance battles, and community garage livery spotlights.
           </p>
-          <div class="module-footer">
-            <span class="module-tag">🚗 Street &amp; Stance</span>
-            <span class="module-progress">In Progress</span>
+          <div class="card-bottom">
+            <span class="tag-label">Street &amp; Stance</span>
+            <span class="tag-status status-in-progress">● In Progress</span>
           </div>
         </div>
 
-        <!-- Card 2: Heist Squads -->
-        <div class="module-card">
-          <div class="module-header">
-            <span class="module-icon">💰</span>
-            <span class="module-status-badge">COMING SOON</span>
+        <!-- Module 2: Heist Squads -->
+        <div class="roadmap-card">
+          <div class="card-top">
+            <div class="card-icon-wrap icon-heist">💼</div>
+            <span class="badge-stage">COMING SOON</span>
           </div>
-          <h4 class="module-title">Heist Squads &amp; Operations</h4>
-          <p class="module-desc">
-            Coordinated strike teams for Cayo Perico, Diamond Casino Heists, Doomsday, and Criminal Mastermind challenges.
+          <h4 class="card-heading">Heist Strike Teams</h4>
+          <p class="card-desc">
+            Coordinated crews for Cayo Perico, Diamond Casino, Doomsday, and Criminal Mastermind completions.
           </p>
-          <div class="module-footer">
-            <span class="module-tag">💼 Maximum Cut</span>
-            <span class="module-progress">In Progress</span>
+          <div class="card-bottom">
+            <span class="tag-label">Maximum Payouts</span>
+            <span class="tag-status status-in-progress">● In Progress</span>
           </div>
         </div>
 
-        <!-- Card 3: Business Network -->
-        <div class="module-card">
-          <div class="module-header">
-            <span class="module-icon">🏢</span>
-            <span class="module-status-badge">COMING SOON</span>
+        <!-- Module 3: Business Network -->
+        <div class="roadmap-card">
+          <div class="card-top">
+            <div class="card-icon-wrap icon-business">📦</div>
+            <span class="badge-stage">COMING SOON</span>
           </div>
-          <h4 class="module-title">Syndicate Business Network</h4>
-          <p class="module-desc">
-            Bunker, Nightclub, and Special Cargo sell lobbies with full crew protection and rotation escorts.
+          <h4 class="card-heading">Safe Business Network</h4>
+          <p class="card-desc">
+            Bunker, Nightclub, and Special Cargo sell lobbies backed by full crew escort protection.
           </p>
-          <div class="module-footer">
-            <span class="module-tag">📦 Safe Lobbies</span>
-            <span class="module-progress">Planned</span>
+          <div class="card-bottom">
+            <span class="tag-label">Protected Lobbies</span>
+            <span class="tag-status status-planned">○ Planned</span>
           </div>
         </div>
 
-        <!-- Card 4: Discord & Comms -->
-        <div class="module-card">
-          <div class="module-header">
-            <span class="module-icon">🎙️</span>
-            <span class="module-status-badge">COMING SOON</span>
+        <!-- Module 4: Discord & Comms -->
+        <div class="roadmap-card">
+          <div class="card-top">
+            <div class="card-icon-wrap icon-discord">🎙️</div>
+            <span class="badge-stage">COMING SOON</span>
           </div>
-          <h4 class="module-title">Crew Discord &amp; LFG Comms</h4>
-          <p class="module-desc">
-            Direct matchmaking, voice channels, weekly event calendars, and active member roster rankings.
+          <h4 class="card-heading">Crew Discord &amp; LFG</h4>
+          <p class="card-desc">
+            Official voice channels, daily LFG matchmaking, event calendars, and crew rank progression.
           </p>
-          <div class="module-footer">
-            <span class="module-tag">🎮 Community</span>
-            <span class="module-progress">Planned</span>
+          <div class="card-bottom">
+            <span class="tag-label">Community</span>
+            <span class="tag-status status-planned">○ Planned</span>
           </div>
         </div>
 
@@ -178,15 +199,16 @@
 
   </main>
 
-  <!-- CREW FOOTER -->
-  <footer class="crew-footer">
-    <div class="crew-footer-inner">
-      <div class="footer-left">
-        <span class="footer-tag">[BDCF] THE BDCF CREW</span>
-        <p>Built for the GTA Online Crew Community. All GTA trademarks belong to Rockstar Games / Take-Two Interactive.</p>
+  <!-- FOOTER -->
+  <footer class="portal-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">[BDCF] THE BDCF CREW</span>
+        <p class="footer-copy">Built for GTA Online. All GTA trademarks belong to Rockstar Games / Take-Two Interactive.</p>
       </div>
-      <div class="footer-right">
-        <a href="./LosSantosWeekly/" class="footer-portal-link">🌴 Los Santos Weekly Hub ➔</a>
+
+      <div class="footer-links">
+        <a href="./LosSantosWeekly/" class="footer-link-highlight">🌴 Los Santos Weekly Hub ➔</a>
       </div>
     </div>
   </footer>

@@ -1,5 +1,8 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [1.4.1] - 2026-08-17
+- **Polished AAA Coming Soon UI**: Replaced generic effects with a sleek, dark cyber-noir design, ambient mesh glows, and direct launch button.
+
 ## [1.4.0] - 2026-08-17
 - **BDCF Crew Coming Soon Hub**: Created animated cyber-noir main landing page at `https://thebdcfcrew.github.io`.
 - **LosSantosWeekly Subfolder**: Moved Weekly Update Dashboard to dedicated `/LosSantosWeekly/` URL path.
