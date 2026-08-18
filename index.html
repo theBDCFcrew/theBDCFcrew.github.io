@@ -42,7 +42,7 @@
   </div>
   <div class="grid-texture"></div>
 
-  <!-- TOP HEADER: CUSTOM SYNDICATE THEATER -->
+  <!-- TOP HEADER: CUSTOM THEATER -->
   <header class="portal-header">
     <div class="header-container">
       <div class="header-brand-wrap" id="headerBrandLogo" title="The BDCF Crew">
@@ -54,32 +54,13 @@
       </div>
 
       <div class="header-center-title">
-        SYNDICATE THEATER
+        THEATER
       </div>
 
       <div class="header-right-actions">
-        <button id="headerSearchBtn" class="header-icon-btn header-search-btn" title="Search Theater Videos" aria-label="Search Videos">
-          <svg class="search-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="7"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-        </button>
-
         <button id="headerUserAvatarBtn" class="header-user-avatar-btn" title="BDCF Syndicate Profile &amp; Admin Menu" aria-label="Open Profile &amp; Settings">
           <img src="./user-avatar.png" alt="Profile" class="header-avatar-img" />
         </button>
-      </div>
-    </div>
-
-    <!-- Interactive Search Bar Dropdown -->
-    <div id="headerSearchBar" class="header-search-bar" style="display: none;">
-      <div class="search-input-wrap">
-        <svg class="search-input-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="7"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-        <input type="text" id="theaterVideoSearchInput" class="theater-search-input" placeholder="Search GTAO videos, series, clips..." autocomplete="off" />
-        <button id="clearSearchBtn" class="clear-search-btn" style="display:none;" aria-label="Clear Search">&times;</button>
       </div>
     </div>
   </header>
@@ -336,7 +317,7 @@
 
       <div class="footer-links">
         <button id="footerInstallBtn" class="footer-install-btn" style="display:none;">📲 Install Web App</button>
-        <button id="footerVersionBtn" class="footer-admin-btn" title="View Syndicate Updates & Changelog">⚡ v3.5.8 Updates</button>
+        <button id="footerVersionBtn" class="footer-admin-btn" title="View Syndicate Updates & Changelog">⚡ v3.5.9 Updates</button>
         <button id="footerAdminBtn" class="footer-admin-btn">⚙️ Admin Menu</button>
       </div>
 
@@ -344,7 +325,7 @@
   </footer>
 
   <!-- =========================================================================
-       POPUP MODAL WINDOW: SYNDICATE UPDATE ALERT (v3.5.8)
+       POPUP MODAL WINDOW: SYNDICATE UPDATE ALERT (v3.5.9)
        ========================================================================= -->
   <div id="updateAlertOverlay" class="update-alert-overlay" style="display: none;"></div>
   <div id="updateAlertModal" class="update-alert-modal-container" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="updateAlertTitle">
@@ -354,9 +335,9 @@
         <div>
           <div class="update-headline-row">
             <h3 id="updateAlertTitle">NEW SYNDICATE UPDATE</h3>
-            <span class="update-version-tag">v3.5.8</span>
+            <span class="update-version-tag">v3.5.9</span>
           </div>
-          <p class="update-subheadline">Syndicate Theater Top Header Redesign</p>
+          <p class="update-subheadline">Header Polish &amp; Sizing Optimization</p>
         </div>
       </div>
       <button id="closeUpdateAlertBtn" class="update-close-btn" aria-label="Close Update Alert">&times;</button>
@@ -365,7 +346,7 @@
     <div class="update-alert-body">
       <div class="update-featured-banner">
         <span class="update-badge-pill">🔥 WHAT'S NEW</span>
-        <p>Built the custom Syndicate Theater top header with glowing neon BDCF skull, bold title, live search, and profile avatar!</p>
+        <p>Enlarged the neon skull logo and profile avatar, removed search icon, and streamlined the header title to THEATER!</p>
       </div>
 
       <div class="update-features-list">
@@ -2200,7 +2181,7 @@ function onOpen() {
   <script>
     (function () {
       'use strict';
-      const CURRENT_APP_VERSION = 'v3.5.8';
+      const CURRENT_APP_VERSION = 'v3.5.9';
 
       const updateModal = document.getElementById('updateAlertModal');
       const updateOverlay = document.getElementById('updateAlertOverlay');

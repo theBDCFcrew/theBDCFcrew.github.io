@@ -145,16 +145,16 @@ body.crew-portal-body {
   z-index: 1;
 }
 
-/* ── Top Header: Custom Syndicate Theater ── */
+/* ── Top Header: Custom Theater ── */
 .portal-header {
   position: relative;
   z-index: 900;
   background: rgba(7, 8, 15, 0.96);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(168, 85, 247, 0.25);
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
-  padding: 10px 20px;
+  border-bottom: 1.5px solid rgba(168, 85, 247, 0.35);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
+  padding: 12px 24px;
 }
 
 .header-container {
@@ -163,36 +163,37 @@ body.crew-portal-body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
+  position: relative;
 }
 
-/* Left Brand: Neon Skull + BDCF CREW */
+/* Left Brand: Neon Skull + BDCF CREW (Enlarged) */
 .header-brand-wrap {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   text-decoration: none;
   cursor: pointer;
   flex-shrink: 0;
 }
 
 .header-neon-skull {
-  height: 44px;
+  height: 56px;
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 0 10px rgba(217, 70, 239, 0.8));
+  filter: drop-shadow(0 0 12px rgba(217, 70, 239, 0.9)) drop-shadow(0 0 24px rgba(168, 85, 247, 0.5));
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .header-brand-wrap:hover .header-neon-skull {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 16px rgba(217, 70, 239, 1));
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 18px rgba(217, 70, 239, 1)) drop-shadow(0 0 30px rgba(168, 85, 247, 0.8));
 }
 
 .header-neon-brand-text {
   display: flex;
   flex-direction: column;
-  line-height: 0.92;
+  line-height: 0.90;
   font-family: var(--font-header), 'Montserrat', sans-serif;
   font-weight: 900;
   text-transform: uppercase;
@@ -200,60 +201,36 @@ body.crew-portal-body {
 }
 
 .neon-line-top, .neon-line-bot {
-  font-size: 18px;
-  letter-spacing: 1.2px;
+  font-size: 23px;
+  letter-spacing: 1.5px;
   color: #fff;
-  -webkit-text-stroke: 1px #d946ef;
+  -webkit-text-stroke: 1.2px #f0abfc;
   text-shadow: 
     0 0 6px #d946ef,
     0 0 14px #a855f7,
-    0 0 24px #9333ea;
+    0 0 28px #9333ea;
 }
 
-/* Center Title: SYNDICATE THEATER */
+/* Center Title: THEATER */
 .header-center-title {
   font-family: var(--font-header), 'Montserrat', sans-serif;
-  font-size: 20px;
+  font-size: 26px;
   font-weight: 900;
   color: #ffffff;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   white-space: nowrap;
   text-align: center;
   flex: 1;
 }
 
-/* Right Controls: Search & Avatar Profile */
+/* Right Controls: Profile Avatar (Enlarged and pinned to the right) */
 .header-right-actions {
   display: flex;
   align-items: center;
-  gap: 14px;
+  justify-content: flex-end;
+  margin-left: auto;
   flex-shrink: 0;
-}
-
-.header-search-btn {
-  background: transparent;
-  border: none;
-  color: #ffffff;
-  cursor: pointer;
-  padding: 6px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-}
-
-.header-search-btn:hover {
-  color: #d946ef;
-  transform: scale(1.1);
-  filter: drop-shadow(0 0 8px rgba(217, 70, 239, 0.8));
-}
-
-.search-svg-icon {
-  width: 22px;
-  height: 22px;
-  stroke: currentColor;
 }
 
 .header-user-avatar-btn {
@@ -265,7 +242,7 @@ body.crew-portal-body {
   align-items: center;
   justify-content: center;
   position: relative;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .header-user-avatar-btn:hover {
@@ -273,67 +250,19 @@ body.crew-portal-body {
 }
 
 .header-avatar-img {
-  width: 38px;
-  height: 38px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #a855f7;
-  box-shadow: 0 0 12px rgba(168, 85, 247, 0.8), 0 0 20px rgba(217, 70, 239, 0.4);
+  border: 3px solid #c084fc;
+  box-shadow: 0 0 16px rgba(192, 132, 252, 0.9), 0 0 30px rgba(217, 70, 239, 0.6);
   display: block;
+  transition: all 0.2s ease;
 }
 
-/* Quick Search Dropdown Bar */
-.header-search-bar {
-  max-width: 1200px;
-  margin: 10px auto 0;
-  animation: fadeIn 0.2s ease;
-}
-
-.search-input-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-  background: rgba(15, 20, 36, 0.95);
-  border: 1.5px solid #a855f7;
-  border-radius: 12px;
-  padding: 8px 14px;
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.35);
-}
-
-.search-input-icon {
-  color: #c084fc;
-  margin-right: 10px;
-  flex-shrink: 0;
-}
-
-.theater-search-input {
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-family: var(--font-body);
-  font-size: 13px;
-  width: 100%;
-  outline: none;
-}
-
-.theater-search-input::placeholder {
-  color: rgba(255, 255, 255, 0.45);
-}
-
-.clear-search-btn {
-  background: transparent;
-  border: none;
-  color: var(--text-muted);
-  font-size: 18px;
-  cursor: pointer;
-  padding: 0 4px;
-}
-
-.clear-search-btn:hover {
-  color: #fff;
-}
-  padding: 5px 12px;
-  border-radius: var(--radius-full);
+.header-user-avatar-btn:hover .header-avatar-img {
+  border-color: #f0abfc;
+  box-shadow: 0 0 22px rgba(240, 171, 252, 1), 0 0 40px rgba(217, 70, 239, 0.8);
 }
 
 .live-dot-pulse {
@@ -2558,35 +2487,31 @@ body.crew-portal-body {
   }
 
   .header-brand-wrap {
-    gap: 6px;
+    gap: 8px;
   }
 
   .header-neon-skull {
-    height: 34px;
+    height: 44px;
   }
 
   .neon-line-top, .neon-line-bot {
-    font-size: 14px;
+    font-size: 17px;
     letter-spacing: 0.8px;
   }
 
   .header-center-title {
-    font-size: 14px;
-    letter-spacing: 0.5px;
+    font-size: 18px;
+    letter-spacing: 1px;
   }
 
   .header-right-actions {
-    gap: 8px;
-  }
-
-  .search-svg-icon {
-    width: 19px;
-    height: 19px;
+    margin-left: auto;
   }
 
   .header-avatar-img {
-    width: 32px;
-    height: 32px;
+    width: 42px;
+    height: 42px;
+    border-width: 2.5px;
   }
 
   .portal-nav-bar {

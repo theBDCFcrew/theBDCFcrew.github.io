@@ -1,5 +1,13 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.5.9] - 2026-08-18
+- **Header Polish & Sizing Optimization**:
+  - Removed search button and search bar from the top header for a focused, clean layout.
+  - Enlarged the glowing neon BDCF skull logo and "BDCF CREW" typography.
+  - Enlarged the circular profile avatar picture with an enhanced glowing purple border ring and pinned it cleanly to the far right.
+  - Updated the center title from "SYNDICATE THEATER" to just **"THEATER"**.
+- **Service Worker Cache Refresh**: Bumped service worker cache identifier to `bdcf-pwa-cache-v3.5.9`.
+
 ## [3.5.8] - 2026-08-18
 - **Syndicate Theater Custom Header Redesign**:
   - Rebuilt the top header to match the user's custom aesthetic: glowing neon purple BDCF skull icon, neon outline "BDCF CREW" brand mark, bold "SYNDICATE THEATER" center title, vector search icon, and circular purple-bordered profile avatar.
