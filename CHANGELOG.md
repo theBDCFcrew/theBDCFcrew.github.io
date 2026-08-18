@@ -1,5 +1,9 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.4.1] - 2026-08-18
+- **CSS Hierarchy & Bracket Balance Fix**: Removed a stray unmatched closing bracket in `style.css` at line 1351 that was interfering with downstream modal and admin layout styling in certain browser engines.
+- **Resilient Service Worker Pre-Caching**: Updated `sw.js` cache installer to gracefully add assets individually to prevent 404/rejection cascading, and bumped cache identifier to `bdcf-pwa-cache-v3.4.1` for immediate client cache refresh.
+
 ## [3.4.0] - 2026-08-18
 - **High-Visibility "In-Your-Face" PWA Install Banner & Dock**: Added an unmissable, floating glassmorphic smart app dock fixed to the bottom of the screen with glowing purple neon borders, green online status badge, and pulsing `⚡ INSTALL APP NOW` action button.
 - **Auto-Slide In Animation**: The install dock automatically animates up onto the screen after 1.2s for mobile and desktop visitors.

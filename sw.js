@@ -1,9 +1,9 @@
 // =========================================================================
-// BDCF CREW PWA SERVICE WORKER (v3.3.0)
+// BDCF CREW PWA SERVICE WORKER (v3.4.1)
 // High-performance offline caching, asset pre-fetching & network strategy
 // =========================================================================
 
-const CACHE_NAME = 'bdcf-pwa-cache-v3.3.0';
+const CACHE_NAME = 'bdcf-pwa-cache-v3.4.1';
 
 const ASSETS_TO_CACHE = [
   './',
@@ -12,23 +12,30 @@ const ASSETS_TO_CACHE = [
   './manifest.json',
   './icon-192.svg',
   './icon-512.svg',
-  './LosSantosWeekly/',
+  './icon-192.png',
+  './icon-512.png',
+  './apple-touch-icon.png',
   './LosSantosWeekly/index.html',
   './LosSantosWeekly/style.css',
   './LosSantosWeekly/app.js'
 ];
 
-// Install Event — Pre-cache critical core shell
+// Install Event — Pre-cache critical core shell resiliently
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS_TO_CACHE).catch((err) => {
-        console.warn('BDCF PWA Cache addAll warning:', err);
-      });
+    caches.open(CACHE_NAME).then(async (cache) => {
+      for (const asset of ASSETS_TO_CACHE) {
+        try {
+          await cache.add(asset);
+        } catch (err) {
+          console.warn('[BDCF PWA] Cache item warning:', asset, err);
+        }
+      }
     })
   );
   self.skipWaiting();
 });
+
 
 // Activate Event — Clean up stale old caches
 self.addEventListener('activate', (event) => {
