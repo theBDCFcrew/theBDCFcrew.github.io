@@ -46,9 +46,11 @@
   </div>
   <div class="grid-texture"></div>
 
-  <!-- TOP HEADER: CUSTOM THEATER -->
+  <!-- UNIFIED TOP HEADER: SKULL, INLINE NAV BAR & PROFILE AVATAR -->
   <header class="portal-header">
     <div class="header-container">
+      
+      <!-- Left: Bigger Glowing Skull & Brand Logo -->
       <div class="header-brand-wrap" id="headerBrandLogo" title="The BDCF Crew">
         <img src="./bdcf-neon-skull.png" alt="BDCF Skull Logo" class="header-neon-skull" fetchpriority="high" decoding="async" />
         <div class="header-neon-brand-text">
@@ -57,35 +59,33 @@
         </div>
       </div>
 
-      <div class="header-center-title">
-        THEATER
-      </div>
+      <!-- Center: Inline Navigation Bar on Same Line -->
+      <nav class="header-inline-nav" aria-label="Portal Navigation">
+        <div class="header-nav-pills-wrap">
+          <button class="portal-tab-btn active" data-tab="tab-theater">
+            <span class="tab-icon">🎬</span>
+            <span class="tab-label">Theater</span>
+          </button>
+          <button class="portal-tab-btn" data-tab="tab-weekly">
+            <span class="tab-icon">🌴</span>
+            <span class="tab-label">Weekly Update</span>
+          </button>
+          <button class="portal-tab-btn" data-tab="tab-join">
+            <span class="tab-icon">📝</span>
+            <span class="tab-label">Join Crew</span>
+          </button>
+        </div>
+      </nav>
 
+      <!-- Right: Profile Avatar Button -->
       <div class="header-right-actions">
         <button id="headerUserAvatarBtn" class="header-user-avatar-btn" title="BDCF Syndicate Profile &amp; Admin Menu" aria-label="Open Profile &amp; Settings">
           <img src="./user-avatar.png" alt="Profile" class="header-avatar-img" fetchpriority="high" decoding="async" />
         </button>
       </div>
+
     </div>
   </header>
-
-  <!-- STREAMLINED MAIN NAVIGATION TABS BAR -->
-  <nav class="portal-nav-bar">
-    <div class="portal-nav-container">
-      <button class="portal-tab-btn active" data-tab="tab-theater">
-        <span class="tab-icon">🎬</span>
-        <span class="tab-label">Theater</span>
-      </button>
-      <button class="portal-tab-btn" data-tab="tab-weekly">
-        <span class="tab-icon">🌴</span>
-        <span class="tab-label">Los Santos Weekly</span>
-      </button>
-      <button class="portal-tab-btn" data-tab="tab-join">
-        <span class="tab-icon">📝</span>
-        <span class="tab-label">Join The Crew</span>
-      </button>
-    </div>
-  </nav>
 
   <!-- MAIN CONTAINER -->
   <main class="portal-main">
@@ -335,7 +335,7 @@
 
       <div class="footer-links">
         <button id="footerInstallBtn" class="footer-install-btn" style="display:none;">📲 Install Web App</button>
-        <button id="footerVersionBtn" class="footer-admin-btn" title="View Syndicate Updates & Changelog">⚡ v3.6.1 Updates</button>
+        <button id="footerVersionBtn" class="footer-admin-btn" title="View Syndicate Updates & Changelog">⚡ v3.6.2 Updates</button>
         <button id="footerAdminBtn" class="footer-admin-btn">⚙️ Admin Menu</button>
       </div>
 
@@ -343,7 +343,7 @@
   </footer>
 
   <!-- =========================================================================
-       POPUP MODAL WINDOW: SYNDICATE UPDATE ALERT (v3.6.1)
+       POPUP MODAL WINDOW: SYNDICATE UPDATE ALERT (v3.6.2)
        ========================================================================= -->
   <div id="updateAlertOverlay" class="update-alert-overlay" style="display: none;"></div>
   <div id="updateAlertModal" class="update-alert-modal-container" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="updateAlertTitle">
@@ -353,9 +353,9 @@
         <div>
           <div class="update-headline-row">
             <h3 id="updateAlertTitle">NEW SYNDICATE UPDATE</h3>
-            <span class="update-version-tag">v3.6.1</span>
+            <span class="update-version-tag">v3.6.2</span>
           </div>
-          <p class="update-subheadline">iPhone 11 Pro &amp; Mobile Speed Engine</p>
+          <p class="update-subheadline">Unified Header with Inline Navigation Bar</p>
         </div>
       </div>
       <button id="closeUpdateAlertBtn" class="update-close-btn" aria-label="Close Update Alert">&times;</button>
@@ -364,7 +364,7 @@
     <div class="update-alert-body">
       <div class="update-featured-banner">
         <span class="update-badge-pill">🔥 WHAT'S NEW</span>
-        <p>Instant video facade, non-blocking asynchronous fonts, and hardware-accelerated rendering for lightning-fast loads on iPhone and all mobile devices!</p>
+        <p>Unified top bar with bigger glowing skull logo on the left, inline navigation tabs in the center, and profile button on the right — all on the same line!</p>
       </div>
 
       <div class="update-features-list">
@@ -2244,7 +2244,7 @@ function onOpen() {
   <script>
     (function () {
       'use strict';
-      const CURRENT_APP_VERSION = 'v3.6.1';
+      const CURRENT_APP_VERSION = 'v3.6.2';
 
       const updateModal = document.getElementById('updateAlertModal');
       const updateOverlay = document.getElementById('updateAlertOverlay');

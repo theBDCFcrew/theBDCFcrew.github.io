@@ -1,5 +1,12 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.6.2] - 2026-08-18
+- **Unified Single-Line Top Header & Navigation**:
+  - Combined the glowing neon skull brand logo on the left, pill navigation menu tabs in the center, and profile avatar on the far right into a single streamlined horizontal top bar.
+  - Enlarged the glowing neon BDCF skull to `68px` on desktop (`46px` on mobile) with enhanced magenta drop-shadow.
+  - Eliminated the redundant secondary navigation bar below the header to reclaim vertical screen space across all devices.
+- **Service Worker Cache Refresh**: Bumped service worker cache identifier to `bdcf-pwa-cache-v3.6.2`.
+
 ## [3.6.1] - 2026-08-18
 - **iPhone 11 Pro & Mobile Speed Optimization Engine**:
   - **Instant YouTube Facade**: Replaced synchronous initial YouTube iframe on startup with a lightweight HD poster and 1-tap play trigger, eliminating 3MB+ of blocking player scripts during initial page load.

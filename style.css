@@ -145,49 +145,48 @@ body.crew-portal-body {
   z-index: 1;
 }
 
-/* ── Top Header: Custom Theater ── */
+/* ── Top Header: Unified Single-Line Layout ── */
 .portal-header {
   position: relative;
   z-index: 900;
   background: rgba(7, 8, 15, 0.96);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1.5px solid rgba(168, 85, 247, 0.35);
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
-  padding: 12px 24px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.75);
+  padding: 10px 24px;
 }
 
 .header-container {
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  position: relative;
 }
 
-/* Left Brand: Neon Skull + BDCF CREW (Enlarged) */
+/* Left: Bigger Glowing Skull Logo */
 .header-brand-wrap {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   text-decoration: none;
   cursor: pointer;
   flex-shrink: 0;
 }
 
 .header-neon-skull {
-  height: 56px;
+  height: 68px;
   width: auto;
   object-fit: contain;
-  filter: drop-shadow(0 0 12px rgba(217, 70, 239, 0.9)) drop-shadow(0 0 24px rgba(168, 85, 247, 0.5));
+  filter: drop-shadow(0 0 14px rgba(217, 70, 239, 0.95)) drop-shadow(0 0 28px rgba(168, 85, 247, 0.6));
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .header-brand-wrap:hover .header-neon-skull {
   transform: scale(1.06);
-  filter: drop-shadow(0 0 18px rgba(217, 70, 239, 1)) drop-shadow(0 0 30px rgba(168, 85, 247, 0.8));
+  filter: drop-shadow(0 0 20px rgba(217, 70, 239, 1)) drop-shadow(0 0 35px rgba(168, 85, 247, 0.85));
 }
 
 .header-neon-brand-text {
@@ -201,7 +200,7 @@ body.crew-portal-body {
 }
 
 .neon-line-top, .neon-line-bot {
-  font-size: 23px;
+  font-size: 24px;
   letter-spacing: 1.5px;
   color: #fff;
   -webkit-text-stroke: 1.2px #f0abfc;
@@ -211,20 +210,58 @@ body.crew-portal-body {
     0 0 28px #9333ea;
 }
 
-/* Center Title: THEATER */
-.header-center-title {
-  font-family: var(--font-header), 'Montserrat', sans-serif;
-  font-size: 26px;
-  font-weight: 900;
-  color: #ffffff;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  white-space: nowrap;
-  text-align: center;
+/* Center: Inline Navigation Bar */
+.header-inline-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex: 1;
+  min-width: 0;
 }
 
-/* Right Controls: Profile Avatar (Enlarged and pinned to the right) */
+.header-nav-pills-wrap {
+  display: flex;
+  align-items: center;
+  background: rgba(15, 20, 36, 0.85);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  border-radius: var(--radius-full);
+  padding: 4px 6px;
+  gap: 6px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.portal-tab-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-header);
+  font-size: 13px;
+  font-weight: 800;
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portal-tab-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.portal-tab-btn.active {
+  color: #fff;
+  background: linear-gradient(135deg, var(--crew-purple-light), var(--crew-purple-dark));
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 16px var(--crew-purple-glow);
+}
+
+/* Right: Profile Avatar Button */
 .header-right-actions {
   display: flex;
   align-items: center;
@@ -314,70 +351,6 @@ body.crew-portal-body {
   color: var(--crew-purple-neon);
   border-color: var(--border-purple);
   background: rgba(168, 85, 247, 0.12);
-}
-
-/* ── Streamlined Navigation Tabs Bar ── */
-.portal-nav-bar {
-  position: sticky;
-  top: 0;
-  z-index: 850;
-  background: rgba(10, 14, 25, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border-color);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.portal-nav-bar::-webkit-scrollbar {
-  display: none;
-}
-
-.portal-nav-container {
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 8px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.portal-nav-container::-webkit-scrollbar {
-  display: none;
-}
-
-.portal-tab-btn {
-  background: transparent;
-  border: 1px solid transparent;
-  color: var(--text-muted);
-  font-family: var(--font-header);
-  font-size: 13px;
-  font-weight: 800;
-  padding: 10px 20px;
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  white-space: nowrap;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.portal-tab-btn:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.portal-tab-btn.active {
-  color: #fff;
-  background: linear-gradient(135deg, var(--crew-purple-light), var(--crew-purple-dark));
-  border-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 0 16px var(--crew-purple-glow);
 }
 
 /* ── Tab Panes ── */
@@ -2571,7 +2544,7 @@ body.crew-portal-body {
   }
 
   .portal-header {
-    padding: 8px 12px;
+    padding: 8px 10px;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -2586,30 +2559,54 @@ body.crew-portal-body {
   }
 
   .header-brand-wrap {
-    gap: 8px;
+    gap: 6px;
+    flex-shrink: 0;
   }
 
   .header-neon-skull {
-    height: 44px;
+    height: 46px;
   }
 
   .neon-line-top, .neon-line-bot {
-    font-size: 17px;
-    letter-spacing: 0.8px;
+    font-size: 15px;
+    letter-spacing: 0.6px;
   }
 
-  .header-center-title {
-    font-size: 18px;
-    letter-spacing: 1px;
+  .header-inline-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .header-inline-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .header-nav-pills-wrap {
+    padding: 3px 5px;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .portal-tab-btn {
+    padding: 6px 9px;
+    font-size: 10.5px;
+    gap: 4px;
   }
 
   .header-right-actions {
     margin-left: auto;
+    flex-shrink: 0;
   }
 
   .header-avatar-img {
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     border-width: 2.5px;
   }
 
@@ -2627,27 +2624,6 @@ body.crew-portal-body {
     left: 8px;
     padding: 3px 8px;
     font-size: 8.5px;
-  }
-
-  .portal-nav-bar {
-    width: 100%;
-    box-sizing: border-box;
-    overflow: hidden;
-  }
-
-  .portal-nav-container {
-    width: 100%;
-    max-width: 100%;
-    padding: 6px 8px;
-    gap: 6px;
-    box-sizing: border-box;
-    justify-content: flex-start;
-  }
-
-  .portal-tab-btn {
-    padding: 7px 11px;
-    font-size: 11px;
-    gap: 5px;
   }
 
   .portal-main {
