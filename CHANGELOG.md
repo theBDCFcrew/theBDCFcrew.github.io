@@ -1,5 +1,12 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.6.0] - 2026-08-18
+- **Transparent Neon Skull & Avatar Edge Refinement**:
+  - Re-processed `bdcf-neon-skull.png` to remove all solid black background box pixels, making the skull 100% transparent alpha with luminous glowing neon outlines.
+  - Re-cropped `user-avatar.png` to an antialiased circular mask with zero black corner artifacts.
+  - Skull and profile picture now blend seamlessly into the dark glassmorphic header mesh.
+- **Service Worker Cache Refresh**: Bumped service worker cache identifier to `bdcf-pwa-cache-v3.6.0`.
+
 ## [3.5.9] - 2026-08-18
 - **Header Polish & Sizing Optimization**:
   - Removed search button and search bar from the top header for a focused, clean layout.
