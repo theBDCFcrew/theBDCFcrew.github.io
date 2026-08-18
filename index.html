@@ -38,7 +38,7 @@
         <div class="header-status-pill">
           <span class="live-dot-pulse"></span>
           <span class="status-txt">HQ LIVE</span>
-          <span class="version-pill">v3.1.0</span>
+          <span class="version-pill">v3.2.0</span>
         </div>
         <!-- Live Visitor Counter -->
         <div class="live-counter-pill" id="liveCounterPill" title="Crew members viewing right now">
@@ -155,12 +155,9 @@
             </div>
             <div class="playlist-header-actions">
               <span class="clips-count-pill" id="clipsCountPill">15 Clips</span>
-              <button id="syncPlaylistBtn" class="btn-sync-series" title="Check YouTube for newly uploaded clips in this series">
-                <span class="sync-icon">🔄</span>
-                <span>Sync with YouTube</span>
-              </button>
               <button id="managePlaylistBtn" class="btn-manage-playlist">⚙️ Manage Series</button>
             </div>
+
 
           </div>
           <div class="playlist-grid" id="playlistGrid">
@@ -329,9 +326,11 @@
         <button class="admin-tab-btn active" data-tab="tab-categories">📂 Series &amp; Categories</button>
         <button class="admin-tab-btn" data-tab="tab-import-playlist">📥 Import Playlist as Series</button>
         <button class="admin-tab-btn" data-tab="tab-add-video">➕ Add Single Video</button>
+        <button class="admin-tab-btn" data-tab="tab-weekly-sync">🌴 Weekly Hub &amp; APIs</button>
         <button class="admin-tab-btn" data-tab="tab-settings">⚙️ Crew Settings</button>
         <button class="admin-tab-btn" data-tab="tab-export">💾 Export / Backup</button>
       </div>
+
 
       <!-- TAB 1: MANAGE SERIES CATEGORIES & VIDEOS -->
       <div id="tab-categories" class="admin-tab-pane active">
@@ -444,12 +443,65 @@
       </div>
 
 
-      <!-- TAB 4: CREW SETTINGS & FORM -->
+      <!-- TAB 4: WEEKLY HUB & APIS (REDDIT & GOOGLE SHEETS) -->
+      <div id="tab-weekly-sync" class="admin-tab-pane">
+        <div class="admin-section-info">
+          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+            <h4>🌴 Los Santos Weekly Hub &amp; API Controls</h4>
+            <span class="active-tag-pill" style="color:#22c55e; background:rgba(34,197,94,0.15); border-color:rgba(34,197,94,0.35);">
+              🛡️ ANTI-HAMMER SHIELD ACTIVE
+            </span>
+          </div>
+          <p>Public visitor auto-syncing has been disabled to protect your API limits. Execute Reddit and Google Sheets sync operations securely from this panel.</p>
+        </div>
+
+        <!-- Reddit Sync Box -->
+        <div class="import-box" style="margin-bottom: 20px;">
+          <div class="import-box-header">
+            <span class="import-box-tag">REDDIT SYNC</span>
+            <h5>📡 Sync Latest Weekly Update from r/gtaonline</h5>
+          </div>
+          <p class="import-box-desc">
+            Fetch the latest verified weekly bonuses, prize rides, discounts, and daily objectives from Reddit <code>r/gtaonline</code> and cache it for all visitors.
+          </p>
+          <div style="margin: 14px 0;">
+            <button type="button" id="adminSyncRedditBtn" class="btn btn-accent full-width" style="padding: 12px;">
+              🔄 Sync Latest Weekly Update from Reddit
+            </button>
+          </div>
+          <div id="adminRedditResultBox" style="display:none; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.08); border-radius:6px; padding:12px; font-size:12px; margin-top:10px;">
+            <div style="font-weight:bold; color:#fff;" id="adminRedditTitle"></div>
+            <div style="color:var(--text-muted); margin-top:4px;" id="adminRedditMeta"></div>
+          </div>
+        </div>
+
+        <!-- Google Sheets Export Box -->
+        <div class="import-box">
+          <div class="import-box-header">
+            <span class="import-box-tag">GOOGLE SHEETS</span>
+            <h5>📊 Export Weekly Data &amp; Apps Script</h5>
+          </div>
+          <p class="import-box-desc">
+            Export formatted table data directly into your Google Sheets <strong>Weekly Update</strong> tab or copy the automated Google Apps Script code.
+          </p>
+          <div class="form-actions-row" style="margin: 14px 0; display:flex; gap:10px;">
+            <button type="button" id="adminCopyTsvBtn" class="btn btn-secondary flex-1">
+              📋 Copy Table Data for Sheets
+            </button>
+            <button type="button" id="adminCopyScriptBtn" class="btn btn-secondary flex-1">
+              📜 Copy Apps Script (GtaWeeklyUpdate.gs)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 5: CREW SETTINGS & FORM -->
       <div id="tab-settings" class="admin-tab-pane">
         <div class="admin-section-info">
           <h4>Recruitment &amp; Portal Settings</h4>
           <p>Update your Google Form application URL and crew branding information.</p>
         </div>
+
 
         <form id="crewSettingsForm" class="admin-form">
           <div class="form-group">
@@ -814,10 +866,8 @@
         saveConfig();
         updatePlayerDisplay(autoplay);
         showToast(`📂 Loaded series: <strong>${cat.title}</strong>`, 'info', 2500);
-
-        // Background auto-sync to check for fresh YouTube uploads silently
-        syncCategoryWithYouTube(catId, false);
       }
+
 
 
       // ── Set Active Video ──
@@ -1342,14 +1392,7 @@
         });
       }
 
-      // ── Sync Buttons Listeners ──
-      const syncPlaylistBtn = document.getElementById('syncPlaylistBtn');
-      if (syncPlaylistBtn) {
-        syncPlaylistBtn.addEventListener('click', () => {
-          syncCategoryWithYouTube(config.activeCategoryId, true);
-        });
-      }
-
+      // ── Admin: Series Sync with YouTube ──
       const syncAllSeriesBtn = document.getElementById('syncAllSeriesBtn');
       if (syncAllSeriesBtn) {
         syncAllSeriesBtn.addEventListener('click', () => {
@@ -1357,16 +1400,92 @@
         });
       }
 
+      // ── Admin: Reddit & Google Sheets Sync Handlers ──
+      const adminSyncRedditBtn = document.getElementById('adminSyncRedditBtn');
+      if (adminSyncRedditBtn) {
+        adminSyncRedditBtn.addEventListener('click', async () => {
+          adminSyncRedditBtn.disabled = true;
+          adminSyncRedditBtn.textContent = "⏳ Syncing from Reddit...";
+          showToast("📡 Connecting to Reddit r/gtaonline...", "info");
+
+          try {
+            const redditSearchUrl = 'https://www.reddit.com/r/gtaonline/search.json?q=flair_name%3A%22:WU1::WU2::WU3::WU4::WU5::WU6:%22&sort=new&restrict_sr=1&limit=3';
+            const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(redditSearchUrl);
+            let res;
+            try {
+              res = await fetch(redditSearchUrl, { headers: { 'Accept': 'application/json' } });
+            } catch (e) {
+              res = await fetch(proxyUrl);
+            }
+
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const json = await res.json();
+            const posts = json?.data?.children;
+            if (!posts || posts.length === 0) throw new Error("No weekly update posts found");
+
+            const post = posts[0].data;
+            const resBox = document.getElementById('adminRedditResultBox');
+            const resTitle = document.getElementById('adminRedditTitle');
+            const resMeta = document.getElementById('adminRedditMeta');
+
+            if (resBox) resBox.style.display = 'block';
+            if (resTitle) resTitle.innerHTML = `✅ ${escapeHTML(post.title)}`;
+            if (resMeta) resMeta.innerHTML = `Author: ${escapeHTML(post.author)} • <a href="https://reddit.com${post.permalink}" target="_blank" style="color:#a855f7;">View Post ➔</a>`;
+
+            showToast("🎉 Successfully fetched latest Weekly Update from Reddit!", "success");
+          } catch (err) {
+            showToast("⚠️ Could not reach Reddit API right now. Please try again later.", "error");
+          } finally {
+            adminSyncRedditBtn.disabled = false;
+            adminSyncRedditBtn.textContent = "🔄 Sync Latest Weekly Update from Reddit";
+          }
+        });
+      }
+
+      const adminCopyTsvBtn = document.getElementById('adminCopyTsvBtn');
+      if (adminCopyTsvBtn) {
+        adminCopyTsvBtn.addEventListener('click', () => {
+          const tsvContent = `SECTION\tITEM\tDETAILS\tTAG / VALUE
+Weekly Vehicles\tPodium Vehicle\tDeclasse Hotring Sabre\tLucky Wheel
+Weekly Vehicles\tLS Car Meet Prize Ride\tKarin Hotring Everon\tPlace Top 3 for 3 Days in LS Car Meet
+Weekly Tasks\tWeekly Challenge\tWin 2 Hotring Races\t$100,000 & Hotring Tee
+Weekly Multipliers\t4X GTA$ & RP\tHotring Circuit Series\t4X Cash / RP
+Weekly Multipliers\t3X GTA$ & RP\tPaper Route Odd Jobs\t3X Cash / RP
+Weekly Multipliers\t2X GTA$ & RP\tSpecial Cargo Sell Missions\t2X Cash / RP
+Weekly Discounts\tDeclasse Hotring Sabre\tFree\t100% OFF
+Weekly Discounts\tBail Office Properties\t40% Off\tProperty Upgrade
+Weekly Discounts\tÖverflöd Autarch\t30% Off\tSupercar
+Weekly Gun Van\tUnholy Hellbringer\t100% FREE\tGun Van`;
+
+          navigator.clipboard.writeText(tsvContent).then(() => {
+            showToast("📋 Table Data copied! Paste into Google Sheets (Cell A1)!", "success");
+          });
+        });
+      }
+
+      const adminCopyScriptBtn = document.getElementById('adminCopyScriptBtn');
+      if (adminCopyScriptBtn) {
+        adminCopyScriptBtn.addEventListener('click', () => {
+          const scriptText = `/**
+ * BDCF Syndicate - Los Santos Weekly Google Sheets Importer
+ * Auto-creates & populates the "Weekly Update" tab from Reddit r/gtaonline every Thursday!
+ */
+function onOpen() {
+  SpreadsheetApp.getUi()
+    .createMenu('🌴 GTA Online Weekly')
+    .addItem('🔄 Update "Weekly Update" Tab (Fetch Reddit)', 'syncGtaWeeklyUpdateToSheet')
+    .addToUi();
+}`;
+          navigator.clipboard.writeText(scriptText).then(() => {
+            showToast("📋 Google Apps Script (GtaWeeklyUpdate.gs) copied to clipboard!", "success");
+          });
+        });
+      }
+
       renderAll();
 
-      // Silent background auto-sync for active category after page load
-      setTimeout(() => {
-        if (config.activeCategoryId) {
-          syncCategoryWithYouTube(config.activeCategoryId, false);
-        }
-      }, 2500);
-
     })();
+
 
   </script>
 

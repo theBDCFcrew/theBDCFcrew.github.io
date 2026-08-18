@@ -1,5 +1,13 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.2.0] - 2026-08-17
+- **API Rate-Limit Shield & Admin-Only Sync Gating**: Removed public visitor API sync buttons and automated polling from both the Los Santos Weekly Hub and the BDCF Theater to prevent quota exhaustion and API hammering.
+- **Dedicated Weekly Hub & APIs Tab in Admin Menu**:
+  - Moved **Reddit Weekly Sync** behind Google Auth Admin gate.
+  - Moved **Google Sheets Export & Apps Script Importer** into the secure Admin Menu.
+  - Added visual anti-hammering status shield indicator.
+- **Cleaned Public Navigation**: Replaced public sync buttons with clean portal navigation links.
+
 ## [3.1.0] - 2026-08-17
 - **Live YouTube Playlist Auto-Sync Engine**: The portal now automatically connects with YouTube's live RSS feed on series switch and initial page load to detect newly uploaded videos.
 - **Instant Deduplication & Auto-Prepend**: New YouTube uploads are automatically detected and placed at the top of their corresponding Category Box with zero manual configuration.
