@@ -1,15 +1,17 @@
 // =========================================================================
-// BDCF CREW PWA SERVICE WORKER (v3.5.7)
+// BDCF CREW PWA SERVICE WORKER (v3.5.8)
 // High-performance offline caching, asset pre-fetching & network strategy
 // =========================================================================
 
-const CACHE_NAME = 'bdcf-pwa-cache-v3.5.7';
+const CACHE_NAME = 'bdcf-pwa-cache-v3.5.8';
 
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './style.css',
   './manifest.json',
+  './bdcf-neon-skull.png',
+  './user-avatar.png',
   './icon-192.svg',
   './icon-512.svg',
   './icon-192.png',

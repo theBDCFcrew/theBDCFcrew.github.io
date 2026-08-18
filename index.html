@@ -42,40 +42,45 @@
   </div>
   <div class="grid-texture"></div>
 
-  <!-- TOP HEADER -->
+  <!-- TOP HEADER: CUSTOM SYNDICATE THEATER -->
   <header class="portal-header">
     <div class="header-container">
-      <div class="header-brand">
-        <div class="crew-tag">[BDCF]</div>
-        <div class="brand-text-wrap">
-          <span class="brand-name">THE BDCF CREW</span>
-          <span class="brand-sub">SAN ANDREAS SYNDICATE</span>
+      <div class="header-brand-wrap" id="headerBrandLogo" title="The BDCF Crew">
+        <img src="./bdcf-neon-skull.png" alt="BDCF Skull Logo" class="header-neon-skull" />
+        <div class="header-neon-brand-text">
+          <span class="neon-line-top">BDCF</span>
+          <span class="neon-line-bot">CREW</span>
         </div>
       </div>
 
-      <div class="header-actions">
-        <div class="header-status-pill" id="headerStatusPill" title="Syndicate HQ Live Status">
-          <span class="live-dot-pulse"></span>
-          <span class="status-txt">HQ LIVE</span>
-          <span class="version-pill" id="headerVersionPill">v3.5.7</span>
-        </div>
-
-        <!-- Live Visitor Counter -->
-        <div class="live-counter-pill" id="liveCounterPill" title="Crew members viewing right now">
-          <span class="live-counter-dot"></span>
-          <span id="liveCountDisplay">—</span>
-          <span class="live-counter-label">online</span>
-        </div>
-        <button id="installAppBtn" class="btn-install-header" title="Install BDCF Crew Web App on Android, iOS, or PC">
-          <span class="install-icon-pulse">📲</span>
-          <span>INSTALL APP</span>
-        </button>
-        <button id="openAdminBtn" class="btn-admin-header" title="Open BDCF Admin Menu">
-          <span>⚙️ Admin</span>
-        </button>
+      <div class="header-center-title">
+        SYNDICATE THEATER
       </div>
 
+      <div class="header-right-actions">
+        <button id="headerSearchBtn" class="header-icon-btn header-search-btn" title="Search Theater Videos" aria-label="Search Videos">
+          <svg class="search-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
 
+        <button id="headerUserAvatarBtn" class="header-user-avatar-btn" title="BDCF Syndicate Profile &amp; Admin Menu" aria-label="Open Profile &amp; Settings">
+          <img src="./user-avatar.png" alt="Profile" class="header-avatar-img" />
+        </button>
+      </div>
+    </div>
+
+    <!-- Interactive Search Bar Dropdown -->
+    <div id="headerSearchBar" class="header-search-bar" style="display: none;">
+      <div class="search-input-wrap">
+        <svg class="search-input-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="theaterVideoSearchInput" class="theater-search-input" placeholder="Search GTAO videos, series, clips..." autocomplete="off" />
+        <button id="clearSearchBtn" class="clear-search-btn" style="display:none;" aria-label="Clear Search">&times;</button>
+      </div>
     </div>
   </header>
 
@@ -331,7 +336,7 @@
 
       <div class="footer-links">
         <button id="footerInstallBtn" class="footer-install-btn" style="display:none;">📲 Install Web App</button>
-        <button id="footerVersionBtn" class="footer-admin-btn" title="View Syndicate Updates & Changelog">⚡ v3.5.7 Updates</button>
+        <button id="footerVersionBtn" class="footer-admin-btn" title="View Syndicate Updates & Changelog">⚡ v3.5.8 Updates</button>
         <button id="footerAdminBtn" class="footer-admin-btn">⚙️ Admin Menu</button>
       </div>
 
@@ -339,7 +344,7 @@
   </footer>
 
   <!-- =========================================================================
-       POPUP MODAL WINDOW: SYNDICATE UPDATE ALERT (v3.5.7)
+       POPUP MODAL WINDOW: SYNDICATE UPDATE ALERT (v3.5.8)
        ========================================================================= -->
   <div id="updateAlertOverlay" class="update-alert-overlay" style="display: none;"></div>
   <div id="updateAlertModal" class="update-alert-modal-container" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="updateAlertTitle">
@@ -349,9 +354,9 @@
         <div>
           <div class="update-headline-row">
             <h3 id="updateAlertTitle">NEW SYNDICATE UPDATE</h3>
-            <span class="update-version-tag">v3.5.7</span>
+            <span class="update-version-tag">v3.5.8</span>
           </div>
-          <p class="update-subheadline">Header Clean-up &amp; Pure Popup Alert</p>
+          <p class="update-subheadline">Syndicate Theater Top Header Redesign</p>
         </div>
       </div>
       <button id="closeUpdateAlertBtn" class="update-close-btn" aria-label="Close Update Alert">&times;</button>
@@ -360,7 +365,7 @@
     <div class="update-alert-body">
       <div class="update-featured-banner">
         <span class="update-badge-pill">🔥 WHAT'S NEW</span>
-        <p>Removed the bulky header update pill for a clean top bar — all updates are now handled cleanly via this popup modal!</p>
+        <p>Built the custom Syndicate Theater top header with glowing neon BDCF skull, bold title, live search, and profile avatar!</p>
       </div>
 
       <div class="update-features-list">
@@ -1445,10 +1450,85 @@
       }
 
       if (openAdminBtn) openAdminBtn.addEventListener('click', () => handleAdminClick('tab-categories'));
+      const headerUserAvatarBtn = document.getElementById('headerUserAvatarBtn');
+      if (headerUserAvatarBtn) headerUserAvatarBtn.addEventListener('click', () => handleAdminClick('tab-categories'));
       if (footerAdminBtn) footerAdminBtn.addEventListener('click', () => handleAdminClick('tab-categories'));
       if (managePlaylistBtn) managePlaylistBtn.addEventListener('click', () => handleAdminClick('tab-categories'));
       if (closeAdminBtn) closeAdminBtn.addEventListener('click', closeModal);
       if (adminOverlay) adminOverlay.addEventListener('click', closeModal);
+
+      // ── Header Search Bar Interactive Controller ──
+      const headerSearchBtn = document.getElementById('headerSearchBtn');
+      const headerSearchBar = document.getElementById('headerSearchBar');
+      const searchInput = document.getElementById('theaterVideoSearchInput');
+      const clearSearchBtn = document.getElementById('clearSearchBtn');
+
+      if (headerSearchBtn && headerSearchBar && searchInput) {
+        headerSearchBtn.addEventListener('click', () => {
+          const isHidden = headerSearchBar.style.display === 'none' || !headerSearchBar.style.display;
+          headerSearchBar.style.display = isHidden ? 'block' : 'none';
+          if (isHidden) {
+            searchInput.focus();
+          } else {
+            searchInput.value = '';
+            if (clearSearchBtn) clearSearchBtn.style.display = 'none';
+            renderPlaylist();
+          }
+        });
+
+        searchInput.addEventListener('input', () => {
+          const query = searchInput.value.trim().toLowerCase();
+          if (clearSearchBtn) clearSearchBtn.style.display = query ? 'inline-block' : 'none';
+          filterVideosByQuery(query);
+        });
+
+        if (clearSearchBtn) {
+          clearSearchBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            clearSearchBtn.style.display = 'none';
+            renderPlaylist();
+            searchInput.focus();
+          });
+        }
+      }
+
+      function filterVideosByQuery(query) {
+        if (!query) {
+          renderPlaylist();
+          return;
+        }
+        const playlistGrid = document.getElementById('playlistGrid');
+        if (!playlistGrid) return;
+        const currentCat = getCurrentCategory();
+        const videos = currentCat ? currentCat.videos : [];
+        const matches = videos.filter(v => 
+          (v.title && v.title.toLowerCase().includes(query)) || 
+          (v.desc && v.desc.toLowerCase().includes(query))
+        );
+
+        if (matches.length === 0) {
+          playlistGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:30px; color:var(--text-muted); font-family:var(--font-tech);">No videos matching "${query}" found.</div>`;
+          return;
+        }
+
+        playlistGrid.innerHTML = matches.map((vid, idx) => {
+          const isCur = vid.youtubeId === activeVideoId;
+          const thumbUrl = vid.customThumb || `https://i.ytimg.com/vi/${vid.youtubeId}/hqdefault.jpg`;
+          return `
+            <div class="playlist-item ${isCur ? 'active' : ''}" data-video-id="${vid.youtubeId}" onclick="playVideo('${vid.youtubeId}')">
+              <span class="clip-num-badge">#${idx + 1}</span>
+              <div class="playlist-thumb-wrap">
+                <img src="${thumbUrl}" alt="${vid.title}" class="playlist-thumb" loading="lazy" />
+                <span class="thumb-play-overlay">▶</span>
+              </div>
+              <div class="item-meta">
+                <h5 class="item-title">${vid.title}</h5>
+                <p class="item-desc">${vid.desc || ''}</p>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
 
       // ── Category Sliding Bar Interactive Controls (Touch, Pointer & Buttons) ──
       const catGridEl = document.getElementById('categoriesGrid');
@@ -2120,7 +2200,7 @@ function onOpen() {
   <script>
     (function () {
       'use strict';
-      const CURRENT_APP_VERSION = 'v3.5.7';
+      const CURRENT_APP_VERSION = 'v3.5.8';
 
       const updateModal = document.getElementById('updateAlertModal');
       const updateOverlay = document.getElementById('updateAlertOverlay');
