@@ -54,15 +54,15 @@
       </div>
 
       <div class="header-actions">
-        <button id="openUpdateAlertBtn" class="btn-update-alert btn-pulse-glow" title="View Latest Syndicate Updates (v3.5.3)">
+        <button id="openUpdateAlertBtn" class="btn-update-alert btn-pulse-glow" title="View Latest Syndicate Updates (v3.5.4)">
           <span class="update-icon-pulse">⚡</span>
-          <span class="update-label">v3.5.3 Update</span>
+          <span class="update-label">v3.5.4 Update</span>
         </button>
 
         <div class="header-status-pill" id="headerStatusPill" title="Syndicate HQ Live Status">
           <span class="live-dot-pulse"></span>
           <span class="status-txt">HQ LIVE</span>
-          <span class="version-pill" id="headerVersionPill">v3.5.3</span>
+          <span class="version-pill" id="headerVersionPill">v3.5.4</span>
         </div>
 
         <!-- Live Visitor Counter -->
@@ -89,7 +89,7 @@
     <div class="portal-nav-container">
       <button class="portal-tab-btn active" data-tab="tab-theater">
         <span class="tab-icon">🎬</span>
-        <span class="tab-label">Video Theater</span>
+        <span class="tab-label">Theater</span>
       </button>
       <button class="portal-tab-btn" data-tab="tab-weekly">
         <span class="tab-icon">🌴</span>
@@ -343,7 +343,7 @@
   </footer>
 
   <!-- =========================================================================
-       MODAL: SYNDICATE UPDATE ALERT (v3.5.3)
+       MODAL: SYNDICATE UPDATE ALERT (v3.5.4)
        ========================================================================= -->
   <div id="updateAlertOverlay" class="update-alert-overlay" style="display: none;"></div>
   <div id="updateAlertModal" class="update-alert-modal-container" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="updateAlertTitle">
@@ -353,9 +353,9 @@
         <div>
           <div class="update-headline-row">
             <h3 id="updateAlertTitle">NEW SYNDICATE UPDATE</h3>
-            <span class="update-version-tag">v3.5.3</span>
+            <span class="update-version-tag">v3.5.4</span>
           </div>
-          <p class="update-subheadline">Pixel 10 Pro &amp; Mobile Touch-Drag Slider Engine</p>
+          <p class="update-subheadline">Menu Tab Rename to Theater &amp; Spacing Polish</p>
         </div>
       </div>
       <button id="closeUpdateAlertBtn" class="update-close-btn" aria-label="Close Update Alert">&times;</button>
@@ -364,15 +364,23 @@
     <div class="update-alert-body">
       <div class="update-featured-banner">
         <span class="update-badge-pill">🔥 WHAT'S NEW</span>
-        <p>Built a dedicated unified touch and pointer drag-to-scroll engine optimized for Google Pixel 10 Pro and all mobile touchscreens!</p>
+        <p>Renamed navigation tab to "Theater" and perfected menu bar fit across all smartphone screens!</p>
       </div>
 
       <div class="update-features-list">
         <div class="update-feature-item">
+          <span class="feature-icon">🎬</span>
+          <div class="feature-text">
+            <strong>Renamed to "Theater"</strong>
+            <p>Shortened the main navigation tab to "Theater" for a cleaner, compact fit that prevents cutoffs on mobile.</p>
+          </div>
+        </div>
+
+        <div class="update-feature-item">
           <span class="feature-icon">👆</span>
           <div class="feature-text">
-            <strong>Fluid Touch &amp; Drag-to-Scroll Engine</strong>
-            <p>1:1 finger swipe tracking across category series cards with velocity momentum on Pixel 10 Pro, Android, iOS &amp; PC.</p>
+            <strong>Pixel 10 XL / Mobile Touch Slider Engine</strong>
+            <p>Full 1:1 finger swipe drag engine across category series cards with velocity momentum on Pixel 10 Pro / XL, Android, iOS &amp; PC.</p>
           </div>
         </div>
 
@@ -389,14 +397,6 @@
           <div class="feature-text">
             <strong>1-Tap Slide Navigation Controls</strong>
             <p>Integrated ◀ and ▶ navigation buttons in the category header for instant 1-tap sliding.</p>
-          </div>
-        </div>
-
-        <div class="update-feature-item">
-          <span class="feature-icon">🎬</span>
-          <div class="feature-text">
-            <strong>HD Video Thumbnail Previews &amp; Badges</strong>
-            <p>Every clip displays real YouTube video thumbnails, duration/HD tags, ranking badges (#1, #2), and glowing active states.</p>
           </div>
         </div>
       </div>
@@ -418,8 +418,8 @@
     <div class="floating-banner-left">
       <span class="floating-zap">⚡</span>
       <div class="floating-banner-text">
-        <span class="floating-banner-title">Syndicate Update Available (v3.5.3)</span>
-        <span class="floating-banner-sub">Pixel 10 Pro Touch &amp; Drag Slider Engine</span>
+        <span class="floating-banner-title">Syndicate Update Available (v3.5.4)</span>
+        <span class="floating-banner-sub">Theater Tab Rename &amp; Navigation Fit Polish</span>
       </div>
     </div>
     <div class="floating-banner-right">
@@ -2139,7 +2139,7 @@ function onOpen() {
   <script>
     (function () {
       'use strict';
-      const CURRENT_APP_VERSION = 'v3.5.3';
+      const CURRENT_APP_VERSION = 'v3.5.4';
 
       const updateModal = document.getElementById('updateAlertModal');
       const updateOverlay = document.getElementById('updateAlertOverlay');

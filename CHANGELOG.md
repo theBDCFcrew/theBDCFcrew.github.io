@@ -1,5 +1,11 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.5.4] - 2026-08-18
+- **Navigation Menu Bar Fit & Tab Rename**:
+  - Renamed primary navigation tab from `Video Theater` to `Theater` to prevent horizontal text truncation and ensure optimal fit on compact smartphone screens (Google Pixel 10 Pro, Pixel 10 XL, iPhone, Galaxy).
+  - Optimized mobile navigation tab padding and gap spacing for clean alignment.
+- **Service Worker Cache Refresh**: Bumped service worker cache identifier to `bdcf-pwa-cache-v3.5.4`.
+
 ## [3.5.3] - 2026-08-18
 - **Pixel 10 Pro & Mobile Touch Drag Slider Engine**:
   - **Unified Pointer & Touch Drag-to-Scroll**: Built a direct 1:1 finger swipe drag engine for Google Pixel 10 Pro, Android, iPhone, and desktop browsers with drag velocity tracking.
