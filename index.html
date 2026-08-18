@@ -54,15 +54,15 @@
       </div>
 
       <div class="header-actions">
-        <button id="openUpdateAlertBtn" class="btn-update-alert btn-pulse-glow" title="View Latest Syndicate Updates (v3.5.2)">
+        <button id="openUpdateAlertBtn" class="btn-update-alert btn-pulse-glow" title="View Latest Syndicate Updates (v3.5.3)">
           <span class="update-icon-pulse">⚡</span>
-          <span class="update-label">v3.5.2 Update</span>
+          <span class="update-label">v3.5.3 Update</span>
         </button>
 
         <div class="header-status-pill" id="headerStatusPill" title="Syndicate HQ Live Status">
           <span class="live-dot-pulse"></span>
           <span class="status-txt">HQ LIVE</span>
-          <span class="version-pill" id="headerVersionPill">v3.5.2</span>
+          <span class="version-pill" id="headerVersionPill">v3.5.3</span>
         </div>
 
         <!-- Live Visitor Counter -->
@@ -343,7 +343,7 @@
   </footer>
 
   <!-- =========================================================================
-       MODAL: SYNDICATE UPDATE ALERT (v3.5.2)
+       MODAL: SYNDICATE UPDATE ALERT (v3.5.3)
        ========================================================================= -->
   <div id="updateAlertOverlay" class="update-alert-overlay" style="display: none;"></div>
   <div id="updateAlertModal" class="update-alert-modal-container" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="updateAlertTitle">
@@ -353,9 +353,9 @@
         <div>
           <div class="update-headline-row">
             <h3 id="updateAlertTitle">NEW SYNDICATE UPDATE</h3>
-            <span class="update-version-tag">v3.5.2</span>
+            <span class="update-version-tag">v3.5.3</span>
           </div>
-          <p class="update-subheadline">Universal Category Sliding Bar &amp; Nav Controls</p>
+          <p class="update-subheadline">Pixel 10 Pro &amp; Mobile Touch-Drag Slider Engine</p>
         </div>
       </div>
       <button id="closeUpdateAlertBtn" class="update-close-btn" aria-label="Close Update Alert">&times;</button>
@@ -364,23 +364,31 @@
     <div class="update-alert-body">
       <div class="update-featured-banner">
         <span class="update-badge-pill">🔥 WHAT'S NEW</span>
-        <p>Fixed and perfected the Category Series Sliding Bar across all devices with interactive sliding controls!</p>
+        <p>Built a dedicated unified touch and pointer drag-to-scroll engine optimized for Google Pixel 10 Pro and all mobile touchscreens!</p>
       </div>
 
       <div class="update-features-list">
         <div class="update-feature-item">
-          <span class="feature-icon">📂</span>
+          <span class="feature-icon">👆</span>
           <div class="feature-text">
-            <strong>Universal Horizontal Category Sliding Bar</strong>
-            <p>Series cards now sit in a sleek, single horizontal sliding reel across desktop, laptop, tablet, and mobile with zero wrapping.</p>
+            <strong>Fluid Touch &amp; Drag-to-Scroll Engine</strong>
+            <p>1:1 finger swipe tracking across category series cards with velocity momentum on Pixel 10 Pro, Android, iOS &amp; PC.</p>
+          </div>
+        </div>
+
+        <div class="update-feature-item">
+          <span class="feature-icon">🎯</span>
+          <div class="feature-text">
+            <strong>Drag-to-Scroll vs Tap Intelligence</strong>
+            <p>Smart gesture detection prevents accidental category selection while swiping, so you can slide smoothly without triggering clicks.</p>
           </div>
         </div>
 
         <div class="update-feature-item">
           <span class="feature-icon">◀▶</span>
           <div class="feature-text">
-            <strong>Interactive Sliding Navigation Controls</strong>
-            <p>Added floating and header navigation arrows (◀ and ▶), smooth mouse wheel sliding, and touch-swipe gestures to slide easily.</p>
+            <strong>1-Tap Slide Navigation Controls</strong>
+            <p>Integrated ◀ and ▶ navigation buttons in the category header for instant 1-tap sliding.</p>
           </div>
         </div>
 
@@ -389,14 +397,6 @@
           <div class="feature-text">
             <strong>HD Video Thumbnail Previews &amp; Badges</strong>
             <p>Every clip displays real YouTube video thumbnails, duration/HD tags, ranking badges (#1, #2), and glowing active states.</p>
-          </div>
-        </div>
-
-        <div class="update-feature-item">
-          <span class="feature-icon">📱</span>
-          <div class="feature-text">
-            <strong>Contained Playlist Feed &amp; Custom Scrollbar</strong>
-            <p>Structured, contained video playlist feed with glowing purple scrollbar, perfectly eliminating endless page scrolling.</p>
           </div>
         </div>
       </div>
@@ -418,8 +418,8 @@
     <div class="floating-banner-left">
       <span class="floating-zap">⚡</span>
       <div class="floating-banner-text">
-        <span class="floating-banner-title">Syndicate Update Available (v3.5.2)</span>
-        <span class="floating-banner-sub">Category Sliding Bar &amp; Mockup Layout Fix</span>
+        <span class="floating-banner-title">Syndicate Update Available (v3.5.3)</span>
+        <span class="floating-banner-sub">Pixel 10 Pro Touch &amp; Drag Slider Engine</span>
       </div>
     </div>
     <div class="floating-banner-right">
@@ -1172,7 +1172,12 @@
           }).join('');
 
           categoriesGrid.querySelectorAll('.category-card').forEach(btn => {
-            btn.addEventListener('click', () => {
+            btn.addEventListener('click', (e) => {
+              if (window._bdcfIsDraggingCat) {
+                e.preventDefault();
+                e.stopPropagation();
+                return;
+              }
               const catId = btn.dataset.catId;
               if (catId) setActiveCategory(catId, true);
             });
@@ -1464,12 +1469,10 @@
       if (closeAdminBtn) closeAdminBtn.addEventListener('click', closeModal);
       if (adminOverlay) adminOverlay.addEventListener('click', closeModal);
 
-      // ── Category Sliding Bar Interactive Controls ──
+      // ── Category Sliding Bar Interactive Controls (Touch, Pointer & Buttons) ──
       const catGridEl = document.getElementById('categoriesGrid');
       const catScrollLeftBtn = document.getElementById('catScrollLeft');
       const catScrollRightBtn = document.getElementById('catScrollRight');
-      const catFloatLeftBtn = document.getElementById('catFloatLeft');
-      const catFloatRightBtn = document.getElementById('catFloatRight');
 
       function slideCategories(offset) {
         if (catGridEl) {
@@ -1481,6 +1484,47 @@
       if (catScrollRightBtn) catScrollRightBtn.addEventListener('click', (e) => { e.preventDefault(); slideCategories(200); });
 
       if (catGridEl) {
+        let isPointerDown = false;
+        let startX = 0;
+        let scrollStartLeft = 0;
+        let hasMoved = false;
+        window._bdcfIsDraggingCat = false;
+
+        // Unified Pointer Drag Listener (Mouse, Touch, Pen across Pixel/Android/iOS/PC)
+        catGridEl.addEventListener('pointerdown', (e) => {
+          if (e.button !== undefined && e.button !== 0) return;
+          isPointerDown = true;
+          hasMoved = false;
+          window._bdcfIsDraggingCat = false;
+          startX = e.pageX;
+          scrollStartLeft = catGridEl.scrollLeft;
+        }, { passive: true });
+
+        window.addEventListener('pointermove', (e) => {
+          if (!isPointerDown) return;
+          const deltaX = e.pageX - startX;
+          if (Math.abs(deltaX) > 6) {
+            hasMoved = true;
+            window._bdcfIsDraggingCat = true;
+            catGridEl.classList.add('is-dragging');
+            catGridEl.scrollLeft = scrollStartLeft - deltaX;
+          }
+        }, { passive: true });
+
+        const finishDrag = () => {
+          if (!isPointerDown) return;
+          isPointerDown = false;
+          catGridEl.classList.remove('is-dragging');
+          setTimeout(() => {
+            window._bdcfIsDraggingCat = false;
+            hasMoved = false;
+          }, 60);
+        };
+
+        window.addEventListener('pointerup', finishDrag, { passive: true });
+        window.addEventListener('pointercancel', finishDrag, { passive: true });
+
+        // Mouse wheel listener for desktop
         catGridEl.addEventListener('wheel', (e) => {
           if (e.deltaY !== 0) {
             e.preventDefault();
@@ -2095,7 +2139,7 @@ function onOpen() {
   <script>
     (function () {
       'use strict';
-      const CURRENT_APP_VERSION = 'v3.5.2';
+      const CURRENT_APP_VERSION = 'v3.5.3';
 
       const updateModal = document.getElementById('updateAlertModal');
       const updateOverlay = document.getElementById('updateAlertOverlay');

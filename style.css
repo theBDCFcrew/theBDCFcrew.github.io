@@ -694,6 +694,7 @@ body.crew-portal-body {
   width: 100%;
   overflow: hidden;
   box-sizing: border-box;
+  touch-action: pan-x pan-y !important;
 }
 
 /* Categories Sliding Bar (Universal Across All Devices) */
@@ -703,16 +704,26 @@ body.crew-portal-body {
   flex-wrap: nowrap !important;
   overflow-x: auto !important;
   overflow-y: hidden !important;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   gap: 12px;
   padding: 4px 2px 12px 2px;
   width: 100%;
   min-width: 0;
+  touch-action: pan-x pan-y !important;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
   scrollbar-width: thin;
   scrollbar-color: #d946ef rgba(255, 255, 255, 0.05);
   box-sizing: border-box;
+}
+
+.categories-grid.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto !important;
+  scroll-snap-type: none !important;
 }
 
 .categories-grid::-webkit-scrollbar {
@@ -737,18 +748,19 @@ body.crew-portal-body {
 
 .category-card {
   position: relative;
-  flex: 0 0 175px !important;
-  min-width: 175px !important;
-  max-width: 185px !important;
-  height: 105px !important;
+  flex: 0 0 165px !important;
+  width: 165px !important;
+  min-width: 165px !important;
+  max-width: 165px !important;
+  height: 100px !important;
   scroll-snap-align: start;
   background: rgba(15, 23, 42, 0.85);
   border: 1.5px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-md);
-  padding: 12px 14px 10px;
+  padding: 10px 12px 10px;
   text-align: left;
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   font-family: inherit;
   color: inherit;
   display: flex;
@@ -756,6 +768,10 @@ body.crew-portal-body {
   justify-content: space-between;
   overflow: hidden;
   box-sizing: border-box;
+  touch-action: pan-x pan-y !important;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .category-bg-thumb {
@@ -2450,8 +2466,9 @@ body.crew-portal-body {
   .categories-grid {
     display: flex;
     overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y !important;
     gap: 10px;
     padding-bottom: 8px;
     padding-top: 2px;
@@ -2475,13 +2492,14 @@ body.crew-portal-body {
   }
 
   .category-card {
-    flex: 0 0 155px;
-    min-width: 155px;
-    max-width: 175px;
+    flex: 0 0 155px !important;
+    min-width: 155px !important;
+    max-width: 175px !important;
     scroll-snap-align: start;
     padding: 10px 12px 10px;
     gap: 4px;
     border-radius: 10px;
+    touch-action: pan-x pan-y !important;
   }
 
   .category-card-top {

@@ -1,5 +1,13 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.5.3] - 2026-08-18
+- **Pixel 10 Pro & Mobile Touch Drag Slider Engine**:
+  - **Unified Pointer & Touch Drag-to-Scroll**: Built a direct 1:1 finger swipe drag engine for Google Pixel 10 Pro, Android, iPhone, and desktop browsers with drag velocity tracking.
+  - **Touch Action CSS Optimization**: Applied explicit `touch-action: pan-x pan-y !important;` across all slider elements and card buttons so mobile Chrome does not lock or suppress horizontal swipes.
+  - **Drag vs Tap Intelligence**: Smart gesture threshold detection suppresses accidental category selection while swiping.
+  - **Soft Scroll Snap**: Changed to `scroll-snap-type: x proximity;` for fluid, non-rigid sliding on mobile devices.
+- **Service Worker Cache Refresh**: Bumped service worker cache identifier to `bdcf-pwa-cache-v3.5.3`.
+
 ## [3.5.2] - 2026-08-18
 - **Universal Horizontal Category Sliding Bar**:
   - Rebuilt the Category Series selector as a strict, non-wrapping horizontal sliding reel (`flex-direction: row; flex-wrap: nowrap; overflow-x: auto`) across all viewports (desktop, laptop, tablet, and mobile).
