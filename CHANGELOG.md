@@ -1,5 +1,11 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.5.7] - 2026-08-18
+- **Header Clean-up & Pure Popup Update Workflow**:
+  - Removed the bulky `⚡ Update` button pill from the top header bar to maximize screen space and keep navigation clean.
+  - Updates are now presented purely as an automatic **popup window modal** on version changes or service worker updates, and can also be accessed via the version tag in the footer.
+- **Service Worker Cache Refresh**: Bumped service worker cache identifier to `bdcf-pwa-cache-v3.5.7`.
+
 ## [3.5.6] - 2026-08-18
 - **iOS Viewport Space & Right Gap Elimination**:
   - Replaced all `100vw` measurements with strict `100%` width across all fixed background textures, overlays, and dialogs to prevent WebKit horizontal scrolling.
