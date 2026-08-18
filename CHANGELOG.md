@@ -1,5 +1,12 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.5.5] - 2026-08-18
+- **Update Alert Popup Modal & Instant Dismissal**:
+  - Re-architected Update Alert notifications to display as a clean popup window modal with dark glassmorphic backdrop overlay.
+  - Added instant dismissal: Clicking "INSTALL & APPLY UPDATE", "GOT IT", or close immediately closes the modal window, saves the seen version state, and applies the update with zero lingering banners.
+  - Enhanced PWA Install flow to immediately hide the sticky dock and install dialogs upon action.
+- **Service Worker Cache Refresh**: Bumped service worker cache identifier to `bdcf-pwa-cache-v3.5.5`.
+
 ## [3.5.4] - 2026-08-18
 - **Navigation Menu Bar Fit & Tab Rename**:
   - Renamed primary navigation tab from `Video Theater` to `Theater` to prevent horizontal text truncation and ensure optimal fit on compact smartphone screens (Google Pixel 10 Pro, Pixel 10 XL, iPhone, Galaxy).

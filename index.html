@@ -54,15 +54,15 @@
       </div>
 
       <div class="header-actions">
-        <button id="openUpdateAlertBtn" class="btn-update-alert btn-pulse-glow" title="View Latest Syndicate Updates (v3.5.4)">
+        <button id="openUpdateAlertBtn" class="btn-update-alert btn-pulse-glow" title="View Latest Syndicate Updates (v3.5.5)">
           <span class="update-icon-pulse">⚡</span>
-          <span class="update-label">v3.5.4 Update</span>
+          <span class="update-label">v3.5.5 Update</span>
         </button>
 
         <div class="header-status-pill" id="headerStatusPill" title="Syndicate HQ Live Status">
           <span class="live-dot-pulse"></span>
           <span class="status-txt">HQ LIVE</span>
-          <span class="version-pill" id="headerVersionPill">v3.5.4</span>
+          <span class="version-pill" id="headerVersionPill">v3.5.5</span>
         </div>
 
         <!-- Live Visitor Counter -->
@@ -343,7 +343,7 @@
   </footer>
 
   <!-- =========================================================================
-       MODAL: SYNDICATE UPDATE ALERT (v3.5.4)
+       POPUP MODAL WINDOW: SYNDICATE UPDATE ALERT (v3.5.5)
        ========================================================================= -->
   <div id="updateAlertOverlay" class="update-alert-overlay" style="display: none;"></div>
   <div id="updateAlertModal" class="update-alert-modal-container" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="updateAlertTitle">
@@ -353,9 +353,9 @@
         <div>
           <div class="update-headline-row">
             <h3 id="updateAlertTitle">NEW SYNDICATE UPDATE</h3>
-            <span class="update-version-tag">v3.5.4</span>
+            <span class="update-version-tag">v3.5.5</span>
           </div>
-          <p class="update-subheadline">Menu Tab Rename to Theater &amp; Spacing Polish</p>
+          <p class="update-subheadline">Update Alert Popup Window &amp; Install Flow</p>
         </div>
       </div>
       <button id="closeUpdateAlertBtn" class="update-close-btn" aria-label="Close Update Alert">&times;</button>
@@ -364,15 +364,23 @@
     <div class="update-alert-body">
       <div class="update-featured-banner">
         <span class="update-badge-pill">🔥 WHAT'S NEW</span>
-        <p>Renamed navigation tab to "Theater" and perfected menu bar fit across all smartphone screens!</p>
+        <p>The update prompt is now a clean popup window modal that automatically dismisses upon installation or confirmation!</p>
       </div>
 
       <div class="update-features-list">
         <div class="update-feature-item">
+          <span class="feature-icon">✨</span>
+          <div class="feature-text">
+            <strong>Update Popup Window &amp; 1-Tap Dismiss</strong>
+            <p>Clean modal window with instant dismiss on "INSTALL &amp; APPLY UPDATE" or "GOT IT" with zero lingering banners.</p>
+          </div>
+        </div>
+
+        <div class="update-feature-item">
           <span class="feature-icon">🎬</span>
           <div class="feature-text">
             <strong>Renamed to "Theater"</strong>
-            <p>Shortened the main navigation tab to "Theater" for a cleaner, compact fit that prevents cutoffs on mobile.</p>
+            <p>Compact navigation tab layout that fits cleanly across all smartphone screens without text truncation.</p>
           </div>
         </div>
 
@@ -380,15 +388,7 @@
           <span class="feature-icon">👆</span>
           <div class="feature-text">
             <strong>Pixel 10 XL / Mobile Touch Slider Engine</strong>
-            <p>Full 1:1 finger swipe drag engine across category series cards with velocity momentum on Pixel 10 Pro / XL, Android, iOS &amp; PC.</p>
-          </div>
-        </div>
-
-        <div class="update-feature-item">
-          <span class="feature-icon">🎯</span>
-          <div class="feature-text">
-            <strong>Drag-to-Scroll vs Tap Intelligence</strong>
-            <p>Smart gesture detection prevents accidental category selection while swiping, so you can slide smoothly without triggering clicks.</p>
+            <p>Full 1:1 finger swipe drag engine with velocity momentum and smart tap detection across category cards.</p>
           </div>
         </div>
 
@@ -404,27 +404,12 @@
 
     <div class="update-alert-footer">
       <button id="btnReloadUpdate" class="btn-update-reload">
-        <span class="btn-spin-icon">🔄</span>
-        <span>REFRESH &amp; APPLY UPDATE</span>
+        <span class="btn-spin-icon">⚡</span>
+        <span>INSTALL &amp; APPLY UPDATE</span>
       </button>
       <button id="btnDismissUpdate" class="btn-update-dismiss">
         <span>✓ GOT IT</span>
       </button>
-    </div>
-  </div>
-
-  <!-- FLOATING UPDATE TOAST BANNER -->
-  <div id="updateFloatingBanner" class="update-floating-banner" style="display: none;">
-    <div class="floating-banner-left">
-      <span class="floating-zap">⚡</span>
-      <div class="floating-banner-text">
-        <span class="floating-banner-title">Syndicate Update Available (v3.5.4)</span>
-        <span class="floating-banner-sub">Theater Tab Rename &amp; Navigation Fit Polish</span>
-      </div>
-    </div>
-    <div class="floating-banner-right">
-      <button id="btnFloatingViewUpdate" class="btn-floating-view">View Changes</button>
-      <button id="btnFloatingDismiss" class="btn-floating-dismiss" aria-label="Dismiss">&times;</button>
     </div>
   </div>
 
@@ -2139,7 +2124,7 @@ function onOpen() {
   <script>
     (function () {
       'use strict';
-      const CURRENT_APP_VERSION = 'v3.5.4';
+      const CURRENT_APP_VERSION = 'v3.5.5';
 
       const updateModal = document.getElementById('updateAlertModal');
       const updateOverlay = document.getElementById('updateAlertOverlay');
@@ -2148,9 +2133,6 @@ function onOpen() {
       const closeUpdateBtn = document.getElementById('closeUpdateAlertBtn');
       const btnReloadUpdate = document.getElementById('btnReloadUpdate');
       const btnDismissUpdate = document.getElementById('btnDismissUpdate');
-      const floatingBanner = document.getElementById('updateFloatingBanner');
-      const btnFloatingView = document.getElementById('btnFloatingViewUpdate');
-      const btnFloatingDismiss = document.getElementById('btnFloatingDismiss');
 
       function openUpdateAlert() {
         if (updateOverlay) updateOverlay.style.display = 'block';
@@ -2162,12 +2144,12 @@ function onOpen() {
         if (updateModal) updateModal.style.display = 'none';
         if (markSeen) {
           localStorage.setItem('bdcf_seen_version', CURRENT_APP_VERSION);
-          if (floatingBanner) floatingBanner.style.display = 'none';
         }
       }
 
       function applyUpdateAndReload() {
         localStorage.setItem('bdcf_seen_version', CURRENT_APP_VERSION);
+        closeUpdateAlert(true);
         if ('serviceWorker' in navigator) {
           navigator.serviceWorker.getRegistrations().then(regs => {
             regs.forEach(r => r.update());
@@ -2186,30 +2168,18 @@ function onOpen() {
       if (btnDismissUpdate) btnDismissUpdate.addEventListener('click', () => closeUpdateAlert(true));
       if (btnReloadUpdate) btnReloadUpdate.addEventListener('click', applyUpdateAndReload);
 
-      if (btnFloatingView) {
-        btnFloatingView.addEventListener('click', () => {
-          if (floatingBanner) floatingBanner.style.display = 'none';
-          openUpdateAlert();
-        });
-      }
-      if (btnFloatingDismiss) {
-        btnFloatingDismiss.addEventListener('click', () => {
-          if (floatingBanner) floatingBanner.style.display = 'none';
-          sessionStorage.setItem('bdcf_floating_dismissed', '1');
-        });
-      }
-
-      // Auto-show floating banner on initial visit if version is new
+      // Auto-show popup window modal on initial visit if version is newer
       const lastSeenVersion = localStorage.getItem('bdcf_seen_version');
-      if (lastSeenVersion !== CURRENT_APP_VERSION && !sessionStorage.getItem('bdcf_floating_dismissed')) {
+      if (lastSeenVersion !== CURRENT_APP_VERSION && !sessionStorage.getItem('bdcf_update_popup_shown')) {
+        sessionStorage.setItem('bdcf_update_popup_shown', '1');
         setTimeout(() => {
-          if (floatingBanner) floatingBanner.style.display = 'flex';
-        }, 1200);
+          openUpdateAlert();
+        }, 800);
       }
 
       // Export trigger for SW updates
       window.triggerSyndicateUpdateAlert = function () {
-        if (floatingBanner) floatingBanner.style.display = 'flex';
+        openUpdateAlert();
       };
     })();
   </script>
@@ -2263,7 +2233,7 @@ function onOpen() {
       let deferredPrompt = null;
 
       function showStickyDock() {
-        if (!isStandalone && !sessionStorage.getItem('bdcf_dock_dismissed')) {
+        if (!isStandalone && !localStorage.getItem('bdcf_dock_dismissed')) {
           if (stickyDock) {
             stickyDock.style.display = 'block';
             stickyDock.classList.add('dock-slide-up');
@@ -2271,15 +2241,16 @@ function onOpen() {
         }
       }
 
-      function hideStickyDock(permanentForSession = true) {
+      function hideStickyDock(permanent = true) {
         if (stickyDock) {
           stickyDock.classList.remove('dock-slide-up');
           stickyDock.classList.add('dock-slide-down');
           setTimeout(() => {
             stickyDock.style.display = 'none';
-          }, 350);
+          }, 300);
         }
-        if (permanentForSession) {
+        if (permanent) {
+          localStorage.setItem('bdcf_dock_dismissed', '1');
           sessionStorage.setItem('bdcf_dock_dismissed', '1');
         }
       }
@@ -2315,7 +2286,7 @@ function onOpen() {
       window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
-        if (!isStandalone) {
+        if (!isStandalone && !localStorage.getItem('bdcf_dock_dismissed')) {
           if (installBtn) installBtn.style.display = 'inline-flex';
           if (footerInstallBtn) footerInstallBtn.style.display = 'inline-flex';
           showStickyDock();
@@ -2326,7 +2297,9 @@ function onOpen() {
       if (!isStandalone) {
         if (installBtn) installBtn.style.display = 'inline-flex';
         if (footerInstallBtn) footerInstallBtn.style.display = 'inline-flex';
-        setTimeout(showStickyDock, 1200);
+        if (!localStorage.getItem('bdcf_dock_dismissed')) {
+          setTimeout(showStickyDock, 1500);
+        }
       } else {
         // In Standalone PWA Mode
         if (installBtn) installBtn.style.display = 'none';
@@ -2335,6 +2308,7 @@ function onOpen() {
 
       // Universal install action handler
       function handleInstallClick() {
+        hideStickyDock(true);
         if (deferredPrompt) {
           deferredPrompt.prompt();
           deferredPrompt.userChoice.then((choiceResult) => {
@@ -2342,6 +2316,7 @@ function onOpen() {
               if (installBtn) installBtn.style.display = 'none';
               if (footerInstallBtn) footerInstallBtn.style.display = 'none';
               hideStickyDock(true);
+              closeInstallModal();
             }
             deferredPrompt = null;
           });
@@ -2353,7 +2328,12 @@ function onOpen() {
       if (installBtn) installBtn.addEventListener('click', handleInstallClick);
       if (dockInstallBtn) dockInstallBtn.addEventListener('click', handleInstallClick);
       if (footerInstallBtn) footerInstallBtn.addEventListener('click', handleInstallClick);
-      if (nativePromptBtn) nativePromptBtn.addEventListener('click', handleInstallClick);
+      if (nativePromptBtn) {
+        nativePromptBtn.addEventListener('click', () => {
+          closeInstallModal();
+          handleInstallClick();
+        });
+      }
 
       // Track successful installation
       window.addEventListener('appinstalled', () => {
