@@ -1,5 +1,35 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.5.2] - 2026-08-18
+- **Universal Horizontal Category Sliding Bar**:
+  - Rebuilt the Category Series selector as a strict, non-wrapping horizontal sliding reel (`flex-direction: row; flex-wrap: nowrap; overflow-x: auto`) across all viewports (desktop, laptop, tablet, and mobile).
+  - Fixed category card dimensions (`flex: 0 0 175px; min-width: 175px; max-width: 185px; height: 105px`) with video poster backdrops and dark gradient overlays.
+  - Added header and floating interactive navigation arrow buttons (`◀` and `▶`) for 1-click sliding.
+  - Added horizontal mouse wheel and swipe gesture listener for smooth scrolling on desktop and smartphones.
+- **Cleaned Up Stacked Playlist Feed**:
+  - Enforced structured vertical stack (`flex-direction: column`) with `max-height: 440px`, glowing purple neon scrollbar, and rich YouTube video thumbnails.
+- **Service Worker Cache Refresh**: Bumped service worker cache identifier to `bdcf-pwa-cache-v3.5.2`.
+
+## [3.5.1] - 2026-08-18
+- **Full Video Theater Mockup Fidelity Overhaul**:
+  - **High-Definition Video Thumbnails**: Integrated real YouTube video thumbnail previews (`https://img.youtube.com/vi/{id}/mqdefault.jpg`) on all playlist clips with ranking numbers (`#1`, `#2`, `#3`), timestamp `HD` badges, and glowing active borders.
+  - **Series Cards with Video Poster Backdrops**: Every category card now renders authentic video backdrop imagery with dark gradient overlays, series icons, uppercase headers, and bright magenta/purple neon active states.
+  - **Mockup Player & Now Playing Stats Bar**: Embedded 16:9 HD screen corner badge, prominent centered `▶ NOW PLAYING` glowing magenta pill, and syndicate stats strip (`👥 BDCF Syndicate` • `🌴 Series` • `⏱️ HD 1080p`).
+  - **Header Section Hints**: Added `Swipe ➔` affordance pill to Category Series and `Scroll ➔` pill to Playlist feed.
+- **Syndicate Update Alert System**:
+  - **Interactive Update Modal (`#updateAlertModal`)**: Glassmorphic modal showcasing newly released features, changelog highlights, and 1-click `🔄 REFRESH & APPLY UPDATE`.
+  - **Auto-Detection & Floating Banner (`#updateFloatingBanner`)**: Automatically alerts visitors when a newer cache/deployment is available.
+  - **Header Trigger Pill (`⚡ v3.5.1 Update`)**: Clicking the update pill or version badge in the header instantly opens the update release notes.
+- **Service Worker Cache Refresh**: Bumped service worker cache identifier to `bdcf-pwa-cache-v3.5.1`.
+
+## [3.5.0] - 2026-08-18
+- **Smartphone & Mobile Video Theater Redesign**: Completely cleaned up and restructured the BDCF Crew Video Theater for mobile screens (< 768px, < 640px, and < 480px) to eliminate visual clutter and endless single-column scrolling.
+- **Horizontal Swipeable Series Reel**: Transformed the 500px+ vertical stack of category cards into a sleek horizontal-scrolling reel with smooth scroll snap (`scroll-snap-type: x mandatory`), compact badges, and touch-friendly padding (~80px tall).
+- **Contained Scrollable Playlist Feed Drawer**: Enclosed all video clips inside a dedicated scrollable container with max-height limits (`max-height: 380px`), custom purple neon scrollbars, and `overscroll-behavior: contain` to prevent layout blowouts.
+- **Enhanced Video Metadata Bar**: Re-aligned now playing tags, titles with fluid responsive typography, and social/HD badges into a clean, breathable hierarchy.
+- **Visual "Playing Now" Indicators & Auto-Scroll**: Added pulsing green `PLAYING NOW` badges, active glowing highlights, and automatic smooth-scrolling into view when videos are selected.
+- **Service Worker Cache Refresh**: Bumped service worker cache identifier to `bdcf-pwa-cache-v3.5.0` for immediate client-side cache updates.
+
 ## [3.4.1] - 2026-08-18
 - **CSS Hierarchy & Bracket Balance Fix**: Removed a stray unmatched closing bracket in `style.css` at line 1351 that was interfering with downstream modal and admin layout styling in certain browser engines.
 - **Resilient Service Worker Pre-Caching**: Updated `sw.js` cache installer to gracefully add assets individually to prevent 404/rejection cascading, and bumped cache identifier to `bdcf-pwa-cache-v3.4.1` for immediate client cache refresh.
