@@ -1,5 +1,11 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.4.0] - 2026-08-18
+- **High-Visibility "In-Your-Face" PWA Install Banner & Dock**: Added an unmissable, floating glassmorphic smart app dock fixed to the bottom of the screen with glowing purple neon borders, green online status badge, and pulsing `⚡ INSTALL APP NOW` action button.
+- **Auto-Slide In Animation**: The install dock automatically animates up onto the screen after 1.2s for mobile and desktop visitors.
+- **Pulsing Header Install Button**: Transformed the header install button into a permanently glowing, pulsing action pill (`⚡ INSTALL APP`) whenever browsed outside standalone mode.
+- **Smart Session Dismissal**: Added 1-click dismiss (`✕`) with session-based memory so users can close the dock if desired while keeping header and footer install triggers active.
+
 ## [3.3.0] - 2026-08-18
 - **Full Progressive Web App (PWA) Transformation**: Converted the BDCF Syndicate Portal into an installable mobile & desktop web application just like `wosbdc`.
 - **Android & Chrome Native Installation**: Built `beforeinstallprompt` interception, standalone display mode, and instant 1-click **📲 Install App** button in the header and footer.

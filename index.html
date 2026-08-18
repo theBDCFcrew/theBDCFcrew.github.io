@@ -57,7 +57,7 @@
         <div class="header-status-pill">
           <span class="live-dot-pulse"></span>
           <span class="status-txt">HQ LIVE</span>
-          <span class="version-pill">v3.3.0</span>
+          <span class="version-pill">v3.4.0</span>
         </div>
         <!-- Live Visitor Counter -->
         <div class="live-counter-pill" id="liveCounterPill" title="Crew members viewing right now">
@@ -65,13 +65,15 @@
           <span id="liveCountDisplay">—</span>
           <span class="live-counter-label">online</span>
         </div>
-        <button id="installAppBtn" class="btn-install-header" title="Install BDCF Crew Web App on Android, iOS, or PC" style="display:none;">
-          <span>📲 Install App</span>
+        <button id="installAppBtn" class="btn-install-header btn-pulse-glow" title="Install BDCF Crew Web App on Android, iOS, or PC">
+          <span class="install-icon-pulse">⚡</span>
+          <span>INSTALL APP</span>
         </button>
         <button id="openAdminBtn" class="btn-admin-header" title="Open BDCF Admin Menu">
           <span>⚙️ Admin</span>
         </button>
       </div>
+
 
     </div>
   </header>
@@ -638,8 +640,39 @@
     </div>
   </div>
 
+  <!-- =========================================================================
+       HIGH-VISIBILITY STICKY PWA INSTALL DOCK / BANNER
+       ========================================================================= -->
+  <aside id="pwaStickyBanner" class="pwa-sticky-dock" style="display:none;" aria-label="Install BDCF Web App">
+    <div class="dock-container">
+      <button type="button" id="closeDockBtn" class="dock-close-btn" aria-label="Dismiss Install Banner" title="Dismiss">✕</button>
+      
+      <div class="dock-left">
+        <div class="dock-icon-wrap">
+          <img src="./icon-192.png" alt="BDCF App Icon" class="dock-app-icon" />
+          <span class="dock-badge-pulse" title="Ready to Install"></span>
+        </div>
+        <div class="dock-text">
+          <div class="dock-headline-row">
+            <span class="dock-title">BDCF SYNDICATE APP</span>
+            <span class="dock-badge">FREE WEB APP</span>
+          </div>
+          <p class="dock-subtext">Install for full-screen 4K cinema viewing, zero address bars &amp; 1-tap instant launch on Android, iOS &amp; PC.</p>
+        </div>
+      </div>
+
+      <div class="dock-right">
+        <button type="button" id="dockInstallBtn" class="btn-dock-install">
+          <span class="btn-dock-icon">⚡</span>
+          <span class="btn-dock-txt">INSTALL APP NOW</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
   <!-- TOAST NOTIFICATION CONTAINER -->
   <div id="toastContainer" class="toast-container"></div>
+
 
 
   <!-- =========================================================================
@@ -1901,6 +1934,9 @@ function onOpen() {
 
       const installBtn = document.getElementById('installAppBtn');
       const footerInstallBtn = document.getElementById('footerInstallBtn');
+      const stickyDock = document.getElementById('pwaStickyBanner');
+      const dockInstallBtn = document.getElementById('dockInstallBtn');
+      const closeDockBtn = document.getElementById('closeDockBtn');
       const installModal = document.getElementById('installModal');
       const installOverlay = document.getElementById('installModalOverlay');
       const closeInstallBtn = document.getElementById('closeInstallModalBtn');
@@ -1909,6 +1945,35 @@ function onOpen() {
       const nativePromptBtn = document.getElementById('nativeInstallPromptBtn');
 
       let deferredPrompt = null;
+
+      function showStickyDock() {
+        if (!isStandalone && !sessionStorage.getItem('bdcf_dock_dismissed')) {
+          if (stickyDock) {
+            stickyDock.style.display = 'block';
+            stickyDock.classList.add('dock-slide-up');
+          }
+        }
+      }
+
+      function hideStickyDock(permanentForSession = true) {
+        if (stickyDock) {
+          stickyDock.classList.remove('dock-slide-up');
+          stickyDock.classList.add('dock-slide-down');
+          setTimeout(() => {
+            stickyDock.style.display = 'none';
+          }, 350);
+        }
+        if (permanentForSession) {
+          sessionStorage.setItem('bdcf_dock_dismissed', '1');
+        }
+      }
+
+      if (closeDockBtn) {
+        closeDockBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          hideStickyDock(true);
+        });
+      }
 
       function openInstallModal() {
         if (isIOS) {
@@ -1937,16 +2002,22 @@ function onOpen() {
         if (!isStandalone) {
           if (installBtn) installBtn.style.display = 'inline-flex';
           if (footerInstallBtn) footerInstallBtn.style.display = 'inline-flex';
+          showStickyDock();
         }
       });
 
-      // If on iOS and not in standalone mode, display the Install button
-      if (isIOS && !isStandalone) {
+      // Show header install button and sticky dock automatically if not standalone
+      if (!isStandalone) {
         if (installBtn) installBtn.style.display = 'inline-flex';
         if (footerInstallBtn) footerInstallBtn.style.display = 'inline-flex';
+        setTimeout(showStickyDock, 1200);
+      } else {
+        // In Standalone PWA Mode
+        if (installBtn) installBtn.style.display = 'none';
+        if (footerInstallBtn) footerInstallBtn.style.display = 'none';
       }
 
-      // If user is on desktop or other mobile and button is clicked
+      // Universal install action handler
       function handleInstallClick() {
         if (deferredPrompt) {
           deferredPrompt.prompt();
@@ -1954,6 +2025,7 @@ function onOpen() {
             if (choiceResult.outcome === 'accepted') {
               if (installBtn) installBtn.style.display = 'none';
               if (footerInstallBtn) footerInstallBtn.style.display = 'none';
+              hideStickyDock(true);
             }
             deferredPrompt = null;
           });
@@ -1963,6 +2035,7 @@ function onOpen() {
       }
 
       if (installBtn) installBtn.addEventListener('click', handleInstallClick);
+      if (dockInstallBtn) dockInstallBtn.addEventListener('click', handleInstallClick);
       if (footerInstallBtn) footerInstallBtn.addEventListener('click', handleInstallClick);
       if (nativePromptBtn) nativePromptBtn.addEventListener('click', handleInstallClick);
 
@@ -1970,10 +2043,12 @@ function onOpen() {
       window.addEventListener('appinstalled', () => {
         if (installBtn) installBtn.style.display = 'none';
         if (footerInstallBtn) footerInstallBtn.style.display = 'none';
+        hideStickyDock(true);
         closeInstallModal();
         console.log('[BDCF PWA] App installed successfully');
       });
     })();
+
   </script>
 
 </body>

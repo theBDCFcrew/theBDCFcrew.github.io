@@ -2228,3 +2228,246 @@ body.crew-portal-body {
   vertical-align: middle;
 }
 
+/* =========================================================================
+   HIGH-VISIBILITY STICKY PWA DOCK / BANNER
+   ========================================================================= */
+.pwa-sticky-dock {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  max-width: 860px;
+  background: rgba(13, 16, 28, 0.95);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1.5px solid #a855f7;
+  border-radius: 18px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.85), 0 0 30px rgba(168, 85, 247, 0.45);
+  z-index: 9999;
+  padding: 14px 20px;
+  animation: dockBounce 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dock-slide-up {
+  animation: dockSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.dock-slide-down {
+  animation: dockSlideDown 0.3s ease forwards;
+}
+
+@keyframes dockSlideUp {
+  from { opacity: 0; transform: translate(-50%, 60px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@keyframes dockSlideDown {
+  from { opacity: 1; transform: translate(-50%, 0); }
+  to   { opacity: 0; transform: translate(-50%, 60px); }
+}
+
+.dock-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  position: relative;
+}
+
+.dock-close-btn {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  z-index: 2;
+}
+
+.dock-close-btn:hover {
+  background: rgba(239, 68, 68, 0.8);
+  border-color: #ef4444;
+  transform: scale(1.1);
+}
+
+.dock-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+}
+
+.dock-icon-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.dock-app-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: 1.5px solid #a855f7;
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.5);
+  display: block;
+}
+
+.dock-badge-pulse {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 12px;
+  height: 12px;
+  background: #22c55e;
+  border: 2px solid #0f1322;
+  border-radius: 50%;
+  animation: pulseGreen 1.5s infinite;
+}
+
+@keyframes pulseGreen {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+  70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+.dock-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.dock-headline-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.dock-title {
+  font-family: var(--font-header);
+  font-size: 14px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.dock-badge {
+  font-family: var(--font-tech);
+  font-size: 9px;
+  font-weight: 800;
+  color: #a855f7;
+  background: rgba(168, 85, 247, 0.2);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.dock-subtext {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.35;
+  margin: 0;
+}
+
+.dock-right {
+  flex-shrink: 0;
+}
+
+.btn-dock-install {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+  border: 1px solid #c084fc;
+  color: #fff;
+  font-family: var(--font-header);
+  font-size: 13px;
+  font-weight: 900;
+  padding: 11px 22px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  animation: pulseButton 2s infinite ease-in-out;
+}
+
+.btn-dock-install:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.9);
+  background: linear-gradient(135deg, #c084fc 0%, #9333ea 100%);
+}
+
+@keyframes pulseButton {
+  0%, 100% { box-shadow: 0 0 16px rgba(168, 85, 247, 0.5); }
+  50% { box-shadow: 0 0 28px rgba(168, 85, 247, 0.9), 0 0 8px #c084fc; }
+}
+
+/* Pulsing Header Install Button */
+.btn-pulse-glow {
+  animation: pulseButton 2.5s infinite ease-in-out;
+  border-color: #c084fc !important;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(126, 34, 206, 0.5)) !important;
+}
+
+.install-icon-pulse {
+  display: inline-block;
+  animation: jumpIcon 1.5s infinite;
+}
+
+@keyframes jumpIcon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+/* Responsive Mobile Stacking for Dock */
+@media (max-width: 640px) {
+  .pwa-sticky-dock {
+    bottom: 12px;
+    width: 95%;
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
+
+  .dock-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .dock-left {
+    gap: 10px;
+  }
+
+  .dock-app-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .dock-title {
+    font-size: 13px;
+  }
+
+  .dock-subtext {
+    font-size: 10.5px;
+  }
+
+  .btn-dock-install {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+}
+
+
