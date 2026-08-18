@@ -1,5 +1,14 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.3.0] - 2026-08-18
+- **Full Progressive Web App (PWA) Transformation**: Converted the BDCF Syndicate Portal into an installable mobile & desktop web application just like `wosbdc`.
+- **Android & Chrome Native Installation**: Built `beforeinstallprompt` interception, standalone display mode, and instant 1-click **📲 Install App** button in the header and footer.
+- **Apple iOS (iPhone & iPad) Safari Web App**:
+  - Configured `apple-mobile-web-app-capable`, `apple-touch-icon` assets, and full-screen standalone status bar.
+  - Built an animated visual installation guide modal with step-by-step instructions for adding the BDCF Crew app to the iOS Home Screen via Safari Share.
+- **High-Resolution Vector & Raster Icons**: Designed custom 192x192 and 512x512 maskable SVG and PNG syndicate icons (`icon-192.svg`, `icon-512.svg`, `icon-192.png`, `icon-512.png`, `apple-touch-icon.png`).
+- **Service Worker (`sw.js`) Offline Engine**: High-performance network-first asset caching strategy with offline fallbacks and dynamic cache invalidation on version updates.
+
 ## [3.2.0] - 2026-08-17
 - **API Rate-Limit Shield & Admin-Only Sync Gating**: Removed public visitor API sync buttons and automated polling from both the Los Santos Weekly Hub and the BDCF Theater to prevent quota exhaustion and API hammering.
 - **Dedicated Weekly Hub & APIs Tab in Admin Menu**:

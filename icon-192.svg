@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0e17"/>
+      <stop offset="50%" stop-color="#141126"/>
+      <stop offset="100%" stop-color="#06080e"/>
+    </linearGradient>
+    <linearGradient id="purpleGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="50%" stop-color="#9333ea"/>
+      <stop offset="100%" stop-color="#6b21a8"/>
+    </linearGradient>
+    <linearGradient id="goldGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="100%" stop-color="#eab308"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="192" height="192" rx="42" fill="url(#bgGrad)"/>
+  
+  <!-- Outer Neon Shield Border -->
+  <path d="M96 16 L164 42 L164 104 C164 144 96 176 96 176 C96 176 28 144 28 104 L28 42 Z" 
+        fill="none" stroke="url(#purpleGlow)" stroke-width="6" stroke-linejoin="round" filter="url(#glow)"/>
+  
+  <!-- Inner Shield Fill -->
+  <path d="M96 26 L154 49 L154 102 C154 136 96 164 96 164 C96 164 38 136 38 102 L38 49 Z" 
+        fill="#131124" fill-opacity="0.8" stroke="rgba(168, 85, 247, 0.4)" stroke-width="2" stroke-linejoin="round"/>
+
+  <!-- Palm Tree & Crosshair Center Symbol -->
+  <!-- Target Scope Circle -->
+  <circle cx="96" cy="82" r="30" fill="none" stroke="url(#purpleGlow)" stroke-width="2" stroke-dasharray="6,4" opacity="0.6"/>
+  <circle cx="96" cy="82" r="6" fill="url(#goldGlow)" filter="url(#glow)"/>
+
+  <!-- Palm Tree Vector -->
+  <path d="M96 98 C96 85 96 70 96 64" stroke="#eab308" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Leaves -->
+  <path d="M96 64 C86 52 70 54 64 60 C74 62 86 66 96 64" fill="url(#goldGlow)"/>
+  <path d="M96 64 C106 52 122 54 128 60 C118 62 106 66 96 64" fill="url(#goldGlow)"/>
+  <path d="M96 64 C84 46 92 36 96 34 C100 36 108 46 96 64" fill="url(#goldGlow)"/>
+  <path d="M96 64 C76 60 70 70 66 76 C76 74 88 70 96 64" fill="url(#goldGlow)"/>
+  <path d="M96 64 C116 60 122 70 126 76 C116 74 104 70 96 64" fill="url(#goldGlow)"/>
+
+  <!-- BDCF Syndicate Text -->
+  <text x="96" y="138" font-family="'Montserrat', 'Impact', sans-serif" font-size="22" font-weight="900" 
+        fill="#ffffff" text-anchor="middle" letter-spacing="2">BDCF</text>
+  <text x="96" y="152" font-family="'Courier New', monospace" font-size="8.5" font-weight="800" 
+        fill="#c084fc" text-anchor="middle" letter-spacing="3">SYNDICATE</text>
+</svg>

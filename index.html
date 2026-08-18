@@ -12,8 +12,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
   
+  <!-- Progressive Web App (PWA) & Mobile Web App Meta -->
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#9333ea" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="application-name" content="BDCF Crew" />
+
+  <!-- iOS / Apple Web App Settings -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="BDCF Crew" />
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="./icon-192.png" />
+  <link rel="apple-touch-icon" sizes="512x512" href="./icon-512.png" />
+
+  <!-- Favicon & Icons -->
+  <link rel="icon" type="image/svg+xml" href="./icon-192.svg" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png" />
+
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body class="crew-portal-body">
 
   <!-- LUXURY AMBIENT BACKGROUND GLOWS -->
@@ -38,7 +57,7 @@
         <div class="header-status-pill">
           <span class="live-dot-pulse"></span>
           <span class="status-txt">HQ LIVE</span>
-          <span class="version-pill">v3.2.0</span>
+          <span class="version-pill">v3.3.0</span>
         </div>
         <!-- Live Visitor Counter -->
         <div class="live-counter-pill" id="liveCounterPill" title="Crew members viewing right now">
@@ -46,10 +65,14 @@
           <span id="liveCountDisplay">—</span>
           <span class="live-counter-label">online</span>
         </div>
+        <button id="installAppBtn" class="btn-install-header" title="Install BDCF Crew Web App on Android, iOS, or PC" style="display:none;">
+          <span>📲 Install App</span>
+        </button>
         <button id="openAdminBtn" class="btn-admin-header" title="Open BDCF Admin Menu">
           <span>⚙️ Admin</span>
         </button>
       </div>
+
     </div>
   </header>
 
@@ -288,8 +311,10 @@
       </div>
 
       <div class="footer-links">
+        <button id="footerInstallBtn" class="footer-install-btn" style="display:none;">📲 Install Web App</button>
         <button id="footerAdminBtn" class="footer-admin-btn">⚙️ Admin Menu</button>
       </div>
+
     </div>
   </footer>
 
@@ -550,8 +575,72 @@
 
   </div>
 
+  <!-- =========================================================================
+       MODAL: MOBILE / IOS PWA INSTALLATION GUIDE
+       ========================================================================= -->
+  <div id="installModalOverlay" class="admin-modal-overlay" style="display:none;"></div>
+  <div id="installModal" class="install-modal-container" style="display:none;">
+    <div class="install-modal-header">
+      <div class="install-modal-brand">
+        <img src="./icon-192.png" alt="BDCF Crew" class="install-app-logo" />
+        <div>
+          <h3>Install BDCF Crew App</h3>
+          <p class="text-xs text-muted">Web App for iOS, Android &amp; PC</p>
+        </div>
+      </div>
+      <button id="closeInstallModalBtn" class="admin-close-btn" aria-label="Close Install Modal">&times;</button>
+    </div>
+
+    <div class="install-modal-body">
+      <!-- iOS Guide -->
+      <div id="iosInstallGuide" class="install-platform-guide">
+        <div class="platform-badge-row">
+          <span class="platform-badge apple-badge">🍏 Apple iOS (iPhone &amp; iPad)</span>
+        </div>
+        <p class="install-intro-text">
+          Install the <strong>BDCF Crew</strong> app on your home screen for full-screen cinema viewing with zero browser address bars:
+        </p>
+        
+        <div class="ios-steps-list">
+          <div class="ios-step-item">
+            <div class="ios-step-num">1</div>
+            <div class="ios-step-content">
+              <span>Tap the <strong>Share</strong> button <span class="ios-icon-box">⎋</span> at the bottom of Safari.</span>
+            </div>
+          </div>
+          <div class="ios-step-item">
+            <div class="ios-step-num">2</div>
+            <div class="ios-step-content">
+              <span>Scroll down and tap <strong>Add to Home Screen</strong> <span class="ios-icon-box">➕</span>.</span>
+            </div>
+          </div>
+          <div class="ios-step-item">
+            <div class="ios-step-num">3</div>
+            <div class="ios-step-content">
+              <span>Tap <strong>Add</strong> in the top right corner. Launch from your home screen anytime!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Android / Generic Guide -->
+      <div id="androidInstallGuide" class="install-platform-guide" style="display:none;">
+        <div class="platform-badge-row">
+          <span class="platform-badge android-badge">🤖 Android / Chrome Web App</span>
+        </div>
+        <p class="install-intro-text">
+          Click the button below to install the BDCF Syndicate App directly to your Android device or PC:
+        </p>
+        <button type="button" id="nativeInstallPromptBtn" class="btn btn-accent full-width" style="padding:14px; font-size:14px; font-weight:800; margin-top:10px;">
+          📲 Click Here to Install App
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- TOAST NOTIFICATION CONTAINER -->
   <div id="toastContainer" class="toast-container"></div>
+
 
   <!-- =========================================================================
        CORE SCRIPT: THEATER ENGINE, PLAYLIST IMPORTER & ADMIN MENU
@@ -1786,5 +1875,107 @@ function onOpen() {
 
   </script>
 
+  <!-- =========================================================================
+       BDCF CREW PWA SERVICE WORKER & APP INSTALL LOGIC
+       ========================================================================= -->
+  <script>
+    (function () {
+      'use strict';
+
+      // 1. Register Service Worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then((reg) => {
+              console.log('[BDCF PWA] ServiceWorker registered:', reg.scope);
+            })
+            .catch((err) => {
+              console.warn('[BDCF PWA] ServiceWorker registration warning:', err);
+            });
+        });
+      }
+
+      // 2. Detect Platform & Display Mode
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches || (window.navigator.standalone === true);
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+      const installBtn = document.getElementById('installAppBtn');
+      const footerInstallBtn = document.getElementById('footerInstallBtn');
+      const installModal = document.getElementById('installModal');
+      const installOverlay = document.getElementById('installModalOverlay');
+      const closeInstallBtn = document.getElementById('closeInstallModalBtn');
+      const iosGuide = document.getElementById('iosInstallGuide');
+      const androidGuide = document.getElementById('androidInstallGuide');
+      const nativePromptBtn = document.getElementById('nativeInstallPromptBtn');
+
+      let deferredPrompt = null;
+
+      function openInstallModal() {
+        if (isIOS) {
+          if (iosGuide) iosGuide.style.display = 'block';
+          if (androidGuide) androidGuide.style.display = 'none';
+        } else {
+          if (iosGuide) iosGuide.style.display = 'none';
+          if (androidGuide) androidGuide.style.display = 'block';
+        }
+        if (installModal) installModal.style.display = 'flex';
+        if (installOverlay) installOverlay.style.display = 'block';
+      }
+
+      function closeInstallModal() {
+        if (installModal) installModal.style.display = 'none';
+        if (installOverlay) installOverlay.style.display = 'none';
+      }
+
+      if (closeInstallBtn) closeInstallBtn.addEventListener('click', closeInstallModal);
+      if (installOverlay) installOverlay.addEventListener('click', closeInstallModal);
+
+      // Handle Native Android / Chrome beforeinstallprompt event
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        if (!isStandalone) {
+          if (installBtn) installBtn.style.display = 'inline-flex';
+          if (footerInstallBtn) footerInstallBtn.style.display = 'inline-flex';
+        }
+      });
+
+      // If on iOS and not in standalone mode, display the Install button
+      if (isIOS && !isStandalone) {
+        if (installBtn) installBtn.style.display = 'inline-flex';
+        if (footerInstallBtn) footerInstallBtn.style.display = 'inline-flex';
+      }
+
+      // If user is on desktop or other mobile and button is clicked
+      function handleInstallClick() {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+              if (installBtn) installBtn.style.display = 'none';
+              if (footerInstallBtn) footerInstallBtn.style.display = 'none';
+            }
+            deferredPrompt = null;
+          });
+        } else {
+          openInstallModal();
+        }
+      }
+
+      if (installBtn) installBtn.addEventListener('click', handleInstallClick);
+      if (footerInstallBtn) footerInstallBtn.addEventListener('click', handleInstallClick);
+      if (nativePromptBtn) nativePromptBtn.addEventListener('click', handleInstallClick);
+
+      // Track successful installation
+      window.addEventListener('appinstalled', () => {
+        if (installBtn) installBtn.style.display = 'none';
+        if (footerInstallBtn) footerInstallBtn.style.display = 'none';
+        closeInstallModal();
+        console.log('[BDCF PWA] App installed successfully');
+      });
+    })();
+  </script>
+
 </body>
 </html>
+

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0e17"/>
+      <stop offset="50%" stop-color="#141126"/>
+      <stop offset="100%" stop-color="#06080e"/>
+    </linearGradient>
+    <linearGradient id="purpleGlow512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="50%" stop-color="#9333ea"/>
+      <stop offset="100%" stop-color="#6b21a8"/>
+    </linearGradient>
+    <linearGradient id="goldGlow512" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="100%" stop-color="#eab308"/>
+    </linearGradient>
+    <filter id="glow512" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="512" height="512" rx="110" fill="url(#bgGrad512)"/>
+  
+  <!-- Outer Neon Shield Border -->
+  <path d="M256 42 L438 112 L438 276 C438 384 256 470 256 470 C256 470 74 384 74 276 L74 112 Z" 
+        fill="none" stroke="url(#purpleGlow512)" stroke-width="14" stroke-linejoin="round" filter="url(#glow512)"/>
+  
+  <!-- Inner Shield Fill -->
+  <path d="M256 68 L410 130 L410 272 C410 362 256 438 256 438 C256 438 102 362 102 272 L102 130 Z" 
+        fill="#131124" fill-opacity="0.85" stroke="rgba(168, 85, 247, 0.45)" stroke-width="4" stroke-linejoin="round"/>
+
+  <!-- Target Scope Circle -->
+  <circle cx="256" cy="218" r="80" fill="none" stroke="url(#purpleGlow512)" stroke-width="4" stroke-dasharray="16,10" opacity="0.65"/>
+  <circle cx="256" cy="218" r="16" fill="url(#goldGlow512)" filter="url(#glow512)"/>
+
+  <!-- Palm Tree Vector -->
+  <path d="M256 260 C256 226 256 186 256 170" stroke="#eab308" stroke-width="9" stroke-linecap="round"/>
+  <!-- Leaves -->
+  <path d="M256 170 C230 138 186 144 170 160 C198 166 230 176 256 170" fill="url(#goldGlow512)"/>
+  <path d="M256 170 C282 138 326 144 342 160 C314 166 282 176 256 170" fill="url(#goldGlow512)"/>
+  <path d="M256 170 C224 122 245 96 256 90 C267 96 288 122 256 170" fill="url(#goldGlow512)"/>
+  <path d="M256 170 C202 160 186 186 176 202 C202 198 234 186 256 170" fill="url(#goldGlow512)"/>
+  <path d="M256 170 C310 160 326 186 336 202 C310 198 278 186 256 170" fill="url(#goldGlow512)"/>
+
+  <!-- BDCF Syndicate Text -->
+  <text x="256" y="368" font-family="'Montserrat', 'Impact', sans-serif" font-size="58" font-weight="900" 
+        fill="#ffffff" text-anchor="middle" letter-spacing="5">BDCF</text>
+  <text x="256" y="405" font-family="'Courier New', monospace" font-size="22" font-weight="800" 
+        fill="#c084fc" text-anchor="middle" letter-spacing="8">SYNDICATE</text>
+</svg>
