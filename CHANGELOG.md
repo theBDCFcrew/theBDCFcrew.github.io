@@ -1,5 +1,13 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.6.1] - 2026-08-18
+- **iPhone 11 Pro & Mobile Speed Optimization Engine**:
+  - **Instant YouTube Facade**: Replaced synchronous initial YouTube iframe on startup with a lightweight HD poster and 1-tap play trigger, eliminating 3MB+ of blocking player scripts during initial page load.
+  - **Asynchronous Font Loading**: Loaded Google Fonts asynchronously with `media="print" onload="this.media='all'"` and `font-display: swap` to unblock critical rendering path.
+  - **Hardware-Accelerated WebKit Rendering**: Added GPU compositing transforms (`translateZ(0)`) and optimized `-webkit-backdrop-filter` for smooth 60 FPS scrolling on iOS Safari.
+  - **Deferred Background Services**: Deferred Firebase live counter initialization to `requestIdleCallback` after initial DOM paint.
+- **Service Worker Cache Refresh**: Bumped service worker cache identifier to `bdcf-pwa-cache-v3.6.1`.
+
 ## [3.6.0] - 2026-08-18
 - **Transparent Neon Skull & Avatar Edge Refinement**:
   - Re-processed `bdcf-neon-skull.png` to remove all solid black background box pixels, making the skull 100% transparent alpha with luminous glowing neon outlines.

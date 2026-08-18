@@ -7,10 +7,14 @@
   <meta name="theme-color" content="#07080f" />
   <title>THE BDCF CREW | Official GTA Online Syndicate</title>
 
-  <!-- Google Fonts -->
+  <!-- Preconnect & Asynchronous High-Performance Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Montserrat:wght@700;800;900&family=JetBrains+Mono:wght@700;800&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Montserrat:wght@700;800;900&family=JetBrains+Mono:wght@700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Montserrat:wght@700;800;900&family=JetBrains+Mono:wght@700;800&display=swap" rel="stylesheet">
+  </noscript>
   
   <!-- Progressive Web App (PWA) & Mobile Web App Meta -->
   <link rel="manifest" href="./manifest.json" />
@@ -46,7 +50,7 @@
   <header class="portal-header">
     <div class="header-container">
       <div class="header-brand-wrap" id="headerBrandLogo" title="The BDCF Crew">
-        <img src="./bdcf-neon-skull.png" alt="BDCF Skull Logo" class="header-neon-skull" />
+        <img src="./bdcf-neon-skull.png" alt="BDCF Skull Logo" class="header-neon-skull" fetchpriority="high" decoding="async" />
         <div class="header-neon-brand-text">
           <span class="neon-line-top">BDCF</span>
           <span class="neon-line-bot">CREW</span>
@@ -59,7 +63,7 @@
 
       <div class="header-right-actions">
         <button id="headerUserAvatarBtn" class="header-user-avatar-btn" title="BDCF Syndicate Profile &amp; Admin Menu" aria-label="Open Profile &amp; Settings">
-          <img src="./user-avatar.png" alt="Profile" class="header-avatar-img" />
+          <img src="./user-avatar.png" alt="Profile" class="header-avatar-img" fetchpriority="high" decoding="async" />
         </button>
       </div>
     </div>
@@ -111,15 +115,29 @@
     <div id="tab-theater" class="portal-tab-pane active">
       <section class="theater-card">
         
-        <!-- Main Video Screen -->
-        <div class="video-screen-wrapper">
+        <!-- Main Video Screen with Instant High-Performance Facade -->
+        <div class="video-screen-wrapper" id="videoScreenWrapper">
+          <div class="video-facade-cover" id="videoFacadeCover">
+            <img id="facadePosterImg" class="facade-poster-img" src="https://img.youtube.com/vi/HzWM9viE6gs/maxresdefault.jpg" alt="GTA Online Theater Video" fetchpriority="high" decoding="async" onerror="this.src='https://img.youtube.com/vi/HzWM9viE6gs/hqdefault.jpg'" />
+            <div class="facade-overlay"></div>
+            <button class="facade-play-btn" id="facadePlayBtn" type="button" aria-label="Play Theater Video" title="Click to Play Video">
+              <span class="facade-play-glow"></span>
+              <span class="facade-play-icon">▶</span>
+            </button>
+            <div class="facade-live-badge">
+              <span class="facade-dot-pulse"></span>
+              <span id="facadeCategoryTag">BDCF THEATER • TAP TO PLAY</span>
+            </div>
+          </div>
           <iframe 
             id="mainTheaterPlayer"
-            src="https://www.youtube-nocookie.com/embed/jgp3oTp5WVU?rel=0&modestbranding=1" 
+            src="" 
+            data-loaded="0"
             title="BDCF Crew Theater Player" 
             frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
+            allowfullscreen
+            style="display: none;">
           </iframe>
           <span class="screen-hd-corner-badge">16:9 HD</span>
         </div>
@@ -317,7 +335,7 @@
 
       <div class="footer-links">
         <button id="footerInstallBtn" class="footer-install-btn" style="display:none;">📲 Install Web App</button>
-        <button id="footerVersionBtn" class="footer-admin-btn" title="View Syndicate Updates & Changelog">⚡ v3.6.0 Updates</button>
+        <button id="footerVersionBtn" class="footer-admin-btn" title="View Syndicate Updates & Changelog">⚡ v3.6.1 Updates</button>
         <button id="footerAdminBtn" class="footer-admin-btn">⚙️ Admin Menu</button>
       </div>
 
@@ -325,7 +343,7 @@
   </footer>
 
   <!-- =========================================================================
-       POPUP MODAL WINDOW: SYNDICATE UPDATE ALERT (v3.6.0)
+       POPUP MODAL WINDOW: SYNDICATE UPDATE ALERT (v3.6.1)
        ========================================================================= -->
   <div id="updateAlertOverlay" class="update-alert-overlay" style="display: none;"></div>
   <div id="updateAlertModal" class="update-alert-modal-container" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="updateAlertTitle">
@@ -335,9 +353,9 @@
         <div>
           <div class="update-headline-row">
             <h3 id="updateAlertTitle">NEW SYNDICATE UPDATE</h3>
-            <span class="update-version-tag">v3.6.0</span>
+            <span class="update-version-tag">v3.6.1</span>
           </div>
-          <p class="update-subheadline">Transparent Neon Skull &amp; Edge Refinement</p>
+          <p class="update-subheadline">iPhone 11 Pro &amp; Mobile Speed Engine</p>
         </div>
       </div>
       <button id="closeUpdateAlertBtn" class="update-close-btn" aria-label="Close Update Alert">&times;</button>
@@ -346,7 +364,7 @@
     <div class="update-alert-body">
       <div class="update-featured-banner">
         <span class="update-badge-pill">🔥 WHAT'S NEW</span>
-        <p>100% transparent neon skull and circular profile avatar with zero black background box or corner artifacts!</p>
+        <p>Instant video facade, non-blocking asynchronous fonts, and hardware-accelerated rendering for lightning-fast loads on iPhone and all mobile devices!</p>
       </div>
 
       <div class="update-features-list">
@@ -1210,6 +1228,9 @@
 
       function updatePlayerDisplay(autoplay = false) {
         const player = document.getElementById('mainTheaterPlayer');
+        const facade = document.getElementById('videoFacadeCover');
+        const poster = document.getElementById('facadePosterImg');
+        const facadeTag = document.getElementById('facadeCategoryTag');
         const titleEl = document.getElementById('currentVideoTitle');
         const descEl = document.getElementById('currentVideoDesc');
         const tagEl = document.getElementById('nowPlayingTag');
@@ -1220,9 +1241,32 @@
 
         if (!activeVideo) return;
 
-        if (player) {
-          player.src = `https://www.youtube.com/embed/${activeVideo.id}?rel=0&modestbranding=1&enablejsapi=1${autoplay ? '&autoplay=1' : ''}`;
+        // Update Facade poster image
+        if (poster) {
+          poster.src = `https://img.youtube.com/vi/${activeVideo.id}/maxresdefault.jpg`;
+          poster.onerror = function () {
+            this.onerror = null;
+            this.src = `https://img.youtube.com/vi/${activeVideo.id}/hqdefault.jpg`;
+          };
         }
+        if (facadeTag) {
+          facadeTag.textContent = `${activeCat.title.toUpperCase()} • TAP TO PLAY`;
+        }
+
+        if (autoplay) {
+          if (facade) facade.style.display = 'none';
+          if (player) {
+            player.style.display = 'block';
+            player.src = `https://www.youtube-nocookie.com/embed/${activeVideo.id}?rel=0&modestbranding=1&enablejsapi=1&autoplay=1`;
+          }
+        } else {
+          if (facade) facade.style.display = 'flex';
+          if (player) {
+            player.style.display = 'none';
+            player.src = '';
+          }
+        }
+
         if (tagEl) tagEl.textContent = `▶ NOW PLAYING (${activeCat.title.toUpperCase()})`;
         if (titleEl) titleEl.textContent = activeVideo.title;
         if (descEl) descEl.textContent = activeCat.desc || `Part of the official ${activeCat.title} series on the BDCF Theater.`;
@@ -1437,6 +1481,21 @@
       if (managePlaylistBtn) managePlaylistBtn.addEventListener('click', () => handleAdminClick('tab-categories'));
       if (closeAdminBtn) closeAdminBtn.addEventListener('click', closeModal);
       if (adminOverlay) adminOverlay.addEventListener('click', closeModal);
+
+      // ── Instant Video Facade 1-Tap Play Controller ──
+      const facadePlayBtn = document.getElementById('facadePlayBtn');
+      const videoFacadeCover = document.getElementById('videoFacadeCover');
+      if (facadePlayBtn) {
+        facadePlayBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          updatePlayerDisplay(true);
+        });
+      }
+      if (videoFacadeCover) {
+        videoFacadeCover.addEventListener('click', () => {
+          updatePlayerDisplay(true);
+        });
+      }
 
       // ── Header Search Bar Interactive Controller ──
       const headerSearchBtn = document.getElementById('headerSearchBtn');
@@ -2170,8 +2229,12 @@ function onOpen() {
       }
     }
 
-    // Start counters immediately (no auth required)
-    initCounters();
+    // Start counters asynchronously after initial paint
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(() => initCounters(), { timeout: 1500 });
+    } else {
+      setTimeout(initCounters, 300);
+    }
 
   </script>
 
@@ -2181,7 +2244,7 @@ function onOpen() {
   <script>
     (function () {
       'use strict';
-      const CURRENT_APP_VERSION = 'v3.6.0';
+      const CURRENT_APP_VERSION = 'v3.6.1';
 
       const updateModal = document.getElementById('updateAlertModal');
       const updateOverlay = document.getElementById('updateAlertOverlay');
