@@ -1,5 +1,12 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.5.6] - 2026-08-18
+- **iOS Viewport Space & Right Gap Elimination**:
+  - Replaced all `100vw` measurements with strict `100%` width across all fixed background textures, overlays, and dialogs to prevent WebKit horizontal scrolling.
+  - Added strict mobile header width containment (`@media (max-width: 640px)`) so header elements never exceed the iPhone screen width (375px/390px/414px).
+  - Applied `contain: paint`, `clip-path: inset(0)`, and `overflow-x: hidden !important` to `html`, `body`, and `.ambient-mesh` to eliminate iOS Safari layer overdraw.
+- **Service Worker Cache Refresh**: Bumped service worker cache identifier to `bdcf-pwa-cache-v3.5.6`.
+
 ## [3.5.5] - 2026-08-18
 - **Update Alert Popup Modal & Instant Dismissal**:
   - Re-architected Update Alert notifications to display as a clean popup window modal with dark glassmorphic backdrop overlay.

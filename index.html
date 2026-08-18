@@ -54,15 +54,15 @@
       </div>
 
       <div class="header-actions">
-        <button id="openUpdateAlertBtn" class="btn-update-alert btn-pulse-glow" title="View Latest Syndicate Updates (v3.5.5)">
+        <button id="openUpdateAlertBtn" class="btn-update-alert btn-pulse-glow" title="View Latest Syndicate Updates (v3.5.6)">
           <span class="update-icon-pulse">⚡</span>
-          <span class="update-label">v3.5.5 Update</span>
+          <span class="update-label">v3.5.6 Update</span>
         </button>
 
         <div class="header-status-pill" id="headerStatusPill" title="Syndicate HQ Live Status">
           <span class="live-dot-pulse"></span>
           <span class="status-txt">HQ LIVE</span>
-          <span class="version-pill" id="headerVersionPill">v3.5.5</span>
+          <span class="version-pill" id="headerVersionPill">v3.5.6</span>
         </div>
 
         <!-- Live Visitor Counter -->
@@ -343,7 +343,7 @@
   </footer>
 
   <!-- =========================================================================
-       POPUP MODAL WINDOW: SYNDICATE UPDATE ALERT (v3.5.5)
+       POPUP MODAL WINDOW: SYNDICATE UPDATE ALERT (v3.5.6)
        ========================================================================= -->
   <div id="updateAlertOverlay" class="update-alert-overlay" style="display: none;"></div>
   <div id="updateAlertModal" class="update-alert-modal-container" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="updateAlertTitle">
@@ -353,9 +353,9 @@
         <div>
           <div class="update-headline-row">
             <h3 id="updateAlertTitle">NEW SYNDICATE UPDATE</h3>
-            <span class="update-version-tag">v3.5.5</span>
+            <span class="update-version-tag">v3.5.6</span>
           </div>
-          <p class="update-subheadline">Update Alert Popup Window &amp; Install Flow</p>
+          <p class="update-subheadline">iOS Full-Width Fit &amp; Right Gap Fix</p>
         </div>
       </div>
       <button id="closeUpdateAlertBtn" class="update-close-btn" aria-label="Close Update Alert">&times;</button>
@@ -364,7 +364,7 @@
     <div class="update-alert-body">
       <div class="update-featured-banner">
         <span class="update-badge-pill">🔥 WHAT'S NEW</span>
-        <p>The update prompt is now a clean popup window modal that automatically dismisses upon installation or confirmation!</p>
+        <p>Fixed iOS Safari viewport boundaries to eliminate right-side margins and horizontal gaps completely!</p>
       </div>
 
       <div class="update-features-list">
@@ -2124,7 +2124,7 @@ function onOpen() {
   <script>
     (function () {
       'use strict';
-      const CURRENT_APP_VERSION = 'v3.5.5';
+      const CURRENT_APP_VERSION = 'v3.5.6';
 
       const updateModal = document.getElementById('updateAlertModal');
       const updateOverlay = document.getElementById('updateAlertOverlay');

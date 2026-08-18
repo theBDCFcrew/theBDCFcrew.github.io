@@ -50,6 +50,15 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 body.crew-portal-body {
@@ -57,10 +66,16 @@ body.crew-portal-body {
   color: var(--text-main);
   font-family: var(--font-body);
   min-height: 100vh;
+  min-height: -webkit-fill-available;
+  width: 100%;
+  max-width: 100%;
   position: relative;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
   display: flex;
   flex-direction: column;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* ── Ambient Background Mesh ── */
@@ -68,11 +83,15 @@ body.crew-portal-body {
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
+  contain: paint;
+  clip-path: inset(0);
 }
 
 .mesh-orb {
@@ -114,8 +133,10 @@ body.crew-portal-body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
   background-image: 
     linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
@@ -1684,8 +1705,10 @@ body.crew-portal-body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -2398,12 +2421,107 @@ body.crew-portal-body {
 }
 
 @media (max-width: 640px) {
+  /* Prevent Any Horizontal Expansion on Mobile & iOS Safari */
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  .portal-header {
+    padding: 8px 10px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .header-container {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    gap: 6px;
+  }
+
+  .header-brand {
+    gap: 6px;
+    min-width: 0;
+    flex-shrink: 1;
+  }
+
+  .crew-tag {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+
+  .brand-name {
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .brand-sub {
+    display: none;
+  }
+
+  .header-actions {
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .header-status-pill, .live-counter-pill {
+    display: none !important;
+  }
+
+  .btn-update-alert {
+    padding: 4px 7px;
+    font-size: 9.5px;
+    gap: 3px;
+  }
+
+  .btn-install-header {
+    padding: 4px 7px;
+    font-size: 9.5px;
+    gap: 3px;
+  }
+
+  .btn-admin-header {
+    padding: 4px 7px;
+    font-size: 9.5px;
+  }
+
+  .portal-nav-bar {
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .portal-nav-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 6px 8px;
+    gap: 6px;
+    box-sizing: border-box;
+    justify-content: flex-start;
+  }
+
+  .portal-tab-btn {
+    padding: 7px 11px;
+    font-size: 11px;
+    gap: 5px;
+  }
+
   .portal-main {
     padding: 12px 10px 60px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .theater-card {
     border-radius: 14px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   /* Video Meta Bar on Smartphone */
@@ -2708,8 +2826,10 @@ body.crew-portal-body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.82);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
