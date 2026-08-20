@@ -218,39 +218,34 @@
 
 
     <!-- =========================================================================
-         TAB 2: FEATURED LOS SANTOS WEEKLY TRACKER
+         TAB 2: SEAMLESS EMBEDDED LOS SANTOS WEEKLY TRACKER
          ========================================================================= -->
     <div id="tab-weekly" class="portal-tab-pane">
-      <section class="weekly-card">
-        <div class="weekly-left">
-          <div style="display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
-            <div class="weekly-date-pill" style="margin-left:0;">
-              <span>📅 ACTIVE GTA ONLINE WEEK:</span>
-              <strong id="portalActiveWeekDate">Aug 20 – Aug 27</strong>
+      <div class="weekly-embedded-wrapper">
+        <div class="weekly-embedded-toolbar">
+          <div class="toolbar-left">
+            <span class="toolbar-icon">🌴</span>
+            <div>
+              <h3 class="toolbar-title">Los Santos Weekly Hub</h3>
+              <span class="toolbar-subtitle">GTA ONLINE WEEKLY BONUSES, DISCOUNTS &amp; RESET TRACKER</span>
             </div>
           </div>
-
-          <h2 class="weekly-title">🌴 Los Santos Weekly Tracker</h2>
-          <p class="weekly-desc">
-            Track active GTA Online discounts, bonuses, and rewards! Check this week's Casino Podium (<strong>Declasse Granger 3600LX</strong>), Prize Ride (<strong>Enus Paragon R</strong>), 5X VIP Work, 4X Hotring Races, and 1-click Google Sheets export.
-          </p>
-          <div class="weekly-chips">
-            <span class="chip" style="color:#f472b6; border-color:rgba(244,114,182,0.4);">🎡 Podium: Granger 3600LX</span>
-            <span class="chip" style="color:#38bdf8; border-color:rgba(56,189,248,0.4);">🏁 Prize: Paragon R</span>
-            <span class="chip" style="color:#22c55e; border-color:rgba(34,197,94,0.4);">💰 5X VIP &amp; 4X Hotring</span>
-            <span class="chip">🏗️ Salvage: Torero XO</span>
-            <span class="chip">📊 Google Sheets Sync</span>
+          <div class="toolbar-right">
+            <div class="weekly-date-pill" style="margin:0;">
+              <span>📅 ACTIVE WEEK:</span>
+              <strong id="portalActiveWeekDate">Aug 20 – Aug 27</strong>
+            </div>
+            <a href="./LosSantosWeekly/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-secondary" title="Open in dedicated standalone fullscreen tab" style="font-size:11px; padding:6px 12px;">
+              <span>↗ Open Standalone</span>
+            </a>
           </div>
         </div>
-
-        <div class="weekly-right">
-          <a href="./LosSantosWeekly/" class="btn-launch-weekly">
-            <span>ENTER LOS SANTOS WEEKLY</span>
-            <span class="btn-arrow">➔</span>
-          </a>
+        <div class="weekly-iframe-container">
+          <iframe id="weeklyAppFrame" src="./LosSantosWeekly/" title="Los Santos Weekly Tracker" class="weekly-embedded-iframe" loading="eager"></iframe>
         </div>
-      </section>
+      </div>
     </div>
+
 
 
     <!-- =========================================================================
