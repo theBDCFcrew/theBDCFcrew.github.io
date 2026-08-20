@@ -30,8 +30,9 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           if [ -n "$(git status --porcelain)" ]; then
             git add .
-            git commit -m "v3.7.0 : [Automated Sync] GTA Online Weekly Update Refreshed"
+            git commit -m "v3.8.1 : [Automated Sync] GTA Online Weekly Update Refreshed"
             git push origin main
           else
+
             echo "No weekly updates to commit at this time."
           fi
