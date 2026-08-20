@@ -2018,6 +2018,55 @@ body.crew-portal-body {
   display: block;
 }
 
+/* ── Admin Inner Sub-Tabs Bar ── */
+.admin-subtabs-bar {
+  display: flex;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 6px;
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+
+.admin-subtab-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  font-family: var(--font-header);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 7px 14px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  flex: 1;
+  text-align: center;
+}
+
+.admin-subtab-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.admin-subtab-btn.active {
+  background: rgba(168, 85, 247, 0.22);
+  border-color: rgba(168, 85, 247, 0.45);
+  color: #f3e8ff;
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.25);
+}
+
+.admin-subtab-pane {
+  display: none;
+}
+
+.admin-subtab-pane.active {
+  display: block;
+}
+
+
 .admin-section-info {
   margin-bottom: 18px;
 }

@@ -403,126 +403,136 @@
 
     <div class="admin-modal-body">
       
-      <!-- Admin Navigation Tabs -->
+      <!-- Admin Navigation Tabs (4 Clean Grouped Tabs) -->
       <div class="admin-tabs-bar">
-        <button class="admin-tab-btn active" data-tab="tab-categories">📂 Series &amp; Categories</button>
-        <button class="admin-tab-btn" data-tab="tab-import-playlist">📥 Import Playlist as Series</button>
-        <button class="admin-tab-btn" data-tab="tab-add-video">➕ Add Single Video</button>
+        <button class="admin-tab-btn active" data-tab="tab-videos-hub">🎬 Videos &amp; Series</button>
         <button class="admin-tab-btn" data-tab="tab-weekly-sync">🌴 Weekly Hub &amp; APIs</button>
         <button class="admin-tab-btn" data-tab="tab-settings">⚙️ Crew Settings</button>
-        <button class="admin-tab-btn" data-tab="tab-export">💾 Export / Backup</button>
+        <button class="admin-tab-btn" data-tab="tab-export">💾 Export &amp; Backup</button>
       </div>
 
 
-      <!-- TAB 1: MANAGE SERIES CATEGORIES & VIDEOS -->
-      <div id="tab-categories" class="admin-tab-pane active">
-        <div class="admin-section-info" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-          <div>
-            <h4>Playlist Categories &amp; Series (<span id="adminCategoryCount">5</span>)</h4>
-            <p>Click any category to manage its videos, reorder, change active series, or delete.</p>
+      <!-- TAB 1: GROUPED VIDEOS & SERIES HUB -->
+      <div id="tab-videos-hub" class="admin-tab-pane active">
+        
+        <!-- Inner Sub-Tabs Bar -->
+        <div class="admin-subtabs-bar">
+          <button type="button" class="admin-subtab-btn active" data-subtab="subtab-manage-series">📂 Manage Series &amp; Videos</button>
+          <button type="button" class="admin-subtab-btn" data-subtab="subtab-import-playlist">📥 Import Playlist as Series</button>
+          <button type="button" class="admin-subtab-btn" data-subtab="subtab-add-video">➕ Add Single Video</button>
+        </div>
+
+        <!-- SUBTAB 1: MANAGE SERIES CATEGORIES & VIDEOS -->
+        <div id="subtab-manage-series" class="admin-subtab-pane active">
+          <div class="admin-section-info" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <div>
+              <h4>Playlist Categories &amp; Series (<span id="adminCategoryCount">5</span>)</h4>
+              <p>Click any category to manage its videos, reorder, change active series, or delete.</p>
+            </div>
+            <button type="button" id="syncAllSeriesBtn" class="btn btn-secondary btn-sm" style="font-size:11px; padding:6px 12px;">
+              🔄 Sync All with YouTube
+            </button>
           </div>
-          <button type="button" id="syncAllSeriesBtn" class="btn btn-secondary btn-sm" style="font-size:11px; padding:6px 12px;">
-            🔄 Sync All with YouTube
-          </button>
-        </div>
 
-        <div class="admin-categories-list" id="adminCategoriesList">
-
-          <!-- Rendered dynamically -->
-        </div>
-      </div>
-
-      <!-- TAB 2: IMPORT PLAYLIST AS NEW SERIES CATEGORY -->
-      <div id="tab-import-playlist" class="admin-tab-pane">
-        <div class="admin-section-info">
-          <h4>Import YouTube Playlist as a Brand New Category Box</h4>
-          <p>Paste any YouTube Playlist URL. The system will create a new Category Box with all its clips!</p>
-        </div>
-
-        <div class="import-box">
-          <div class="import-box-header">
-            <span class="import-box-tag">1-CLICK IMPORT</span>
-            <h5>📺 YouTube Playlist Series Importer</h5>
+          <div class="admin-categories-list" id="adminCategoriesList">
+            <!-- Rendered dynamically -->
           </div>
-          <p class="import-box-desc">
-            Paste any YouTube Playlist URL. Click <strong>🔍 Fetch Series Info</strong> to auto-load the title and all video clips, then click <strong>➕ Create Category Box</strong>!
-          </p>
-          <form id="playlistCategoryForm" class="admin-form">
-            <div class="form-group">
-              <label for="ytPlaylistUrl">YouTube Playlist URL or Playlist ID:</label>
-              <div class="input-with-btn">
-                <input type="text" id="ytPlaylistUrl" placeholder="e.g. https://www.youtube.com/playlist?list=PLxxxxxxxxxxxxxxx" />
-                <button type="button" id="fetchPlaylistInfoBtn" class="btn btn-secondary">🔍 Fetch Series Info</button>
+        </div>
+
+        <!-- SUBTAB 2: IMPORT PLAYLIST AS NEW SERIES CATEGORY -->
+        <div id="subtab-import-playlist" class="admin-subtab-pane">
+          <div class="admin-section-info">
+            <h4>Import YouTube Playlist as a Brand New Category Box</h4>
+            <p>Paste any YouTube Playlist URL. The system will create a new Category Box with all its clips!</p>
+          </div>
+
+          <div class="import-box">
+            <div class="import-box-header">
+              <span class="import-box-tag">1-CLICK IMPORT</span>
+              <h5>📺 YouTube Playlist Series Importer</h5>
+            </div>
+            <p class="import-box-desc">
+              Paste any YouTube Playlist URL. Click <strong>🔍 Fetch Series Info</strong> to auto-load the title and all video clips, then click <strong>➕ Create Category Box</strong>!
+            </p>
+            <form id="playlistCategoryForm" class="admin-form">
+              <div class="form-group">
+                <label for="ytPlaylistUrl">YouTube Playlist URL or Playlist ID:</label>
+                <div class="input-with-btn">
+                  <input type="text" id="ytPlaylistUrl" placeholder="e.g. https://www.youtube.com/playlist?list=PLxxxxxxxxxxxxxxx" />
+                  <button type="button" id="fetchPlaylistInfoBtn" class="btn btn-secondary">🔍 Fetch Series Info</button>
+                </div>
+                <small class="form-hint">Supports full playlist links with <code>list=PL...</code> or raw Playlist IDs starting with <code>PL...</code></small>
               </div>
-              <small class="form-hint">Supports full playlist links with <code>list=PL...</code> or raw Playlist IDs starting with <code>PL...</code></small>
+
+              <!-- Series Info & Customization (hidden until fetched) -->
+              <div id="playlistPreviewBox" class="playlist-preview-box" style="display:none;">
+                <div class="preview-label">📋 NEW CATEGORY PREVIEW</div>
+                
+                <div class="form-row">
+                  <div class="form-group flex-1">
+                    <label for="newCatTitle">Category Display Title: *</label>
+                    <input type="text" id="newCatTitle" required />
+                  </div>
+                  <div class="form-group" style="width: 130px;">
+                    <label for="newCatIcon">Icon Emoji:</label>
+                    <input type="text" id="newCatIcon" value="🎬" style="text-align:center; font-size:18px;" />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="newCatSubtitle">Category Subtitle / Focus:</label>
+                  <input type="text" id="newCatSubtitle" placeholder="e.g. Crew Operations" />
+                </div>
+
+                <div class="preview-meta">
+                  <span>Channel: <strong id="previewPlaylistAuthor">—</strong></span>
+                  <span id="previewVideoCount" class="preview-id-tag">0 clips detected</span>
+                </div>
+
+                <!-- Fetched Video List -->
+                <div id="fetchedVideoList" class="fetched-video-list"></div>
+
+                <button type="submit" class="btn btn-accent full-width mt-3" id="createCategoryBtn">
+                  ➕ Create &amp; Add Category Box
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- SUBTAB 3: ADD SINGLE VIDEO TO A CATEGORY -->
+        <div id="subtab-add-video" class="admin-subtab-pane">
+          <div class="admin-section-info">
+            <h4>Add a Single Video to a Category</h4>
+            <p>Select which category to place this video under, then paste the YouTube URL.</p>
+          </div>
+
+          <form id="addVideoForm" class="admin-form">
+            <div class="form-group">
+              <label for="targetCategorySelect">Target Category / Series: *</label>
+              <select id="targetCategorySelect" required>
+                <!-- Populated dynamically -->
+              </select>
             </div>
 
-            <!-- Series Info & Customization (hidden until fetched) -->
-            <div id="playlistPreviewBox" class="playlist-preview-box" style="display:none;">
-              <div class="preview-label">📋 NEW CATEGORY PREVIEW</div>
-              
-              <div class="form-row">
-                <div class="form-group flex-1">
-                  <label for="newCatTitle">Category Display Title: *</label>
-                  <input type="text" id="newCatTitle" required />
-                </div>
-                <div class="form-group" style="width: 130px;">
-                  <label for="newCatIcon">Icon Emoji:</label>
-                  <input type="text" id="newCatIcon" value="🎬" style="text-align:center; font-size:18px;" />
-                </div>
-              </div>
+            <div class="form-group">
+              <label for="newVideoUrl">YouTube Video URL or Video ID: *</label>
+              <input type="text" id="newVideoUrl" placeholder="e.g. https://youtu.be/jgp3oTp5WVU or jgp3oTp5WVU" required />
+            </div>
 
-              <div class="form-group">
-                <label for="newCatSubtitle">Category Subtitle / Focus:</label>
-                <input type="text" id="newCatSubtitle" placeholder="e.g. Crew Operations" />
-              </div>
+            <div class="form-group">
+              <label for="newVideoTitle">Video Title: *</label>
+              <input type="text" id="newVideoTitle" placeholder="e.g. BDCF Crew Heist Compilation #1" required />
+            </div>
 
-              <div class="preview-meta">
-                <span>Channel: <strong id="previewPlaylistAuthor">—</strong></span>
-                <span id="previewVideoCount" class="preview-id-tag">0 clips detected</span>
-              </div>
-
-              <!-- Fetched Video List -->
-              <div id="fetchedVideoList" class="fetched-video-list"></div>
-
-              <button type="submit" class="btn btn-accent full-width mt-3" id="createCategoryBtn">
-                ➕ Create &amp; Add Category Box
-              </button>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-accent full-width">➕ Add Video to Category</button>
             </div>
           </form>
         </div>
+
       </div>
 
-      <!-- TAB 3: ADD SINGLE VIDEO TO A CATEGORY -->
-      <div id="tab-add-video" class="admin-tab-pane">
-        <div class="admin-section-info">
-          <h4>Add a Single Video to a Category</h4>
-          <p>Select which category to place this video under, then paste the YouTube URL.</p>
-        </div>
-
-        <form id="addVideoForm" class="admin-form">
-          <div class="form-group">
-            <label for="targetCategorySelect">Target Category / Series: *</label>
-            <select id="targetCategorySelect" required>
-              <!-- Populated dynamically -->
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="newVideoUrl">YouTube Video URL or Video ID: *</label>
-            <input type="text" id="newVideoUrl" placeholder="e.g. https://youtu.be/jgp3oTp5WVU or jgp3oTp5WVU" required />
-          </div>
-
-          <div class="form-group">
-            <label for="newVideoTitle">Video Title: *</label>
-            <input type="text" id="newVideoTitle" placeholder="e.g. BDCF Crew Heist Compilation #1" required />
-          </div>
-
-          <div class="form-actions">
-            <button type="submit" class="btn btn-accent full-width">➕ Add Video to Category</button>
-          </div>
-        </form>
-      </div>
 
 
       <!-- TAB 4: WEEKLY HUB & APIS (REDDIT & GOOGLE SHEETS) -->
@@ -1662,13 +1672,43 @@
       }
 
       function switchAdminTab(tabId) {
+        let mainTabId = tabId;
+        let subTabId = null;
+
+        if (tabId === 'tab-categories' || tabId === 'subtab-manage-series' || tabId === 'tab-videos-hub') {
+          mainTabId = 'tab-videos-hub';
+          subTabId = 'subtab-manage-series';
+        } else if (tabId === 'tab-import-playlist' || tabId === 'subtab-import-playlist') {
+          mainTabId = 'tab-videos-hub';
+          subTabId = 'subtab-import-playlist';
+        } else if (tabId === 'tab-add-video' || tabId === 'subtab-add-video') {
+          mainTabId = 'tab-videos-hub';
+          subTabId = 'subtab-add-video';
+        }
+
         document.querySelectorAll('.admin-tab-btn').forEach(btn => {
-          if (btn.dataset.tab === tabId) btn.classList.add('active');
+          if (btn.dataset.tab === mainTabId) btn.classList.add('active');
           else btn.classList.remove('active');
         });
 
         document.querySelectorAll('.admin-tab-pane').forEach(pane => {
-          if (pane.id === tabId) pane.classList.add('active');
+          if (pane.id === mainTabId) pane.classList.add('active');
+          else pane.classList.remove('active');
+        });
+
+        if (subTabId) {
+          switchAdminSubtab(subTabId);
+        }
+      }
+
+      function switchAdminSubtab(subtabId) {
+        document.querySelectorAll('.admin-subtab-btn').forEach(btn => {
+          if (btn.dataset.subtab === subtabId) btn.classList.add('active');
+          else btn.classList.remove('active');
+        });
+
+        document.querySelectorAll('.admin-subtab-pane').forEach(pane => {
+          if (pane.id === subtabId) pane.classList.add('active');
           else pane.classList.remove('active');
         });
       }
@@ -1679,6 +1719,14 @@
           if (tab) switchAdminTab(tab);
         });
       });
+
+      document.querySelectorAll('.admin-subtab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const subtab = btn.dataset.subtab;
+          if (subtab) switchAdminSubtab(subtab);
+        });
+      });
+
 
       // ── Form: Import YouTube Playlist as Brand New Category ──
       let _fetchedCategoryVideos = [];

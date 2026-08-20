@@ -2,10 +2,13 @@
 
 ## [3.8.1] - 2026-08-20
 - **Direct Navigation**: Weekly Update nav button opens tracker directly.
+- **Grouped Admin Tabs**: Consolidated video tools into single Videos & Series hub.
+- **Inner Sub-Tabs**: Added sleek secondary pills for playlist and video management.
 - **Dynamic Hero Title**: Event headline automatically hides when title is empty.
 - **Hero Banner Cleanup**: Removed bulky header motto to maximize screen room.
 - **Cache Auto-Upgrade**: Outdated client storage automatically upgrades to current week.
 - **Service Worker Cache**: Bumped service worker cache to `bdcf-pwa-cache-v3.8.1`.
+
 
 ## [3.8.0] - 2026-08-20
 
