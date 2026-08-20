@@ -1510,12 +1510,18 @@
       window._bdcfModalClose = closeModal;
 
       function handleAdminClick(defaultTab = 'tab-categories') {
+        const isLocal = window.location.hostname === 'localhost' ||
+                        window.location.hostname === '127.0.0.1' ||
+                        window.location.protocol === 'file:';
         if (typeof window._bdcfOpenAdmin === 'function') {
           window._bdcfOpenAdmin(defaultTab);
+        } else if (isLocal) {
+          openModal(defaultTab);
         } else {
           showToast("⏳ Loading secure admin...", "info");
         }
       }
+
 
       if (openAdminBtn) openAdminBtn.addEventListener('click', () => handleAdminClick('tab-categories'));
       const headerUserAvatarBtn = document.getElementById('headerUserAvatarBtn');
@@ -2042,12 +2048,26 @@ function onOpen() {
     // ── Auth State Watcher ──
     onAuthStateChanged(auth, async (user) => {
       if (!user) {
+        if (isLocalEnvironment) {
+          const localCommander = {
+            uid: 'tT6YYY5VfuaK4jqlFuVPpWVyfY02',
+            email: 'briandivacox@gmail.com',
+            displayName: 'BrianDivaCox'
+          };
+          window._bdcfIsAdmin = true;
+          window._bdcfUser    = localCommander;
+          updateAdminButton(localCommander, true);
+          showAuthBar(localCommander);
+          console.log('[BDCF Auth] Localhost detected — Commander mode active');
+          return;
+        }
         window._bdcfIsAdmin = false;
         window._bdcfUser    = null;
         updateAdminButton(null, false);
         hideAuthBar();
         return;
       }
+
 
       try {
         const emailLower = (user.email || '').toLowerCase();
@@ -2713,8 +2733,9 @@ function onOpen() {
     (function () {
       'use strict';
 
-      // 1. Register Service Worker
-      if ('serviceWorker' in navigator) {
+      // 1. Register Service Worker (Bypass on localhost for live dev)
+      const isLocalHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      if ('serviceWorker' in navigator && !isLocalHost) {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('./sw.js')
             .then((reg) => {
@@ -2734,7 +2755,13 @@ function onOpen() {
               console.warn('[BDCF PWA] ServiceWorker registration warning:', err);
             });
         });
+      } else if ('serviceWorker' in navigator && isLocalHost) {
+        // Clean up any stale service workers previously installed on localhost
+        navigator.serviceWorker.getRegistrations().then(regs => {
+          regs.forEach(r => r.unregister());
+        });
       }
+
 
       // 2. Detect Platform & Display Mode
       const isStandalone = window.matchMedia('(display-mode: standalone)').matches || (window.navigator.standalone === true);
