@@ -335,7 +335,7 @@
 
       <div class="footer-links">
         <button id="footerInstallBtn" class="footer-install-btn" style="display:none;">📲 Install Web App</button>
-        <button id="footerVersionBtn" class="footer-admin-btn" title="View Syndicate Updates & Changelog">⚡ v3.6.2 Updates</button>
+        <button id="footerVersionBtn" class="footer-admin-btn" title="View Syndicate Updates & Changelog">⚡ v3.7.0 Updates</button>
         <button id="footerAdminBtn" class="footer-admin-btn">⚙️ Admin Menu</button>
       </div>
 
@@ -343,7 +343,7 @@
   </footer>
 
   <!-- =========================================================================
-       POPUP MODAL WINDOW: SYNDICATE UPDATE ALERT (v3.6.2)
+       POPUP MODAL WINDOW: SYNDICATE UPDATE ALERT (v3.7.0)
        ========================================================================= -->
   <div id="updateAlertOverlay" class="update-alert-overlay" style="display: none;"></div>
   <div id="updateAlertModal" class="update-alert-modal-container" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="updateAlertTitle">
@@ -353,9 +353,9 @@
         <div>
           <div class="update-headline-row">
             <h3 id="updateAlertTitle">NEW SYNDICATE UPDATE</h3>
-            <span class="update-version-tag">v3.6.2</span>
+            <span class="update-version-tag">v3.7.0</span>
           </div>
-          <p class="update-subheadline">Unified Header with Inline Navigation Bar</p>
+          <p class="update-subheadline">Firebase Realtime Weekly Sync &amp; Cloud Hub</p>
         </div>
       </div>
       <button id="closeUpdateAlertBtn" class="update-close-btn" aria-label="Close Update Alert">&times;</button>
@@ -364,43 +364,44 @@
     <div class="update-alert-body">
       <div class="update-featured-banner">
         <span class="update-badge-pill">🔥 WHAT'S NEW</span>
-        <p>Unified top bar with bigger glowing skull logo on the left, inline navigation tabs in the center, and profile button on the right — all on the same line!</p>
+        <p>Live GTA Online Weekly Update sync powered by Firestore! 1-click Reddit auto-fetch &amp; markdown parser in the Admin Hub broadcasts live updates to all visitors in real time.</p>
       </div>
 
       <div class="update-features-list">
         <div class="update-feature-item">
-          <span class="feature-icon">✨</span>
+          <span class="feature-icon">📡</span>
           <div class="feature-text">
-            <strong>Update Popup Window &amp; 1-Tap Dismiss</strong>
-            <p>Clean modal window with instant dismiss on "INSTALL &amp; APPLY UPDATE" or "GOT IT" with zero lingering banners.</p>
+            <strong>Realtime Firestore Weekly Sync</strong>
+            <p>Los Santos Weekly now connects live to Firestore (<code>weekly/current</code>) for instant update pushes.</p>
           </div>
         </div>
 
         <div class="update-feature-item">
-          <span class="feature-icon">🎬</span>
+          <span class="feature-icon">🚀</span>
           <div class="feature-text">
-            <strong>Renamed to "Theater"</strong>
-            <p>Compact navigation tab layout that fits cleanly across all smartphone screens without text truncation.</p>
+            <strong>1-Click Admin Fetch &amp; Publish Engine</strong>
+            <p>Auto-fetch from Reddit or paste markdown with 1-click parser to publish live to the entire syndicate.</p>
           </div>
         </div>
 
         <div class="update-feature-item">
-          <span class="feature-icon">👆</span>
+          <span class="feature-icon">⚡</span>
           <div class="feature-text">
-            <strong>Pixel 10 XL / Mobile Touch Slider Engine</strong>
-            <p>Full 1:1 finger swipe drag engine with velocity momentum and smart tap detection across category cards.</p>
+            <strong>Zero Latency Fallback Engine</strong>
+            <p>Instant cached loads with background real-time cloud sync and offline resilience.</p>
           </div>
         </div>
 
         <div class="update-feature-item">
-          <span class="feature-icon">◀▶</span>
+          <span class="feature-icon">🛡️</span>
           <div class="feature-text">
-            <strong>1-Tap Slide Navigation Controls</strong>
-            <p>Integrated ◀ and ▶ navigation buttons in the category header for instant 1-tap sliding.</p>
+            <strong>Organized Crew Database Foundation</strong>
+            <p>Structured Firestore security rules for weekly updates, archives, roster, and events.</p>
           </div>
         </div>
       </div>
     </div>
+
 
     <div class="update-alert-footer">
       <button id="btnReloadUpdate" class="btn-update-reload">
@@ -567,31 +568,73 @@
       <div id="tab-weekly-sync" class="admin-tab-pane">
         <div class="admin-section-info">
           <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
-            <h4>🌴 Los Santos Weekly Hub &amp; API Controls</h4>
+            <h4>🌴 Los Santos Weekly Hub &amp; Cloud Sync</h4>
             <span class="active-tag-pill" style="color:#22c55e; background:rgba(34,197,94,0.15); border-color:rgba(34,197,94,0.35);">
-              🛡️ ANTI-HAMMER SHIELD ACTIVE
+              🟢 CLOUD SYNC ENGINE
             </span>
           </div>
-          <p>Public visitor auto-syncing has been disabled to protect your API limits. Execute Reddit and Google Sheets sync operations securely from this panel.</p>
+          <p>Manage and publish GTA Online Weekly Updates to Firestore (<code>weekly/current</code>). Updates broadcast in real-time to all syndicate members and visitors across the Portal and Los Santos Weekly.</p>
         </div>
 
-        <!-- Reddit Sync Box -->
+        <!-- Current Live Cloud Status Card -->
+        <div class="admin-cloud-status-card" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:16px; margin-bottom:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
+            <div style="font-weight:700; font-size:14px; color:#fff; display:flex; align-items:center; gap:8px;">
+              <span class="pulse-dot" style="background:#22c55e;"></span> Active Cloud Week: <span id="adminLiveWeekDate" style="color:#ec4899;">Loading...</span>
+            </div>
+            <a href="./LosSantosWeekly/" target="_blank" class="btn btn-outline-sm" style="text-decoration:none;">
+              👀 Open Los Santos Weekly ➔
+            </a>
+          </div>
+          <div style="font-size:12px; color:var(--text-muted);" id="adminLiveWeekMeta">
+            Checking Firestore document <code>weekly/current</code>...
+          </div>
+        </div>
+
+        <!-- Reddit Sync & Direct Paste Staging Box -->
         <div class="import-box" style="margin-bottom: 20px;">
           <div class="import-box-header">
-            <span class="import-box-tag">REDDIT SYNC</span>
-            <h5>📡 Sync Latest Weekly Update from r/gtaonline</h5>
+            <span class="import-box-tag">REDDIT SYNC &amp; PUBLISH</span>
+            <h5>📡 Fetch, Parse &amp; Publish Weekly Update</h5>
           </div>
           <p class="import-box-desc">
-            Fetch the latest verified weekly bonuses, prize rides, discounts, and daily objectives from Reddit <code>r/gtaonline</code> and cache it for all visitors.
+            Fetch the latest verified weekly update from Reddit <code>r/gtaonline</code>, or paste post text directly to extract all bonuses, discounts, and vehicle challenges.
           </p>
-          <div style="margin: 14px 0;">
-            <button type="button" id="adminSyncRedditBtn" class="btn btn-accent full-width" style="padding: 12px;">
-              🔄 Sync Latest Weekly Update from Reddit
+          <div style="margin: 14px 0; display:flex; gap:10px; flex-wrap:wrap;">
+            <button type="button" id="adminSyncRedditBtn" class="btn btn-accent flex-1" style="padding: 12px;">
+              🔄 Auto-Fetch from Reddit
+            </button>
+            <button type="button" id="adminToggleManualPasteBtn" class="btn btn-secondary" style="padding: 12px;">
+              📝 Direct Text / Markdown Paste
             </button>
           </div>
-          <div id="adminRedditResultBox" style="display:none; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.08); border-radius:6px; padding:12px; font-size:12px; margin-top:10px;">
-            <div style="font-weight:bold; color:#fff;" id="adminRedditTitle"></div>
-            <div style="color:var(--text-muted); margin-top:4px;" id="adminRedditMeta"></div>
+
+          <!-- Direct Paste Box -->
+          <div id="adminDirectPasteBox" style="display:none; margin-top:12px; border-top:1px solid rgba(255,255,255,0.08); padding-top:12px;">
+            <label style="font-size:12px; color:#e2e8f0; font-weight:600; display:block; margin-bottom:6px;">
+              Paste Reddit Post Title &amp; Text / Markdown:
+            </label>
+            <textarea id="adminManualRedditText" rows="6" class="form-control" style="width:100%; box-sizing:border-box; background:rgba(0,0,0,0.4); color:#fff; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:10px; font-family:monospace; font-size:12px;" placeholder="Paste Reddit post title and text here (e.g. Weekly Bonuses and Discounts - August 20th to August 27th...)"></textarea>
+            <button type="button" id="adminParseManualBtn" class="btn btn-secondary full-width" style="margin-top:8px;">
+              ⚡ Parse Pasted Text &amp; Stage
+            </button>
+          </div>
+
+          <!-- Staged Payload Preview & 1-Click Publish -->
+          <div id="adminRedditResultBox" style="display:none; background:rgba(0,0,0,0.4); border:1px solid rgba(168,85,247,0.3); border-radius:8px; padding:14px; margin-top:14px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:8px;">
+              <div>
+                <span class="active-tag-pill" style="color:#a855f7; background:rgba(168,85,247,0.15); border-color:rgba(168,85,247,0.35); font-size:11px;">
+                  READY TO PUBLISH
+                </span>
+                <div style="font-weight:bold; color:#fff; font-size:13px; margin-top:4px;" id="adminRedditTitle"></div>
+              </div>
+            </div>
+            <div style="color:var(--text-muted); font-size:12px; margin-bottom:10px;" id="adminRedditMeta"></div>
+            <div id="adminStagedSummary" style="font-size:12px; color:#cbd5e1; background:rgba(0,0,0,0.25); border-radius:6px; padding:10px; margin-bottom:12px;"></div>
+            <button type="button" id="adminPublishFirestoreBtn" class="btn btn-accent full-width" style="padding:12px; font-weight:700; background:linear-gradient(135deg, #9333ea, #ec4899); border:none;">
+              🚀 Publish Live to Firestore (Update Website &amp; Los Santos Weekly)
+            </button>
           </div>
         </div>
 
@@ -1848,47 +1891,7 @@
         });
       }
 
-      // ── Admin: Reddit & Google Sheets Sync Handlers ──
-      const adminSyncRedditBtn = document.getElementById('adminSyncRedditBtn');
-      if (adminSyncRedditBtn) {
-        adminSyncRedditBtn.addEventListener('click', async () => {
-          adminSyncRedditBtn.disabled = true;
-          adminSyncRedditBtn.textContent = "⏳ Syncing from Reddit...";
-          showToast("📡 Connecting to Reddit r/gtaonline...", "info");
-
-          try {
-            const redditSearchUrl = 'https://www.reddit.com/r/gtaonline/search.json?q=flair_name%3A%22:WU1::WU2::WU3::WU4::WU5::WU6:%22&sort=new&restrict_sr=1&limit=3';
-            const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(redditSearchUrl);
-            let res;
-            try {
-              res = await fetch(redditSearchUrl, { headers: { 'Accept': 'application/json' } });
-            } catch (e) {
-              res = await fetch(proxyUrl);
-            }
-
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
-            const json = await res.json();
-            const posts = json?.data?.children;
-            if (!posts || posts.length === 0) throw new Error("No weekly update posts found");
-
-            const post = posts[0].data;
-            const resBox = document.getElementById('adminRedditResultBox');
-            const resTitle = document.getElementById('adminRedditTitle');
-            const resMeta = document.getElementById('adminRedditMeta');
-
-            if (resBox) resBox.style.display = 'block';
-            if (resTitle) resTitle.innerHTML = `✅ ${escapeHTML(post.title)}`;
-            if (resMeta) resMeta.innerHTML = `Author: ${escapeHTML(post.author)} • <a href="https://reddit.com${post.permalink}" target="_blank" style="color:#a855f7;">View Post ➔</a>`;
-
-            showToast("🎉 Successfully fetched latest Weekly Update from Reddit!", "success");
-          } catch (err) {
-            showToast("⚠️ Could not reach Reddit API right now. Please try again later.", "error");
-          } finally {
-            adminSyncRedditBtn.disabled = false;
-            adminSyncRedditBtn.textContent = "🔄 Sync Latest Weekly Update from Reddit";
-          }
-        });
-      }
+      // ── Admin: Google Sheets Export Handlers (Weekly Sync handled in Firebase Module) ──
 
       const adminCopyTsvBtn = document.getElementById('adminCopyTsvBtn');
       if (adminCopyTsvBtn) {
@@ -2229,14 +2232,376 @@ function onOpen() {
       }
     }
 
-    // Start counters asynchronously after initial paint
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(() => initCounters(), { timeout: 1500 });
-    } else {
-      setTimeout(initCounters, 300);
+    // ══════════════════════════════════════════════
+    //  🌴 LOS SANTOS WEEKLY FIRESTORE SYNC & ADMIN ENGINE
+    // ══════════════════════════════════════════════
+
+    let stagedWeeklyData = null;
+
+    // Helper: Clean markdown
+    function cleanMarkdown(str) {
+      if (!str) return '';
+      return str
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+        .replace(/[*_~`]/g, '')
+        .replace(/\\u[\dA-Fa-f]{4}/g, '')
+        .trim();
     }
 
-  </script>
+    // Helper: Parse Reddit Weekly Markdown / Text
+    function parseRedditPostText(postTitle, selftext) {
+      const data = {
+        title: postTitle || "Weekly Bonuses and Discounts",
+        eventTitle: "GTA Online Weekly Event",
+        eventDesc: "Live GTA Online bonuses, discounts, and vehicle rewards updated directly from the Syndicate cloud.",
+        dateRange: "Current Week",
+        podiumVehicle: "Pending",
+        prizeRide: { vehicle: "Pending", condition: "Place Top in LS Car Meet Series" },
+        weeklyChallenge: { task: "Complete Weekly Tasks", reward: "$100,000 + Special Bonus" },
+        timeTrials: { regular: "Active", hsw: "Active", premiumRace: "Active" },
+        testRides: [],
+        salvageRobberies: [
+          { name: "The Podium Robbery", vehicle: "Target Vehicle", value: "~$380,000" },
+          { name: "The Duggan Robbery", vehicle: "Target Vehicle", value: "~$340,000" },
+          { name: "The Gangbanger Robbery", vehicle: "Target Vehicle", value: "~$320,000" }
+        ],
+        dailyObjectives: [
+          { day: "Thursday", task: "Participate in a Freemode Event" },
+          { day: "Friday", task: "Participate in Carnage" },
+          { day: "Saturday", task: "Participate in a Freemode Challenge" },
+          { day: "Sunday", task: "Participate in a Land Race" },
+          { day: "Monday", task: "Play a game of Darts" },
+          { day: "Tuesday", task: "Participate in a Freemode Event" },
+          { day: "Wednesday", task: "Complete a Special Mission" }
+        ],
+        bonuses: [],
+        discounts: [],
+        gunVan: []
+      };
+
+      // Date range extraction
+      const dateMatch = postTitle.match(/([A-Za-z]+\s+\d+(?:st|nd|rd|th)?\s+to\s+[A-Za-z]+\s+\d+(?:st|nd|rd|th)?)/i);
+      if (dateMatch) {
+        data.dateRange = dateMatch[1].replace(/(\d+)(?:st|nd|rd|th)/g, '$1');
+      }
+
+      if (!selftext) return data;
+
+      // Extract Podium Vehicle
+      const podiumMatch = selftext.match(/Podium Vehicle[^:]*:\s*([^\n\r]+)/i);
+      if (podiumMatch) data.podiumVehicle = cleanMarkdown(podiumMatch[1]);
+
+      // Extract Prize Ride
+      const prizeRideMatch = selftext.match(/Prize Ride Vehicle[^:]*:\s*([^\n\r]+)/i);
+      if (prizeRideMatch) data.prizeRide.vehicle = cleanMarkdown(prizeRideMatch[1]);
+
+      const prizeCondMatch = selftext.match(/Prize Ride Challenge[^:]*:\s*([^\n\r]+)/i);
+      if (prizeCondMatch) data.prizeRide.condition = cleanMarkdown(prizeCondMatch[1]);
+
+      // Extract Weekly Challenge
+      const challengeMatch = selftext.match(/Weekly Challenge[^:]*:\s*([^\n\r]+)/i);
+      if (challengeMatch) data.weeklyChallenge.task = cleanMarkdown(challengeMatch[1]);
+
+      // Extract Time Trials
+      const timeTrialMatch = selftext.match(/Time Trial[^:]*:\s*([^\n\r]+)/i);
+      if (timeTrialMatch) data.timeTrials.regular = cleanMarkdown(timeTrialMatch[1]);
+
+      const hswMatch = selftext.match(/HSW Time Trial[^:]*:\s*([^\n\r]+)/i);
+      if (hswMatch) data.timeTrials.hsw = cleanMarkdown(hswMatch[1]);
+
+      const premRaceMatch = selftext.match(/Premium Race[^:]*:\s*([^\n\r]+)/i);
+      if (premRaceMatch) data.timeTrials.premiumRace = cleanMarkdown(premRaceMatch[1]);
+
+      // Extract Salvage Yard Robberies
+      const salvageMatch1 = selftext.match(/The Podium Robbery:\s*([^\n\r]+)/i);
+      const salvageMatch2 = selftext.match(/The Duggan Robbery:\s*([^\n\r]+)/i);
+      const salvageMatch3 = selftext.match(/(?:The Gangbanger Robbery|he Gangbanger Robbery):\s*([^\n\r]+)/i);
+
+      if (salvageMatch1) data.salvageRobberies[0].vehicle = cleanMarkdown(salvageMatch1[1]);
+      if (salvageMatch2) data.salvageRobberies[1].vehicle = cleanMarkdown(salvageMatch2[1]);
+      if (salvageMatch3) data.salvageRobberies[2].vehicle = cleanMarkdown(salvageMatch3[1]);
+
+      // Extract Daily Objectives
+      const days = ["Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday"];
+      days.forEach((day, idx) => {
+        const regex = new RegExp(`\\*\\*${day}:?\\*\\*\\s*([^\\n\\r]+)`, 'i');
+        const match = selftext.match(regex);
+        if (match) {
+          data.dailyObjectives[idx] = { day, task: cleanMarkdown(match[1]) };
+        }
+      });
+
+      // Extract Bonuses
+      const bonusesIdx = selftext.search(/#+\s*Bonuses/i);
+      if (bonusesIdx !== -1) {
+        const afterBonuses = selftext.substring(bonusesIdx);
+        const nextSectionMatch = afterBonuses.substring(1).search(/\n#+\s+[A-Za-z]/);
+        const bonusesText = nextSectionMatch !== -1 ? afterBonuses.substring(0, nextSectionMatch + 1) : afterBonuses;
+        
+        const multiplierRegex = /(?:^|\n)\s*(\d+(?:\.\d+)?X[^\n\r]*|Double\s+[^\n\r]+|Triple\s+[^\n\r]+|Boosted\s+[^\n\r]+)/gi;
+        let match;
+        const sections = [];
+        let lastIdx = 0, lastHeader = "";
+        
+        while ((match = multiplierRegex.exec(bonusesText)) !== null) {
+          if (lastHeader) {
+            sections.push({ header: lastHeader, content: bonusesText.substring(lastIdx, match.index) });
+          }
+          lastHeader = match[1].trim().replace(/^#+\s*/, '').replace(/[*_]/g, '');
+          lastIdx = multiplierRegex.lastIndex;
+        }
+        if (lastHeader) {
+          sections.push({ header: lastHeader, content: bonusesText.substring(lastIdx) });
+        }
+        
+        if (sections.length > 0) {
+          data.bonuses = sections.map(sec => {
+            const rawLines = sec.content.split('\n');
+            const items = rawLines
+              .map(l => l.replace(/^[\s*•\-]+/, '').trim())
+              .filter(l => l.length > 0 && !l.startsWith('#') && !l.toLowerCase().includes('reddit') && !l.toLowerCase().includes('bonuses'));
+            
+            const multiplierMatch = sec.header.match(/(\d+(?:\.\d+)?X)/i);
+            const mult = multiplierMatch ? multiplierMatch[1].toUpperCase() : "BONUS";
+            return {
+              multiplier: mult,
+              label: sec.header,
+              tier: mult.toLowerCase().replace('.', '_'),
+              items: items.length > 0 ? items : [sec.header]
+            };
+          }).filter(b => b.items && b.items.length > 0);
+        }
+      }
+
+      // Extract Discounts
+      const discountsIdx = selftext.search(/#+\s*Discounts/i);
+      if (discountsIdx !== -1) {
+        const afterDiscounts = selftext.substring(discountsIdx);
+        const nextSectionMatch = afterDiscounts.substring(1).search(/\n#+\s+[A-Za-z]/);
+        const discountsText = nextSectionMatch !== -1 ? afterDiscounts.substring(0, nextSectionMatch + 1) : afterDiscounts;
+        
+        const rateRegex = /(?:^|\n)\s*(Free|\d+%\s*Off[^\n\r]*)/gi;
+        let m, lastI = 0, lastRate = "";
+        const discountSections = [];
+        
+        while ((m = rateRegex.exec(discountsText)) !== null) {
+          if (lastRate) {
+            discountSections.push({ rate: lastRate, content: discountsText.substring(lastI, m.index) });
+          }
+          lastRate = m[1].trim().replace(/^#+\s*/, '').replace(/[*_]/g, '');
+          lastI = rateRegex.lastIndex;
+        }
+        if (lastRate) {
+          discountSections.push({ rate: lastRate, content: discountsText.substring(lastI) });
+        }
+        
+        if (discountSections.length > 0) {
+          const parsedDiscounts = [];
+          discountSections.forEach(sec => {
+            const rawLines = sec.content.split('\n');
+            const items = rawLines
+              .map(l => l.replace(/^[\s*•\-]+/, '').trim())
+              .filter(l => l.length > 0 && !l.startsWith('#') && !l.toLowerCase().includes('reddit'));
+            
+            const isFree = sec.rate.toLowerCase().includes('free');
+            const is50 = sec.rate.includes('50');
+            const is40 = sec.rate.includes('40');
+            const badgeClass = isFree ? 'rate-free' : (is50 ? 'rate-50' : (is40 ? 'rate-40' : 'rate-30'));
+            
+            items.forEach(item => {
+              const cleanItem = cleanMarkdown(item);
+              let cat = 'vehicles';
+              const lower = cleanItem.toLowerCase();
+              if (lower.includes('office') || lower.includes('wash') || lower.includes('bail') || lower.includes('properties') || lower.includes('bunker') || lower.includes('hangar')) {
+                cat = 'properties';
+              } else if (lower.includes('suit') || lower.includes('apparel') || lower.includes('livery') || lower.includes('plate')) {
+                cat = 'apparel';
+              } else if (lower.includes('rifle') || lower.includes('gun') || lower.includes('hellbringer') || lower.includes('railgun')) {
+                cat = 'weapons';
+              }
+              parsedDiscounts.push({
+                name: cleanItem,
+                category: cat,
+                rate: sec.rate,
+                badgeClass: badgeClass
+              });
+            });
+          });
+          if (parsedDiscounts.length > 0) data.discounts = parsedDiscounts;
+        }
+      }
+
+      return data;
+    }
+
+    // Render Staging Box for Admin
+    function renderStagedPreview(data, sourceLabel = 'Reddit r/gtaonline') {
+      stagedWeeklyData = data;
+      const resBox = document.getElementById('adminRedditResultBox');
+      const resTitle = document.getElementById('adminRedditTitle');
+      const resMeta = document.getElementById('adminRedditMeta');
+      const summaryEl = document.getElementById('adminStagedSummary');
+
+      if (resBox) resBox.style.display = 'block';
+      if (resTitle) resTitle.textContent = `📅 ${data.dateRange || data.title}`;
+      if (resMeta) resMeta.textContent = `Source: ${sourceLabel} • Ready for 1-Click Firestore Broadcast`;
+      if (summaryEl) {
+        const bonusCount = data.bonuses ? data.bonuses.length : 0;
+        const discountCount = data.discounts ? data.discounts.length : 0;
+        const salvageVehicles = data.salvageRobberies ? data.salvageRobberies.map(r => r.vehicle).join(', ') : 'None';
+        summaryEl.innerHTML = `
+          <strong>🎡 Podium:</strong> ${data.podiumVehicle || 'N/A'}<br>
+          <strong>🏁 Prize Ride:</strong> ${data.prizeRide ? data.prizeRide.vehicle : 'N/A'}<br>
+          <strong>🏗️ Salvage:</strong> ${salvageVehicles}<br>
+          <strong>💰 Bonuses:</strong> ${bonusCount} categories | <strong>🏷️ Discounts:</strong> ${discountCount} items
+        `;
+      }
+    }
+
+    // ── Realtime Watcher for Live Weekly Update Document in Firestore ──
+    function initWeeklyFirestoreSync() {
+      try {
+        const weeklyDocRef = doc(db, 'weekly', 'current');
+        onSnapshot(weeklyDocRef, (snap) => {
+          const dateEl = document.getElementById('adminLiveWeekDate');
+          const metaEl = document.getElementById('adminLiveWeekMeta');
+          if (snap.exists()) {
+            const data = snap.data();
+            if (dateEl) dateEl.textContent = data.dateRange || data.title || 'Live Active Week';
+            if (metaEl) {
+              const updatedStr = data.updatedAt && data.updatedAt.toDate ? data.updatedAt.toDate().toLocaleString() : 'Just now';
+              metaEl.innerHTML = `Published: <strong>${updatedStr}</strong> by <strong style="color:#a855f7;">${data.updatedBy || 'Commander'}</strong> (ID: <code>weekly/current</code>)`;
+            }
+          } else {
+            if (dateEl) dateEl.textContent = 'Not yet initialized in Firestore';
+            if (metaEl) metaEl.textContent = 'Click "Auto-Fetch" or paste text below to publish your first week to Firestore!';
+          }
+        });
+      } catch (err) {
+        console.warn('[BDCF Weekly] Firestore sync error:', err);
+      }
+    }
+
+    // ── Setup Admin Weekly Hub Listeners ──
+    function setupWeeklyAdminHandlers() {
+      // 1. Auto-Fetch from Reddit
+      const syncRedditBtn = document.getElementById('adminSyncRedditBtn');
+      if (syncRedditBtn) {
+        syncRedditBtn.addEventListener('click', async () => {
+          syncRedditBtn.disabled = true;
+          syncRedditBtn.textContent = '⏳ Fetching from Reddit...';
+          firebaseToast('📡 Connecting to Reddit r/gtaonline...', 'info');
+
+          const redditSearchUrl = 'https://www.reddit.com/r/gtaonline/search.json?q=flair_name%3A%22:WU1::WU2::WU3::WU4::WU5::WU6:%22&sort=new&restrict_sr=1&limit=3';
+          const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(redditSearchUrl);
+
+          try {
+            let res;
+            try {
+              res = await fetch(redditSearchUrl, { headers: { 'Accept': 'application/json' } });
+            } catch (e) {
+              res = await fetch(proxyUrl);
+            }
+
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const json = await res.json();
+            const posts = json?.data?.children;
+            if (!posts || posts.length === 0) throw new Error('No weekly update posts found on r/gtaonline');
+
+            const post = posts[0].data;
+            const parsed = parseRedditPostText(post.title, post.selftext);
+            renderStagedPreview(parsed, `Reddit post by /u/${post.author}`);
+            firebaseToast('🎉 Successfully fetched & parsed newest update from Reddit! Click "Publish Live" to broadcast.', 'success', 5000);
+          } catch (err) {
+            console.warn('Reddit direct fetch error, showing paste option:', err);
+            firebaseToast('⚠️ Reddit API was blocked or rate-limited. Please paste post text below to parse in 1 second.', 'info', 6000);
+            const pasteBox = document.getElementById('adminDirectPasteBox');
+            if (pasteBox) pasteBox.style.display = 'block';
+            const textarea = document.getElementById('adminManualRedditText');
+            if (textarea) textarea.focus();
+          } finally {
+            syncRedditBtn.disabled = false;
+            syncRedditBtn.textContent = '🔄 Auto-Fetch from Reddit';
+          }
+        });
+      }
+
+      // 2. Toggle Direct Paste Box
+      const togglePasteBtn = document.getElementById('adminToggleManualPasteBtn');
+      if (togglePasteBtn) {
+        togglePasteBtn.addEventListener('click', () => {
+          const pasteBox = document.getElementById('adminDirectPasteBox');
+          if (pasteBox) {
+            pasteBox.style.display = (pasteBox.style.display === 'none' || !pasteBox.style.display) ? 'block' : 'none';
+          }
+        });
+      }
+
+      // 3. Parse Pasted Text
+      const parseManualBtn = document.getElementById('adminParseManualBtn');
+      if (parseManualBtn) {
+        parseManualBtn.addEventListener('click', () => {
+          const textarea = document.getElementById('adminManualRedditText');
+          const rawText = textarea ? textarea.value.trim() : '';
+          if (!rawText) {
+            firebaseToast('⚠️ Please paste text from Reddit first.', 'error');
+            return;
+          }
+          const firstLine = rawText.split('\n')[0];
+          const parsed = parseRedditPostText(firstLine, rawText);
+          renderStagedPreview(parsed, 'Direct Text Paste');
+          firebaseToast('✅ Successfully parsed pasted text! Ready to publish.', 'success', 4000);
+        });
+      }
+
+      // 4. Publish Live to Firestore
+      const publishBtn = document.getElementById('adminPublishFirestoreBtn');
+      if (publishBtn) {
+        publishBtn.addEventListener('click', async () => {
+          if (!stagedWeeklyData) {
+            firebaseToast('⚠️ Nothing staged to publish. Fetch or paste an update first.', 'error');
+            return;
+          }
+          if (!window._bdcfIsAdmin || !window._bdcfUser) {
+            firebaseToast('❌ You must be signed in as Commander / Officer to publish.', 'error');
+            return;
+          }
+
+          publishBtn.disabled = true;
+          publishBtn.textContent = '⏳ Publishing to Firestore...';
+          firebaseToast('🚀 Publishing live update to Firestore...', 'info');
+
+          try {
+            const user = window._bdcfUser;
+            const weekPayload = {
+              ...stagedWeeklyData,
+              updatedAt: serverTimestamp(),
+              updatedBy: user.displayName || user.email || 'Commander BrianDivaCox'
+            };
+
+            // Write to live current document
+            await setDoc(doc(db, 'weekly', 'current'), weekPayload, { merge: true });
+
+            // Archive copy in weekly_history
+            const archiveKey = (stagedWeeklyData.dateRange || `week_${Date.now()}`).replace(/[^a-zA-Z0-9_-]/g, '_');
+            await setDoc(doc(db, 'weekly_history', archiveKey), weekPayload, { merge: true });
+
+            firebaseToast('🎉 LIVE! Weekly update broadcasted to all visitors and Los Santos Weekly!', 'success', 6000);
+            publishBtn.textContent = '✅ Published Live to Syndicate Cloud!';
+          } catch (err) {
+            console.error('Firestore publish error:', err);
+            firebaseToast(`❌ Publish error: ${err.message}`, 'error');
+            publishBtn.disabled = false;
+            publishBtn.textContent = '🚀 Publish Live to Firestore (Update Website & Los Santos Weekly)';
+          }
+        });
+      }
+    }
+
+    // Initialize Weekly Firestore Sync & Handlers
+    initWeeklyFirestoreSync();
+    setupWeeklyAdminHandlers();
+
 
   <!-- =========================================================================
        SYNDICATE UPDATE ALERT & CHANGELOG NOTIFIER CONTROLLER
@@ -2244,7 +2609,8 @@ function onOpen() {
   <script>
     (function () {
       'use strict';
-      const CURRENT_APP_VERSION = 'v3.6.2';
+      const CURRENT_APP_VERSION = 'v3.7.0';
+
 
       const updateModal = document.getElementById('updateAlertModal');
       const updateOverlay = document.getElementById('updateAlertOverlay');

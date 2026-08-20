@@ -7,7 +7,8 @@
   'use strict';
 
   // ── Version & App Constants ──
-  const APP_VERSION = 'v1.3.0';
+  const APP_VERSION = 'v3.7.0';
+
 
   // ── Default State & Fallback Current Week Data ──
   const DEFAULT_WEEK_DATA = {
@@ -140,6 +141,64 @@
   let currentData = DEFAULT_WEEK_DATA;
   let taskCheckState = {};
 
+  // ── Firebase Firestore Real-Time Cloud Sync Engine ──
+  const FIREBASE_CONFIG = {
+    apiKey:            "AIzaSyBkOfgA2gmuns2-X--EYu1D0TeiPFN7w-U",
+    authDomain:        "the-bdcf-crew.firebaseapp.com",
+    projectId:         "the-bdcf-crew",
+    storageBucket:     "the-bdcf-crew.firebasestorage.app",
+    messagingSenderId: "798269256571",
+    appId:             "1:798269256571:web:4077fad17160ee72ec03de"
+  };
+
+  async function initFirestoreSync() {
+    try {
+      const { initializeApp } = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js');
+      const { getFirestore, doc, onSnapshot } = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
+
+      const app = initializeApp(FIREBASE_CONFIG, 'LosSantosWeeklyApp');
+      const db = getFirestore(app);
+      const weeklyDocRef = doc(db, 'weekly', 'current');
+
+      // Realtime listener for instant cloud updates
+      onSnapshot(weeklyDocRef, (snap) => {
+        if (snap.exists()) {
+          const cloudData = snap.data();
+          if (cloudData && (cloudData.podiumVehicle || cloudData.dateRange || cloudData.discounts)) {
+            currentData = {
+              ...DEFAULT_WEEK_DATA,
+              ...cloudData,
+              version: APP_VERSION
+            };
+            saveData(currentData);
+            renderAll();
+            updateLiveIndicator(true, cloudData.dateRange);
+          }
+        }
+      }, (err) => {
+        console.warn('[LosSantosWeekly] Firestore listener warning (using cached data):', err);
+      });
+    } catch (err) {
+      console.warn('[LosSantosWeekly] Firestore SDK dynamic import skipped (offline/cached mode):', err);
+    }
+  }
+
+  function updateLiveIndicator(isLive, dateRange) {
+    const liveStatusText = document.getElementById('liveStatusText');
+    const livePill = document.querySelector('.status-pill.live-pill');
+    const redditSourceMeta = document.getElementById('redditSourceMeta');
+
+    if (liveStatusText) {
+      liveStatusText.textContent = isLive ? 'LIVE CLOUD' : 'SAVED DATA';
+    }
+    if (livePill && isLive) {
+      livePill.title = 'Real-time sync active from BDCF Syndicate Firestore';
+    }
+    if (redditSourceMeta && dateRange) {
+      redditSourceMeta.textContent = `Source: r/gtaonline • Synced via BDCF Cloud (${dateRange})`;
+    }
+  }
+
   // ── Initialize App ──
   function initApp() {
     loadSavedData();
@@ -148,6 +207,7 @@
     initCountdownTimer();
     bindEvents();
     generateAppsScriptCode();
+    initFirestoreSync();
   }
 
   // ── Local Storage Management ──
@@ -182,6 +242,7 @@
     localStorage.setItem('gta_tasks_state', JSON.stringify(taskCheckState));
     updateProgressCounter();
   }
+
 
   // ── Render All Sections ──
   function renderAll() {

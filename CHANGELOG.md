@@ -1,6 +1,15 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.7.0] - 2026-08-20
+- **Firestore Live Weekly Sync**: Real-time GTA Online Weekly Update sync powered by Firestore.
+- **1-Click Admin Publisher**: Auto-fetch from Reddit and publish live to all visitors.
+- **Direct Markdown Parser**: Quick text paste box to parse updates in seconds.
+- **Crew Database Architecture**: Structured security rules for roster, events, and weekly archives.
+- **Zero Latency Rendering**: Instant cached display with background real-time cloud sync.
+- **Service Worker Cache Refresh**: Bumped service worker cache identifier to `bdcf-pwa-cache-v3.7.0`.
+
 ## [3.6.2] - 2026-08-18
+
 - **Unified Single-Line Top Header & Navigation**:
   - Combined the glowing neon skull brand logo on the left, pill navigation menu tabs in the center, and profile avatar on the far right into a single streamlined horizontal top bar.
   - Enlarged the glowing neon BDCF skull to `68px` on desktop (`46px` on mobile) with enhanced magenta drop-shadow.
