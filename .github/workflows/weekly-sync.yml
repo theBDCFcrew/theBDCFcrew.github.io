@@ -1,0 +1,37 @@
+name: Automated Weekly GTA Update Sync
+
+on:
+  schedule:
+    # Runs every Thursday at 10:00, 11:00, 12:00, 13:00, and 14:00 UTC
+    - cron: '0 10,11,12,13,14 * * 4'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-weekly-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run Auto-Sync Script
+        run: node scripts/auto_weekly_sync.mjs
+
+      - name: Commit and Push if Changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "v3.7.0 : [Automated Sync] GTA Online Weekly Update Refreshed"
+            git push origin main
+          else
+            echo "No weekly updates to commit at this time."
+          fi
