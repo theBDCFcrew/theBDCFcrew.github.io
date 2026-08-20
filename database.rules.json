@@ -1,0 +1,36 @@
+{
+  "rules": {
+    "weekly": {
+      ".read": true,
+      ".write": "auth != null && (auth.uid === 'tT6YYY5VfuaK4jqlFuVPpWVyfY02' || auth.token.email === 'briandivacox@gmail.com')"
+    },
+    "weekly_history": {
+      ".read": true,
+      ".write": "auth != null && (auth.uid === 'tT6YYY5VfuaK4jqlFuVPpWVyfY02' || auth.token.email === 'briandivacox@gmail.com')"
+    },
+    "crew_members": {
+      ".read": true,
+      ".write": "auth != null && (auth.uid === 'tT6YYY5VfuaK4jqlFuVPpWVyfY02' || auth.token.email === 'briandivacox@gmail.com')"
+    },
+    "crew_events": {
+      ".read": true,
+      ".write": "auth != null && (auth.uid === 'tT6YYY5VfuaK4jqlFuVPpWVyfY02' || auth.token.email === 'briandivacox@gmail.com')"
+    },
+    "crew_applications": {
+      ".read": "auth != null && (auth.uid === 'tT6YYY5VfuaK4jqlFuVPpWVyfY02' || auth.token.email === 'briandivacox@gmail.com')",
+      ".write": true
+    },
+    "stats": {
+      ".read": true,
+      ".write": true
+    },
+    "sessions": {
+      ".read": true,
+      ".write": true
+    },
+    "admins": {
+      ".read": "auth != null",
+      ".write": "auth != null && (auth.uid === 'tT6YYY5VfuaK4jqlFuVPpWVyfY02' || auth.token.email === 'briandivacox@gmail.com')"
+    }
+  }
+}
