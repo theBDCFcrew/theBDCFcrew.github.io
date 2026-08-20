@@ -7,7 +7,8 @@
   'use strict';
 
   // ── Version & App Constants ──
-  const APP_VERSION = 'v3.8.0';
+  const APP_VERSION = 'v3.8.1';
+
 
 
 
@@ -164,11 +165,22 @@
             updateLiveIndicator(true, cloudData.dateRange);
           }
         }
-      }, (err) => {
-        console.warn('[LosSantosWeekly] Firestore listener warning (using cached data):', err);
+      }, async () => {
+        // Fallback to Realtime Database
+        try {
+          const rtdbRes = await fetch('https://the-bdcf-crew-default-rtdb.firebaseio.com/weekly/current.json');
+          if (rtdbRes.ok) {
+            const rtdbData = await rtdbRes.json();
+            if (rtdbData && (rtdbData.podiumVehicle || rtdbData.dateRange)) {
+              currentData = { ...DEFAULT_WEEK_DATA, ...rtdbData, version: APP_VERSION };
+              saveData(currentData);
+              renderAll();
+            }
+          }
+        } catch (_) {}
       });
     } catch (err) {
-      console.warn('[LosSantosWeekly] Firestore SDK dynamic import skipped (offline/cached mode):', err);
+      console.warn('[LosSantosWeekly] Cloud sync fallback to bundled data:', err);
     }
   }
 
@@ -208,12 +220,22 @@
     const saved = localStorage.getItem('gta_weekly_data');
     if (saved) {
       try {
-        currentData = JSON.parse(saved);
+        const parsed = JSON.parse(saved);
+        if (parsed && parsed.dateRange === DEFAULT_WEEK_DATA.dateRange) {
+          currentData = { ...DEFAULT_WEEK_DATA, ...parsed };
+        } else {
+          // Outdated cached week detected — automatically upgrade to current week!
+          currentData = DEFAULT_WEEK_DATA;
+          localStorage.setItem('gta_weekly_data', JSON.stringify(DEFAULT_WEEK_DATA));
+        }
       } catch (e) {
         currentData = DEFAULT_WEEK_DATA;
       }
+    } else {
+      currentData = DEFAULT_WEEK_DATA;
     }
   }
+
 
   function saveData(data) {
     currentData = data;
@@ -262,7 +284,11 @@
     if (mobileDateRange) mobileDateRange.textContent = dateText;
 
     const heroEventTitle = document.getElementById('heroEventTitle');
-    if (heroEventTitle) heroEventTitle.textContent = currentData.eventTitle || currentData.title;
+    if (heroEventTitle) {
+      const titleText = currentData.eventTitle || currentData.title || '';
+      heroEventTitle.textContent = titleText;
+      heroEventTitle.style.display = titleText ? '' : 'none';
+    }
 
     const heroEventDesc = document.getElementById('heroEventDesc');
     if (heroEventDesc) heroEventDesc.textContent = currentData.eventDesc;

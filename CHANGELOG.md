@@ -1,6 +1,14 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.8.1] - 2026-08-20
+- **Direct Navigation**: Weekly Update nav button opens tracker directly.
+- **Dynamic Hero Title**: Event headline automatically hides when title is empty.
+- **Hero Banner Cleanup**: Removed bulky header motto to maximize screen room.
+- **Cache Auto-Upgrade**: Outdated client storage automatically upgrades to current week.
+- **Service Worker Cache**: Bumped service worker cache to `bdcf-pwa-cache-v3.8.1`.
+
 ## [3.8.0] - 2026-08-20
+
 - **Brand Identity Streamline**: Purged syndicate references across portal and weekly hub.
 - **Brand Hierarchy Clarity**: Established The BDCF Crew as the core community.
 - **Set-and-Forget Auto Sync**: Automated GitHub Actions cron refreshes weekly data.
