@@ -250,8 +250,16 @@
   }
 
   function renderHeader() {
+    const dateText = currentData.dateRange || 'Current Week';
+
     const navDateRange = document.getElementById('navDateRange');
-    if (navDateRange) navDateRange.textContent = `📅 ${currentData.dateRange || 'Current Week'}`;
+    if (navDateRange) navDateRange.textContent = `📅 ${dateText}`;
+
+    const heroDateRange = document.getElementById('heroDateRange');
+    if (heroDateRange) heroDateRange.textContent = dateText;
+
+    const mobileDateRange = document.getElementById('mobileDateRange');
+    if (mobileDateRange) mobileDateRange.textContent = dateText;
 
     const heroEventTitle = document.getElementById('heroEventTitle');
     if (heroEventTitle) heroEventTitle.textContent = currentData.eventTitle || currentData.title;
@@ -259,6 +267,7 @@
     const heroEventDesc = document.getElementById('heroEventDesc');
     if (heroEventDesc) heroEventDesc.textContent = currentData.eventDesc;
   }
+
 
   function renderVehiclesAndChallenges() {
     const podiumEl = document.getElementById('podiumVehicleName');
@@ -585,9 +594,13 @@
       const navTimer = document.getElementById('countdownTimer');
       if (navTimer) navTimer.textContent = formatted;
 
+      const mobileNavTimer = document.getElementById('mobileCountdownTimer');
+      if (mobileNavTimer) mobileNavTimer.textContent = `${d}d ${String(h).padStart(2, '0')}h`;
+
       const heroTimer = document.getElementById('heroCountdown');
       if (heroTimer) heroTimer.textContent = `${d}d ${h}h ${m}m ${s}s`;
     }
+
 
     updateTimers();
     setInterval(updateTimers, 1000);

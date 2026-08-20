@@ -1489,6 +1489,26 @@ body.crew-portal-body {
   margin-bottom: 8px;
 }
 
+.weekly-date-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
+  border: 1px solid rgba(168, 85, 247, 0.45);
+  color: #f3e8ff;
+  font-family: var(--font-tech);
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  margin-bottom: 8px;
+  margin-left: 8px;
+}
+
+.weekly-date-pill strong {
+  color: #38bdf8;
+}
+
 .live-ping {
   width: 6px;
   height: 6px;
@@ -1496,6 +1516,7 @@ body.crew-portal-body {
   border-radius: 50%;
   box-shadow: 0 0 6px #10b981;
 }
+
 
 .weekly-title {
   font-family: var(--font-header);

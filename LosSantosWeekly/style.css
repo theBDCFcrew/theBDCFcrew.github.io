@@ -219,6 +219,44 @@ body {
   color: var(--accent-light);
 }
 
+.hero-date-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(236, 72, 153, 0.25));
+  border: 1px solid rgba(168, 85, 247, 0.5);
+  color: #f3e8ff;
+  font-weight: 800;
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.3);
+}
+
+.hero-date-badge strong {
+  color: #38bdf8;
+}
+
+.mobile-sub-status-bar {
+  display: none;
+  background: rgba(11, 14, 23, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.mobile-sub-status-bar .date-highlight strong {
+  color: #a855f7;
+}
+
 .mono-timer {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 700;
@@ -229,6 +267,7 @@ body {
   align-items: center;
   gap: 10px;
 }
+
 
 .mobile-toggle-btn {
   display: none;

@@ -72,6 +72,14 @@
 
     </div>
 
+    <!-- MOBILE QUICK DATE & RESET BAR (Always visible on phones) -->
+    <div class="mobile-sub-status-bar">
+      <span class="mobile-status-item">🟢 LIVE CLOUD</span>
+      <span class="mobile-status-divider">•</span>
+      <span class="mobile-status-item date-highlight">📅 <strong id="mobileDateRange">Aug 20 – Aug 27</strong></span>
+      <span class="mobile-status-divider">•</span>
+      <span class="mobile-status-item">⏳ Reset: <span id="mobileCountdownTimer" class="mono-timer">--d --h</span></span>
+    </div>
 
     <!-- QUICK PROGRESS BAR -->
     <div class="progress-bar-wrapper">
@@ -90,7 +98,7 @@
     <div class="main-tabs-container">
       <button class="main-tab-btn active" data-tab="tab-pane-tasks">
         <span class="tab-icon">🎯</span>
-        <span class="tab-label">Weekly Tasks & Rides</span>
+        <span class="tab-label">Weekly Tasks &amp; Rides</span>
       </button>
       <button class="main-tab-btn" data-tab="tab-pane-daily">
         <span class="tab-icon">📅</span>
@@ -98,11 +106,11 @@
       </button>
       <button class="main-tab-btn" data-tab="tab-pane-bonuses">
         <span class="tab-icon">💰</span>
-        <span class="tab-label">Bonuses & Multipliers</span>
+        <span class="tab-label">Bonuses &amp; Multipliers</span>
       </button>
       <button class="main-tab-btn" data-tab="tab-pane-discounts">
         <span class="tab-icon">🏷️</span>
-        <span class="tab-label">Discounts & Deals</span>
+        <span class="tab-label">Discounts &amp; Deals</span>
       </button>
     </div>
   </nav>
@@ -118,11 +126,18 @@
       <!-- Compact Hero Banner -->
       <section class="hero-banner">
         <div class="hero-content">
-          <div class="hero-badge" id="heroEventBadge">🔥 SPECIAL EVENT</div>
-          <h2 class="hero-title" id="heroEventTitle">Brand Wars Event (Week 1)</h2>
+          <div style="display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:10px;">
+            <div class="hero-badge" id="heroEventBadge">🔥 SPECIAL EVENT</div>
+            <div class="hero-date-badge" id="heroDateBadge">
+              <span>📅 ACTIVE WEEK:</span>
+              <strong id="heroDateRange">Aug 20 – Aug 27</strong>
+            </div>
+          </div>
+          <h2 class="hero-title" id="heroEventTitle">Brand Wars Event (Week 2)</h2>
           <p class="hero-description" id="heroEventDesc">
-            Boosted payouts on select Odd Jobs, Freemode Events, and Hotring Circuit Series Races. Weekly completion bonuses reset for a bigger initial payout on select Heists and Missions!
+            Support Team Sprunk or Team eCola in Brand Wars Week 2! Earn 5X on VIP Work, 4X on Hotring Circuit &amp; Freemode Events, 3X on Odd Jobs &amp; Community Series, and test out the new Gallivanter Warden!
           </p>
+
 
           <div class="hero-quick-actions">
             <button id="checkAllBtn" class="btn btn-outline-sm">✅ Mark All Done</button>
