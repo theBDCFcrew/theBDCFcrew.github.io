@@ -1050,7 +1050,7 @@ function setupThursdayGtaTrigger() {
     if (openSheetsBtn) openSheetsBtn.addEventListener('click', openModal);
     if (footerSheetsBtn) footerSheetsBtn.addEventListener('click', openModal);
     if (closeSheetsBtn) closeSheetsBtn.addEventListener('click', closeModal);
-    if (sheetsOverlay) sheetsOverlay.addEventListener('click', closeModal);
+
 
     // Modal Tabs
     document.querySelectorAll('.modal-tab-btn').forEach(btn => {

@@ -607,7 +607,11 @@
             <button type="button" id="adminToggleManualPasteBtn" class="btn btn-secondary" style="padding: 12px;">
               📝 Direct Text / Markdown Paste
             </button>
+            <button type="button" id="adminStageBundledBtn" class="btn btn-secondary" style="padding: 12px;" title="Stage current bundled week data">
+              📦 Load Bundled Week Data
+            </button>
           </div>
+
 
           <!-- Direct Paste Box -->
           <div id="adminDirectPasteBox" style="display:none; margin-top:12px; border-top:1px solid rgba(255,255,255,0.08); padding-top:12px;">
@@ -1529,7 +1533,7 @@
       if (footerAdminBtn) footerAdminBtn.addEventListener('click', () => handleAdminClick('tab-categories'));
       if (managePlaylistBtn) managePlaylistBtn.addEventListener('click', () => handleAdminClick('tab-categories'));
       if (closeAdminBtn) closeAdminBtn.addEventListener('click', closeModal);
-      if (adminOverlay) adminOverlay.addEventListener('click', closeModal);
+
 
       // ── Instant Video Facade 1-Tap Play Controller ──
       const facadePlayBtn = document.getElementById('facadePlayBtn');
@@ -2292,6 +2296,87 @@ function onOpen() {
     //  🌴 LOS SANTOS WEEKLY FIRESTORE SYNC & ADMIN ENGINE
     // ══════════════════════════════════════════════
 
+    const DEFAULT_WEEK_DATA = {
+      title: "Weekly Bonuses and Discounts - August 13th to August 20th",
+      eventTitle: "Brand Wars Event (Week 1)",
+      eventDesc: "Boosted payouts on select Odd Jobs, Freemode Events, and sponsored Hotring Circuit Series Races. Weekly completion bonuses reset for a bigger initial payout on select Heists and Missions.",
+      dateRange: "Aug 13 – Aug 20",
+      podiumVehicle: "Pfister Astron",
+      prizeRide: {
+        vehicle: "Enus Deity",
+        condition: "Place Top 4 in the LS Car Meet Series 3 days in a row"
+      },
+      weeklyChallenge: {
+        task: "Complete 3 Business Battles",
+        reward: "Impotent Rage Sweatsuit + 2.5X GTA$250,000 Bonus"
+      },
+      timeTrials: {
+        regular: "End to End",
+        hsw: "Terminal to Chiliad Mountain State Wilderness",
+        premiumRace: "A Sign of Things to Come"
+      },
+      testRides: [
+        "Vapid Clique Wagon",
+        "Överflöd Autarch",
+        "Pegassi Osiris",
+        "HSW Premium: Karin S95"
+      ],
+      salvageRobberies: [
+        { name: "The Podium Robbery", vehicle: "Truffade Z-Type", value: "~$380,000 - $420,000" },
+        { name: "The Duggan Robbery", vehicle: "Übermacht Sentinel Classic", value: "~$340,000 - $380,000" },
+        { name: "The Gangbanger Robbery", vehicle: "Vapid Caracara 4x4", value: "~$320,000 - $360,000" }
+      ],
+      dailyObjectives: [
+        { day: "Thursday", task: "Complete a Special Vehicle Work" },
+        { day: "Friday", task: "Participate in Carnage" },
+        { day: "Saturday", task: "Participate in a Freemode Challenge" },
+        { day: "Sunday", task: "Participate in a Land Race" },
+        { day: "Monday", task: "Play a game of Darts" },
+        { day: "Tuesday", task: "Participate in a Freemode Event" },
+        { day: "Wednesday", task: "Complete a Project Overthrow mission" }
+      ],
+      bonuses: [
+        {
+          multiplier: "4X",
+          label: "4X GTA$ & RP",
+          tier: "4x",
+          items: ["🏁 Hotring Circuit Series Races", "⚡ Freemode Challenges", "🌐 Freemode Events"]
+        },
+        {
+          multiplier: "3X",
+          label: "3X GTA$ & RP",
+          tier: "3x",
+          items: ["📰 Paper Route Odd Jobs", "🚒 Firefighter Missions", "🏗️ Forklift Operator Odd Jobs", "🎨 Community Series Jobs"]
+        },
+        {
+          multiplier: "2X",
+          label: "2X GTA$ & RP",
+          tier: "2x",
+          items: ["💼 Special Cargo Sell Missions", "🏢 Executive Office Sightseer & Hostile Takeover", "🔬 2X Bunker Research & Production Speed"]
+        }
+      ],
+      discounts: [
+        { name: "Declasse Hotring Sabre (Sports)", category: "vehicles", rate: "Free", badgeClass: "rate-free" },
+        { name: "Sprunk and eCola Bodysuits", category: "apparel", rate: "Free", badgeClass: "rate-free" },
+        { name: "Sprunk x eCola Livery & Vanity Plates", category: "apparel", rate: "Free", badgeClass: "rate-free" },
+        { name: "Unholy Hellbringer (Gun Van)", category: "weapons", rate: "Free", badgeClass: "rate-free" },
+        { name: "Battle Rifle (Gun Van)", category: "weapons", rate: "50% Off", badgeClass: "rate-50" },
+        { name: "Precision Rifle (Gun Van - GTA+)", category: "weapons", rate: "40% Off", badgeClass: "rate-40" },
+        { name: "Hands On Car Wash", category: "properties", rate: "40% Off", badgeClass: "rate-40" },
+        { name: "Bail Office Properties, Upgrades & Modifications", category: "properties", rate: "40% Off", badgeClass: "rate-40" },
+        { name: "Bravado Hotring Hellfire (Sports)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
+        { name: "Karin Hotring Everon (Sports)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
+        { name: "Declasse Scramjet (Super)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
+        { name: "Överflöd Autarch (Super)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+        { name: "Pegassi Osiris (Super)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+        { name: "Mammoth Patriot Mil-Spec (SUV)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+        { name: "Obey Tailgater S (Sedan)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+        { name: "Progen GP1 (Super)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+        { name: "Vapid Clique Wagon (Muscle)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+        { name: "Benefactor Stirling GT (Sports Classic)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" }
+      ]
+    };
+
     let stagedWeeklyData = null;
 
     // Helper: Clean markdown
@@ -2299,6 +2384,7 @@ function onOpen() {
       if (!str) return '';
       return str
         .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+
         .replace(/[*_~`]/g, '')
         .replace(/\\u[\dA-Fa-f]{4}/g, '')
         .trim();
@@ -2610,8 +2696,18 @@ function onOpen() {
         });
       }
 
-      // 4. Publish Live to Firestore
+      // 4. Stage Bundled Week Data
+      const stageBundledBtn = document.getElementById('adminStageBundledBtn');
+      if (stageBundledBtn) {
+        stageBundledBtn.addEventListener('click', () => {
+          renderStagedPreview(DEFAULT_WEEK_DATA, 'Bundled Syndicate Week');
+          firebaseToast('📦 Bundled week staged! Click "Publish Live" below to push to Firestore.', 'info', 4000);
+        });
+      }
+
+      // 5. Publish Live to Firestore
       const publishBtn = document.getElementById('adminPublishFirestoreBtn');
+
       if (publishBtn) {
         publishBtn.addEventListener('click', async () => {
           if (!stagedWeeklyData) {
@@ -2706,9 +2802,9 @@ function onOpen() {
         headerVersionPill.addEventListener('click', openUpdateAlert);
       }
       if (closeUpdateBtn) closeUpdateBtn.addEventListener('click', () => closeUpdateAlert(true));
-      if (updateOverlay) updateOverlay.addEventListener('click', () => closeUpdateAlert(true));
       if (btnDismissUpdate) btnDismissUpdate.addEventListener('click', () => closeUpdateAlert(true));
       if (btnReloadUpdate) btnReloadUpdate.addEventListener('click', applyUpdateAndReload);
+
 
       // Auto-show popup window modal on initial visit if version is newer
       const lastSeenVersion = localStorage.getItem('bdcf_seen_version');
