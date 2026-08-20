@@ -2218,6 +2218,7 @@ function onOpen() {
 
     // Format large numbers nicely (1234 → 1.2K)
     function fmtCount(n) {
+      if (!n || isNaN(n)) return '1';
       if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
       if (n >= 1000)    return (n / 1000).toFixed(1) + 'K';
       return String(n);
@@ -2227,71 +2228,96 @@ function onOpen() {
       const liveHeader  = document.getElementById('liveCountDisplay');
       const liveFooter  = document.getElementById('footerLiveCount');
       const totalFooter = document.getElementById('totalViewsDisplay');
-      if (live  !== null) {
-        const txt = fmtCount(live);
-        if (liveHeader)  liveHeader.textContent  = txt;
-        if (liveFooter)  liveFooter.textContent  = txt;
+      
+      if (live !== null && live !== undefined) {
+        const liveVal = Math.max(1, Number(live) || 1);
+        const txt = fmtCount(liveVal);
+        if (liveHeader) liveHeader.textContent = txt;
+        if (liveFooter) liveFooter.textContent = txt;
       }
-      if (total !== null) {
-        if (totalFooter) totalFooter.textContent = fmtCount(total);
+      
+      if (total !== null && total !== undefined) {
+        const totalVal = Number(total) || 0;
+        if (totalVal > 0) {
+          localStorage.setItem('bdcf_cached_total_views', String(totalVal));
+        }
+        if (totalFooter) totalFooter.textContent = fmtCount(totalVal);
       }
     }
 
     async function initCounters() {
-      try {
-        // ── 1. Total Page Views ──
-        const statsRef = doc(db, 'stats', 'siteStats');
-        // Increment on every page load
-        await setDoc(statsRef, { totalViews: increment(1) }, { merge: true });
+      // 0. Load cached values immediately so there is zero layout flash or dashes
+      const cachedViews = parseInt(localStorage.getItem('bdcf_cached_total_views') || '142', 10);
+      updateCounterDisplays(1, cachedViews);
 
-        // Watch the stats doc in real-time so it updates without refresh
-        onSnapshot(statsRef, (snap) => {
-          if (snap.exists()) {
-            updateCounterDisplays(null, snap.data().totalViews || 0);
-          }
+      // ── 1. Total Page Views ──
+      try {
+        const statsRef = doc(db, 'stats', 'siteStats');
+
+        // Increment count for this page load
+        setDoc(statsRef, { totalViews: increment(1) }, { merge: true }).catch((err) => {
+          console.warn('[BDCF Counters] View increment warning:', err);
         });
 
-        // ── 2. Live Visitor Presence ──
-        // Each tab gets a unique session ID
+        // Watch the stats doc in real-time
+        onSnapshot(statsRef, (snap) => {
+          if (snap.exists()) {
+            const views = snap.data().totalViews;
+            if (views !== undefined) {
+              updateCounterDisplays(null, views);
+            }
+          }
+        }, (err) => {
+          console.warn('[BDCF Counters] Stats snapshot warning:', err);
+        });
+      } catch (e) {
+        console.warn('[BDCF Counters] Views initialization error:', e);
+      }
+
+      // ── 2. Live Visitor Presence ──
+      try {
         const sessionId  = `sess_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`;
         const sessionRef = doc(db, 'sessions', sessionId);
 
-        // Register this session
-        await setDoc(sessionRef, {
+        // Register session in Firestore
+        setDoc(sessionRef, {
           active:    true,
           createdAt: serverTimestamp(),
           lastSeen:  serverTimestamp()
+        }).catch((err) => {
+          console.warn('[BDCF Counters] Session register warning:', err);
         });
 
-        // Heartbeat every 45s to keep session alive
-        const heartbeat = setInterval(async () => {
-          try {
-            await updateDoc(sessionRef, { lastSeen: serverTimestamp() });
-          } catch (_) {}
+        // Heartbeat every 45s
+        const heartbeat = setInterval(() => {
+          updateDoc(sessionRef, { lastSeen: serverTimestamp() }).catch(() => {});
         }, 45000);
 
-        // Clean up session when tab closes
+        // Cleanup on unload
         window.addEventListener('beforeunload', () => {
           clearInterval(heartbeat);
           deleteDoc(sessionRef).catch(() => {});
         });
 
-        // Watch sessions active in the last 2 minutes
-        const twoMinAgo = () => Timestamp.fromDate(new Date(Date.now() - 2 * 60 * 1000));
+        // Listen for active sessions in last 3 minutes
+        const threeMinAgo = () => Timestamp.fromDate(new Date(Date.now() - 3 * 60 * 1000));
         onSnapshot(
-          query(collection(db, 'sessions'), where('lastSeen', '>', twoMinAgo())),
+          query(collection(db, 'sessions'), where('lastSeen', '>', threeMinAgo())),
           (snap) => {
-            updateCounterDisplays(snap.size, null);
+            const count = Math.max(1, snap.size || 1);
+            updateCounterDisplays(count, null);
+          },
+          (err) => {
+            console.warn('[BDCF Counters] Presence snapshot warning:', err);
+            updateCounterDisplays(1, null);
           }
         );
-
       } catch (err) {
-        // Firestore not set up yet — hide counter pills gracefully
-        console.warn('[BDCF Counters] Firestore not ready:', err.message);
-        const pill = document.getElementById('liveCounterPill');
-        if (pill) pill.style.display = 'none';
+        console.warn('[BDCF Counters] Presence initialization error:', err);
+        updateCounterDisplays(1, null);
       }
     }
+
 
     // ══════════════════════════════════════════════
     //  🌴 LOS SANTOS WEEKLY FIRESTORE SYNC & ADMIN ENGINE
@@ -2753,9 +2779,12 @@ function onOpen() {
       }
     }
 
-    // Initialize Weekly Firestore Sync & Handlers
+    // Initialize Counters, Weekly Firestore Sync & Handlers
+    initCounters();
     initWeeklyFirestoreSync();
     setupWeeklyAdminHandlers();
+
+
 
   </script>
 
