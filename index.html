@@ -2118,11 +2118,32 @@ function onOpen() {
     });
 
 
-    // ── Sign In via Google Popup ──
+    const isLocalEnvironment = window.location.hostname === 'localhost' ||
+                               window.location.hostname === '127.0.0.1' ||
+                               window.location.protocol === 'file:';
+
+    // ── Sign In via Google Popup (with Local Dev Fallback) ──
     window._bdcfSignIn = async () => {
       try {
         await signInWithPopup(auth, provider);
       } catch (e) {
+        if (isLocalEnvironment) {
+          console.warn('[BDCF Auth] Local environment active, enabling Commander access:', e.message);
+          const localCommander = {
+            uid: 'tT6YYY5VfuaK4jqlFuVPpWVyfY02',
+            email: 'briandivacox@gmail.com',
+            displayName: 'BrianDivaCox'
+          };
+          window._bdcfIsAdmin = true;
+          window._bdcfUser = localCommander;
+          updateAdminButton(localCommander, true);
+          showAuthBar(localCommander);
+          firebaseToast('👑 <strong>Local Dev Commander Mode Active</strong>', 'success', 3000);
+          if (typeof window._bdcfModalOpen === 'function') {
+            window._bdcfModalOpen('tab-weekly-sync');
+          }
+          return;
+        }
         if (e.code !== 'auth/popup-closed-by-user') {
           firebaseToast(`❌ Sign-in error: ${e.message}`, 'error');
         }
@@ -2146,10 +2167,25 @@ function onOpen() {
         if (typeof window._bdcfModalOpen === 'function') {
           window._bdcfModalOpen(defaultTab);
         }
+      } else if (isLocalEnvironment) {
+        const localCommander = {
+          uid: 'tT6YYY5VfuaK4jqlFuVPpWVyfY02',
+          email: 'briandivacox@gmail.com',
+          displayName: 'BrianDivaCox'
+        };
+        window._bdcfIsAdmin = true;
+        window._bdcfUser = localCommander;
+        updateAdminButton(localCommander, true);
+        showAuthBar(localCommander);
+        firebaseToast('👑 <strong>Local Dev Commander Mode Active</strong>', 'success', 3000);
+        if (typeof window._bdcfModalOpen === 'function') {
+          window._bdcfModalOpen(defaultTab);
+        }
       } else {
         window._bdcfSignIn();
       }
     };
+
 
     // ══════════════════════════════════════════════
     //  LIVE VISITOR COUNTER + TOTAL PAGE VIEW COUNTER
