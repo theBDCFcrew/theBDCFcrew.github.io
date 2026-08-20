@@ -50,17 +50,10 @@
         </div>
       </div>
 
-      <div class="nav-status-group">
-        <div class="status-pill live-pill" title="Live data synced in real-time from BDCF Crew Firestore">
-          <span class="pulse-dot"></span>
-          <span id="liveStatusText">LIVE CLOUD SYNC</span>
-        </div>
-
+      <!-- Center: Prominent Active Week Date Badge -->
+      <div class="nav-date-wrap">
         <div class="status-pill date-pill" id="navDateRange">
           📅 Aug 20 – Aug 27
-        </div>
-        <div class="status-pill countdown-pill" id="navCountdown" title="Time until next Thursday reset (5:00 AM ET)">
-          ⏳ Reset: <span id="countdownTimer" class="mono-timer">--d --h --m --s</span>
         </div>
       </div>
 
@@ -72,13 +65,14 @@
 
     </div>
 
-    <!-- MOBILE QUICK DATE & RESET BAR (Always visible on phones) -->
-    <div class="mobile-sub-status-bar">
-      <span class="mobile-status-item">🟢 LIVE CLOUD</span>
-      <span class="mobile-status-divider">•</span>
-      <span class="mobile-status-item date-highlight">📅 <strong id="mobileDateRange">Aug 20 – Aug 27</strong></span>
-      <span class="mobile-status-divider">•</span>
-      <span class="mobile-status-item">⏳ Reset: <span id="mobileCountdownTimer" class="mono-timer">--d --h</span></span>
+    <!-- DEDICATED RESET COUNTDOWN LINE (Own clean line) -->
+    <div class="reset-countdown-strip">
+      <div class="reset-strip-inner">
+        <span class="reset-icon">⏳</span>
+        <span class="reset-label">Next GTA Online Reset:</span>
+        <strong id="countdownTimer" class="reset-timer mono-timer">--d --h --m --s</strong>
+        <span class="reset-hint">(Thursday 5:00 AM ET / 10:00 AM UTC)</span>
+      </div>
     </div>
 
     <!-- QUICK PROGRESS BAR -->
@@ -92,6 +86,7 @@
       </div>
     </div>
   </header>
+
 
   <!-- STREAMLINED MAIN TAB SWITCHER -->
   <nav class="main-tabs-bar">

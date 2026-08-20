@@ -209,14 +209,69 @@ body {
   50% { opacity: 0.4; transform: scale(0.85); }
 }
 
-.date-pill {
-  color: #e2e8f0;
+.nav-date-wrap {
+  display: flex;
+  align-items: center;
 }
 
-.countdown-pill {
-  background: rgba(6, 182, 212, 0.12);
-  border-color: rgba(6, 182, 212, 0.35);
-  color: var(--accent-light);
+.date-pill {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.22), rgba(236, 72, 153, 0.22));
+  border: 1px solid rgba(168, 85, 247, 0.5);
+  color: #fff;
+  font-weight: 800;
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
+}
+
+.reset-countdown-strip {
+  background: rgba(7, 8, 15, 0.85);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 9px 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.reset-strip-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.reset-icon {
+  font-size: 15px;
+}
+
+.reset-label {
+  font-weight: 700;
+  color: #e2e8f0;
+  letter-spacing: 0.3px;
+}
+
+.reset-timer {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 800;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  padding: 2px 10px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.5px;
+}
+
+.reset-hint {
+  font-size: 11px;
+  color: #64748b;
 }
 
 .hero-date-badge {
@@ -239,25 +294,8 @@ body {
   color: #38bdf8;
 }
 
-.mobile-sub-status-bar {
-  display: none;
-  background: rgba(11, 14, 23, 0.95);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 8px 16px;
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--text-muted);
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.mobile-sub-status-bar .date-highlight strong {
-  color: #a855f7;
-}
-
 .mono-timer {
+
   font-family: 'JetBrains Mono', monospace;
   font-weight: 700;
 }
@@ -1570,9 +1608,25 @@ body {
 
 @media (max-width: 768px) {
   .nav-container {
-    padding: 10px 16px;
+    padding: 10px 14px;
+    gap: 8px;
   }
-  .status-pill.date-pill, .status-pill.countdown-pill {
+  .nav-date-wrap {
+    margin-left: auto;
+  }
+  .status-pill.date-pill {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+  .reset-strip-inner {
+    font-size: 12px;
+    gap: 6px;
+  }
+  .reset-timer {
+    font-size: 12px;
+    padding: 2px 8px;
+  }
+  .reset-hint {
     display: none;
   }
   .btn .btn-label {
@@ -1588,3 +1642,4 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
