@@ -3,7 +3,6 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // ── Helper Functions ──
     function isCommander() {
       return request.auth != null && (
         request.auth.uid == 'tT6YYY5VfuaK4jqlFuVPpWVyfY02' ||
@@ -18,27 +17,29 @@ service cloud.firestore {
       );
     }
 
-    // ── Admin Allowlist ──
+    // Default deny everything not explicitly matched
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // ── Admin Allowlist (Commander only write) ──
     match /admins/{docId} {
       allow read: if request.auth != null;
       allow write: if isCommander();
     }
 
-    // ── Live GTA Online Weekly Update Hub ──
-    // Public read so all visitors across Portal & Los Santos Weekly see updates live.
-    // Commander & authorized Officers can write/publish.
+    // ── Live Weekly Updates & Archives (Read-only for public, Write only for Officers) ──
     match /weekly/{docId} {
       allow read: if true;
       allow write: if isOfficer();
     }
 
-    // ── Historical Archive of Weekly Updates ──
     match /weekly_history/{docId} {
       allow read: if true;
       allow write: if isOfficer();
     }
 
-    // ── Syndicate Crew Foundation: Roster, Events & Recruitment ──
+    // ── Crew Data (Read-only for public, Write only for Officers) ──
     match /crew_members/{memberId} {
       allow read: if true;
       allow write: if isOfficer();
@@ -49,20 +50,24 @@ service cloud.firestore {
       allow write: if isOfficer();
     }
 
+    // ── Applications (Public can ONLY create a new submission, cannot read or edit others) ──
     match /crew_applications/{appId} {
-      allow create: if true;
+      allow create: if request.resource.data.keys().hasAll(['name', 'platform', 'gamertag', 'submittedAt']);
       allow read, update, delete: if isOfficer();
     }
 
-    // ── Site View Counter & Live Presence ──
+    // ── Stats (Atomic increment only for views) ──
     match /stats/{doc} {
-      allow read, write: if true;
+      allow read: if true;
+      allow update: if request.resource.data.diff(resource.data).affectedKeys().hasOnly(['totalViews']);
+      allow create, delete: if isCommander();
     }
 
+    // ── Sessions (Presence only) ──
     match /sessions/{sessionId} {
-      allow read, write: if true;
+      allow read: if true;
+      allow create, update: if request.resource.data.keys().hasAll(['active', 'lastSeen']);
+      allow delete: if true;
     }
   }
 }
-
-

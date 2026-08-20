@@ -1,5 +1,7 @@
 {
   "rules": {
+    ".read": false,
+    ".write": false,
     "weekly": {
       ".read": true,
       ".write": "auth != null && (auth.uid === 'tT6YYY5VfuaK4jqlFuVPpWVyfY02' || auth.token.email === 'briandivacox@gmail.com')"
@@ -17,16 +19,29 @@
       ".write": "auth != null && (auth.uid === 'tT6YYY5VfuaK4jqlFuVPpWVyfY02' || auth.token.email === 'briandivacox@gmail.com')"
     },
     "crew_applications": {
-      ".read": "auth != null && (auth.uid === 'tT6YYY5VfuaK4jqlFuVPpWVyfY02' || auth.token.email === 'briandivacox@gmail.com')",
-      ".write": true
+      "$app_id": {
+        ".read": "auth != null && (auth.uid === 'tT6YYY5VfuaK4jqlFuVPpWVyfY02' || auth.token.email === 'briandivacox@gmail.com')",
+        ".write": "!data.exists() && newData.exists() && newData.hasChildren(['name', 'platform', 'gamertag', 'submittedAt'])"
+      }
     },
     "stats": {
       ".read": true,
-      ".write": true
+      "totalViews": {
+        ".write": "newData.isNumber() && (!data.exists() || newData.val() >= data.val())"
+      },
+      "initializedAt": {
+        ".write": "auth != null && (auth.uid === 'tT6YYY5VfuaK4jqlFuVPpWVyfY02' || auth.token.email === 'briandivacox@gmail.com')"
+      },
+      "siteName": {
+        ".write": "auth != null && (auth.uid === 'tT6YYY5VfuaK4jqlFuVPpWVyfY02' || auth.token.email === 'briandivacox@gmail.com')"
+      }
     },
     "sessions": {
-      ".read": true,
-      ".write": true
+      "$session_id": {
+        ".read": true,
+        ".write": "newData.hasChildren(['active', 'lastSeen'])",
+        ".validate": "newData.child('active').isBoolean()"
+      }
     },
     "admins": {
       ".read": "auth != null",
