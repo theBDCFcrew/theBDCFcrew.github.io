@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-  <meta name="description" content="THE BDCF CREW — Official GTA Online Syndicate, Video Theater, Recruitment & Los Santos Weekly Portal." />
+  <meta name="description" content="THE BDCF CREW — Official GTA Online Crew Hub, Video Theater, Recruitment & Los Santos Weekly Portal." />
   <meta name="theme-color" content="#07080f" />
-  <title>THE BDCF CREW | Official GTA Online Syndicate</title>
+  <title>THE BDCF CREW | Official GTA Online Crew Hub</title>
+
 
   <!-- Preconnect & Asynchronous High-Performance Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -79,7 +80,7 @@
 
       <!-- Right: Profile Avatar Button -->
       <div class="header-right-actions">
-        <button id="headerUserAvatarBtn" class="header-user-avatar-btn" title="BDCF Syndicate Profile &amp; Admin Menu" aria-label="Open Profile &amp; Settings">
+        <button id="headerUserAvatarBtn" class="header-user-avatar-btn" title="BDCF Crew Profile &amp; Admin Menu" aria-label="Open Profile &amp; Settings">
           <img src="./user-avatar.png" alt="Profile" class="header-avatar-img" fetchpriority="high" decoding="async" />
         </button>
       </div>
@@ -105,7 +106,7 @@
       </h1>
 
       <p class="hero-lead" id="displayCrewMotto">
-        Official GTA Online Syndicate &amp; Operations Headquarters. Watch crew video highlights, track weekly updates, or apply to join our ranks.
+        Official GTA Online Crew Hub &amp; Operations Headquarters. Watch crew video highlights, track weekly updates, or apply to join our ranks.
       </p>
     </section>
 
@@ -150,13 +151,14 @@
             </div>
             <h3 id="currentVideoTitle" class="video-current-title">The BDCF Crew: Official GTA Online Showcase</h3>
             <div class="video-meta-stats-row">
-              <span class="meta-stat-pill">👥 BDCF Syndicate</span>
+              <span class="meta-stat-pill">👥 The BDCF Crew</span>
               <span class="meta-stat-bullet">•</span>
               <span class="meta-stat-pill" id="metaActiveCategory">🌴 GTAO: Crew</span>
               <span class="meta-stat-bullet">•</span>
               <span class="meta-stat-pill">⏱️ HD 1080p</span>
             </div>
             <p id="currentVideoDesc" class="video-current-desc">Official BDCF Crew operations, heists, and car meet showcase in Los Santos.</p>
+
           </div>
           <div class="video-meta-right">
             <a href="https://www.youtube.com/@BrianDivaCox" target="_blank" rel="noopener noreferrer" class="channel-link-badge" title="Visit Brian Cox YouTube Channel">
@@ -256,7 +258,7 @@
         <div class="section-title-wrap">
           <div class="section-badge badge-join">🎮 RECRUITMENT OPEN</div>
           <h2 class="section-title">How to Join The BDCF Crew</h2>
-          <p class="section-subtitle">Join our active syndicate for heist payouts, car meets, and protected business lobbies</p>
+          <p class="section-subtitle">Join our active crew for heist payouts, car meets, and protected business lobbies</p>
         </div>
 
         <div class="steps-grid">
@@ -293,7 +295,7 @@
         <!-- Join Form CTA Box -->
         <div class="join-cta-banner">
           <div class="cta-banner-text">
-            <h3>Ready to Join The Syndicate?</h3>
+            <h3>Ready to Roll With The Crew?</h3>
             <p>Applications are reviewed daily. All active GTA Online players on PC &amp; Consoles are welcome.</p>
           </div>
           <div class="cta-banner-action">
@@ -315,7 +317,7 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="footer-logo">[BDCF] THE BDCF CREW</span>
-        <p class="footer-copy">Official GTA Online Syndicate Portal. All GTA trademarks belong to Rockstar Games / Take-Two Interactive.</p>
+        <p class="footer-copy">Official GTA Online Crew Hub. All GTA trademarks belong to Rockstar Games / Take-Two Interactive.</p>
       </div>
 
       <!-- Site Stats Strip -->
@@ -335,7 +337,7 @@
 
       <div class="footer-links">
         <button id="footerInstallBtn" class="footer-install-btn" style="display:none;">📲 Install Web App</button>
-        <button id="footerVersionBtn" class="footer-admin-btn" title="View Syndicate Updates & Changelog">⚡ v3.7.0 Updates</button>
+        <button id="footerVersionBtn" class="footer-admin-btn" title="View Crew Updates & Changelog">⚡ v3.8.0 Updates</button>
         <button id="footerAdminBtn" class="footer-admin-btn">⚙️ Admin Menu</button>
       </div>
 
@@ -343,7 +345,7 @@
   </footer>
 
   <!-- =========================================================================
-       POPUP MODAL WINDOW: SYNDICATE UPDATE ALERT (v3.7.0)
+       POPUP MODAL WINDOW: CREW UPDATE ALERT (v3.8.0)
        ========================================================================= -->
   <div id="updateAlertOverlay" class="update-alert-overlay" style="display: none;"></div>
   <div id="updateAlertModal" class="update-alert-modal-container" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="updateAlertTitle">
@@ -352,14 +354,15 @@
         <span class="update-zap-badge">⚡</span>
         <div>
           <div class="update-headline-row">
-            <h3 id="updateAlertTitle">NEW SYNDICATE UPDATE</h3>
-            <span class="update-version-tag">v3.7.0</span>
+            <h3 id="updateAlertTitle">NEW CREW UPDATE</h3>
+            <span class="update-version-tag">v3.8.0</span>
           </div>
-          <p class="update-subheadline">Firebase Realtime Weekly Sync &amp; Cloud Hub</p>
+          <p class="update-subheadline">Set-and-Forget Weekly Sync &amp; Brand Streamline</p>
         </div>
       </div>
       <button id="closeUpdateAlertBtn" class="update-close-btn" aria-label="Close Update Alert">&times;</button>
     </div>
+
 
     <div class="update-alert-body">
       <div class="update-featured-banner">
@@ -380,7 +383,7 @@
           <span class="feature-icon">🚀</span>
           <div class="feature-text">
             <strong>1-Click Admin Fetch &amp; Publish Engine</strong>
-            <p>Auto-fetch from Reddit or paste markdown with 1-click parser to publish live to the entire syndicate.</p>
+            <p>Auto-fetch from Reddit or paste markdown with 1-click parser to publish live to the entire crew.</p>
           </div>
         </div>
 
@@ -515,7 +518,7 @@
 
               <div class="form-group">
                 <label for="newCatSubtitle">Category Subtitle / Focus:</label>
-                <input type="text" id="newCatSubtitle" placeholder="e.g. Syndicate Operations" />
+                <input type="text" id="newCatSubtitle" placeholder="e.g. Crew Operations" />
               </div>
 
               <div class="preview-meta">
@@ -575,8 +578,9 @@
               🟢 CLOUD SYNC ENGINE
             </span>
           </div>
-          <p>Manage and publish GTA Online Weekly Updates to Firestore (<code>weekly/current</code>). Updates broadcast in real-time to all syndicate members and visitors across the Portal and Los Santos Weekly.</p>
+          <p>Manage and publish GTA Online Weekly Updates to Firestore (<code>weekly/current</code>). Updates broadcast in real-time to all crew members and visitors across the Portal and Los Santos Weekly.</p>
         </div>
+
 
         <!-- Current Live Cloud Status Card -->
         <div class="admin-cloud-status-card" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:16px; margin-bottom:20px;">
@@ -686,7 +690,7 @@
 
           <div class="form-group">
             <label for="settingCrewMotto">Crew Headline / Motto:</label>
-            <textarea id="settingCrewMotto" rows="3">Official GTA Online Syndicate &amp; Operations Headquarters. Watch crew video highlights, track weekly updates, or apply to join our ranks.</textarea>
+            <textarea id="settingCrewMotto" rows="3">Official GTA Online Crew Hub &amp; Operations Headquarters. Watch crew video highlights, track weekly updates, or apply to join our ranks.</textarea>
           </div>
 
           <div class="form-actions">
@@ -773,7 +777,7 @@
           <span class="platform-badge android-badge">🤖 Android / Chrome Web App</span>
         </div>
         <p class="install-intro-text">
-          Click the button below to install the BDCF Syndicate App directly to your Android device or PC:
+          Click the button below to install the BDCF Crew App directly to your Android device or PC:
         </p>
         <button type="button" id="nativeInstallPromptBtn" class="btn btn-accent full-width" style="padding:14px; font-size:14px; font-weight:800; margin-top:10px;">
           📲 Click Here to Install App
@@ -796,7 +800,7 @@
         </div>
         <div class="dock-text">
           <div class="dock-headline-row">
-            <span class="dock-title">BDCF SYNDICATE APP</span>
+            <span class="dock-title">BDCF CREW APP</span>
             <span class="dock-badge">FREE WEB APP</span>
           </div>
           <p class="dock-subtext">Install for full-screen 4K cinema viewing, zero address bars &amp; 1-tap instant launch on Android, iOS &amp; PC.</p>
@@ -828,7 +832,7 @@
       const DEFAULT_PORTAL_CONFIG = {
         joinFormUrl: "https://forms.gle/oXgaNAtLArsshFyQ7",
         crewTag: "BDCF",
-        crewMotto: "Official GTA Online Syndicate & Operations Headquarters. Watch crew video highlights, track weekly updates, or apply to join our ranks.",
+        crewMotto: "Official GTA Online Crew Hub & Operations Headquarters. Watch crew video highlights, track weekly updates, or apply to join our ranks.",
         activeCategoryId: "crew",
         activeVideoId: "HzWM9viE6gs",
         categories: [
@@ -837,8 +841,9 @@
             playlistId: "PLJ_6YDwxY3KLbJuy-irwHj-fZutj2BOEJ",
             title: "GTAO: Crew",
             icon: "🌴",
-            subtitle: "Syndicate Operations",
+            subtitle: "Crew Operations",
             desc: "Official BDCF operations, combat training, joint strikes, missions and heists.",
+
             videos: [
               { id: "HzWM9viE6gs", title: "Thafkndwarf vs Miizuki4649" },
               { id: "YhvWRXfG2J4", title: "Thafkndwarf flying" },
@@ -2389,7 +2394,7 @@ function onOpen() {
       const data = {
         title: postTitle || "Weekly Bonuses and Discounts",
         eventTitle: "GTA Online Weekly Event",
-        eventDesc: "Live GTA Online bonuses, discounts, and vehicle rewards updated directly from the Syndicate cloud.",
+        eventDesc: "Live GTA Online bonuses, discounts, and vehicle rewards updated directly from the crew cloud.",
         dateRange: "Current Week",
         podiumVehicle: "Pending",
         prizeRide: { vehicle: "Pending", condition: "Place Top in LS Car Meet Series" },
@@ -2694,7 +2699,7 @@ function onOpen() {
       const stageBundledBtn = document.getElementById('adminStageBundledBtn');
       if (stageBundledBtn) {
         stageBundledBtn.addEventListener('click', () => {
-          renderStagedPreview(DEFAULT_WEEK_DATA, 'Bundled Syndicate Week');
+          renderStagedPreview(DEFAULT_WEEK_DATA, 'Bundled Crew Week');
           firebaseToast('📦 Bundled week staged! Click "Publish Live" below to push to Firestore.', 'info', 4000);
         });
       }
@@ -2733,7 +2738,7 @@ function onOpen() {
             await setDoc(doc(db, 'weekly_history', archiveKey), weekPayload, { merge: true });
 
             firebaseToast('🎉 LIVE! Weekly update broadcasted to all visitors and Los Santos Weekly!', 'success', 6000);
-            publishBtn.textContent = '✅ Published Live to Syndicate Cloud!';
+            publishBtn.textContent = '✅ Published Live to Crew Cloud!';
           } catch (err) {
             console.error('Firestore publish error:', err);
             firebaseToast(`❌ Publish error: ${err.message}`, 'error');
@@ -2751,13 +2756,13 @@ function onOpen() {
   </script>
 
   <!-- =========================================================================
-       SYNDICATE UPDATE ALERT & CHANGELOG NOTIFIER CONTROLLER
+       CREW UPDATE ALERT & CHANGELOG NOTIFIER CONTROLLER
        ========================================================================= -->
   <script>
     (function () {
 
       'use strict';
-      const CURRENT_APP_VERSION = 'v3.7.0';
+      const CURRENT_APP_VERSION = 'v3.8.0';
 
 
       const updateModal = document.getElementById('updateAlertModal');
@@ -2812,7 +2817,7 @@ function onOpen() {
       }
 
       // Export trigger for SW updates
-      window.triggerSyndicateUpdateAlert = function () {
+      window.triggerCrewUpdateAlert = function () {
         openUpdateAlert();
       };
     })();
@@ -2837,12 +2842,13 @@ function onOpen() {
                 if (newWorker) {
                   newWorker.addEventListener('statechange', () => {
                     if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                      if (window.triggerSyndicateUpdateAlert) window.triggerSyndicateUpdateAlert();
+                      if (window.triggerCrewUpdateAlert) window.triggerCrewUpdateAlert();
                     }
                   });
                 }
               });
             })
+
             .catch((err) => {
               console.warn('[BDCF PWA] ServiceWorker registration warning:', err);
             });

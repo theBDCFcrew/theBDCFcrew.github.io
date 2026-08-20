@@ -3,7 +3,8 @@
 > **Main Crew Portal**: [https://thebdcfcrew.github.io](https://thebdcfcrew.github.io)  
 > **🌴 Los Santos Weekly Hub**: [https://thebdcfcrew.github.io/LosSantosWeekly](https://thebdcfcrew.github.io/LosSantosWeekly)
 
-Official headquarters and syndicate portal for **The BDCF Crew**, featuring the **Los Santos Weekly Tracker**, crew event coordination, and automated GTA Online tools.
+Official headquarters and operations hub for **The BDCF Crew**, featuring the **Los Santos Weekly Tracker**, crew event coordination, and automated GTA Online tools.
+
 
 ---
 

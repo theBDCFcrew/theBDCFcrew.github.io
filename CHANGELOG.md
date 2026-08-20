@@ -1,6 +1,15 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.8.0] - 2026-08-20
+- **Brand Identity Streamline**: Purged syndicate references across portal and weekly hub.
+- **Brand Hierarchy Clarity**: Established The BDCF Crew as the core community.
+- **Set-and-Forget Auto Sync**: Automated GitHub Actions cron refreshes weekly data.
+- **Thursday Reset Auto-Refresher**: Live countdown timer auto-syncs rewards upon reset.
+- **Brand Wars Week 2**: Live GTA Online update active for August 20-27.
+- **Service Worker Cache**: Bumped service worker cache to `bdcf-pwa-cache-v3.8.0`.
+
 ## [3.7.0] - 2026-08-20
+
 - **Firestore Live Weekly Sync**: Real-time GTA Online Weekly Update sync powered by Firestore.
 - **1-Click Admin Publisher**: Auto-fetch from Reddit and publish live to all visitors.
 - **Direct Markdown Parser**: Quick text paste box to parse updates in seconds.

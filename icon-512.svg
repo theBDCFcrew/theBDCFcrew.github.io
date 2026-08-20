@@ -44,9 +44,10 @@
   <path d="M256 170 C202 160 186 186 176 202 C202 198 234 186 256 170" fill="url(#goldGlow512)"/>
   <path d="M256 170 C310 160 326 186 336 202 C310 198 278 186 256 170" fill="url(#goldGlow512)"/>
 
-  <!-- BDCF Syndicate Text -->
+  <!-- BDCF Crew Text -->
   <text x="256" y="368" font-family="'Montserrat', 'Impact', sans-serif" font-size="58" font-weight="900" 
         fill="#ffffff" text-anchor="middle" letter-spacing="5">BDCF</text>
   <text x="256" y="405" font-family="'Courier New', monospace" font-size="22" font-weight="800" 
-        fill="#c084fc" text-anchor="middle" letter-spacing="8">SYNDICATE</text>
+        fill="#c084fc" text-anchor="middle" letter-spacing="8">THE CREW</text>
 </svg>
+

@@ -1,7 +1,8 @@
 {
-  "name": "The BDCF Crew — GTA Online Syndicate",
+  "name": "The BDCF Crew — Official GTA Online Hub",
   "short_name": "BDCF Crew",
-  "description": "Official GTA Online Syndicate & Operations Headquarters. Watch video highlights, track weekly updates, and manage crew operations.",
+  "description": "Official GTA Online Crew Hub & Operations Headquarters. Watch video highlights, track weekly updates, and manage crew operations.",
+
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

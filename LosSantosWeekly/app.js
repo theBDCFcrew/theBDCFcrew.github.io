@@ -7,7 +7,8 @@
   'use strict';
 
   // ── Version & App Constants ──
-  const APP_VERSION = 'v3.7.0';
+  const APP_VERSION = 'v3.8.0';
+
 
 
   // ── Default State & Fallback Current Week Data ──
@@ -180,8 +181,9 @@
       liveStatusText.textContent = isLive ? 'LIVE CLOUD' : 'SAVED DATA';
     }
     if (livePill && isLive) {
-      livePill.title = 'Real-time sync active from BDCF Syndicate Firestore';
+      livePill.title = 'Real-time sync active from The BDCF Crew Firestore';
     }
+
     if (redditSourceMeta && dateRange) {
       redditSourceMeta.textContent = `Source: r/gtaonline • Synced via BDCF Cloud (${dateRange})`;
     }
