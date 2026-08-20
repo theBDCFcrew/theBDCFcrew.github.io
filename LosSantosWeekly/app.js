@@ -208,7 +208,10 @@
     bindEvents();
     generateAppsScriptCode();
     initFirestoreSync();
+    checkAndAutoRefresh();
+    setInterval(checkAndAutoRefresh, 15 * 60 * 1000); // Smart check every 15 mins
   }
+
 
   // ── Local Storage Management ──
   function loadSavedData() {
@@ -515,8 +518,40 @@
     if (fillEl) fillEl.style.width = `${percent}%`;
   }
 
+  // ── Smart Thursday Reset & Auto-Refresher Engine ──
+  function getLatestPassedResetTime() {
+    const now = new Date();
+    const currentDay = now.getUTCDay(); // 0 is Sun, 4 is Thu
+    let daysSinceThu = (currentDay - 4 + 7) % 7;
+    
+    const lastThu = new Date(now.getTime());
+    lastThu.setUTCDate(now.getUTCDate() - daysSinceThu);
+    lastThu.setUTCHours(10, 0, 0, 0);
+
+    // If today is Thursday but before 10:00 UTC, the latest reset was LAST Thursday
+    if (daysSinceThu === 0 && now.getUTCHours() < 10) {
+      lastThu.setUTCDate(lastThu.getUTCDate() - 7);
+    }
+    return lastThu.getTime();
+  }
+
+  async function checkAndAutoRefresh() {
+    const latestResetTime = getLatestPassedResetTime();
+    const lastAutoRefresh = localStorage.getItem('gta_last_reset_checked');
+
+    if (!lastAutoRefresh || Number(lastAutoRefresh) < latestResetTime) {
+      console.log('[AutoRefresher] Thursday reset has passed! Checking for new weekly updates...');
+      localStorage.setItem('gta_last_reset_checked', String(Date.now()));
+      
+      // Auto-trigger sync in background
+      await fetchLatestFromReddit(true);
+    }
+  }
+
   // ── Live Countdown Timer to Next Thursday ──
   function initCountdownTimer() {
+    let triggeredAutoRefreshThisReset = false;
+
     function calculateNextReset() {
       const now = new Date();
       const next = new Date(now.getTime());
@@ -536,18 +571,25 @@
       next.setUTCHours(10, 0, 0, 0);
 
       const diff = next.getTime() - now.getTime();
-      if (diff <= 0) return { d: 0, h: 0, m: 0, s: 0 };
+      if (diff <= 0) return { d: 0, h: 0, m: 0, s: 0, isResetNow: true };
 
       const d = Math.floor(diff / (1000 * 60 * 60 * 24));
       const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
       const s = Math.floor((diff % (1000 * 60)) / 1000);
 
-      return { d, h, m, s };
+      return { d, h, m, s, isResetNow: false };
     }
 
     function updateTimers() {
-      const { d, h, m, s } = calculateNextReset();
+      const { d, h, m, s, isResetNow } = calculateNextReset();
+
+      if (isResetNow && !triggeredAutoRefreshThisReset) {
+        triggeredAutoRefreshThisReset = true;
+        checkAndAutoRefresh();
+        setTimeout(() => { triggeredAutoRefreshThisReset = false; }, 60000);
+      }
+
       const formatted = `${d}d ${String(h).padStart(2, '0')}h ${String(m).padStart(2, '0')}m ${String(s).padStart(2, '0')}s`;
       
       const navTimer = document.getElementById('countdownTimer');
@@ -562,14 +604,16 @@
   }
 
   // ── Live Reddit Fetcher & Parser Engine ──
-  async function fetchLatestFromReddit() {
+  async function fetchLatestFromReddit(isSilentAutoRefresh = false) {
     const refreshBtn = document.getElementById('refreshRedditBtn');
-    if (refreshBtn) {
+    if (refreshBtn && !isSilentAutoRefresh) {
       refreshBtn.disabled = true;
       refreshBtn.innerHTML = '🔄 <span>Fetching...</span>';
     }
 
-    showToast('📡 Connecting to Reddit r/gtaonline...', 'info');
+    if (!isSilentAutoRefresh) {
+      showToast('📡 Connecting to Reddit r/gtaonline...', 'info');
+    }
 
     const redditSearchUrl = 'https://www.reddit.com/r/gtaonline/search.json?q=flair_name%3A%22:WU1::WU2::WU3::WU4::WU5::WU6:%22&sort=new&restrict_sr=1&limit=3';
 
@@ -592,9 +636,21 @@
       const latestPost = posts[0].data;
       const parsedData = parseRedditPostText(latestPost.title, latestPost.selftext);
 
+      // Check if new week date range detected -> reset checklist for fresh week
+      if (currentData.dateRange && parsedData.dateRange && currentData.dateRange !== parsedData.dateRange) {
+        taskCheckState = {};
+        saveTaskState();
+        if (isSilentAutoRefresh) {
+          showToast(`🌴 New Weekly Update Detected: ${parsedData.dateRange}! Checklist refreshed.`, 'success', 5000);
+        }
+      }
+
       saveData(parsedData);
       renderAll();
-      showToast('✅ Latest Weekly Update synced from Reddit!', 'success');
+
+      if (!isSilentAutoRefresh) {
+        showToast('✅ Latest Weekly Update synced from Reddit!', 'success');
+      }
 
       const sourceMeta = document.getElementById('redditSourceMeta');
       if (sourceMeta) {
@@ -602,14 +658,17 @@
       }
     } catch (err) {
       console.warn("Reddit fetch failed, keeping active week data:", err);
-      showToast('⚠️ Could not reach Reddit directly. Using active bundled week data.', 'error');
+      if (!isSilentAutoRefresh) {
+        showToast('⚠️ Could not reach Reddit directly. Using active bundled week data.', 'error');
+      }
     } finally {
-      if (refreshBtn) {
+      if (refreshBtn && !isSilentAutoRefresh) {
         refreshBtn.disabled = false;
         refreshBtn.innerHTML = '<span class="btn-icon">🔄</span> <span class="btn-label">Sync Reddit</span>';
       }
     }
   }
+
 
   // ── Regex & Markdown Parser for Reddit Weekly Posts ──
   function parseRedditPostText(postTitle, selftext) {
