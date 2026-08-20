@@ -13,55 +13,63 @@
   // ── Default State & Fallback Current Week Data ──
   const DEFAULT_WEEK_DATA = {
     version: APP_VERSION,
-    title: "Weekly Bonuses and Discounts - August 13th to August 20th",
-    eventTitle: "Brand Wars Event (Week 1)",
-    eventDesc: "Proclaim your loyalty in the Brand Wars Event! Boosted payouts on select Odd Jobs, Freemode Events, and sponsored Hotring Circuit Series Races. Weekly completion bonuses reset for a bigger initial payout on select Heists and Missions.",
-    dateRange: "Aug 13 – Aug 20",
-    podiumVehicle: "Pfister Astron",
+    title: "Weekly Bonuses and Discounts - August 20th to August 27th",
+    eventTitle: "Brand Wars Event (Week 2)",
+    eventDesc: "Support Team Sprunk or Team eCola in Brand Wars Week 2! Earn 5X on VIP Work, 4X on Hotring Circuit & Freemode Events, 3X on Odd Jobs & Community Series, and test out the new Gallivanter Warden!",
+    dateRange: "Aug 20 – Aug 27",
+    podiumVehicle: "Declasse Granger 3600LX",
     prizeRide: {
-      vehicle: "Enus Deity",
-      condition: "Place Top 4 in the LS Car Meet Series 3 days in a row"
+      vehicle: "Enus Paragon R",
+      condition: "Place Top 3 in the LS Car Meet Series 2 days in a row"
     },
     weeklyChallenge: {
-      task: "Complete 3 Business Battles",
-      reward: "Impotent Rage Sweatsuit + 2.5X GTA$250,000 Bonus"
+      task: "Win 3 Races this week",
+      reward: "Princess Racing Tracksuit + GTA$250,000 Bonus"
     },
     timeTrials: {
-      regular: "End to End",
-      hsw: "Terminal to Chiliad Mountain State Wilderness",
-      premiumRace: "A Sign of Things to Come"
+      regular: "Observatory",
+      hsw: "Del Perro to Murrieta Heights",
+      premiumRace: "Cutting Coroners"
     },
     testRides: [
-      "Vapid Clique Wagon",
-      "Överflöd Autarch",
-      "Pegassi Osiris",
-      "HSW Premium: Karin S95"
+      "Pfister Comet S2",
+      "Dinka Veto Modern",
+      "Western Reever",
+      "HSW Premium: Pfister Astron Custom"
     ],
     salvageRobberies: [
-      { name: "The Podium Robbery", vehicle: "Truffade Z-Type", value: "~$380,000 - $420,000" },
-      { name: "The Duggan Robbery", vehicle: "Übermacht Sentinel Classic", value: "~$340,000 - $380,000" },
-      { name: "The Gangbanger Robbery", vehicle: "Vapid Caracara 4x4", value: "~$320,000 - $360,000" }
+      { name: "The Podium Robbery", vehicle: "Pegassi Torero XO", value: "~$380,000 - $420,000" },
+      { name: "The Duggan Robbery", vehicle: "Grotti Turismo Omaggio", value: "~$340,000 - $380,000" },
+      { name: "The Gangbanger Robbery", vehicle: "Bravado Gauntlet Hellfire", value: "~$320,000 - $360,000" }
     ],
     fibPriorityFile: "The Black Box File",
     kortzTargets: ["Gone to Seed", "Chat on Fruit", "Juiced"],
-    luxuryAutos: ["Benefactor LRC GT", "Pfister X-treme"],
+    luxuryAutos: ["Gallivanter Warden (NEW)", "Pfister Comet S2"],
     pdmShowroom: [
-      { name: "Obey Tailgater S", type: "Sedan / Sports", discount: "30% Off" },
-      { name: "Shitzu Keitora", type: "Compact Truck", discount: "30% Off" },
-      { name: "Mammoth Patriot Mil-Spec", type: "Armored SUV", discount: "30% Off" },
-      { name: "Benefactor Stirling GT", type: "Sports Classic", discount: "30% Off" },
-      { name: "Progen GP1", type: "Supercar", discount: "30% Off" }
+      { name: "Emperor ETR1", type: "Supercar", discount: "40% Off" },
+      { name: "Western Reever", type: "Motorcycle", discount: "40% Off" },
+      { name: "Pfister Comet S2", type: "Sports", discount: "40% Off" },
+      { name: "Canis Terminus", type: "Off-Road", discount: "40% Off" },
+      { name: "Dinka RT3000", type: "Sports / Tuner", discount: "40% Off" }
     ],
     dailyObjectives: [
-      { day: "Thursday", task: "Complete a Special Vehicle Work" },
-      { day: "Friday", task: "Participate in Carnage" },
-      { day: "Saturday", task: "Participate in a Freemode Challenge" },
-      { day: "Sunday", task: "Participate in a Land Race" },
-      { day: "Monday", task: "Play a game of Darts" },
-      { day: "Tuesday", task: "Participate in a Freemode Event" },
-      { day: "Wednesday", task: "Complete a Project Overthrow mission" }
+      { day: "Thursday", task: "Participate in a Freemode Event" },
+      { day: "Friday", task: "Complete a VIP Work" },
+      { day: "Saturday", task: "Participate in a Hotring Circuit Race" },
+      { day: "Sunday", task: "Spin the Lucky Wheel" },
+      { day: "Monday", task: "Win a Race" },
+      { day: "Tuesday", task: "Complete a Delivery Odd Job" },
+      { day: "Wednesday", task: "Visit the LS Car Meet" }
     ],
     bonuses: [
+      {
+        multiplier: "5X",
+        label: "5X GTA$ & RP",
+        tier: "4x",
+        items: [
+          "👑 VIP Work (Active through August 23)"
+        ]
+      },
       {
         multiplier: "4X",
         label: "4X GTA$ & RP",
@@ -77,66 +85,46 @@
         label: "3X GTA$ & RP",
         tier: "3x",
         items: [
-          "📰 Paper Route Odd Jobs",
-          "🚒 Firefighter Missions",
-          "🏗️ Forklift Operator Odd Jobs",
+          "📰 Paper Route Deliveries",
+          "🚒 Firefighter Deliveries",
+          "🏗️ Forklift Operator Deliveries",
+          "💊 QuickiePharm & Safeguard Deliveries",
           "🎨 Community Series Jobs"
-        ]
-      },
-      {
-        multiplier: "2X",
-        label: "2X GTA$ & RP",
-        tier: "2x",
-        items: [
-          "💼 Special Cargo Sell Missions",
-          "🏢 Executive Office Sightseer & Hostile Takeover",
-          "🔬 2X Bunker Research & Production Speed"
         ]
       }
     ],
     discounts: [
       { name: "Declasse Hotring Sabre (Sports)", category: "vehicles", rate: "Free", badgeClass: "rate-free" },
       { name: "Sprunk and eCola Bodysuits", category: "apparel", rate: "Free", badgeClass: "rate-free" },
-      { name: "Sprunk x eCola Livery & Vanity Plates", category: "apparel", rate: "Free", badgeClass: "rate-free" },
-      { name: "Unholy Hellbringer (Gun Van)", category: "weapons", rate: "Free", badgeClass: "rate-free" },
-      { name: "Battle Rifle (Gun Van)", category: "weapons", rate: "50% Off", badgeClass: "rate-50" },
-      { name: "Precision Rifle (Gun Van - GTA+)", category: "weapons", rate: "40% Off", badgeClass: "rate-40" },
-      { name: "Hands On Car Wash", category: "properties", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Knife (Gun Van)", category: "weapons", rate: "Free", badgeClass: "rate-free" },
       { name: "Bail Office Properties, Upgrades & Modifications", category: "properties", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Unholy Hellbringer (Gun Van)", category: "weapons", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Emperor ETR1 (Super)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Western Reever (Motorcycle)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Pfister Comet S2 (Sports)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Canis Terminus (Off-Road)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Dinka RT3000 (Sports)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Willard Eudora (Muscle)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Dinka Veto Modern (Sports)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Vapid Desert Raid (Off-Road)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "MTL Wastelander (Service)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Übermacht Sentinel Classic (Sports)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Vapid Trophy Truck (Off-Road)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
       { name: "Bravado Hotring Hellfire (Sports)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
       { name: "Karin Hotring Everon (Sports)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
-      { name: "Declasse Scramjet (Super)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
-      { name: "Överflöd Autarch (Super)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Pegassi Osiris (Super)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Mammoth Patriot Mil-Spec (SUV)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Obey Tailgater S (Sedan)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Progen GP1 (Super)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Vapid Clique Wagon (Muscle)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Benefactor Stirling GT (Sports Classic)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Shitzu Keitora (Compact Truck)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Emperor ETR1 (Super)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Western Reever (Motorcycle)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Pfister Comet S2 (Sports)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Canis Terminus (Off-Road)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Dinka RT3000 (Sports)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Willard Eudora (Muscle)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Dinka Veto Modern (Sports)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Vapid Desert Raid (Off-Road)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "MTL Wastelander (Service)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Übermacht Sentinel Classic (Sports)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Vapid Trophy Truck (Off-Road)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Nagasaki Weaponized Dinghy (Boat)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" }
+      { name: "Declasse Scramjet (Super)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" }
     ],
     gunVan: [
-      { name: "Unholy Hellbringer", status: "100% FREE", isFree: true },
-      { name: "Battle Rifle", status: "50% OFF", isFree: false },
-      { name: "Precision Rifle", status: "40% OFF (GTA+)", isFree: false },
-      { name: "Railgun", status: "In Stock", isFree: false },
+      { name: "Knife", status: "100% FREE", isFree: true },
+      { name: "Unholy Hellbringer", status: "40% OFF", isFree: false },
+      { name: "Railgun", status: "40% OFF (GTA+)", isFree: false },
+      { name: "Battle Rifle", status: "In Stock", isFree: false },
+      { name: "Precision Rifle", status: "In Stock", isFree: false },
       { name: "Up-n-Atomizer", status: "In Stock", isFree: false },
-      { name: "Widowmaker", status: "In Stock", isFree: false },
-      { name: "The Shocker", status: "In Stock", isFree: false }
+      { name: "Widowmaker", status: "In Stock", isFree: false }
     ]
   };
+
 
   let currentData = DEFAULT_WEEK_DATA;
   let taskCheckState = {};
