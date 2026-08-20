@@ -7,32 +7,26 @@ service cloud.firestore {
     function isCommander() {
       return request.auth != null && (
         request.auth.uid == 'tT6YYY5VfuaK4jqlFuVPpWVyfY02' ||
-        request.auth.token.email.lower() == 'briandivacox@gmail.com'
+        request.auth.token.email == 'briandivacox@gmail.com'
       );
     }
 
     function isOfficer() {
       return request.auth != null && (
         isCommander() ||
-        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
-        (request.auth.token.email != null && exists(/databases/$(database)/documents/admins/$(request.auth.token.email.lower())))
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
       );
     }
 
     // ── Admin Allowlist ──
-    // Commander has full read/write access to manage admins. Officers can verify their status.
     match /admins/{docId} {
-      allow read: if request.auth != null && (
-        isCommander() ||
-        request.auth.uid == docId ||
-        request.auth.token.email.lower() == docId.lower()
-      );
+      allow read: if request.auth != null;
       allow write: if isCommander();
     }
 
     // ── Live GTA Online Weekly Update Hub ──
-    // Public read so all visitors across the Portal and Los Santos Weekly see live data.
-    // Authorized Commander and Officers can publish and sync updates.
+    // Public read so all visitors across Portal & Los Santos Weekly see updates live.
+    // Commander & authorized Officers can write/publish.
     match /weekly/{docId} {
       allow read: if true;
       allow write: if isOfficer();
@@ -44,7 +38,7 @@ service cloud.firestore {
       allow write: if isOfficer();
     }
 
-    // ── Future Syndicate Crew Foundation: Roster, Events & Recruitment ──
+    // ── Syndicate Crew Foundation: Roster, Events & Recruitment ──
     match /crew_members/{memberId} {
       allow read: if true;
       allow write: if isOfficer();
@@ -60,17 +54,15 @@ service cloud.firestore {
       allow read, update, delete: if isOfficer();
     }
 
-    // ── Site View Counter ──
-    // Allows public read & atomic increment for total page views.
+    // ── Site View Counter & Live Presence ──
     match /stats/{doc} {
       allow read, write: if true;
     }
 
-    // ── Live Visitor Sessions ──
-    // Allows public read, heartbeat updates, and session creation/deletion for active presence.
     match /sessions/{sessionId} {
       allow read, write: if true;
     }
   }
 }
+
 
