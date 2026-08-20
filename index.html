@@ -2870,6 +2870,7 @@ function onOpen() {
           navigator.serviceWorker.register('./sw.js')
             .then((reg) => {
               console.log('[BDCF PWA] ServiceWorker registered:', reg.scope);
+              reg.update(); // Proactively check for latest deployment
               reg.addEventListener('updatefound', () => {
                 const newWorker = reg.installing;
                 if (newWorker) {
@@ -2881,6 +2882,7 @@ function onOpen() {
                 }
               });
             })
+
 
             .catch((err) => {
               console.warn('[BDCF PWA] ServiceWorker registration warning:', err);
