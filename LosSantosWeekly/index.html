@@ -47,7 +47,7 @@
             <span class="version-badge">v3.8.1</span>
           </div>
 
-          <span class="brand-subtitle">GTA ONLINE UPDATE HUB</span>
+          <span class="brand-subtitle">OPERATIONS &amp; TUNABLES HUB</span>
         </div>
       </div>
 
@@ -62,20 +62,13 @@
         <a href="../" target="_top" class="btn btn-secondary" title="Return to The BDCF Crew Portal">
           <span class="btn-icon">🏠</span> <span class="btn-label">BDCF Portal</span>
         </a>
+        <button type="button" id="drawerToggleBtn" class="btn btn-accent drawer-toggle-btn" aria-label="Open Operations Drawer" title="Open Reset Countdown &amp; Timers Menu">
+          <span class="btn-icon">⏱️</span> <span class="btn-label">Timers &amp; Menu</span>
+        </button>
       </div>
 
     </div>
 
-
-    <!-- DEDICATED RESET COUNTDOWN LINE (Own clean line) -->
-    <div class="reset-countdown-strip">
-      <div class="reset-strip-inner">
-        <span class="reset-icon">⏳</span>
-        <span class="reset-label">Next GTA Online Reset:</span>
-        <strong id="countdownTimer" class="reset-timer mono-timer">--d --h --m --s</strong>
-        <span class="reset-hint">(Thursday 5:00 AM ET / 10:00 AM UTC)</span>
-      </div>
-    </div>
 
     <!-- QUICK PROGRESS BAR -->
     <div class="progress-bar-wrapper">
@@ -88,6 +81,7 @@
       </div>
     </div>
   </header>
+
 
 
   <!-- STREAMLINED MAIN TAB SWITCHER -->
@@ -146,9 +140,10 @@
           <div class="stat-label">Next Reset Countdown</div>
           <div class="stat-countdown" id="heroCountdown">--d --h --m</div>
           <div class="stat-subtext">Resets every Thursday at 5:00 AM ET / 10:00 AM UTC</div>
-          <div class="stat-meta" id="redditSourceMeta">Source: r/gtaonline • Auto-Synced</div>
+          <div class="stat-meta" id="redditSourceMeta">BDCF Cloud Network • Auto-Synced</div>
         </div>
       </section>
+
 
       <!-- Featured Vehicles & Challenges Grid -->
       <section class="section-block">
@@ -520,9 +515,9 @@
       <div class="footer-brand">
         <div class="footer-brand-title">
           <span>🌴 Los Santos Weekly Hub</span>
-          <span class="version-badge">v1.3.0</span>
+          <span class="version-badge">v3.8.1</span>
         </div>
-        <p>Built for automated GTA Online weekly update tracking & Google Sheets sync.</p>
+        <p>Automated weekly operations tracking &amp; Google Sheets cloud sync.</p>
       </div>
       <div class="footer-actions">
         <a href="../" class="btn btn-outline-sm">🏠 Return to Portal</a>
@@ -530,9 +525,91 @@
 
     </div>
     <div class="footer-copyright">
-      <span>Data fetched directly from Reddit <code>r/gtaonline</code>. All GTA trademarks belong to Rockstar Games / Take-Two Interactive.</span>
+      <span>Live weekly tunables synced from BDCF Cloud Network. All GTA trademarks belong to Rockstar Games / Take-Two Interactive.</span>
     </div>
   </footer>
+
+  <!-- SLIDEOUT DRAWER BACKDROP & OVERLAY -->
+  <div id="sideoutDrawerOverlay" class="drawer-overlay" aria-hidden="true"></div>
+
+  <!-- SLIDEOUT OPERATIONS DRAWER -->
+  <aside id="sideoutDrawer" class="sideout-drawer" aria-label="Operations Drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="drawer-brand">
+        <span class="drawer-icon">🌴</span>
+        <div>
+          <h3 class="drawer-title">BDCF Operations</h3>
+          <span class="drawer-subtitle">TIMERS &amp; QUICK HUB</span>
+        </div>
+      </div>
+      <button type="button" id="drawerCloseBtn" class="drawer-close-btn" aria-label="Close Drawer" title="Close Menu">✕</button>
+    </div>
+
+    <div class="drawer-body">
+      <!-- Active Week & Live Reset Card -->
+      <div class="drawer-card drawer-timer-card">
+        <div class="drawer-card-label">📅 ACTIVE WEEK</div>
+        <div class="drawer-date-badge" id="drawerDateRange">Aug 20 – Aug 27</div>
+        
+        <div class="drawer-divider"></div>
+
+        <div class="drawer-card-label">⏳ NEXT RESET COUNTDOWN</div>
+        <div class="drawer-countdown" id="drawerCountdownTimer">--d --h --m --s</div>
+        <div class="drawer-reset-hint">Resets every Thursday at 5:00 AM ET / 10:00 AM UTC</div>
+      </div>
+
+      <!-- Weekly Progress Tracker Card -->
+      <div class="drawer-card drawer-progress-card">
+        <div class="drawer-card-label">🎯 WEEKLY COMPLETION</div>
+        <div class="drawer-progress-text">
+          <strong id="drawerTasksDone">0</strong> of <span id="drawerTasksTotal">14</span> Tasks Done
+          <span class="drawer-badge" id="drawerTasksPercent">0%</span>
+        </div>
+        <div class="drawer-progress-track">
+          <div id="drawerProgressFill" class="drawer-progress-fill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Quick Navigation Links -->
+      <div class="drawer-section-title">🧭 QUICK NAVIGATION</div>
+      <div class="drawer-nav-list">
+        <a href="../" target="_top" class="drawer-nav-item">
+          <span class="drawer-nav-icon">🏠</span>
+          <span>BDCF Main Portal</span>
+          <span class="drawer-nav-arrow">➔</span>
+        </a>
+        <a href="../#tab-theater" target="_top" class="drawer-nav-item">
+          <span class="drawer-nav-icon">🎬</span>
+          <span>Video Theater</span>
+          <span class="drawer-nav-arrow">➔</span>
+        </a>
+        <a href="../#tab-join" target="_top" class="drawer-nav-item">
+          <span class="drawer-nav-icon">📝</span>
+          <span>Join The Crew</span>
+          <span class="drawer-nav-arrow">➔</span>
+        </a>
+      </div>
+
+      <!-- Actions -->
+      <div class="drawer-section-title">⚡ ACTIONS &amp; TOOLS</div>
+      <div class="drawer-actions-grid">
+        <button type="button" id="drawerSyncBtn" class="btn btn-secondary btn-sm full-width">
+          🔄 Sync Tunables
+        </button>
+        <button type="button" id="drawerCheckAllBtn" class="btn btn-outline-sm full-width">
+          ✅ Mark All Tasks Done
+        </button>
+        <button type="button" id="drawerResetTasksBtn" class="btn btn-outline-sm full-width">
+          🧹 Reset Tasks
+        </button>
+      </div>
+    </div>
+
+    <div class="drawer-footer">
+      <span class="drawer-footer-text">The BDCF Crew • Live Operations</span>
+    </div>
+  </aside>
+
 
   <!-- MODAL: GOOGLE SHEETS EXPORT & SYNC -->
   <div id="sheetsModalOverlay" class="modal-overlay"></div>

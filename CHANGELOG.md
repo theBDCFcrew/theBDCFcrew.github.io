@@ -1,6 +1,9 @@
 # 🌴 Los Santos Weekly — Changelog
 
 ## [3.8.1] - 2026-08-20
+- **Slideout Operations Drawer**: Added glassmorphic menu for timers, progress, and quick links.
+- **Reddit Mentions Purged**: Replaced third-party branding with BDCF Cloud Network.
+- **Header Real Estate**: Moved bulky reset strip into sideout drawer menu.
 - **Direct Navigation**: Weekly Update nav button opens tracker directly.
 - **Grouped Admin Tabs**: Consolidated video tools into single Videos & Series hub.
 - **Inner Sub-Tabs**: Added sleek secondary pills for playlist and video management.
@@ -12,6 +15,7 @@
 - **Hero Banner Cleanup**: Removed bulky header motto to maximize screen room.
 - **Cache Auto-Upgrade**: Outdated client storage automatically upgrades to current week.
 - **Service Worker Cache**: Bumped service worker cache to `bdcf-pwa-cache-v3.8.1`.
+
 
 
 

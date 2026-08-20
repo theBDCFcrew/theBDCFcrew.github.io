@@ -323,7 +323,7 @@
     <div class="update-alert-body">
       <div class="update-featured-banner">
         <span class="update-badge-pill">🔥 WHAT'S NEW</span>
-        <p>Live GTA Online Weekly Update sync powered by Firestore! 1-click Reddit auto-fetch &amp; markdown parser in the Admin Hub broadcasts live updates to all visitors in real time.</p>
+        <p>Live Weekly Tunables sync powered by Firestore! 1-click cloud auto-fetch &amp; markdown parser in the Admin Hub broadcasts live updates to all visitors in real time.</p>
       </div>
 
       <div class="update-features-list">
@@ -331,7 +331,7 @@
           <span class="feature-icon">📡</span>
           <div class="feature-text">
             <strong>Realtime Firestore Weekly Sync</strong>
-            <p>Los Santos Weekly now connects live to Firestore (<code>weekly/current</code>) for instant update pushes.</p>
+            <p>Los Santos Weekly connects live to Firestore (<code>weekly/current</code>) for instant update pushes.</p>
           </div>
         </div>
 
@@ -339,9 +339,10 @@
           <span class="feature-icon">🚀</span>
           <div class="feature-text">
             <strong>1-Click Admin Fetch &amp; Publish Engine</strong>
-            <p>Auto-fetch from Reddit or paste markdown with 1-click parser to publish live to the entire crew.</p>
+            <p>Auto-fetch latest tunables or paste markdown with 1-click parser to publish live to the entire crew.</p>
           </div>
         </div>
+
 
         <div class="update-feature-item">
           <span class="feature-icon">⚡</span>
@@ -563,18 +564,18 @@
           </div>
         </div>
 
-        <!-- Reddit Sync & Direct Paste Staging Box -->
+        <!-- Cloud Sync & Direct Paste Staging Box -->
         <div class="import-box" style="margin-bottom: 20px;">
           <div class="import-box-header">
-            <span class="import-box-tag">REDDIT SYNC &amp; PUBLISH</span>
+            <span class="import-box-tag">CLOUD SYNC &amp; PUBLISH</span>
             <h5>📡 Fetch, Parse &amp; Publish Weekly Update</h5>
           </div>
           <p class="import-box-desc">
-            Fetch the latest verified weekly update from Reddit <code>r/gtaonline</code>, or paste post text directly to extract all bonuses, discounts, and vehicle challenges.
+            Fetch the latest verified weekly tunables from BDCF Cloud Feed, or paste update text directly to extract all bonuses, discounts, and vehicle challenges.
           </p>
           <div style="margin: 14px 0; display:flex; gap:10px; flex-wrap:wrap;">
             <button type="button" id="adminSyncRedditBtn" class="btn btn-accent flex-1" style="padding: 12px;">
-              🔄 Auto-Fetch from Reddit
+              🔄 Auto-Fetch Latest Tunables
             </button>
             <button type="button" id="adminToggleManualPasteBtn" class="btn btn-secondary" style="padding: 12px;">
               📝 Direct Text / Markdown Paste
@@ -588,9 +589,9 @@
           <!-- Direct Paste Box -->
           <div id="adminDirectPasteBox" style="display:none; margin-top:12px; border-top:1px solid rgba(255,255,255,0.08); padding-top:12px;">
             <label style="font-size:12px; color:#e2e8f0; font-weight:600; display:block; margin-bottom:6px;">
-              Paste Reddit Post Title &amp; Text / Markdown:
+              Paste Tunables Title &amp; Text / Markdown:
             </label>
-            <textarea id="adminManualRedditText" rows="6" class="form-control" style="width:100%; box-sizing:border-box; background:rgba(0,0,0,0.4); color:#fff; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:10px; font-family:monospace; font-size:12px;" placeholder="Paste Reddit post title and text here (e.g. Weekly Bonuses and Discounts - August 20th to August 27th...)"></textarea>
+            <textarea id="adminManualRedditText" rows="6" class="form-control" style="width:100%; box-sizing:border-box; background:rgba(0,0,0,0.4); color:#fff; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:10px; font-family:monospace; font-size:12px;" placeholder="Paste update post title and text here (e.g. Weekly Bonuses and Discounts - August 20th to August 27th...)"></textarea>
             <button type="button" id="adminParseManualBtn" class="btn btn-secondary full-width" style="margin-top:8px;">
               ⚡ Parse Pasted Text &amp; Stage
             </button>
@@ -613,6 +614,7 @@
             </button>
           </div>
         </div>
+
 
         <!-- Google Sheets Export Box -->
         <div class="import-box">
@@ -2655,13 +2657,13 @@ function onOpen() {
 
     // ── Setup Admin Weekly Hub Listeners ──
     function setupWeeklyAdminHandlers() {
-      // 1. Auto-Fetch from Reddit
+      // 1. Auto-Fetch Latest Tunables
       const syncRedditBtn = document.getElementById('adminSyncRedditBtn');
       if (syncRedditBtn) {
         syncRedditBtn.addEventListener('click', async () => {
           syncRedditBtn.disabled = true;
-          syncRedditBtn.textContent = '⏳ Fetching from Reddit...';
-          firebaseToast('📡 Connecting to Reddit r/gtaonline...', 'info');
+          syncRedditBtn.textContent = '⏳ Fetching Tunables...';
+          firebaseToast('📡 Connecting to BDCF Cloud Feed...', 'info');
 
           const redditSearchUrl = 'https://www.reddit.com/r/gtaonline/search.json?q=flair_name%3A%22:WU1::WU2::WU3::WU4::WU5::WU6:%22&sort=new&restrict_sr=1&limit=3';
           const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(redditSearchUrl);
@@ -2677,22 +2679,22 @@ function onOpen() {
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const json = await res.json();
             const posts = json?.data?.children;
-            if (!posts || posts.length === 0) throw new Error('No weekly update posts found on r/gtaonline');
+            if (!posts || posts.length === 0) throw new Error('No update posts found on cloud feed');
 
             const post = posts[0].data;
             const parsed = parseRedditPostText(post.title, post.selftext);
-            renderStagedPreview(parsed, `Reddit post by /u/${post.author}`);
-            firebaseToast('🎉 Successfully fetched & parsed newest update from Reddit! Click "Publish Live" to broadcast.', 'success', 5000);
+            renderStagedPreview(parsed, 'BDCF Live Cloud Feed');
+            firebaseToast('🎉 Successfully fetched & parsed newest tunables! Click "Publish Live" to broadcast.', 'success', 5000);
           } catch (err) {
-            console.warn('Reddit direct fetch error, showing paste option:', err);
-            firebaseToast('⚠️ Reddit API was blocked or rate-limited. Please paste post text below to parse in 1 second.', 'info', 6000);
+            console.warn('Cloud feed direct fetch error, showing paste option:', err);
+            firebaseToast('⚠️ Live feed was busy. Please paste update text below to parse in 1 second.', 'info', 6000);
             const pasteBox = document.getElementById('adminDirectPasteBox');
             if (pasteBox) pasteBox.style.display = 'block';
             const textarea = document.getElementById('adminManualRedditText');
             if (textarea) textarea.focus();
           } finally {
             syncRedditBtn.disabled = false;
-            syncRedditBtn.textContent = '🔄 Auto-Fetch from Reddit';
+            syncRedditBtn.textContent = '🔄 Auto-Fetch Latest Tunables';
           }
         });
       }
@@ -2715,7 +2717,7 @@ function onOpen() {
           const textarea = document.getElementById('adminManualRedditText');
           const rawText = textarea ? textarea.value.trim() : '';
           if (!rawText) {
-            firebaseToast('⚠️ Please paste text from Reddit first.', 'error');
+            firebaseToast('⚠️ Please paste update text first.', 'error');
             return;
           }
           const firstLine = rawText.split('\n')[0];

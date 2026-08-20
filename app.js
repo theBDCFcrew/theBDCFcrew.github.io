@@ -283,6 +283,9 @@
     const mobileDateRange = document.getElementById('mobileDateRange');
     if (mobileDateRange) mobileDateRange.textContent = dateText;
 
+    const drawerDateRange = document.getElementById('drawerDateRange');
+    if (drawerDateRange) drawerDateRange.textContent = dateText;
+
     const heroEventTitle = document.getElementById('heroEventTitle');
     if (heroEventTitle) {
       const titleText = currentData.eventTitle || currentData.title || '';
@@ -293,6 +296,7 @@
     const heroEventDesc = document.getElementById('heroEventDesc');
     if (heroEventDesc) heroEventDesc.textContent = currentData.eventDesc;
   }
+
 
 
 
@@ -542,6 +546,19 @@
 
     const fillEl = document.getElementById('progressFill');
     if (fillEl) fillEl.style.width = `${percent}%`;
+
+    // Sync Slideout Drawer Progress
+    const drawerDone = document.getElementById('drawerTasksDone');
+    if (drawerDone) drawerDone.textContent = completed;
+
+    const drawerTotal = document.getElementById('drawerTasksTotal');
+    if (drawerTotal) drawerTotal.textContent = total;
+
+    const drawerPct = document.getElementById('drawerTasksPercent');
+    if (drawerPct) drawerPct.textContent = `${percent}%`;
+
+    const drawerFill = document.getElementById('drawerProgressFill');
+    if (drawerFill) drawerFill.style.width = `${percent}%`;
   }
 
   // ── Smart Thursday Reset & Auto-Refresher Engine ──
@@ -621,6 +638,9 @@
       const navTimer = document.getElementById('countdownTimer');
       if (navTimer) navTimer.textContent = formatted;
 
+      const drawerTimer = document.getElementById('drawerCountdownTimer');
+      if (drawerTimer) drawerTimer.textContent = formatted;
+
       const mobileNavTimer = document.getElementById('mobileCountdownTimer');
       if (mobileNavTimer) mobileNavTimer.textContent = `${d}d ${String(h).padStart(2, '0')}h`;
 
@@ -629,20 +649,26 @@
     }
 
 
+
     updateTimers();
     setInterval(updateTimers, 1000);
   }
 
-  // ── Live Reddit Fetcher & Parser Engine ──
+  // ── Live Cloud Feed Fetcher & Parser Engine ──
   async function fetchLatestFromReddit(isSilentAutoRefresh = false) {
     const refreshBtn = document.getElementById('refreshRedditBtn');
+    const drawerSyncBtn = document.getElementById('drawerSyncBtn');
     if (refreshBtn && !isSilentAutoRefresh) {
       refreshBtn.disabled = true;
       refreshBtn.innerHTML = '🔄 <span>Fetching...</span>';
     }
+    if (drawerSyncBtn) {
+      drawerSyncBtn.disabled = true;
+      drawerSyncBtn.textContent = '⏳ Syncing...';
+    }
 
     if (!isSilentAutoRefresh) {
-      showToast('📡 Connecting to Reddit r/gtaonline...', 'info');
+      showToast('📡 Connecting to BDCF Cloud Network...', 'info');
     }
 
     const redditSearchUrl = 'https://www.reddit.com/r/gtaonline/search.json?q=flair_name%3A%22:WU1::WU2::WU3::WU4::WU5::WU6:%22&sort=new&restrict_sr=1&limit=3';
@@ -661,7 +687,7 @@
       const json = await res.json();
 
       const posts = json?.data?.children;
-      if (!posts || posts.length === 0) throw new Error("No weekly update posts found on r/gtaonline");
+      if (!posts || posts.length === 0) throw new Error("No update posts found on cloud feed");
 
       const latestPost = posts[0].data;
       const parsedData = parseRedditPostText(latestPost.title, latestPost.selftext);
@@ -679,25 +705,30 @@
       renderAll();
 
       if (!isSilentAutoRefresh) {
-        showToast('✅ Latest Weekly Update synced from Reddit!', 'success');
+        showToast('✅ Latest Weekly Update synced from BDCF Cloud!', 'success');
       }
 
       const sourceMeta = document.getElementById('redditSourceMeta');
       if (sourceMeta) {
-        sourceMeta.innerHTML = `Source: <a href="https://reddit.com${latestPost.permalink}" target="_blank" style="color:var(--accent); text-decoration:none;">${escapeHTML(latestPost.title)}</a>`;
+        sourceMeta.textContent = `BDCF Cloud Network • Auto-Synced (${parsedData.dateRange || 'Active Week'})`;
       }
     } catch (err) {
-      console.warn("Reddit fetch failed, keeping active week data:", err);
+      console.warn("Cloud fetch fallback to bundled data:", err);
       if (!isSilentAutoRefresh) {
-        showToast('⚠️ Could not reach Reddit directly. Using active bundled week data.', 'error');
+        showToast('⚠️ Could not reach live feed directly. Using active bundled week data.', 'error');
       }
     } finally {
       if (refreshBtn && !isSilentAutoRefresh) {
         refreshBtn.disabled = false;
-        refreshBtn.innerHTML = '<span class="btn-icon">🔄</span> <span class="btn-label">Sync Reddit</span>';
+        refreshBtn.innerHTML = '<span class="btn-icon">🔄</span> <span class="btn-label">Sync Tunables</span>';
+      }
+      if (drawerSyncBtn) {
+        drawerSyncBtn.disabled = false;
+        drawerSyncBtn.textContent = '🔄 Sync Tunables';
       }
     }
   }
+
 
 
   // ── Regex & Markdown Parser for Reddit Weekly Posts ──
@@ -1111,12 +1142,64 @@ function setupThursdayGtaTrigger() {
       });
     }
 
-    // Sync Reddit Buttons
+    // Sync Buttons
     const refreshRedditBtn = document.getElementById('refreshRedditBtn');
     if (refreshRedditBtn) refreshRedditBtn.addEventListener('click', fetchLatestFromReddit);
 
     const footerSyncBtn = document.getElementById('footerSyncBtn');
     if (footerSyncBtn) footerSyncBtn.addEventListener('click', fetchLatestFromReddit);
+
+    // ── Operations Slideout Drawer ──
+    const drawerToggleBtn = document.getElementById('drawerToggleBtn');
+    const drawerCloseBtn = document.getElementById('drawerCloseBtn');
+    const drawerOverlay = document.getElementById('sideoutDrawerOverlay');
+    const sideoutDrawer = document.getElementById('sideoutDrawer');
+
+    function openDrawer() {
+      if (sideoutDrawer) sideoutDrawer.classList.add('open');
+      if (drawerOverlay) drawerOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      if (sideoutDrawer) sideoutDrawer.classList.remove('open');
+      if (drawerOverlay) drawerOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    if (drawerToggleBtn) drawerToggleBtn.addEventListener('click', openDrawer);
+    if (drawerCloseBtn) drawerCloseBtn.addEventListener('click', closeDrawer);
+    if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDrawer();
+    });
+
+    const drawerSyncBtn = document.getElementById('drawerSyncBtn');
+    if (drawerSyncBtn) {
+      drawerSyncBtn.addEventListener('click', () => {
+        fetchLatestFromReddit();
+        closeDrawer();
+      });
+    }
+
+    const drawerCheckAllBtn = document.getElementById('drawerCheckAllBtn');
+    if (drawerCheckAllBtn) {
+      drawerCheckAllBtn.addEventListener('click', () => {
+        const checkAll = document.getElementById('checkAllBtn');
+        if (checkAll) checkAll.click();
+        closeDrawer();
+      });
+    }
+
+    const drawerResetTasksBtn = document.getElementById('drawerResetTasksBtn');
+    if (drawerResetTasksBtn) {
+      drawerResetTasksBtn.addEventListener('click', () => {
+        const resetBtn = document.getElementById('resetChecklistBtn');
+        if (resetBtn) resetBtn.click();
+        closeDrawer();
+      });
+    }
+
 
     // Google Sheets Modal
     const openSheetsBtn = document.getElementById('openSheetsModalBtn');
