@@ -67,16 +67,17 @@
             <span class="tab-icon">🎬</span>
             <span class="tab-label">Theater</span>
           </button>
-          <button class="portal-tab-btn" data-tab="tab-weekly">
+          <a href="./LosSantosWeekly/" class="portal-tab-btn portal-nav-link" title="Open Los Santos Weekly Update Hub">
             <span class="tab-icon">🌴</span>
             <span class="tab-label">Weekly Update</span>
-          </button>
+          </a>
           <button class="portal-tab-btn" data-tab="tab-join">
             <span class="tab-icon">📝</span>
             <span class="tab-label">Join Crew</span>
           </button>
         </div>
       </nav>
+
 
       <!-- Right: Profile Avatar Button -->
       <div class="header-right-actions">
@@ -217,34 +218,7 @@
     </div>
 
 
-    <!-- =========================================================================
-         TAB 2: SEAMLESS EMBEDDED LOS SANTOS WEEKLY TRACKER
-         ========================================================================= -->
-    <div id="tab-weekly" class="portal-tab-pane">
-      <div class="weekly-embedded-wrapper">
-        <div class="weekly-embedded-toolbar">
-          <div class="toolbar-left">
-            <span class="toolbar-icon">🌴</span>
-            <div>
-              <h3 class="toolbar-title">Los Santos Weekly Hub</h3>
-              <span class="toolbar-subtitle">GTA ONLINE WEEKLY BONUSES, DISCOUNTS &amp; RESET TRACKER</span>
-            </div>
-          </div>
-          <div class="toolbar-right">
-            <div class="weekly-date-pill" style="margin:0;">
-              <span>📅 ACTIVE WEEK:</span>
-              <strong id="portalActiveWeekDate">Aug 20 – Aug 27</strong>
-            </div>
-            <a href="./LosSantosWeekly/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-secondary" title="Open in dedicated standalone fullscreen tab" style="font-size:11px; padding:6px 12px;">
-              <span>↗ Open Standalone</span>
-            </a>
-          </div>
-        </div>
-        <div class="weekly-iframe-container">
-          <iframe id="weeklyAppFrame" src="./LosSantosWeekly/" title="Los Santos Weekly Tracker" class="weekly-embedded-iframe" loading="eager"></iframe>
-        </div>
-      </div>
-    </div>
+
 
 
 
