@@ -1607,39 +1607,246 @@ body {
 }
 
 @media (max-width: 768px) {
+  /* iOS Notch & Safe Areas */
+  body {
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
   .nav-container {
-    padding: 10px 14px;
+    padding: 8px 12px;
     gap: 8px;
   }
+
+  .brand-group {
+    gap: 6px;
+  }
+
+  .brand-icon {
+    font-size: 18px;
+  }
+
+  .brand-title {
+    font-size: 14px;
+  }
+
+  .brand-subtitle {
+    font-size: 8.5px;
+  }
+
+  .version-badge {
+    font-size: 9px;
+    padding: 1px 5px;
+  }
+
   .nav-date-wrap {
     margin-left: auto;
   }
+
   .status-pill.date-pill {
-    font-size: 11px;
+    font-size: 10.5px;
+    padding: 3px 8px;
+  }
+
+  .crew-portal-pill {
+    font-size: 10px;
     padding: 4px 8px;
   }
+
+  /* Reset Countdown Line */
+  .reset-countdown-strip {
+    padding: 6px 10px;
+  }
+
   .reset-strip-inner {
-    font-size: 12px;
-    gap: 6px;
+    font-size: 11.5px;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
+
   .reset-timer {
-    font-size: 12px;
-    padding: 2px 8px;
+    font-size: 11.5px;
+    padding: 2px 7px;
   }
+
   .reset-hint {
     display: none;
   }
+
   .btn .btn-label {
     display: none;
   }
+
   .btn {
-    padding: 8px 10px;
+    padding: 7px 10px;
   }
-  .grid-cards-3, .grid-cards-2 {
+
+  /* Swipeable Main Navigation Tabs */
+  .main-tabs {
+    padding: 6px 10px;
+    gap: 5px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .main-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .main-tab-btn {
+    padding: 6px 11px;
+    font-size: 11px;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+
+  .container {
+    padding: 10px 8px 60px;
+  }
+
+  /* Hero Banner */
+  .hero-banner {
     grid-template-columns: 1fr;
+    padding: 16px 14px;
+    gap: 14px;
+    border-radius: 14px;
   }
-  .test-rides-grid {
+
+  .hero-title {
+    font-size: 1.25rem;
+  }
+
+  .hero-description {
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .hero-quick-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .hero-quick-actions button:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .hero-stat-card {
+    padding: 12px;
+    border-radius: 10px;
+    min-width: unset;
+  }
+
+  .stat-countdown {
+    font-size: 1.15rem;
+  }
+
+  /* Single Column Stacking for Smartphone Grids */
+  .grid-cards-3,
+  .grid-cards-2,
+  .test-rides-grid,
+  .bonus-grid,
+  .discounts-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .card-feature,
+  .challenge-card,
+  .salvage-card,
+  .bonus-tier-card,
+  .discount-card {
+    padding: 14px 12px;
+    border-radius: 12px;
+  }
+
+  /* Checklist Tap Targets */
+  .task-item-row {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .task-check {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+
+  .task-label-text {
+    font-size: 13px;
+  }
+
+  /* Discounts Toolbar & Filters */
+  .discounts-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .search-input-wrapper input {
+    font-size: 16px !important; /* Prevents iOS auto-zoom */
+    padding: 10px 14px 10px 36px;
+  }
+
+  .filter-pills-bar {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+
+  .filter-pills-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-pill-btn {
+    font-size: 10.5px;
+    padding: 5px 10px;
+    flex-shrink: 0;
+  }
+
+  /* TSV Export & Script Box */
+  .tsv-export-section {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .tsv-preview-box {
+    max-height: 200px;
+    font-size: 10px;
+  }
+
+  .tsv-actions-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .tsv-actions-row button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.15rem;
+  }
+  .brand-text .brand-subtitle {
+    display: none;
+  }
+  .status-pill.date-pill {
+    font-size: 9.5px;
+    padding: 2px 6px;
+  }
+  .crew-portal-pill {
+    padding: 3px 6px;
+    font-size: 9.5px;
+  }
+  .hero-quick-actions {
     grid-template-columns: 1fr;
   }
 }
+
 

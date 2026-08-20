@@ -2876,8 +2876,58 @@ body.crew-portal-body {
 }
 
 @media (max-width: 480px) {
+  /* Safe Area Insets for iOS Notch & Dynamic Island */
+  body {
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .portal-header {
+    padding: 6px 8px;
+  }
+
+  .header-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .header-neon-skull {
+    height: 38px;
+  }
+
+  .neon-line-top, .neon-line-bot {
+    font-size: 13px;
+    letter-spacing: 0.4px;
+  }
+
+  .header-inline-nav {
+    flex: 1;
+    min-width: 0;
+    margin: 0 2px;
+  }
+
+  .header-nav-pills-wrap {
+    padding: 2px 4px;
+    gap: 3px;
+  }
+
+  .portal-tab-btn {
+    padding: 5px 8px;
+    font-size: 10px;
+    gap: 3px;
+    letter-spacing: 0.2px;
+  }
+
+  .header-avatar-img {
+    width: 36px;
+    height: 36px;
+  }
+
   .portal-main {
-    padding: 10px 6px 60px;
+    padding: 8px 6px 60px;
   }
 
   .theater-card {
@@ -2889,16 +2939,18 @@ body.crew-portal-body {
   }
 
   .video-current-title {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.35;
   }
 
   .video-meta-stats-row {
-    gap: 5px;
+    gap: 4px;
+    flex-wrap: wrap;
   }
 
   .meta-stat-pill {
-    font-size: 9.5px;
-    padding: 1px 6px;
+    font-size: 9px;
+    padding: 2px 6px;
   }
 
   .categories-section {
@@ -2906,9 +2958,9 @@ body.crew-portal-body {
   }
 
   .category-card {
-    flex: 0 0 145px;
-    min-width: 145px;
-    padding: 9px 10px 8px;
+    flex: 0 0 130px;
+    min-width: 130px;
+    padding: 8px 10px 8px;
   }
 
   .playlist-container {
@@ -2916,29 +2968,116 @@ body.crew-portal-body {
   }
 
   .playlist-grid {
-    max-height: 350px;
+    max-height: 320px;
   }
 
   .playlist-item {
-    padding: 7px 8px;
+    padding: 6px 8px;
     gap: 8px;
   }
 
   .playlist-thumb-wrap {
-    width: 70px;
-    height: 40px;
+    width: 64px;
+    height: 36px;
     border-radius: 6px;
   }
 
   .clip-num-badge {
-    font-size: 12px;
-    min-width: 18px;
+    font-size: 11px;
+    min-width: 16px;
   }
 
-  .item-syndicate-tag {
-    display: none;
+  .item-title {
+    font-size: 11.5px;
+    line-height: 1.3;
+  }
+
+  /* Admin Modal on Smartphones */
+  .admin-modal-container {
+    width: 95vw;
+    max-height: 90vh;
+    border-radius: 14px;
+  }
+
+  .admin-modal-header {
+    padding: 12px 14px;
+  }
+
+  .admin-modal-body {
+    padding: 12px 12px 20px;
+  }
+
+  .admin-tabs-bar {
+    gap: 4px;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+  }
+
+  .admin-tab-btn {
+    font-size: 10px;
+    padding: 6px 9px;
+  }
+
+  .admin-subtabs-bar {
+    gap: 4px;
+    padding: 4px;
+    margin-bottom: 12px;
+  }
+
+  .admin-subtab-btn {
+    font-size: 9.5px;
+    padding: 5px 6px;
+  }
+
+  /* Prevent iOS Safari auto-zoom on input focus */
+  .admin-form input,
+  .admin-form select,
+  .admin-form textarea {
+    font-size: 16px !important;
+  }
+
+  /* Join Tab on Smartphones */
+  .join-card {
+    padding: 18px 12px;
+    border-radius: 12px;
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .step-card {
+    padding: 14px 12px;
+  }
+
+  .join-cta-banner {
+    padding: 16px 12px;
+    border-radius: 12px;
+  }
+
+  .footer-stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
   }
 }
+
+@media (max-width: 360px) {
+  .header-neon-skull {
+    height: 32px;
+  }
+  .neon-line-top, .neon-line-bot {
+    display: none;
+  }
+  .portal-tab-btn .tab-label {
+    font-size: 9px;
+  }
+  .portal-tab-btn {
+    padding: 4px 6px;
+  }
+}
+
 
 /* =========================================================================
    SYNDICATE UPDATE ALERT MODAL & FLOATING BANNER
