@@ -1,12 +1,15 @@
 # 🌴 Los Santos Weekly — Changelog
 
 ## [3.8.1] - 2026-08-20
+- **2-Tier Header Layout**: Moved brand logo above navigation bar for smaller screens.
+- **Mobile Nav Breathing Room**: Dedicated navigation bar row prevents squishing on phones.
 - **Unified Site-Wide Header**: Consistent skull logo and navigation bar across all pages.
 - **Top Banner De-Clutter**: Removed redundant date pills and duplicate portal buttons.
 - **Site-Wide Operations Drawer**: Added operations drawer to main portal and weekly tracker.
 - **Slideout Operations Drawer**: Added glassmorphic menu for timers, progress, and quick links.
 - **Reddit Mentions Purged**: Replaced third-party branding with BDCF Cloud Network.
 - **Header Real Estate**: Moved bulky reset strip into sideout drawer menu.
+
 
 - **Direct Navigation**: Weekly Update nav button opens tracker directly.
 - **Grouped Admin Tabs**: Consolidated video tools into single Videos & Series hub.

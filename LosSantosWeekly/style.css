@@ -89,9 +89,16 @@ body {
   margin: 0 auto;
   padding: 12px 24px;
   display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Top Row: Skull Brand Logo on Left, Operations & Avatar on Right */
+.header-top-row {
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  width: 100%;
 }
 
 /* Left: Brand Logo & Skull */
@@ -138,25 +145,33 @@ body {
     0 0 28px #9333ea;
 }
 
-/* Center: Unified Menu Bar (Matching Main Portal) */
-.header-inline-nav {
+/* Navigation Row: Dedicated Menu Bar Below Logo */
+.header-nav-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 1;
-  min-width: 0;
+  width: 100%;
 }
 
 .header-nav-pills-wrap {
   display: flex;
   align-items: center;
+  justify-content: center;
   background: rgba(15, 20, 36, 0.85);
   border: 1px solid rgba(168, 85, 247, 0.35);
   border-radius: var(--radius-full);
   padding: 4px 6px;
   gap: 6px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
+
+.header-nav-pills-wrap::-webkit-scrollbar {
+  display: none;
+}
+
 
 .portal-tab-btn {
   background: transparent;

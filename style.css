@@ -145,7 +145,7 @@ body.crew-portal-body {
   z-index: 1;
 }
 
-/* ── Top Header: Unified Single-Line Layout ── */
+/* ── Top Header: 2-Tier Brand & Navigation Layout ── */
 .portal-header {
   position: relative;
   z-index: 900;
@@ -154,19 +154,26 @@ body.crew-portal-body {
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1.5px solid rgba(168, 85, 247, 0.35);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.75);
-  padding: 10px 24px;
+  padding: 12px 24px;
 }
 
 .header-container {
   max-width: 1240px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
+  flex-direction: column;
+  gap: 10px;
 }
 
-/* Left: Bigger Glowing Skull Logo */
+/* Top Row: Skull Brand Logo on Left, Operations & Avatar on Right */
+.header-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Left: Glowing Neon Skull Logo */
 .header-brand-wrap {
   display: flex;
   align-items: center;
@@ -177,7 +184,7 @@ body.crew-portal-body {
 }
 
 .header-neon-skull {
-  height: 68px;
+  height: 56px;
   width: auto;
   object-fit: contain;
   filter: drop-shadow(0 0 14px rgba(217, 70, 239, 0.95)) drop-shadow(0 0 28px rgba(168, 85, 247, 0.6));
@@ -200,7 +207,7 @@ body.crew-portal-body {
 }
 
 .neon-line-top, .neon-line-bot {
-  font-size: 24px;
+  font-size: 22px;
   letter-spacing: 1.5px;
   color: #fff;
   -webkit-text-stroke: 1.2px #f0abfc;
@@ -210,25 +217,33 @@ body.crew-portal-body {
     0 0 28px #9333ea;
 }
 
-/* Center: Inline Navigation Bar */
-.header-inline-nav {
+/* Navigation Row: Dedicated Menu Bar Below Logo */
+.header-nav-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 1;
-  min-width: 0;
+  width: 100%;
 }
 
 .header-nav-pills-wrap {
   display: flex;
   align-items: center;
+  justify-content: center;
   background: rgba(15, 20, 36, 0.85);
   border: 1px solid rgba(168, 85, 247, 0.35);
   border-radius: var(--radius-full);
   padding: 4px 6px;
   gap: 6px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
+
+.header-nav-pills-wrap::-webkit-scrollbar {
+  display: none;
+}
+
 
 .portal-tab-btn {
   background: transparent;
@@ -2862,18 +2877,17 @@ body.crew-portal-body {
     letter-spacing: 0.6px;
   }
 
-  .header-inline-nav {
+  .header-nav-row {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    flex: 1;
-    min-width: 0;
   }
 
-  .header-inline-nav::-webkit-scrollbar {
+  .header-nav-row::-webkit-scrollbar {
     display: none;
   }
 
@@ -2882,6 +2896,7 @@ body.crew-portal-body {
     gap: 4px;
     flex-shrink: 0;
   }
+
 
   .portal-tab-btn {
     padding: 6px 9px;

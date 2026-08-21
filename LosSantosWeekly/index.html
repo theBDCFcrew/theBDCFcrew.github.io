@@ -35,21 +35,34 @@
 
 <body class="dark-theme">
 
-  <!-- UNIFIED TOP HEADER: SKULL, INLINE NAV BAR & OPERATIONS DRAWER -->
+  <!-- UNIFIED TOP HEADER: BRAND ROW (SKULL & ACTIONS) + MENU NAV ROW -->
   <header class="top-nav">
     <div class="nav-container">
       
-      <!-- Left: Glowing BDCF Skull Logo & Brand -->
-      <a href="../" target="_top" class="header-brand-wrap" id="headerBrandLogo" title="The BDCF Crew Headquarters" style="text-decoration:none;">
-        <img src="../bdcf-neon-skull.png" alt="BDCF Skull Logo" class="header-neon-skull" fetchpriority="high" decoding="async" />
-        <div class="header-neon-brand-text">
-          <span class="neon-line-top">BDCF</span>
-          <span class="neon-line-bot">CREW</span>
-        </div>
-      </a>
+      <!-- Top Row: Skull Brand Logo on Left, Operations & Avatar on Right -->
+      <div class="header-top-row">
+        <a href="../" target="_top" class="header-brand-wrap" id="headerBrandLogo" title="The BDCF Crew Headquarters" style="text-decoration:none;">
+          <img src="../bdcf-neon-skull.png" alt="BDCF Skull Logo" class="header-neon-skull" fetchpriority="high" decoding="async" />
+          <div class="header-neon-brand-text">
+            <span class="neon-line-top">BDCF</span>
+            <span class="neon-line-bot">CREW</span>
+          </div>
+        </a>
 
-      <!-- Center: Unified Menu Bar (Matching Main Portal) -->
-      <nav class="header-inline-nav" aria-label="Main Navigation">
+        <div class="header-right-actions">
+          <button type="button" id="drawerToggleBtn" class="header-drawer-toggle-btn" aria-label="Open Operations Menu" title="Open Reset Timers, Dates &amp; Operations Menu">
+            <span class="drawer-btn-icon">⏱️</span>
+            <span class="drawer-btn-label">Operations</span>
+            <span class="drawer-btn-burger">☰</span>
+          </button>
+          <a href="../" target="_top" class="header-user-avatar-btn" title="BDCF Crew Profile &amp; Headquarters" aria-label="Return to Portal">
+            <img src="../user-avatar.png" alt="Profile" class="header-avatar-img" fetchpriority="high" decoding="async" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Navigation Row: Dedicated Menu Bar Below Logo -->
+      <nav class="header-nav-row" aria-label="Main Navigation">
         <div class="header-nav-pills-wrap">
           <a href="../#tab-theater" target="_top" class="portal-tab-btn portal-nav-link" title="Open Video Theater">
             <span class="tab-icon">🎬</span>
@@ -66,19 +79,8 @@
         </div>
       </nav>
 
-      <!-- Right: Slideout Operations Drawer Toggle & Avatar -->
-      <div class="header-right-actions">
-        <button type="button" id="drawerToggleBtn" class="header-drawer-toggle-btn" aria-label="Open Operations Menu" title="Open Reset Timers, Dates &amp; Operations Menu">
-          <span class="drawer-btn-icon">⏱️</span>
-          <span class="drawer-btn-label">Operations</span>
-          <span class="drawer-btn-burger">☰</span>
-        </button>
-        <a href="../" target="_top" class="header-user-avatar-btn" title="BDCF Crew Profile &amp; Headquarters" aria-label="Return to Portal">
-          <img src="../user-avatar.png" alt="Profile" class="header-avatar-img" fetchpriority="high" decoding="async" />
-        </a>
-      </div>
-
     </div>
+
 
 
 
