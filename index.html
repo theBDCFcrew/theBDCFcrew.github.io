@@ -79,12 +79,18 @@
       </nav>
 
 
-      <!-- Right: Profile Avatar Button -->
+      <!-- Right: Operations Drawer & Profile Avatar Buttons -->
       <div class="header-right-actions">
+        <button type="button" id="drawerToggleBtn" class="header-drawer-toggle-btn" aria-label="Open Operations Menu" title="Open Reset Timers, Dates &amp; Operations Menu">
+          <span class="drawer-btn-icon">⏱️</span>
+          <span class="drawer-btn-label">Operations</span>
+          <span class="drawer-btn-burger">☰</span>
+        </button>
         <button id="headerUserAvatarBtn" class="header-user-avatar-btn" title="BDCF Crew Profile &amp; Admin Menu" aria-label="Open Profile &amp; Settings">
           <img src="./user-avatar.png" alt="Profile" class="header-avatar-img" fetchpriority="high" decoding="async" />
         </button>
       </div>
+
 
     </div>
   </header>
@@ -375,8 +381,83 @@
   </div>
 
   <!-- =========================================================================
+       SLIDEOUT OPERATIONS DRAWER (wosBDC Style)
+       ========================================================================= -->
+  <div id="sideoutDrawerOverlay" class="drawer-overlay" aria-hidden="true"></div>
+
+  <aside id="sideoutDrawer" class="sideout-drawer" aria-label="Operations Drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="drawer-brand">
+        <img src="./bdcf-neon-skull.png" alt="BDCF Skull Logo" style="height:32px; width:auto;" />
+        <div>
+          <h3 class="drawer-title">BDCF Operations</h3>
+          <span class="drawer-subtitle">TIMERS, STATS &amp; QUICK HUB</span>
+        </div>
+      </div>
+      <button type="button" id="drawerCloseBtn" class="drawer-close-btn" aria-label="Close Drawer" title="Close Menu">✕</button>
+    </div>
+
+    <div class="drawer-body">
+      <!-- Active Week & Live Reset Card -->
+      <div class="drawer-card drawer-timer-card">
+        <div class="drawer-card-label">📅 ACTIVE GTA ONLINE WEEK</div>
+        <div class="drawer-date-badge" id="drawerDateRange">Aug 20 – Aug 27</div>
+        
+        <div class="drawer-divider"></div>
+
+        <div class="drawer-card-label">⏳ NEXT RESET COUNTDOWN</div>
+        <div class="drawer-countdown" id="drawerCountdownTimer">--d --h --m --s</div>
+        <div class="drawer-reset-hint">Resets every Thursday at 5:00 AM ET / 10:00 AM UTC</div>
+      </div>
+
+      <!-- Live Crew Presence Card -->
+      <div class="drawer-card">
+        <div class="drawer-card-label">📊 LIVE CREW PRESENCE</div>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:8px;">
+          <div style="font-size:13px; color:#e2e8f0;">
+            <span style="color:#a855f7;">👁️ Total Views:</span> <strong id="drawerTotalViews">—</strong>
+          </div>
+          <div style="font-size:13px; color:#e2e8f0;">
+            <span style="color:#22c55e;">🟢 Online Now:</span> <strong id="drawerOnlineNow">1</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Navigation Links -->
+      <div class="drawer-section-title">🧭 QUICK NAVIGATION</div>
+      <div class="drawer-nav-list">
+        <a href="#tab-theater" class="drawer-nav-item" id="drawerLinkTheater">
+          <span class="drawer-nav-icon">🎬</span>
+          <span>Video Theater</span>
+          <span class="drawer-nav-arrow">➔</span>
+        </a>
+        <a href="./LosSantosWeekly/" class="drawer-nav-item">
+          <span class="drawer-nav-icon">🌴</span>
+          <span>Los Santos Weekly Hub</span>
+          <span class="drawer-nav-arrow">➔</span>
+        </a>
+        <a href="#tab-join" class="drawer-nav-item" id="drawerLinkJoin">
+          <span class="drawer-nav-icon">📝</span>
+          <span>Join The Crew</span>
+          <span class="drawer-nav-arrow">➔</span>
+        </a>
+        <button type="button" id="drawerOpenAdminBtn" class="drawer-nav-item" style="width:100%; border:none; text-align:left; cursor:pointer;">
+          <span class="drawer-nav-icon">⚙️</span>
+          <span>Admin &amp; Settings Hub</span>
+          <span class="drawer-nav-arrow">➔</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="drawer-footer">
+      <span class="drawer-footer-text">The BDCF Crew Headquarters • v3.8.1</span>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
        MODAL: BDCF CREW ADMIN MENU
        ========================================================================= -->
+
   <div id="adminModalOverlay" class="admin-modal-overlay"></div>
   <div id="adminModal" class="admin-modal-container">
     
@@ -2786,8 +2867,107 @@ function onOpen() {
     initWeeklyFirestoreSync();
     setupWeeklyAdminHandlers();
 
+  </script>
 
+  <!-- =========================================================================
+       OPERATIONS SLIDEOUT DRAWER CONTROLLER
+       ========================================================================= -->
+  <script>
+    (function () {
+      'use strict';
+      const drawer = document.getElementById('sideoutDrawer');
+      const overlay = document.getElementById('sideoutDrawerOverlay');
+      const toggleBtn = document.getElementById('drawerToggleBtn');
+      const closeBtn = document.getElementById('drawerCloseBtn');
+      const openAdminBtn = document.getElementById('drawerOpenAdminBtn');
+      const linkTheater = document.getElementById('drawerLinkTheater');
+      const linkJoin = document.getElementById('drawerLinkJoin');
 
+      function openDrawer() {
+        if (drawer) drawer.classList.add('open');
+        if (overlay) overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeDrawer() {
+        if (drawer) drawer.classList.remove('open');
+        if (overlay) overlay.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      if (toggleBtn) toggleBtn.addEventListener('click', openDrawer);
+      if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+      if (overlay) overlay.addEventListener('click', closeDrawer);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeDrawer();
+      });
+
+      if (linkTheater) {
+        linkTheater.addEventListener('click', () => {
+          closeDrawer();
+          const tabBtn = document.querySelector('[data-tab="tab-theater"]');
+          if (tabBtn) tabBtn.click();
+        });
+      }
+
+      if (linkJoin) {
+        linkJoin.addEventListener('click', () => {
+          closeDrawer();
+          const tabBtn = document.querySelector('[data-tab="tab-join"]');
+          if (tabBtn) tabBtn.click();
+        });
+      }
+
+      if (openAdminBtn) {
+        openAdminBtn.addEventListener('click', () => {
+          closeDrawer();
+          const avatarBtn = document.getElementById('headerUserAvatarBtn');
+          if (avatarBtn) avatarBtn.click();
+        });
+      }
+
+      // Live Reset Countdown for Drawer
+      function calculateNextReset() {
+        const now = new Date();
+        const next = new Date(now.getTime());
+        const currentDay = now.getUTCDay();
+        let daysUntilThu = (4 - currentDay + 7) % 7;
+        if (daysUntilThu === 0 && now.getUTCHours() >= 10) {
+          daysUntilThu = 7;
+        }
+        next.setUTCDate(now.getUTCDate() + daysUntilThu);
+        next.setUTCHours(10, 0, 0, 0);
+
+        const diff = next.getTime() - now.getTime();
+        if (diff <= 0) return '0d 00h 00m 00s';
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+        return `${d}d ${String(h).padStart(2, '0')}h ${String(m).padStart(2, '0')}m ${String(s).padStart(2, '0')}s`;
+      }
+
+      function updateDrawerTimers() {
+        const countdownEl = document.getElementById('drawerCountdownTimer');
+        if (countdownEl) countdownEl.textContent = calculateNextReset();
+
+        // Sync views and online stats
+        const totalViewsEl = document.getElementById('totalViewsCount');
+        const drawerViewsEl = document.getElementById('drawerTotalViews');
+        if (totalViewsEl && drawerViewsEl) {
+          drawerViewsEl.textContent = totalViewsEl.textContent || '—';
+        }
+
+        const onlineNowEl = document.getElementById('onlineNowCount');
+        const drawerOnlineEl = document.getElementById('drawerOnlineNow');
+        if (onlineNowEl && drawerOnlineEl) {
+          drawerOnlineEl.textContent = onlineNowEl.textContent || '1';
+        }
+      }
+
+      updateDrawerTimers();
+      setInterval(updateDrawerTimers, 1000);
+    })();
   </script>
 
   <!-- =========================================================================
@@ -2797,7 +2977,8 @@ function onOpen() {
     (function () {
 
       'use strict';
-      const CURRENT_APP_VERSION = 'v3.8.0';
+      const CURRENT_APP_VERSION = 'v3.8.1';
+
 
 
       const updateModal = document.getElementById('updateAlertModal');

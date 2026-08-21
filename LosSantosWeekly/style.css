@@ -94,146 +94,175 @@ body {
   gap: 16px;
 }
 
-.brand-group {
+/* Left: Brand Logo & Skull */
+.header-brand-wrap {
   display: flex;
   align-items: center;
   gap: 12px;
   text-decoration: none;
+  cursor: pointer;
+  flex-shrink: 0;
 }
 
-.crew-portal-pill {
-  background: rgba(168, 85, 247, 0.18);
-  border: 1px solid rgba(168, 85, 247, 0.5);
-  color: #c084fc;
+.header-neon-skull {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 14px rgba(217, 70, 239, 0.95)) drop-shadow(0 0 28px rgba(168, 85, 247, 0.6));
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.header-brand-wrap:hover .header-neon-skull {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 20px rgba(217, 70, 239, 1)) drop-shadow(0 0 35px rgba(168, 85, 247, 0.85));
+}
+
+.header-neon-brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.90;
   font-family: 'Montserrat', sans-serif;
-  font-size: 11px;
-  font-weight: 800;
-  padding: 6px 12px;
-  border-radius: var(--radius-full);
-  text-decoration: none;
-  transition: all 0.2s ease;
-  letter-spacing: 0.5px;
+  font-weight: 900;
+  text-transform: uppercase;
+  user-select: none;
 }
 
-.crew-portal-pill:hover {
-  background: #9333ea;
+.neon-line-top, .neon-line-bot {
+  font-size: 20px;
+  letter-spacing: 1.5px;
   color: #fff;
-  box-shadow: 0 0 14px rgba(168, 85, 247, 0.6);
+  -webkit-text-stroke: 1.2px #f0abfc;
+  text-shadow: 
+    0 0 6px #d946ef,
+    0 0 14px #a855f7,
+    0 0 28px #9333ea;
+}
+
+/* Center: Unified Menu Bar (Matching Main Portal) */
+.header-inline-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
+}
+
+.header-nav-pills-wrap {
+  display: flex;
+  align-items: center;
+  background: rgba(15, 20, 36, 0.85);
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  border-radius: var(--radius-full);
+  padding: 4px 6px;
+  gap: 6px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.portal-tab-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portal-tab-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.portal-tab-btn.active {
+  color: #fff;
+  background: linear-gradient(135deg, #c084fc, #9333ea);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.6);
+}
+
+/* Right: Operations Drawer Toggle & Avatar */
+.header-right-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: auto;
+  flex-shrink: 0;
+  gap: 8px;
+}
+
+.header-drawer-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(168, 85, 247, 0.15);
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  color: #f3e8ff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11.5px;
+  font-weight: 800;
+  padding: 7px 14px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.2);
+}
+
+.header-drawer-toggle-btn:hover {
+  background: rgba(168, 85, 247, 0.3);
+  border-color: rgba(217, 70, 239, 0.8);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(217, 70, 239, 0.5);
   transform: translateY(-1px);
 }
 
-.brand-icon {
-  font-size: 28px;
-  filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.5));
+.drawer-btn-icon {
+  font-size: 14px;
 }
 
-.brand-title-wrap {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.brand-title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-  font-weight: 900;
-  letter-spacing: -0.5px;
-  color: #fff;
-  line-height: 1.1;
-  text-transform: uppercase;
-}
-
-.version-badge {
-  background: rgba(6, 182, 212, 0.15);
-  border: 1px solid rgba(6, 182, 212, 0.4);
-  color: var(--accent-light);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 2px 7px;
-  border-radius: var(--radius-full);
-  letter-spacing: 0.5px;
-}
-
-.footer-brand-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.brand-subtitle {
-  display: block;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  color: var(--accent);
-  text-transform: uppercase;
-}
-
-.nav-status-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 12px;
-  border-radius: var(--radius-full);
-  font-size: 12px;
-  font-weight: 600;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--card-border);
-}
-
-.live-pill {
-  background: rgba(16, 185, 129, 0.12);
-  border-color: rgba(16, 185, 129, 0.3);
-  color: var(--emerald-light);
-}
-
-.pulse-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--emerald-light);
-  box-shadow: 0 0 8px var(--emerald-light);
-  animation: pulseAnimation 2s infinite ease-in-out;
-}
-
-@keyframes pulseAnimation {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
-}
-
-.nav-date-wrap {
-  display: flex;
-  align-items: center;
-}
-
-.date-pill {
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.22), rgba(236, 72, 153, 0.22));
-  border: 1px solid rgba(168, 85, 247, 0.5);
-  color: #fff;
-  font-weight: 800;
+.drawer-btn-burger {
   font-size: 13px;
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
-  letter-spacing: 0.5px;
-  box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
+  color: #c084fc;
 }
 
-.reset-countdown-strip {
-  background: rgba(7, 8, 15, 0.85);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 9px 16px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+.header-user-avatar-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.2s ease;
+  text-decoration: none;
 }
+
+.header-user-avatar-btn:hover {
+  transform: scale(1.08);
+}
+
+.header-avatar-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2.5px solid #c084fc;
+  box-shadow: 0 0 14px rgba(192, 132, 252, 0.9), 0 0 24px rgba(217, 70, 239, 0.6);
+  display: block;
+}
+
 
 .reset-strip-inner {
   max-width: 1400px;
@@ -1875,50 +1904,30 @@ body {
     gap: 8px;
   }
 
-  .brand-group {
-    gap: 6px;
+  .header-neon-skull {
+    height: 42px;
   }
 
-  .brand-icon {
-    font-size: 18px;
+  .neon-line-top, .neon-line-bot {
+    font-size: 16px;
   }
 
-  .brand-title {
-    font-size: 14px;
+  .portal-tab-btn {
+    padding: 6px 12px;
+    font-size: 11px;
+    gap: 4px;
   }
 
-  .brand-subtitle {
-    font-size: 8.5px;
-  }
-
-  .version-badge {
-    font-size: 9px;
-    padding: 1px 5px;
-  }
-
-  .nav-date-wrap {
-    margin-left: auto;
-  }
-
-  .status-pill.date-pill {
-    font-size: 10.5px;
-    padding: 3px 8px;
-  }
-
-  .crew-portal-pill {
-    font-size: 10px;
-    padding: 4px 8px;
-  }
-
-  /* Reset Countdown Line */
-  .reset-countdown-strip {
+  .header-drawer-toggle-btn {
     padding: 6px 10px;
+    font-size: 10.5px;
   }
 
-  .reset-strip-inner {
-    font-size: 11.5px;
-    gap: 5px;
-    flex-wrap: wrap;
+  .header-avatar-img {
+    width: 36px;
+    height: 36px;
+  }
+
     justify-content: center;
   }
 
@@ -2090,20 +2099,21 @@ body {
   .hero-title {
     font-size: 1.15rem;
   }
-  .brand-text .brand-subtitle {
+  .header-drawer-toggle-btn .drawer-btn-label {
     display: none;
   }
-  .status-pill.date-pill {
-    font-size: 9.5px;
-    padding: 2px 6px;
+  .header-drawer-toggle-btn {
+    padding: 6px 8px;
+    font-size: 12px;
   }
-  .crew-portal-pill {
-    padding: 3px 6px;
-    font-size: 9.5px;
+  .portal-tab-btn {
+    padding: 5px 8px;
+    font-size: 10px;
   }
   .hero-quick-actions {
     grid-template-columns: 1fr;
   }
 }
+
 
 

@@ -35,39 +35,51 @@
 
 <body class="dark-theme">
 
-  <!-- TOP NAVBAR -->
+  <!-- UNIFIED TOP HEADER: SKULL, INLINE NAV BAR & OPERATIONS DRAWER -->
   <header class="top-nav">
     <div class="nav-container">
-      <div class="brand-group">
-        <a href="../" target="_top" class="crew-portal-pill" title="Back to BDCF Crew Headquarters">🎮 BDCF CREW</a>
-        <span class="brand-icon">🌴</span>
-        <div class="brand-text">
-          <div class="brand-title-wrap">
-            <h1 class="brand-title">Los Santos Weekly</h1>
-            <span class="version-badge">v3.8.1</span>
-          </div>
-
-          <span class="brand-subtitle">OPERATIONS &amp; TUNABLES HUB</span>
+      
+      <!-- Left: Glowing BDCF Skull Logo & Brand -->
+      <a href="../" target="_top" class="header-brand-wrap" id="headerBrandLogo" title="The BDCF Crew Headquarters" style="text-decoration:none;">
+        <img src="../bdcf-neon-skull.png" alt="BDCF Skull Logo" class="header-neon-skull" fetchpriority="high" decoding="async" />
+        <div class="header-neon-brand-text">
+          <span class="neon-line-top">BDCF</span>
+          <span class="neon-line-bot">CREW</span>
         </div>
-      </div>
+      </a>
 
-      <!-- Center: Prominent Active Week Date Badge -->
-      <div class="nav-date-wrap">
-        <div class="status-pill date-pill" id="navDateRange">
-          📅 Aug 20 – Aug 27
+      <!-- Center: Unified Menu Bar (Matching Main Portal) -->
+      <nav class="header-inline-nav" aria-label="Main Navigation">
+        <div class="header-nav-pills-wrap">
+          <a href="../#tab-theater" target="_top" class="portal-tab-btn portal-nav-link" title="Open Video Theater">
+            <span class="tab-icon">🎬</span>
+            <span class="tab-label">Theater</span>
+          </a>
+          <button class="portal-tab-btn active" title="Active: Los Santos Weekly Update Hub">
+            <span class="tab-icon">🌴</span>
+            <span class="tab-label">Weekly Update</span>
+          </button>
+          <a href="../#tab-join" target="_top" class="portal-tab-btn portal-nav-link" title="Join The BDCF Crew">
+            <span class="tab-icon">📝</span>
+            <span class="tab-label">Join Crew</span>
+          </a>
         </div>
-      </div>
+      </nav>
 
-      <div class="nav-actions">
-        <a href="../" target="_top" class="btn btn-secondary" title="Return to The BDCF Crew Portal">
-          <span class="btn-icon">🏠</span> <span class="btn-label">BDCF Portal</span>
-        </a>
-        <button type="button" id="drawerToggleBtn" class="btn btn-accent drawer-toggle-btn" aria-label="Open Operations Drawer" title="Open Reset Countdown &amp; Timers Menu">
-          <span class="btn-icon">⏱️</span> <span class="btn-label">Timers &amp; Menu</span>
+      <!-- Right: Slideout Operations Drawer Toggle & Avatar -->
+      <div class="header-right-actions">
+        <button type="button" id="drawerToggleBtn" class="header-drawer-toggle-btn" aria-label="Open Operations Menu" title="Open Reset Timers, Dates &amp; Operations Menu">
+          <span class="drawer-btn-icon">⏱️</span>
+          <span class="drawer-btn-label">Operations</span>
+          <span class="drawer-btn-burger">☰</span>
         </button>
+        <a href="../" target="_top" class="header-user-avatar-btn" title="BDCF Crew Profile &amp; Headquarters" aria-label="Return to Portal">
+          <img src="../user-avatar.png" alt="Profile" class="header-avatar-img" fetchpriority="high" decoding="async" />
+        </a>
       </div>
 
     </div>
+
 
 
     <!-- QUICK PROGRESS BAR -->
