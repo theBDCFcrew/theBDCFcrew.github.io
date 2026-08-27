@@ -15,107 +15,85 @@
 
   // ── Default State & Fallback Current Week Data ──
   const DEFAULT_WEEK_DATA = {
-    version: APP_VERSION,
-    title: "Weekly Bonuses and Discounts - August 27th to September 3rd",
-    eventTitle: "Drift & Transform Races Event",
-    eventDesc: "Tear up the asphalt with 6X GTA$ & RP on selected Drift & Transform Races (Aug 28-30), 3X on Random Transform Races, 2X on Auto Shop Robbery Contracts, and new drift tuning upgrades for the Annis Elegy Retro Custom, Vapid Dominator GTT, and Invetero Coquette!",
-    dateRange: "Aug 27 – Sep 3",
-    podiumVehicle: "Karin Sultan Classic",
-    prizeRide: {
-      vehicle: "Dinka Veto Classic",
-      condition: "Place Top 5 in LS Car Meet Series races 4 days in a row"
+  "title": "Weekly Bonuses and Discounts - August 27th to September 3rd (Not live until ~5am ET on August 27th)",
+  "eventTitle": "GTA Online Weekly Event",
+  "eventDesc": "Boosted payouts, discounts, and rewards for this week.",
+  "dateRange": "August 27 – September 3",
+  "podiumVehicle": "Karin Sultan Classic",
+  "prizeRide": {
+    "vehicle": "Dinka Veto Classic",
+    "condition": "Place Top 5 in the LS Car Meet Series for 4 days in a row"
+  },
+  "weeklyChallenge": {
+    "task": "Known Unknowns and Unknown Unknowns",
+    "reward": "$100,000 + Special Bonus"
+  },
+  "timeTrials": {
+    "regular": "Storm Drain",
+    "hsw": "North Chumash to Palomino Highlands",
+    "premiumRace": "Boots on the Ground - Locked to Motorcycles"
+  },
+  "testRides": [],
+  "salvageRobberies": [
+    {
+      "name": "The Podium Robbery",
+      "vehicle": "Dewbauchee Champion",
+      "value": "~$380,000"
     },
-    weeklyChallenge: {
-      task: "Participate in 3 Drift Races",
-      reward: "Glitch Camo drift livery + GTA$100,000 Bonus"
+    {
+      "name": "The Duggan Robbery",
+      "vehicle": "Obey Tailgater S",
+      "value": "~$340,000"
     },
-    timeTrials: {
-      regular: "Mount Gordo",
-      hsw: "Terminal to Chiliad Mountain State Wilderness",
-      premiumRace: "Downtown Underground"
+    {
+      "name": "The Gangbanger Robbery",
+      "vehicle": "Vapid Clique",
+      "value": "~$320,000"
+    }
+  ],
+  "fibPriorityFile": "The Black Box File",
+  "kortzTargets": [
+    "Gone to Seed",
+    "Chat on Fruit",
+    "Juiced"
+  ],
+  "luxuryAutos": [],
+  "pdmShowroom": [],
+  "dailyObjectives": [
+    {
+      "day": "Thursday",
+      "task": "Participate in a Freemode Event"
     },
-    testRides: [
-      "Annis ZR350",
-      "Cheval Taipan",
-      "Invetero Coquette D5",
-      "HSW Premium: Imponte Arbiter GT"
-    ],
-    salvageRobberies: [
-      { name: "The McTony Robbery", vehicle: "Benefactor Schlagen GT", value: "~$380,000 - $420,000" },
-      { name: "The Gangbanger Robbery", vehicle: "Grotti Itali GTO", value: "~$340,000 - $380,000" },
-      { name: "The Cargo Ship Robbery", vehicle: "Vapid Dominator ASP", value: "~$320,000 - $360,000" }
-    ],
-    fibPriorityFile: "The Black Box File",
-    kortzTargets: ["Gone to Seed", "Chat on Fruit", "Juiced"],
-    luxuryAutos: ["Invetero Coquette D5", "Annis ZR350"],
-    pdmShowroom: [
-      { name: "Annis ZR350", type: "Sports / Tuner", discount: "30% Off" },
-      { name: "Buckingham Howard NX-25", type: "Plane", discount: "30% Off" },
-      { name: "Cheval Taipan", type: "Supercar", discount: "30% Off" },
-      { name: "Invetero Coquette D5", type: "Sports", discount: "30% Off" },
-      { name: "Vapid Flash GT", type: "Sports", discount: "30% Off" }
-    ],
-    dailyObjectives: [
-      { day: "Thursday", task: "Participate in a Drift Race" },
-      { day: "Friday", task: "Complete an Auto Shop Robbery Contract" },
-      { day: "Saturday", task: "Participate in a Transform Race" },
-      { day: "Sunday", task: "Spin the Lucky Wheel" },
-      { day: "Monday", task: "Win a Race" },
-      { day: "Tuesday", task: "Test Drift Tuning at LS Car Meet" },
-      { day: "Wednesday", task: "Visit the LS Car Meet Test Track" }
-    ],
-    bonuses: [
-      {
-        multiplier: "6X",
-        label: "6X GTA$ & RP",
-        tier: "4x",
-        items: [
-          "🏎️ Selected Drift & Transform Races (Weekend Bonus: Aug 28 - Aug 30)"
-        ]
-      },
-      {
-        multiplier: "3X",
-        label: "3X GTA$ & RP",
-        tier: "3x",
-        items: [
-          "🌀 Random Transform Races (Known Unknown & Unknown Unknown Tracks)",
-          "🎨 Community Series Jobs"
-        ]
-      },
-      {
-        multiplier: "2X",
-        label: "2X GTA$ & RP",
-        tier: "2x",
-        items: [
-          "🔧 Auto Shop Robbery Contracts & Client Vehicle Deliveries",
-          "💨 Drift Races"
-        ]
-      }
-    ],
-    discounts: [
-      { name: "Auto Shop Properties, Upgrades & Modifications", category: "properties", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Military Rifle (Gun Van)", category: "weapons", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Precision Rifle (Gun Van - GTA+)", category: "weapons", rate: "40% Off", badgeClass: "rate-40" },
-      { name: "Annis ZR350 (Sports)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Buckingham Howard NX-25 (Plane)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Cheval Taipan (Super)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Invetero Coquette D5 (Sports)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Karin Technical Aqua (Off-Road / Weaponized)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Obey I-Wagen (SUV)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "RC Bandito (Compact)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Vapid Flash GT (Sports)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Western Company Duster 300-H (Plane)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" }
-    ],
-    gunVan: [
-      { name: "Military Rifle", status: "30% OFF", isFree: false },
-      { name: "Precision Rifle", status: "40% OFF (GTA+)", isFree: false },
-      { name: "Railgun", status: "In Stock", isFree: false },
-      { name: "Tactical SMG", status: "In Stock", isFree: false },
-      { name: "Battle Rifle", status: "In Stock", isFree: false },
-      { name: "Homing Launcher", status: "In Stock", isFree: false },
-      { name: "Heavy Sniper", status: "In Stock", isFree: false }
-    ]
-  };
+    {
+      "day": "Friday",
+      "task": "Complete a VIP Work"
+    },
+    {
+      "day": "Saturday",
+      "task": "Participate in a Race"
+    },
+    {
+      "day": "Sunday",
+      "task": "Spin the Lucky Wheel"
+    },
+    {
+      "day": "Monday",
+      "task": "Win a Race"
+    },
+    {
+      "day": "Tuesday",
+      "task": "Complete a Delivery"
+    },
+    {
+      "day": "Wednesday",
+      "task": "Visit the LS Car Meet"
+    }
+  ],
+  "bonuses": [],
+  "discounts": [],
+  "gunVan": [],
+  "version": "v3.8.2"
+};
 
 
 
