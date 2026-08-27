@@ -1,6 +1,15 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.8.2] - 2026-08-27
+- **August 27 Update**: Activated live week update for Aug 27 – Sep 3.
+- **Drift & Transform Event**: Added 6X and 3X races with drift upgrades.
+- **Karin Sultan Classic**: Featured on Diamond Casino Lucky Wheel podium.
+- **Dinka Veto Classic**: Featured as LS Car Meet prize ride reward.
+- **Cache Auto-Purge**: Old client storage automatically upgrades to fresh week data.
+- **Service Worker Cache**: Bumped service worker cache to `bdcf-pwa-cache-v3.8.2`.
+
 ## [3.8.1] - 2026-08-20
+
 - **2-Tier Header Layout**: Moved brand logo above navigation bar for smaller screens.
 - **Mobile Nav Breathing Room**: Dedicated navigation bar row prevents squishing on phones.
 - **Unified Site-Wide Header**: Consistent skull logo and navigation bar across all pages.
