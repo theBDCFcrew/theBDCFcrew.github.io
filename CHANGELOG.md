@@ -2,11 +2,13 @@
 
 ## [3.8.2] - 2026-08-27
 - **August 27 Update**: Activated live week update for Aug 27 – Sep 3.
+- **Stale Cloud Guard**: Prevents outdated Firestore documents from overriding fresh week data.
 - **Drift & Transform Event**: Added 6X and 3X races with drift upgrades.
 - **Karin Sultan Classic**: Featured on Diamond Casino Lucky Wheel podium.
 - **Dinka Veto Classic**: Featured as LS Car Meet prize ride reward.
 - **Cache Auto-Purge**: Old client storage automatically upgrades to fresh week data.
 - **Service Worker Cache**: Bumped service worker cache to `bdcf-pwa-cache-v3.8.2`.
+
 
 ## [3.8.1] - 2026-08-20
 

@@ -145,7 +145,9 @@
       onSnapshot(weeklyDocRef, (snap) => {
         if (snap.exists()) {
           const cloudData = snap.data();
-          if (cloudData && (cloudData.podiumVehicle || cloudData.dateRange || cloudData.discounts)) {
+          // Only accept cloud data if it matches the current active week!
+          // Never let a stale cloud record from a previous week overwrite our updated codebase.
+          if (cloudData && cloudData.dateRange === DEFAULT_WEEK_DATA.dateRange) {
             currentData = {
               ...DEFAULT_WEEK_DATA,
               ...cloudData,
@@ -154,6 +156,12 @@
             saveData(currentData);
             renderAll();
             updateLiveIndicator(true, cloudData.dateRange);
+          } else {
+            // Stale cloud week detected in Firestore — enforce current week!
+            currentData = DEFAULT_WEEK_DATA;
+            saveData(currentData);
+            renderAll();
+            updateLiveIndicator(false, DEFAULT_WEEK_DATA.dateRange);
           }
         }
       }, async () => {
@@ -162,7 +170,7 @@
           const rtdbRes = await fetch('https://the-bdcf-crew-default-rtdb.firebaseio.com/weekly/current.json');
           if (rtdbRes.ok) {
             const rtdbData = await rtdbRes.json();
-            if (rtdbData && (rtdbData.podiumVehicle || rtdbData.dateRange)) {
+            if (rtdbData && rtdbData.dateRange === DEFAULT_WEEK_DATA.dateRange) {
               currentData = { ...DEFAULT_WEEK_DATA, ...rtdbData, version: APP_VERSION };
               saveData(currentData);
               renderAll();
@@ -170,6 +178,7 @@
           }
         } catch (_) {}
       });
+
     } catch (err) {
       console.warn('[LosSantosWeekly] Cloud sync fallback to bundled data:', err);
     }
