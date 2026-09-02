@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#2e1065"/>
+      <stop offset="60%" stop-color="#0f0728"/>
+      <stop offset="100%" stop-color="#030014"/>
+    </radialGradient>
+    <filter id="bannerPurpleGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur1"/>
+      <feGaussianBlur stdDeviation="20" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      .banner-text-top {
+        font-family: 'Impact', 'Arial Black', sans-serif;
+        font-weight: 900;
+        fill: #ffffff;
+        stroke: #c084fc;
+        stroke-width: 3px;
+        filter: url(#bannerPurpleGlow);
+      }
+      .banner-text-sub {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        font-size: 22px;
+        letter-spacing: 12px;
+        fill: #38bdf8;
+        filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.8));
+      }
+    </style>
+  </defs>
+
+  <rect width="1200" height="400" fill="url(#bgGlow)" rx="16"/>
+  <rect width="1196" height="396" x="2" y="2" fill="none" stroke="rgba(168, 85, 247, 0.4)" stroke-width="2" rx="14"/>
+
+  <g transform="translate(180, 75)">
+    <g transform="translate(0, 0) scale(1.15)" filter="url(#bannerPurpleGlow)">
+      <path d="M 100 25 C 50 25 20 60 20 110 C 20 145 38 165 55 175 L 55 195 C 55 202 62 208 70 208 L 130 208 C 138 208 145 202 145 195 L 145 175 C 162 165 180 145 180 110 C 180 60 150 25 100 25 Z" 
+            fill="rgba(168, 85, 247, 0.2)" stroke="#e879f9" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M 52 112 Q 72 102 82 122 Q 72 142 52 132 Z" fill="#080410" stroke="#f472b6" stroke-width="4"/>
+      <path d="M 148 112 Q 128 102 118 122 Q 128 142 148 132 Z" fill="#080410" stroke="#f472b6" stroke-width="4"/>
+      <polygon points="100,140 92,158 108,158" fill="#f472b6" stroke="#f472b6" stroke-width="2"/>
+      <line x1="78" y1="182" x2="78" y2="206" stroke="#e879f9" stroke-width="3"/>
+      <line x1="92" y1="182" x2="92" y2="206" stroke="#e879f9" stroke-width="3"/>
+      <line x1="108" y1="182" x2="108" y2="206" stroke="#e879f9" stroke-width="3"/>
+      <line x1="122" y1="182" x2="122" y2="206" stroke="#e879f9" stroke-width="3"/>
+      <text x="100" y="82" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="38" fill="#ffffff" stroke="#f472b6" stroke-width="1.5" letter-spacing="-1">BC</text>
+    </g>
+
+    <g transform="translate(260, 20)">
+      <text x="0" y="85" class="banner-text-top" font-size="92" letter-spacing="6">BDCF CREW</text>
+      <text x="4" y="145" class="banner-text-sub">GRAND THEFT AUTO ONLINE HEADQUARTERS</text>
+    </g>
+  </g>
+</svg>

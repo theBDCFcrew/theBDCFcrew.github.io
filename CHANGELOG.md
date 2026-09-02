@@ -1,6 +1,12 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.8.3] - 2026-09-02
+- **Logo Asset Suite**: Added full-resolution logo and icon suite for GitHub.
+- **Vector SVG Logos**: Created scalable vector logo badges and header banners.
+- **GitHub Media Directory**: Organized assets into dedicated logos and icons folders.
+
 ## [3.8.2] - 2026-08-27
+
 - **August 27 Update**: Activated live week update for Aug 27 – Sep 3.
 - **Stale Cloud Guard**: Prevents outdated Firestore documents from overriding fresh week data.
 - **Drift & Transform Event**: Added 6X and 3X races with drift upgrades.

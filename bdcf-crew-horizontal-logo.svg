@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" width="800" height="240">
+  <defs>
+    <filter id="purpleGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur1"/>
+      <feGaussianBlur stdDeviation="15" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e879f9"/>
+      <stop offset="50%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <style>
+      .neon-text {
+        font-family: 'Impact', 'Arial Black', sans-serif;
+        font-weight: 900;
+        fill: #ffffff;
+        stroke: #c084fc;
+        stroke-width: 2px;
+        filter: url(#purpleGlow);
+      }
+    </style>
+  </defs>
+  
+  <!-- Neon Skull Mark on Left -->
+  <g transform="translate(40, 20) scale(0.95)" filter="url(#purpleGlow)">
+    <path d="M 100 25 C 50 25 20 60 20 110 C 20 145 38 165 55 175 L 55 195 C 55 202 62 208 70 208 L 130 208 C 138 208 145 202 145 195 L 145 175 C 162 165 180 145 180 110 C 180 60 150 25 100 25 Z" 
+          fill="rgba(168, 85, 247, 0.15)" stroke="#e879f9" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M 52 112 Q 72 102 82 122 Q 72 142 52 132 Z" fill="#080410" stroke="#f472b6" stroke-width="4"/>
+    <path d="M 148 112 Q 128 102 118 122 Q 128 142 148 132 Z" fill="#080410" stroke="#f472b6" stroke-width="4"/>
+    <polygon points="100,140 92,158 108,158" fill="#f472b6" stroke="#f472b6" stroke-width="2"/>
+    <line x1="78" y1="182" x2="78" y2="206" stroke="#e879f9" stroke-width="3"/>
+    <line x1="92" y1="182" x2="92" y2="206" stroke="#e879f9" stroke-width="3"/>
+    <line x1="108" y1="182" x2="108" y2="206" stroke="#e879f9" stroke-width="3"/>
+    <line x1="122" y1="182" x2="122" y2="206" stroke="#e879f9" stroke-width="3"/>
+    <text x="100" y="82" text-anchor="middle" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="38" fill="#ffffff" stroke="#f472b6" stroke-width="1.5" letter-spacing="-1">BC</text>
+  </g>
+
+  <!-- Typography: BDCF CREW -->
+  <g transform="translate(260, 30)">
+    <text x="0" y="75" class="neon-text" font-size="78" letter-spacing="5">BDCF</text>
+    <text x="0" y="155" class="neon-text" font-size="72" letter-spacing="6" fill="#fdf4ff">CREW</text>
+  </g>
+</svg>
