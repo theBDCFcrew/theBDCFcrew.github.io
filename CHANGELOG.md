@@ -1,9 +1,11 @@
 # 🌴 Los Santos Weekly — Changelog
 
 ## [3.8.3] - 2026-09-02
+- **Cropped Logo Badge**: Added exact cropped neon skull and text logo badge.
 - **Logo Asset Suite**: Added full-resolution logo and icon suite for GitHub.
 - **Vector SVG Logos**: Created scalable vector logo badges and header banners.
 - **GitHub Media Directory**: Organized assets into dedicated logos and icons folders.
+
 
 ## [3.8.2] - 2026-08-27
 
