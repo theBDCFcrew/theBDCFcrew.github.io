@@ -15,39 +15,39 @@
 
   // ── Default State & Fallback Current Week Data ──
   const DEFAULT_WEEK_DATA = {
-  "title": "Weekly Bonuses and Discounts - August 27th to September 3rd (Not live until ~5am ET on August 27th)",
+  "title": "Weekly Bonuses and Discounts - September 10th to September 17th (Not live until ~5am ET on September 10th)",
   "eventTitle": "GTA Online Weekly Event",
   "eventDesc": "Boosted payouts, discounts, and rewards for this week.",
-  "dateRange": "August 27 – September 3",
-  "podiumVehicle": "Karin Sultan Classic",
+  "dateRange": "September 10 – September 17",
+  "podiumVehicle": "RUNE Zhaba",
   "prizeRide": {
-    "vehicle": "Dinka Veto Classic",
-    "condition": "Place Top 5 in the LS Car Meet Series for 4 days in a row"
+    "vehicle": "Pfister Neon",
+    "condition": "Place Top 4 in the LS Car Meet Series one time"
   },
   "weeklyChallenge": {
-    "task": "Known Unknowns and Unknown Unknowns",
+    "task": "Podium Vehicle",
     "reward": "$100,000 + Special Bonus"
   },
   "timeTrials": {
-    "regular": "Storm Drain",
-    "hsw": "North Chumash to Palomino Highlands",
-    "premiumRace": "Boots on the Ground - Locked to Motorcycles"
+    "regular": "Sawmill",
+    "hsw": "Del Perro Beach to Murietta Heights",
+    "premiumRace": "Eight Figure Bonus - Sports Classics"
   },
   "testRides": [],
   "salvageRobberies": [
     {
       "name": "The Podium Robbery",
-      "vehicle": "Dewbauchee Champion",
+      "vehicle": "Target Vehicle",
       "value": "~$380,000"
     },
     {
       "name": "The Duggan Robbery",
-      "vehicle": "Obey Tailgater S",
+      "vehicle": "Target Vehicle",
       "value": "~$340,000"
     },
     {
       "name": "The Gangbanger Robbery",
-      "vehicle": "Vapid Clique",
+      "vehicle": "Dinka Blista Kanjo",
       "value": "~$320,000"
     }
   ],
