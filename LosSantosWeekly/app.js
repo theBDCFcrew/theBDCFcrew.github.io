@@ -15,85 +15,112 @@
 
   // ── Default State & Fallback Current Week Data ──
   const DEFAULT_WEEK_DATA = {
-  "title": "Weekly Bonuses and Discounts - September 10th to September 17th (Not live until ~5am ET on September 10th)",
-  "eventTitle": "GTA Online Weekly Event",
-  "eventDesc": "Boosted payouts, discounts, and rewards for this week.",
-  "dateRange": "September 10 – September 17",
-  "podiumVehicle": "RUNE Zhaba",
-  "prizeRide": {
-    "vehicle": "Pfister Neon",
-    "condition": "Place Top 4 in the LS Car Meet Series one time"
-  },
-  "weeklyChallenge": {
-    "task": "Podium Vehicle",
-    "reward": "$100,000 + Special Bonus"
-  },
-  "timeTrials": {
-    "regular": "Sawmill",
-    "hsw": "Del Perro Beach to Murietta Heights",
-    "premiumRace": "Eight Figure Bonus - Sports Classics"
-  },
-  "testRides": [],
-  "salvageRobberies": [
-    {
-      "name": "The Podium Robbery",
-      "vehicle": "Target Vehicle",
-      "value": "~$380,000"
+    version: APP_VERSION,
+    title: "Weekly Bonuses and Discounts - September 10th to September 17th",
+    eventTitle: "Biker & MC Businesses Week (Business Rivalries)",
+    eventDesc: "Earn 2X on MC Businesses, Street Dealer Sales, Biker Contracts & Bike Service Missions, 3X on Community Series, claim the free Grapeseed Clubhouse, spin for the RUNE Zhaba, and win the Pfister Neon!",
+    dateRange: "Sep 10 – Sep 17",
+    podiumVehicle: "RUNE Zhaba",
+    prizeRide: {
+      vehicle: "Pfister Neon",
+      condition: "Place Top 4 in the LS Car Meet Series"
     },
-    {
-      "name": "The Duggan Robbery",
-      "vehicle": "Target Vehicle",
-      "value": "~$340,000"
+    weeklyChallenge: {
+      task: "Earn GTA$1,000,000 from MC Business or Acid Lab Sales",
+      reward: "Junk Tracksuit + GTA$1,000,000 Cash Bonus"
     },
-    {
-      "name": "The Gangbanger Robbery",
-      "vehicle": "Dinka Blista Kanjo",
-      "value": "~$320,000"
-    }
-  ],
-  "fibPriorityFile": "The Black Box File",
-  "kortzTargets": [
-    "Gone to Seed",
-    "Chat on Fruit",
-    "Juiced"
-  ],
-  "luxuryAutos": [],
-  "pdmShowroom": [],
-  "dailyObjectives": [
-    {
-      "day": "Thursday",
-      "task": "Participate in a Freemode Event"
+    timeTrials: {
+      regular: "Sawmill",
+      hsw: "Del Perro Beach to Murietta Heights",
+      premiumRace: "Eight Figure Bonus"
     },
-    {
-      "day": "Friday",
-      "task": "Complete a VIP Work"
-    },
-    {
-      "day": "Saturday",
-      "task": "Participate in a Race"
-    },
-    {
-      "day": "Sunday",
-      "task": "Spin the Lucky Wheel"
-    },
-    {
-      "day": "Monday",
-      "task": "Win a Race"
-    },
-    {
-      "day": "Tuesday",
-      "task": "Complete a Delivery"
-    },
-    {
-      "day": "Wednesday",
-      "task": "Visit the LS Car Meet"
-    }
-  ],
-  "bonuses": [],
-  "discounts": [],
-  "gunVan": [],
-  "version": "v3.8.2"
-};
+    testRides: [
+      "Grotti Cheetah Classic",
+      "Vulcar Warrener HKR",
+      "Pfister Growler",
+      "HSW Premium: Karin S95"
+    ],
+    salvageRobberies: [
+      { name: "The Podium Robbery", vehicle: "Enus Paragon R", value: "~$380,000 - $420,000" },
+      { name: "The Duggan Robbery", vehicle: "Truffade Thrax", value: "~$340,000 - $380,000" },
+      { name: "The Gangbanger Robbery", vehicle: "Dinka Blista Kanjo", value: "~$320,000 - $360,000" }
+    ],
+    fibPriorityFile: "The Black Box File",
+    kortzTargets: ["Gone to Seed", "Chat on Fruit", "Juiced"],
+    luxuryAutos: ["Vapid FMJ MK V", "Grotti GT750"],
+    pdmShowroom: [
+      { name: "Western Rampant Rocket", type: "Motorcycle / Trike", discount: "50% Off" },
+      { name: "Dinka Vindicator", type: "Motorcycle", discount: "40% Off" },
+      { name: "Nagasaki Shinobi", type: "Motorcycle", discount: "40% Off" },
+      { name: "Shitzu Defiler", type: "Motorcycle", discount: "40% Off" },
+      { name: "Pegassi Vortex", type: "Motorcycle", discount: "40% Off" }
+    ],
+    dailyObjectives: [
+      { day: "Thursday", task: "Complete a Biker Clubhouse Contract" },
+      { day: "Friday", task: "Sell MC Business Product" },
+      { day: "Saturday", task: "Sell to a Street Dealer" },
+      { day: "Sunday", task: "Spin the Lucky Wheel at Diamond Casino" },
+      { day: "Monday", task: "Deliver a Customer Bike Service" },
+      { day: "Tuesday", task: "Participate in a Community Series Job" },
+      { day: "Wednesday", task: "Test Ride at LS Car Meet" }
+    ],
+    bonuses: [
+      {
+        multiplier: "3X",
+        label: "3X GTA$ & RP",
+        tier: "3x",
+        items: [
+          "🎨 Community Mission Series Jobs"
+        ]
+      },
+      {
+        multiplier: "2X",
+        label: "2X GTA$ & RP",
+        tier: "2x",
+        items: [
+          "🏍️ Biker Clubhouse Contracts & Bar Resupply",
+          "💼 MC Work & Challenges",
+          "⚔️ Featured Series (Hasta La Vista & Every Bullet Counts)"
+        ]
+      },
+      {
+        multiplier: "2X",
+        label: "2X GTA$",
+        tier: "2x",
+        items: [
+          "🌿 MC Business Product Sell Missions",
+          "📦 Street Dealer Sales",
+          "🔧 Customer Bike Service Deliveries"
+        ]
+      }
+    ],
+    discounts: [
+      { name: "Grapeseed Biker Clubhouse", category: "properties", rate: "Free", badgeClass: "rate-free" },
+      { name: "Biker Clubhouse Properties, Upgrades & Modifications", category: "properties", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Biker Business Properties & Upgrades (Cocaine, Meth, Cash, Weed, Forgery)", category: "properties", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Western Rampant Rocket (Motorcycle)", category: "vehicles", rate: "50% Off", badgeClass: "rate-50" },
+      { name: "Dinka Vindicator (Motorcycle)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Nagasaki Shinobi (Motorcycle)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Shitzu Defiler (Motorcycle)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Pegassi Vortex (Motorcycle)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Buckingham Nimbus (Plane)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Grotti Cheetah Classic (Sports Classic)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Pfister Growler (Sports)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Vulcar Warrener HKR (Sedan / Tuner)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Maibatsu Penumbra FF (Sports)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Karin Vivanite (SUV)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" }
+    ],
+    gunVan: [
+      { name: "Tactical SMG", status: "40% OFF", isFree: false },
+      { name: "Railgun", status: "40% OFF (GTA+)", isFree: false },
+      { name: "Compact EMP Launcher", status: "In Stock", isFree: false },
+      { name: "Battle Rifle", status: "In Stock", isFree: false },
+      { name: "Combat Shotgun", status: "In Stock", isFree: false },
+      { name: "Heavy Sniper", status: "In Stock", isFree: false },
+      { name: "Pipe Bombs & Molotovs", status: "In Stock", isFree: false }
+    ]
+  };
+
 
 
 
