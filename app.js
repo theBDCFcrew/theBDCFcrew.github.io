@@ -8,7 +8,7 @@
 
   // ── Version & App Constants ──
   // ── Version & App Constants ──
-  const APP_VERSION = 'v3.8.2';
+  const APP_VERSION = 'v3.8.4';
 
 
 
@@ -94,6 +94,7 @@
   "gunVan": [],
   "version": "v3.8.2"
 };
+
 
 
 

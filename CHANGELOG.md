@@ -1,6 +1,15 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.8.4] - 2026-09-14
+- **September 10 Update**: Activated live week update for Sep 10 – Sep 17.
+- **Biker Business Boosts**: Added 2X payouts on MC businesses and street sales.
+- **RUNE Zhaba**: Featured on Diamond Casino Lucky Wheel podium.
+- **Pfister Neon**: Featured as LS Car Meet prize ride reward.
+- **Ultra-Fast RSS Sync**: Bypassed Reddit API blocks with sub-second XML stream.
+- **Service Worker Cache**: Bumped service worker cache to `bdcf-pwa-cache-v3.8.4`.
+
 ## [3.8.3] - 2026-09-02
+
 - **Cropped Logo Badge**: Added exact cropped neon skull and text logo badge.
 - **Logo Asset Suite**: Added full-resolution logo and icon suite for GitHub.
 - **Vector SVG Logos**: Created scalable vector logo badges and header banners.

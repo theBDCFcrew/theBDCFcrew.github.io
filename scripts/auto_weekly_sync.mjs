@@ -16,20 +16,20 @@ function cleanMarkdown(str) {
     .trim();
 }
 
-// ── Multi-Source Fetcher (Direct Reddit JSON, RSS XML, & Proxy Relays) ──
+// ── Multi-Source Fetcher (Direct RSS XML, Reddit JSON, & Proxy Relays) ──
 async function fetchWeeklyPost() {
   const sources = [
     {
-      type: 'json',
-      url: 'https://www.reddit.com/r/gtaonline/search.json?q=flair_name%3A%22:WU1::WU2::WU3::WU4::WU5::WU6:%22&sort=new&restrict_sr=1&limit=3'
-    },
-    {
-      type: 'json',
-      url: 'https://api.allorigins.win/raw?url=' + encodeURIComponent('https://www.reddit.com/r/gtaonline/search.json?q=flair_name%3A%22:WU1::WU2::WU3::WU4::WU5::WU6:%22&sort=new&restrict_sr=1&limit=3')
+      type: 'rss',
+      url: 'https://www.reddit.com/r/gtaonline/search.rss?q=flair_name%3A%22:WU1::WU2::WU3::WU4::WU5::WU6:%22&sort=new&restrict_sr=1'
     },
     {
       type: 'rss',
-      url: 'https://www.reddit.com/r/gtaonline/search.rss?q=flair_name%3A%22:WU1::WU2::WU3::WU4::WU5::WU6:%22&sort=new&restrict_sr=1'
+      url: 'https://www.reddit.com/r/gtaonline/hot.rss?limit=10'
+    },
+    {
+      type: 'json',
+      url: 'https://www.reddit.com/r/gtaonline/search.json?q=flair_name%3A%22:WU1::WU2::WU3::WU4::WU5::WU6:%22&sort=new&restrict_sr=1&limit=3'
     }
   ];
 
@@ -37,6 +37,7 @@ async function fetchWeeklyPost() {
     try {
       console.log(`[Sync] Attempting fetch from: ${src.url}`);
       const res = await fetch(src.url, {
+        signal: AbortSignal.timeout(6000),
         headers: {
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
           'Accept': src.type === 'json' ? 'application/json' : 'application/xml, text/xml, */*'
@@ -47,6 +48,7 @@ async function fetchWeeklyPost() {
         console.warn(`[Sync] HTTP ${res.status} from ${src.url}`);
         continue;
       }
+
 
       if (src.type === 'json') {
         const json = await res.json();
