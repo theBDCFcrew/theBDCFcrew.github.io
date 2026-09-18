@@ -681,15 +681,14 @@
     }
 
     const redditSearchUrl = 'https://www.reddit.com/r/gtaonline/search.json?q=flair_name%3A%22:WU1::WU2::WU3::WU4::WU5::WU6:%22&sort=new&restrict_sr=1&limit=3';
+    const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(redditSearchUrl);
 
     try {
       let res;
       try {
-        res = await fetch(redditSearchUrl, { headers: { 'Accept': 'application/json' } });
-      } catch (corsErr) {
-        // Fallback via CORS proxy if blocked by browser origin
-        const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(redditSearchUrl);
         res = await fetch(proxyUrl);
+      } catch (proxyErr) {
+        res = await fetch('./app.js');
       }
 
       if (!res.ok) throw new Error(`HTTP Error ${res.status}`);

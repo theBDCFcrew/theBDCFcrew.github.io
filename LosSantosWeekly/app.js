@@ -680,15 +680,14 @@
     }
 
     const redditSearchUrl = 'https://www.reddit.com/r/gtaonline/search.json?q=flair_name%3A%22:WU1::WU2::WU3::WU4::WU5::WU6:%22&sort=new&restrict_sr=1&limit=3';
+    const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(redditSearchUrl);
 
     try {
       let res;
       try {
-        res = await fetch(redditSearchUrl, { headers: { 'Accept': 'application/json' } });
-      } catch (corsErr) {
-        // Fallback via CORS proxy if blocked by browser origin
-        const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(redditSearchUrl);
         res = await fetch(proxyUrl);
+      } catch (proxyErr) {
+        res = await fetch('./app.js');
       }
 
       if (!res.ok) throw new Error(`HTTP Error ${res.status}`);
@@ -1446,43 +1445,58 @@ function setupThursdayGtaTrigger() {
       });
     }
 
+    function handleAdminFormSubmit(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      const dateEl = document.getElementById('lswFieldDate');
+      const titleEl = document.getElementById('lswFieldTitle');
+      const podiumEl = document.getElementById('lswFieldPodium');
+      const prizeEl = document.getElementById('lswFieldPrize');
+      const condEl = document.getElementById('lswFieldPrizeCond');
+      const taskEl = document.getElementById('lswFieldTask');
+      const rewardEl = document.getElementById('lswFieldReward');
+      const descEl = document.getElementById('lswFieldDesc');
+
+      const dateRange = dateEl ? dateEl.value.trim() : '';
+      const eventTitle = titleEl ? titleEl.value.trim() : '';
+      const podiumVehicle = podiumEl ? podiumEl.value.trim() : '';
+      const prizeVehicle = prizeEl ? prizeEl.value.trim() : '';
+      const prizeCond = condEl ? condEl.value.trim() : '';
+      const challengeTask = taskEl ? taskEl.value.trim() : '';
+      const challengeReward = rewardEl ? rewardEl.value.trim() : '';
+      const eventDesc = descEl ? descEl.value.trim() : '';
+
+      currentData = {
+        ...currentData,
+        dateRange: dateRange || currentData.dateRange,
+        eventTitle: eventTitle || currentData.eventTitle,
+        podiumVehicle: podiumVehicle || currentData.podiumVehicle,
+        prizeRide: {
+          vehicle: prizeVehicle || (currentData.prizeRide ? currentData.prizeRide.vehicle : ''),
+          condition: prizeCond || (currentData.prizeRide ? currentData.prizeRide.condition : '')
+        },
+        weeklyChallenge: {
+          task: challengeTask || (currentData.weeklyChallenge ? currentData.weeklyChallenge.task : ''),
+          reward: challengeReward || (currentData.weeklyChallenge ? currentData.weeklyChallenge.reward : '')
+        },
+        eventDesc: eventDesc || currentData.eventDesc
+      };
+
+      saveData(currentData);
+      renderAll();
+
+      const drawerBadge = document.getElementById('drawerDateRange');
+      if (drawerBadge && dateRange) drawerBadge.textContent = dateRange;
+
+      closeModal();
+      showToast(`🎉 Published! Live page updated to ${dateRange}!`, 'success');
+    }
+
     if (adminForm) {
-      adminForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const dateRange = document.getElementById('lswFieldDate').value.trim();
-        const eventTitle = document.getElementById('lswFieldTitle').value.trim();
-        const podiumVehicle = document.getElementById('lswFieldPodium').value.trim();
-        const prizeVehicle = document.getElementById('lswFieldPrize').value.trim();
-        const prizeCond = document.getElementById('lswFieldPrizeCond').value.trim();
-        const challengeTask = document.getElementById('lswFieldTask').value.trim();
-        const challengeReward = document.getElementById('lswFieldReward').value.trim();
-        const eventDesc = document.getElementById('lswFieldDesc').value.trim();
-
-        currentData = {
-          ...currentData,
-          dateRange,
-          eventTitle,
-          podiumVehicle,
-          prizeRide: {
-            vehicle: prizeVehicle,
-            condition: prizeCond
-          },
-          weeklyChallenge: {
-            task: challengeTask,
-            reward: challengeReward
-          },
-          eventDesc
-        };
-
-        saveData(currentData);
-        renderAll();
-
-        const drawerBadge = document.getElementById('drawerDateRange');
-        if (drawerBadge) drawerBadge.textContent = dateRange;
-
-        closeModal();
-        showToast(`🎉 Published! Live page updated to ${dateRange}!`, 'success');
-      });
+      adminForm.addEventListener('submit', handleAdminFormSubmit);
+    }
+    const publishBtn = document.getElementById('lswPublishBtn');
+    if (publishBtn) {
+      publishBtn.addEventListener('click', handleAdminFormSubmit);
     }
   }
 

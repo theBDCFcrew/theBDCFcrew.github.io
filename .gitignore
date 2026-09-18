@@ -7,3 +7,6 @@ Thumbs.db
 
 # Local backup archives (stored in root scratch)
 *.zip
+node_modules/
+package-lock.json
+package.json
