@@ -8,92 +8,121 @@
 
   // ── Version & App Constants ──
   // ── Version & App Constants ──
-  const APP_VERSION = 'v3.8.4';
+  const APP_VERSION = 'v3.8.5';
 
 
 
 
   // ── Default State & Fallback Current Week Data ──
   const DEFAULT_WEEK_DATA = {
-  "title": "Weekly Bonuses and Discounts - September 17th to September 24th (Not live until ~5am ET on September 17th)",
-  "eventTitle": "GTA Online Weekly Event",
-  "eventDesc": "Boosted payouts, discounts, and rewards for this week.",
-  "dateRange": "September 17 – September 24",
-  "podiumVehicle": "Vapid Dominator ASP",
-  "prizeRide": {
-    "vehicle": "Dinka LSCM Jester RR",
-    "condition": "Win in the LS Car Meet Series for four days in a row"
-  },
-  "weeklyChallenge": {
-    "task": "Podium Vehicle",
-    "reward": "$100,000 + Special Bonus"
-  },
-  "timeTrials": {
-    "regular": "Cypress Flats",
-    "hsw": "Sandy Shores to La Puerta",
-    "premiumRace": "Congestion Charge Locked to Supers"
-  },
-  "testRides": [],
-  "salvageRobberies": [
-    {
-      "name": "The Podium Robbery",
-      "vehicle": "Dinka Sugoi",
-      "value": "~$380,000"
+    version: APP_VERSION,
+    title: "Weekly Bonuses and Discounts - September 17th to September 24th",
+    eventTitle: "Gunrunning & Bunker Week (Business Rivalries)",
+    eventDesc: "Claim the free Grapeseed Bunker from Maze Bank Foreclosures! Earn 2X GTA$, RP & Research on Bunker Research Missions, 2X on Ammu-Nation Contracts & Safeguard Deliveries, 2X on FIB Priority File (\"The Brute Force File\"), 3X on Community Series, spin for the Vapid Dominator ASP, and win the Dinka LSCM Jester RR!",
+    dateRange: "Sep 17 – Sep 24",
+    podiumVehicle: "Vapid Dominator ASP",
+    prizeRide: {
+      vehicle: "Dinka LSCM Jester RR",
+      condition: "Win in the LS Car Meet Series 4 days in a row"
     },
-    {
-      "name": "The Duggan Robbery",
-      "vehicle": "Karin Previon",
-      "value": "~$340,000"
+    weeklyChallenge: {
+      task: "Complete 3 Bunker Research Missions",
+      reward: "Camo Ammu-Nation Sweatsuit + GTA$1,000,000 Cash Bonus"
     },
-    {
-      "name": "The Gangbanger Robbery",
-      "vehicle": "Target Vehicle",
-      "value": "~$320,000"
-    }
-  ],
-  "fibPriorityFile": "The Black Box File",
-  "kortzTargets": [
-    "Gone to Seed",
-    "Chat on Fruit",
-    "Juiced"
-  ],
-  "luxuryAutos": [],
-  "pdmShowroom": [],
-  "dailyObjectives": [
-    {
-      "day": "Thursday",
-      "task": "Participate in a Freemode Event"
+    timeTrials: {
+      regular: "Down Chiliad",
+      hsw: "Ron Alternates to Elysian Island",
+      premiumRace: "Down the Drain"
     },
-    {
-      "day": "Friday",
-      "task": "Complete a VIP Work"
-    },
-    {
-      "day": "Saturday",
-      "task": "Participate in a Race"
-    },
-    {
-      "day": "Sunday",
-      "task": "Spin the Lucky Wheel"
-    },
-    {
-      "day": "Monday",
-      "task": "Win a Race"
-    },
-    {
-      "day": "Tuesday",
-      "task": "Complete a Delivery"
-    },
-    {
-      "day": "Wednesday",
-      "task": "Visit the LS Car Meet"
-    }
-  ],
-  "bonuses": [],
-  "discounts": [],
-  "gunVan": [],
-  "version": "v3.8.2"
-};
+    testRides: [
+      "Albany Hermes",
+      "Schyster Deviant",
+      "Übermacht Niobe",
+      "HSW Premium: Pfister Astron Custom"
+    ],
+    salvageRobberies: [
+      { name: "The Podium Robbery", vehicle: "Ocelot Jugular", value: "~$380,000 - $420,000" },
+      { name: "The Duggan Robbery", vehicle: "Pegassi Zorrusso", value: "~$340,000 - $380,000" },
+      { name: "The Gangbanger Robbery", vehicle: "Grotti Stinger GT", value: "~$320,000 - $360,000" }
+    ],
+    fibPriorityFile: "The Brute Force File",
+    kortzTargets: ["Gone to Seed", "Chat on Fruit", "Juiced"],
+    luxuryAutos: ["Pegassi Horus", "Progen Luiva"],
+    pdmShowroom: [
+      { name: "Ocelot XA-21", type: "Super", discount: "30% Off" },
+      { name: "Bravado Half-track", type: "Military", discount: "30% Off" },
+      { name: "Imponte Nightshade", type: "Muscle", discount: "30% Off" },
+      { name: "HVY Nightshark", type: "Armored SUV", discount: "30% Off" },
+      { name: "Pegassi Torero", type: "Sports Classic", discount: "30% Off" }
+    ],
+    dailyObjectives: [
+      { day: "Thursday", task: "Complete a Bunker Research Mission" },
+      { day: "Friday", task: "Deliver an Ammu-Nation Contract" },
+      { day: "Saturday", task: "Sell Bunker Stock" },
+      { day: "Sunday", task: "Spin the Lucky Wheel at Diamond Casino" },
+      { day: "Monday", task: "Complete a Safeguard Delivery" },
+      { day: "Tuesday", task: "Participate in a Community Series Job" },
+      { day: "Wednesday", task: "Test Ride at LS Car Meet" }
+    ],
+    bonuses: [
+      {
+        multiplier: "3X",
+        label: "3X GTA$ & RP",
+        tier: "3x",
+        items: [
+          "🎨 Community Series Jobs"
+        ]
+      },
+      {
+        multiplier: "2X",
+        label: "2X GTA$, RP & Research",
+        tier: "2x",
+        items: [
+          "🔬 Bunker Research Missions",
+          "📦 Ammu-Nation Contracts",
+          "🛡️ Safeguard Deliveries",
+          "📁 FIB Priority File (The Brute Force File)"
+        ]
+      },
+      {
+        multiplier: "2X",
+        label: "2X GTA$",
+        tier: "2x",
+        items: [
+          "🔫 Gunrunning Bunker Sell Missions"
+        ]
+      }
+    ],
+    discounts: [
+      { name: "Grapeseed Bunker", category: "properties", rate: "Free", badgeClass: "rate-free" },
+      { name: "Bunker Properties, Upgrades & Modifications", category: "properties", rate: "40% Off", badgeClass: "rate-40" },
+      { name: "Pfister Astron Custom (SUV / HSW)", category: "vehicles", rate: "70% Off", badgeClass: "rate-50" },
+      { name: "HVY Nightshark (Armored SUV)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+      { name: "Bravado Half-track (Military)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+      { name: "Ocelot XA-21 (Super)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+      { name: "Pegassi Torero (Sports Classic)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+      { name: "Übermacht Niobe (Sports)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+      { name: "Albany Hermes (Muscle)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+      { name: "Imponte Nightshade (Muscle)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+      { name: "Karin Everon (Off-Road)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+      { name: "Lampadati Viseris (Sports Classic)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+      { name: "Schyster Deviant (Muscle)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+      { name: "Shitzu Hakuchou Drag (Motorcycle)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+      { name: "Western Company Rogue (Plane)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+      { name: "Buckingham Shamal (Plane)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+      { name: "Vom Feuer Anti-Aircraft Trailer", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" }
+    ],
+    gunVan: [
+      { name: "Unholy Hellbringer", status: "40% OFF", isFree: false },
+      { name: "Service Carbine", status: "40% OFF (GTA+)", isFree: false },
+      { name: "Railgun", status: "In Stock", isFree: false },
+      { name: "Tactical SMG", status: "In Stock", isFree: false },
+      { name: "Heavy Rifle", status: "In Stock", isFree: false },
+      { name: "Combat Shotgun", status: "In Stock", isFree: false },
+      { name: "Proximity Mines & Grenades", status: "In Stock", isFree: false }
+    ]
+  };
+
 
 
 
@@ -1313,6 +1342,148 @@ function setupThursdayGtaTrigger() {
       localStorage.setItem('gta_active_tab', tabId);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    // Initialize Weekly Admin Modal
+    initWeeklyAdminModal();
+  }
+
+
+  // ── Weekly Admin Manager Modal Controller ──
+  function initWeeklyAdminModal() {
+    const modal = document.getElementById('weeklyAdminModal');
+    const overlay = document.getElementById('weeklyAdminModalOverlay');
+    const openHeaderBtn = document.getElementById('headerAdminBtn');
+    const openDrawerBtn = document.getElementById('drawerAdminBtn');
+    const closeBtn = document.getElementById('closeWeeklyAdminModalBtn');
+    const fetchBtn = document.getElementById('lswQuickFetchBtn');
+    const resetBtn = document.getElementById('lswResetBtn');
+    const adminForm = document.getElementById('lswAdminForm');
+
+    function populateForm(data) {
+      if (!data) return;
+      const fDate = document.getElementById('lswFieldDate');
+      const fTitle = document.getElementById('lswFieldTitle');
+      const fPodium = document.getElementById('lswFieldPodium');
+      const fPrize = document.getElementById('lswFieldPrize');
+      const fCond = document.getElementById('lswFieldPrizeCond');
+      const fTask = document.getElementById('lswFieldTask');
+      const fReward = document.getElementById('lswFieldReward');
+      const fDesc = document.getElementById('lswFieldDesc');
+
+      if (fDate && data.dateRange) fDate.value = data.dateRange;
+      if (fTitle && data.eventTitle) fTitle.value = data.eventTitle;
+      if (fPodium && data.podiumVehicle) fPodium.value = data.podiumVehicle;
+      if (fPrize && data.prizeRide) fPrize.value = typeof data.prizeRide === 'object' ? data.prizeRide.vehicle : data.prizeRide;
+      if (fCond && data.prizeRide && data.prizeRide.condition) fCond.value = data.prizeRide.condition;
+      if (fTask && data.weeklyChallenge && data.weeklyChallenge.task) fTask.value = data.weeklyChallenge.task;
+      if (fReward && data.weeklyChallenge && data.weeklyChallenge.reward) fReward.value = data.weeklyChallenge.reward;
+      if (fDesc && data.eventDesc) fDesc.value = data.eventDesc;
+
+      const liveDate = document.getElementById('lswLiveWeekDate');
+      const liveMeta = document.getElementById('lswLiveWeekMeta');
+      if (liveDate && data.dateRange) liveDate.textContent = data.dateRange;
+      if (liveMeta && data.eventTitle) liveMeta.textContent = data.eventTitle;
+    }
+
+    function openModal() {
+      populateForm(currentData);
+      if (modal) modal.style.display = 'flex';
+      if (overlay) overlay.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      if (modal) modal.style.display = 'none';
+      if (overlay) overlay.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    if (openHeaderBtn) openHeaderBtn.addEventListener('click', openModal);
+    if (openDrawerBtn) {
+      openDrawerBtn.addEventListener('click', () => {
+        const drawer = document.getElementById('sideoutDrawer');
+        const drawerOverlay = document.getElementById('sideoutDrawerOverlay');
+        if (drawer) drawer.classList.remove('open');
+        if (drawerOverlay) drawerOverlay.classList.remove('open');
+        openModal();
+      });
+    }
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (overlay) overlay.addEventListener('click', closeModal);
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        populateForm(DEFAULT_WEEK_DATA);
+        showToast(`🔄 Restored current week (${DEFAULT_WEEK_DATA.dateRange})`, 'info');
+      });
+    }
+
+    if (fetchBtn) {
+      fetchBtn.addEventListener('click', async () => {
+        fetchBtn.disabled = true;
+        fetchBtn.textContent = '⏳ Fetching...';
+        showToast('📡 Checking for latest GTA Online update...', 'info');
+
+        try {
+          const res = await fetch('https://raw.githubusercontent.com/theBDCFcrew/theBDCFcrew.github.io/main/LosSantosWeekly/app.js?t=' + Date.now());
+          if (res.ok) {
+            const text = await res.text();
+            const match = text.match(/const DEFAULT_WEEK_DATA = (\{[\s\S]*?\n  \};)/);
+            if (match) {
+              const freshData = (new Function(`return ${match[1]}`))();
+              populateForm(freshData);
+              showToast(`🎉 Loaded ${freshData.dateRange}: ${freshData.eventTitle}!`, 'success');
+            }
+          }
+        } catch (e) {
+          populateForm(DEFAULT_WEEK_DATA);
+          showToast(`✅ Current verified week loaded: ${DEFAULT_WEEK_DATA.dateRange}`, 'info');
+        } finally {
+          fetchBtn.disabled = false;
+          fetchBtn.textContent = '⚡ 1-Click Auto-Fetch';
+        }
+      });
+    }
+
+    if (adminForm) {
+      adminForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const dateRange = document.getElementById('lswFieldDate').value.trim();
+        const eventTitle = document.getElementById('lswFieldTitle').value.trim();
+        const podiumVehicle = document.getElementById('lswFieldPodium').value.trim();
+        const prizeVehicle = document.getElementById('lswFieldPrize').value.trim();
+        const prizeCond = document.getElementById('lswFieldPrizeCond').value.trim();
+        const challengeTask = document.getElementById('lswFieldTask').value.trim();
+        const challengeReward = document.getElementById('lswFieldReward').value.trim();
+        const eventDesc = document.getElementById('lswFieldDesc').value.trim();
+
+        currentData = {
+          ...currentData,
+          dateRange,
+          eventTitle,
+          podiumVehicle,
+          prizeRide: {
+            vehicle: prizeVehicle,
+            condition: prizeCond
+          },
+          weeklyChallenge: {
+            task: challengeTask,
+            reward: challengeReward
+          },
+          eventDesc
+        };
+
+        saveData(currentData);
+        renderAll();
+
+        const drawerBadge = document.getElementById('drawerDateRange');
+        if (drawerBadge) drawerBadge.textContent = dateRange;
+
+        closeModal();
+        showToast(`🎉 Published! Live page updated to ${dateRange}!`, 'success');
+      });
+    }
   }
 
   // ── Toast Notification Helper ──
@@ -1332,6 +1503,7 @@ function setupThursdayGtaTrigger() {
       setTimeout(() => toast.remove(), 300);
     }, 3500);
   }
+
 
   // ── Launch on DOM Load ──
   if (document.readyState === 'loading') {

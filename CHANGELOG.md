@@ -1,5 +1,14 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.8.5] - 2026-09-18
+- **September 17 Update**: Live week activated for September 17.
+- **Bunker Boosts**: Added 2X rewards on Gunrunning contracts.
+- **Vapid Dominator ASP**: Added to Lucky Wheel podium.
+- **Dinka Jester RR**: Added as LS Car Meet prize.
+- **Admin Menu Overhaul**: Added 1-click sync and visual editor.
+- **Cross-Page Admin**: Added weekly manager directly to Los Santos.
+- **Cache Refresh**: Upgraded service worker cache to v3.8.5.
+
 ## [3.8.4] - 2026-09-14
 - **September 10 Update**: Activated live week update for Sep 10 – Sep 17.
 - **Biker Business Boosts**: Added 2X payouts on MC businesses and street sales.

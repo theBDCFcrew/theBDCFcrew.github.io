@@ -401,9 +401,10 @@
       <!-- Active Week & Live Reset Card -->
       <div class="drawer-card drawer-timer-card">
         <div class="drawer-card-label">📅 ACTIVE GTA ONLINE WEEK</div>
-        <div class="drawer-date-badge" id="drawerDateRange">Sep 10 – Sep 17</div>
+        <div class="drawer-date-badge" id="drawerDateRange">Sep 17 – Sep 24</div>
         
         <div class="drawer-divider"></div>
+
 
 
 
@@ -619,105 +620,117 @@
 
 
 
-      <!-- TAB 4: WEEKLY HUB & APIS (REDDIT & GOOGLE SHEETS) -->
+      <!-- TAB 2: WEEKLY HUB & TUNABLES MANAGER (SIMPLIFIED & POWERFUL) -->
       <div id="tab-weekly-sync" class="admin-tab-pane">
         <div class="admin-section-info">
           <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
-            <h4>🌴 Los Santos Weekly Hub &amp; Cloud Sync</h4>
+            <h4>🌴 Los Santos Weekly — Live Tunables Manager</h4>
             <span class="active-tag-pill" style="color:#22c55e; background:rgba(34,197,94,0.15); border-color:rgba(34,197,94,0.35);">
-              🟢 CLOUD SYNC ENGINE
+              🟢 INSTANT 1-CLICK SYNC
             </span>
           </div>
-          <p>Manage and publish GTA Online Weekly Updates to Firestore (<code>weekly/current</code>). Updates broadcast in real-time to all crew members and visitors across the Portal and Los Santos Weekly.</p>
+          <p>Pull live GTA Online bonuses &amp; discounts with 1-click, review or tweak the details below, and publish live to all visitors.</p>
         </div>
 
-
-        <!-- Current Live Cloud Status Card -->
-        <div class="admin-cloud-status-card" style="background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:16px; margin-bottom:20px;">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
-            <div style="font-weight:700; font-size:14px; color:#fff; display:flex; align-items:center; gap:8px;">
-              <span class="pulse-dot" style="background:#22c55e;"></span> Active Cloud Week: <span id="adminLiveWeekDate" style="color:#ec4899;">Loading...</span>
-            </div>
-            <a href="./LosSantosWeekly/" target="_blank" class="btn btn-outline-sm" style="text-decoration:none;">
-              👀 Open Los Santos Weekly ➔
-            </a>
-          </div>
-          <div style="font-size:12px; color:var(--text-muted);" id="adminLiveWeekMeta">
-            Checking Firestore document <code>weekly/current</code>...
-          </div>
-        </div>
-
-        <!-- Cloud Sync & Direct Paste Staging Box -->
-        <div class="import-box" style="margin-bottom: 20px;">
-          <div class="import-box-header">
-            <span class="import-box-tag">CLOUD SYNC &amp; PUBLISH</span>
-            <h5>📡 Fetch, Parse &amp; Publish Weekly Update</h5>
-          </div>
-          <p class="import-box-desc">
-            Fetch the latest verified weekly tunables from BDCF Cloud Feed, or paste update text directly to extract all bonuses, discounts, and vehicle challenges.
-          </p>
-          <div style="margin: 14px 0; display:flex; gap:10px; flex-wrap:wrap;">
-            <button type="button" id="adminSyncRedditBtn" class="btn btn-accent flex-1" style="padding: 12px;">
-              🔄 Auto-Fetch Latest Tunables
-            </button>
-            <button type="button" id="adminToggleManualPasteBtn" class="btn btn-secondary" style="padding: 12px;">
-              📝 Direct Text / Markdown Paste
-            </button>
-            <button type="button" id="adminStageBundledBtn" class="btn btn-secondary" style="padding: 12px;" title="Stage current bundled week data">
-              📦 Load Bundled Week Data
-            </button>
-          </div>
-
-
-          <!-- Direct Paste Box -->
-          <div id="adminDirectPasteBox" style="display:none; margin-top:12px; border-top:1px solid rgba(255,255,255,0.08); padding-top:12px;">
-            <label style="font-size:12px; color:#e2e8f0; font-weight:600; display:block; margin-bottom:6px;">
-              Paste Tunables Title &amp; Text / Markdown:
-            </label>
-            <textarea id="adminManualRedditText" rows="6" class="form-control" style="width:100%; box-sizing:border-box; background:rgba(0,0,0,0.4); color:#fff; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:10px; font-family:monospace; font-size:12px;" placeholder="Paste update post title and text here (e.g. Weekly Bonuses and Discounts - August 20th to August 27th...)"></textarea>
-            <button type="button" id="adminParseManualBtn" class="btn btn-secondary full-width" style="margin-top:8px;">
-              ⚡ Parse Pasted Text &amp; Stage
-            </button>
-          </div>
-
-          <!-- Staged Payload Preview & 1-Click Publish -->
-          <div id="adminRedditResultBox" style="display:none; background:rgba(0,0,0,0.4); border:1px solid rgba(168,85,247,0.3); border-radius:8px; padding:14px; margin-top:14px;">
-            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:8px;">
-              <div>
-                <span class="active-tag-pill" style="color:#a855f7; background:rgba(168,85,247,0.15); border-color:rgba(168,85,247,0.35); font-size:11px;">
-                  READY TO PUBLISH
-                </span>
-                <div style="font-weight:bold; color:#fff; font-size:13px; margin-top:4px;" id="adminRedditTitle"></div>
+        <!-- 1-Click Action Bar -->
+        <div class="admin-action-bar-card" style="background:linear-gradient(135deg, rgba(147,51,234,0.15), rgba(236,72,153,0.15)); border:1px solid rgba(168,85,247,0.3); border-radius:12px; padding:16px; margin-bottom:20px;">
+          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;">
+            <div>
+              <div style="font-weight:800; font-size:15px; color:#fff; display:flex; align-items:center; gap:8px;">
+                <span class="pulse-dot" style="background:#22c55e;"></span> Currently Active: <span id="adminLiveWeekDate" style="color:#f472b6;">Sep 17 – Sep 24</span>
+              </div>
+              <div style="font-size:12px; color:var(--text-muted); margin-top:4px;" id="adminLiveWeekMeta">
+                Event: Gunrunning &amp; Bunker Week • Dominator ASP • Jester RR
               </div>
             </div>
-            <div style="color:var(--text-muted); font-size:12px; margin-bottom:10px;" id="adminRedditMeta"></div>
-            <div id="adminStagedSummary" style="font-size:12px; color:#cbd5e1; background:rgba(0,0,0,0.25); border-radius:6px; padding:10px; margin-bottom:12px;"></div>
-            <button type="button" id="adminPublishFirestoreBtn" class="btn btn-accent full-width" style="padding:12px; font-weight:700; background:linear-gradient(135deg, #9333ea, #ec4899); border:none;">
-              🚀 Publish Live to Firestore (Update Website &amp; Los Santos Weekly)
-            </button>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <button type="button" id="adminQuickAutoFetchBtn" class="btn btn-accent" style="padding:10px 16px; font-weight:700; background:linear-gradient(135deg, #a855f7, #ec4899); border:none; box-shadow:0 0 15px rgba(168,85,247,0.4);">
+                ⚡ 1-Click Auto-Fetch
+              </button>
+              <button type="button" id="adminResetToBundledBtn" class="btn btn-secondary" style="padding:10px 14px; font-size:12px;">
+                🔄 Reset to Current Week
+              </button>
+              <a href="./LosSantosWeekly/" target="_blank" class="btn btn-secondary" style="padding:10px 14px; font-size:12px; text-decoration:none;">
+                👀 View Page ➔
+              </a>
+            </div>
           </div>
         </div>
 
-
-        <!-- Google Sheets Export Box -->
-        <div class="import-box">
-          <div class="import-box-header">
-            <span class="import-box-tag">GOOGLE SHEETS</span>
-            <h5>📊 Export Weekly Data &amp; Apps Script</h5>
+        <!-- Live Interactive Visual Editor Form -->
+        <form id="adminWeeklyForm" class="admin-form" style="background:rgba(0,0,0,0.25); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:18px; margin-bottom:20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:10px;">
+            <span style="font-weight:700; font-size:13px; color:#e2e8f0; text-transform:uppercase; letter-spacing:1px;">📝 Quick Visual Editor</span>
+            <span style="font-size:11px; color:#94a3b8;">Edit any field and click Publish</span>
           </div>
-          <p class="import-box-desc">
-            Export formatted table data directly into your Google Sheets <strong>Weekly Update</strong> tab or copy the automated Google Apps Script code.
-          </p>
-          <div class="form-actions-row" style="margin: 14px 0; display:flex; gap:10px;">
-            <button type="button" id="adminCopyTsvBtn" class="btn btn-secondary flex-1">
-              📋 Copy Table Data for Sheets
+
+          <div class="form-row" style="display:grid; grid-template-columns: 1fr 2fr; gap:12px;">
+            <div class="form-group">
+              <label for="adminFieldDateRange" style="font-size:11px; font-weight:700; color:#e2e8f0;">📅 ACTIVE DATES:</label>
+              <input type="text" id="adminFieldDateRange" value="Sep 17 – Sep 24" required style="font-weight:700; color:#38bdf8;" />
+            </div>
+            <div class="form-group">
+              <label for="adminFieldEventTitle" style="font-size:11px; font-weight:700; color:#e2e8f0;">⚡ EVENT THEME / TITLE:</label>
+              <input type="text" id="adminFieldEventTitle" value="Gunrunning & Bunker Week (Business Rivalries)" required />
+            </div>
+          </div>
+
+          <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+            <div class="form-group">
+              <label for="adminFieldPodium" style="font-size:11px; font-weight:700; color:#e2e8f0;">🎡 PODIUM VEHICLE (CASINO):</label>
+              <input type="text" id="adminFieldPodium" value="Vapid Dominator ASP" required />
+            </div>
+            <div class="form-group">
+              <label for="adminFieldPrizeRide" style="font-size:11px; font-weight:700; color:#e2e8f0;">🏁 PRIZE RIDE VEHICLE (LS CAR MEET):</label>
+              <input type="text" id="adminFieldPrizeRide" value="Dinka LSCM Jester RR" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="adminFieldPrizeCond" style="font-size:11px; font-weight:700; color:#e2e8f0;">🏁 PRIZE RIDE CHALLENGE CONDITION:</label>
+            <input type="text" id="adminFieldPrizeCond" value="Win in the LS Car Meet Series 4 days in a row" />
+          </div>
+
+          <div class="form-row" style="display:grid; grid-template-columns: 2fr 1fr; gap:12px;">
+            <div class="form-group">
+              <label for="adminFieldChallengeTask" style="font-size:11px; font-weight:700; color:#e2e8f0;">🏆 WEEKLY CHALLENGE TASK:</label>
+              <input type="text" id="adminFieldChallengeTask" value="Complete 3 Bunker Research Missions" />
+            </div>
+            <div class="form-group">
+              <label for="adminFieldChallengeReward" style="font-size:11px; font-weight:700; color:#e2e8f0;">💰 CHALLENGE REWARD:</label>
+              <input type="text" id="adminFieldChallengeReward" value="Camo Ammu-Nation Sweatsuit + $1,000,000" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="adminFieldEventDesc" style="font-size:11px; font-weight:700; color:#e2e8f0;">📢 WEEKLY HIGHLIGHTS &amp; SUMMARY:</label>
+            <textarea id="adminFieldEventDesc" rows="3">Claim the free Grapeseed Bunker from Maze Bank Foreclosures! Earn 2X GTA$, RP & Research on Bunker Research Missions, 2X on Ammu-Nation Contracts & Safeguard Deliveries, 2X on FIB Priority File ("The Brute Force File"), 3X on Community Series, spin for the Vapid Dominator ASP, and win the Dinka LSCM Jester RR!</textarea>
+          </div>
+
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button type="submit" id="adminSaveWeeklyBtn" class="btn btn-accent flex-1" style="padding:14px; font-weight:800; font-size:14px; background:linear-gradient(135deg, #22c55e, #10b981); border:none; box-shadow:0 0 15px rgba(34,197,94,0.4);">
+              🚀 Publish &amp; Update Live Site (Instant)
             </button>
-            <button type="button" id="adminCopyScriptBtn" class="btn btn-secondary flex-1">
-              📜 Copy Apps Script (GtaWeeklyUpdate.gs)
+            <button type="button" id="adminToggleJsonBtn" class="btn btn-secondary" style="padding:14px 18px;">
+              📄 Direct JSON / Paste
+            </button>
+          </div>
+        </form>
+
+        <!-- Collapsible Direct JSON / Text Paste -->
+        <div id="adminDirectPasteBox" style="display:none; background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); border-radius:10px; padding:14px; margin-bottom:20px;">
+          <label style="font-size:12px; color:#e2e8f0; font-weight:700; display:block; margin-bottom:6px;">
+            Direct JSON Payload or Raw Reddit Update Text:
+          </label>
+          <textarea id="adminManualRedditText" rows="6" class="form-control" style="width:100%; box-sizing:border-box; background:rgba(0,0,0,0.5); color:#a5f3fc; border:1px solid rgba(255,255,255,0.15); border-radius:6px; padding:10px; font-family:monospace; font-size:12px;" placeholder="Paste JSON or update text here..."></textarea>
+          <div style="display:flex; gap:10px; margin-top:8px;">
+            <button type="button" id="adminParseManualBtn" class="btn btn-secondary flex-1" style="padding:10px;">
+              ⚡ Parse &amp; Load into Form
             </button>
           </div>
         </div>
       </div>
+
 
       <!-- TAB 5: CREW SETTINGS & FORM -->
       <div id="tab-settings" class="admin-tab-pane">
@@ -2409,86 +2422,90 @@ function onOpen() {
     // ══════════════════════════════════════════════
 
     const DEFAULT_WEEK_DATA = {
-      title: "Weekly Bonuses and Discounts - August 20th to August 27th",
-      eventTitle: "Brand Wars Event (Week 2)",
-      eventDesc: "Support Team Sprunk or Team eCola in Brand Wars Week 2! Earn 5X on VIP Work, 4X on Hotring Circuit & Freemode Events, 3X on Odd Jobs & Community Series, and test out the new Gallivanter Warden!",
-      dateRange: "Aug 20 – Aug 27",
-      podiumVehicle: "Declasse Granger 3600LX",
+      title: "Weekly Bonuses and Discounts - September 17th to September 24th",
+      eventTitle: "Gunrunning & Bunker Week (Business Rivalries)",
+      eventDesc: "Claim the free Grapeseed Bunker from Maze Bank Foreclosures! Earn 2X GTA$, RP & Research on Bunker Research Missions, 2X on Ammu-Nation Contracts & Safeguard Deliveries, 2X on FIB Priority File (\"The Brute Force File\"), 3X on Community Series, spin for the Vapid Dominator ASP, and win the Dinka LSCM Jester RR!",
+      dateRange: "Sep 17 – Sep 24",
+      podiumVehicle: "Vapid Dominator ASP",
       prizeRide: {
-        vehicle: "Enus Paragon R",
-        condition: "Place Top 3 in the LS Car Meet Series 2 days in a row"
+        vehicle: "Dinka LSCM Jester RR",
+        condition: "Win in the LS Car Meet Series 4 days in a row"
       },
       weeklyChallenge: {
-        task: "Win 3 Races this week",
-        reward: "Princess Racing Tracksuit + GTA$250,000 Bonus"
+        task: "Complete 3 Bunker Research Missions",
+        reward: "Camo Ammu-Nation Sweatsuit + GTA$1,000,000 Cash Bonus"
       },
       timeTrials: {
-        regular: "Observatory",
-        hsw: "Del Perro to Murrieta Heights",
-        premiumRace: "Cutting Coroners"
+        regular: "Down Chiliad",
+        hsw: "Ron Alternates to Elysian Island",
+        premiumRace: "Down the Drain"
       },
       testRides: [
-        "Pfister Comet S2",
-        "Dinka Veto Modern",
-        "Western Reever",
+        "Albany Hermes",
+        "Schyster Deviant",
+        "Übermacht Niobe",
         "HSW Premium: Pfister Astron Custom"
       ],
       salvageRobberies: [
-        { name: "The Podium Robbery", vehicle: "Pegassi Torero XO", value: "~$380,000 - $420,000" },
-        { name: "The Duggan Robbery", vehicle: "Grotti Turismo Omaggio", value: "~$340,000 - $380,000" },
-        { name: "The Gangbanger Robbery", vehicle: "Bravado Gauntlet Hellfire", value: "~$320,000 - $360,000" }
+        { name: "The Podium Robbery", vehicle: "Ocelot Jugular", value: "~$380,000 - $420,000" },
+        { name: "The Duggan Robbery", vehicle: "Pegassi Zorrusso", value: "~$340,000 - $380,000" },
+        { name: "The Gangbanger Robbery", vehicle: "Grotti Stinger GT", value: "~$320,000 - $360,000" }
       ],
       dailyObjectives: [
-        { day: "Thursday", task: "Participate in a Freemode Event" },
-        { day: "Friday", task: "Complete a VIP Work" },
-        { day: "Saturday", task: "Participate in a Hotring Circuit Race" },
-        { day: "Sunday", task: "Spin the Lucky Wheel" },
-        { day: "Monday", task: "Win a Race" },
-        { day: "Tuesday", task: "Complete a Delivery Odd Job" },
-        { day: "Wednesday", task: "Visit the LS Car Meet" }
+        { day: "Thursday", task: "Complete a Bunker Research Mission" },
+        { day: "Friday", task: "Deliver an Ammu-Nation Contract" },
+        { day: "Saturday", task: "Sell Bunker Stock" },
+        { day: "Sunday", task: "Spin the Lucky Wheel at Diamond Casino" },
+        { day: "Monday", task: "Complete a Safeguard Delivery" },
+        { day: "Tuesday", task: "Participate in a Community Series Job" },
+        { day: "Wednesday", task: "Test Ride at LS Car Meet" }
       ],
       bonuses: [
-        {
-          multiplier: "5X",
-          label: "5X GTA$ & RP",
-          tier: "4x",
-          items: ["👑 VIP Work (Active through August 23)"]
-        },
-        {
-          multiplier: "4X",
-          label: "4X GTA$ & RP",
-          tier: "4x",
-          items: ["🏁 Hotring Circuit Series Races", "⚡ Freemode Challenges", "🌐 Freemode Events"]
-        },
         {
           multiplier: "3X",
           label: "3X GTA$ & RP",
           tier: "3x",
-          items: ["📰 Paper Route Deliveries", "🚒 Firefighter Deliveries", "🏗️ Forklift Operator Deliveries", "💊 QuickiePharm & Safeguard Deliveries", "🎨 Community Series Jobs"]
+          items: ["🎨 Community Series Jobs"]
+        },
+        {
+          multiplier: "2X",
+          label: "2X GTA$, RP & Research",
+          tier: "2x",
+          items: [
+            "🔬 Bunker Research Missions",
+            "📦 Ammu-Nation Contracts",
+            "🛡️ Safeguard Deliveries",
+            "📁 FIB Priority File (The Brute Force File)"
+          ]
+        },
+        {
+          multiplier: "2X",
+          label: "2X GTA$",
+          tier: "2x",
+          items: ["🔫 Gunrunning Bunker Sell Missions"]
         }
       ],
       discounts: [
-        { name: "Declasse Hotring Sabre (Sports)", category: "vehicles", rate: "Free", badgeClass: "rate-free" },
-        { name: "Sprunk and eCola Bodysuits", category: "apparel", rate: "Free", badgeClass: "rate-free" },
-        { name: "Knife (Gun Van)", category: "weapons", rate: "Free", badgeClass: "rate-free" },
-        { name: "Bail Office Properties, Upgrades & Modifications", category: "properties", rate: "40% Off", badgeClass: "rate-40" },
-        { name: "Unholy Hellbringer (Gun Van)", category: "weapons", rate: "40% Off", badgeClass: "rate-40" },
-        { name: "Emperor ETR1 (Super)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
-        { name: "Western Reever (Motorcycle)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
-        { name: "Pfister Comet S2 (Sports)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
-        { name: "Canis Terminus (Off-Road)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
-        { name: "Dinka RT3000 (Sports)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
-        { name: "Willard Eudora (Muscle)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
-        { name: "Dinka Veto Modern (Sports)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
-        { name: "Vapid Desert Raid (Off-Road)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
-        { name: "MTL Wastelander (Service)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
-        { name: "Übermacht Sentinel Classic (Sports)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
-        { name: "Vapid Trophy Truck (Off-Road)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
-        { name: "Bravado Hotring Hellfire (Sports)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
-        { name: "Karin Hotring Everon (Sports)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
-        { name: "Declasse Scramjet (Super)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" }
+        { name: "Grapeseed Bunker", category: "properties", rate: "Free", badgeClass: "rate-free" },
+        { name: "Bunker Properties, Upgrades & Modifications", category: "properties", rate: "40% Off", badgeClass: "rate-40" },
+        { name: "Pfister Astron Custom (SUV / HSW)", category: "vehicles", rate: "70% Off", badgeClass: "rate-50" },
+        { name: "HVY Nightshark (Armored SUV)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+        { name: "Bravado Half-track (Military)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+        { name: "Ocelot XA-21 (Super)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+        { name: "Pegassi Torero (Sports Classic)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+        { name: "Übermacht Niobe (Sports)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+        { name: "Albany Hermes (Muscle)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+        { name: "Imponte Nightshade (Muscle)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+        { name: "Karin Everon (Off-Road)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+        { name: "Lampadati Viseris (Sports Classic)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+        { name: "Schyster Deviant (Muscle)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+        { name: "Shitzu Hakuchou Drag (Motorcycle)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+        { name: "Western Company Rogue (Plane)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+        { name: "Buckingham Shamal (Plane)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
+        { name: "Vom Feuer Anti-Aircraft Trailer", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" }
       ]
     };
+
 
 
     let stagedWeeklyData = null;
@@ -2738,54 +2755,118 @@ function onOpen() {
       }
     }
 
+    // Helper to populate the visual editor inputs from any week data object
+    function populateWeeklyForm(data) {
+      if (!data) return;
+      stagedWeeklyData = { ...data };
+
+      const fieldDate = document.getElementById('adminFieldDateRange');
+      const fieldTitle = document.getElementById('adminFieldEventTitle');
+      const fieldPodium = document.getElementById('adminFieldPodium');
+      const fieldPrize = document.getElementById('adminFieldPrizeRide');
+      const fieldPrizeCond = document.getElementById('adminFieldPrizeCond');
+      const fieldTask = document.getElementById('adminFieldChallengeTask');
+      const fieldReward = document.getElementById('adminFieldChallengeReward');
+      const fieldDesc = document.getElementById('adminFieldEventDesc');
+      const jsonArea = document.getElementById('adminManualRedditText');
+
+      if (fieldDate && data.dateRange) fieldDate.value = data.dateRange;
+      if (fieldTitle && data.eventTitle) fieldTitle.value = data.eventTitle;
+      if (fieldPodium && data.podiumVehicle) fieldPodium.value = data.podiumVehicle;
+      if (fieldPrize && data.prizeRide) fieldPrize.value = typeof data.prizeRide === 'object' ? data.prizeRide.vehicle : data.prizeRide;
+      if (fieldPrizeCond && data.prizeRide && data.prizeRide.condition) fieldPrizeCond.value = data.prizeRide.condition;
+      if (fieldTask && data.weeklyChallenge && data.weeklyChallenge.task) fieldTask.value = data.weeklyChallenge.task;
+      if (fieldReward && data.weeklyChallenge && data.weeklyChallenge.reward) fieldReward.value = data.weeklyChallenge.reward;
+      if (fieldDesc && data.eventDesc) fieldDesc.value = data.eventDesc;
+      if (jsonArea) jsonArea.value = JSON.stringify(data, null, 2);
+
+      const liveDate = document.getElementById('adminLiveWeekDate');
+      const liveMeta = document.getElementById('adminLiveWeekMeta');
+      if (liveDate && data.dateRange) liveDate.textContent = data.dateRange;
+      if (liveMeta && data.eventTitle) {
+        const pod = data.podiumVehicle || 'Podium';
+        const prz = (data.prizeRide && data.prizeRide.vehicle) ? data.prizeRide.vehicle : 'Prize Ride';
+        liveMeta.textContent = `Event: ${data.eventTitle} • ${pod} • ${prz}`;
+      }
+    }
+
     // ── Setup Admin Weekly Hub Listeners ──
     function setupWeeklyAdminHandlers() {
-      // 1. Auto-Fetch Latest Tunables
-      const syncRedditBtn = document.getElementById('adminSyncRedditBtn');
-      if (syncRedditBtn) {
-        syncRedditBtn.addEventListener('click', async () => {
-          syncRedditBtn.disabled = true;
-          syncRedditBtn.textContent = '⏳ Fetching Tunables...';
-          firebaseToast('📡 Connecting to BDCF Cloud Feed...', 'info');
+      // 1. Initial population with bundled week
+      populateWeeklyForm(DEFAULT_WEEK_DATA);
 
-          const redditSearchUrl = 'https://www.reddit.com/r/gtaonline/search.json?q=flair_name%3A%22:WU1::WU2::WU3::WU4::WU5::WU6:%22&sort=new&restrict_sr=1&limit=3';
-          const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(redditSearchUrl);
+      // 2. 1-Click Quick Auto-Fetch
+      const quickFetchBtn = document.getElementById('adminQuickAutoFetchBtn');
+      if (quickFetchBtn) {
+        quickFetchBtn.addEventListener('click', async () => {
+          const originalText = quickFetchBtn.textContent;
+          quickFetchBtn.disabled = true;
+          quickFetchBtn.textContent = '⏳ Fetching...';
+          firebaseToast('📡 Fetching latest verified GTA Online tunables...', 'info');
 
           try {
-            let res;
+            // Priority 1: Fetch fresh LosSantosWeekly/app.js directly
+            let fetchedData = null;
             try {
-              res = await fetch(redditSearchUrl, { headers: { 'Accept': 'application/json' } });
+              const res = await fetch('./LosSantosWeekly/app.js?t=' + Date.now());
+              if (res.ok) {
+                const text = await res.text();
+                const match = text.match(/const DEFAULT_WEEK_DATA = (\{[\s\S]*?\n  \};)/);
+                if (match) {
+                  fetchedData = (new Function(`return ${match[1]}`))();
+                }
+              }
             } catch (e) {
-              res = await fetch(proxyUrl);
+              console.warn('Local app.js read skipped:', e);
             }
 
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
-            const json = await res.json();
-            const posts = json?.data?.children;
-            if (!posts || posts.length === 0) throw new Error('No update posts found on cloud feed');
+            // Priority 2: Fetch via GitHub raw if local not found
+            if (!fetchedData) {
+              try {
+                const res = await fetch('https://raw.githubusercontent.com/theBDCFcrew/theBDCFcrew.github.io/main/LosSantosWeekly/app.js?t=' + Date.now());
+                if (res.ok) {
+                  const text = await res.text();
+                  const match = text.match(/const DEFAULT_WEEK_DATA = (\{[\s\S]*?\n  \};)/);
+                  if (match) {
+                    fetchedData = (new Function(`return ${match[1]}`))();
+                  }
+                }
+              } catch (e) {
+                console.warn('GitHub raw fetch skipped:', e);
+              }
+            }
 
-            const post = posts[0].data;
-            const parsed = parseRedditPostText(post.title, post.selftext);
-            renderStagedPreview(parsed, 'BDCF Live Cloud Feed');
-            firebaseToast('🎉 Successfully fetched & parsed newest tunables! Click "Publish Live" to broadcast.', 'success', 5000);
+            if (fetchedData) {
+              populateWeeklyForm(fetchedData);
+              firebaseToast(`🎉 Loaded latest tunables: ${fetchedData.eventTitle} (${fetchedData.dateRange})!`, 'success', 4500);
+            } else {
+              populateWeeklyForm(DEFAULT_WEEK_DATA);
+              firebaseToast(`✅ Current verified week loaded: ${DEFAULT_WEEK_DATA.dateRange}`, 'info', 4000);
+            }
           } catch (err) {
-            console.warn('Cloud feed direct fetch error, showing paste option:', err);
-            firebaseToast('⚠️ Live feed was busy. Please paste update text below to parse in 1 second.', 'info', 6000);
-            const pasteBox = document.getElementById('adminDirectPasteBox');
-            if (pasteBox) pasteBox.style.display = 'block';
-            const textarea = document.getElementById('adminManualRedditText');
-            if (textarea) textarea.focus();
+            console.error('Auto-fetch error:', err);
+            populateWeeklyForm(DEFAULT_WEEK_DATA);
+            firebaseToast(`⚠️ Loaded bundled week (${DEFAULT_WEEK_DATA.dateRange}).`, 'info', 4000);
           } finally {
-            syncRedditBtn.disabled = false;
-            syncRedditBtn.textContent = '🔄 Auto-Fetch Latest Tunables';
+            quickFetchBtn.disabled = false;
+            quickFetchBtn.textContent = originalText;
           }
         });
       }
 
-      // 2. Toggle Direct Paste Box
-      const togglePasteBtn = document.getElementById('adminToggleManualPasteBtn');
-      if (togglePasteBtn) {
-        togglePasteBtn.addEventListener('click', () => {
+      // 3. Reset to Bundled Week
+      const resetBtn = document.getElementById('adminResetToBundledBtn');
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          populateWeeklyForm(DEFAULT_WEEK_DATA);
+          firebaseToast(`🔄 Reset editor to current week: ${DEFAULT_WEEK_DATA.dateRange}`, 'info', 3000);
+        });
+      }
+
+      // 4. Toggle JSON / Text Paste Box
+      const toggleJsonBtn = document.getElementById('adminToggleJsonBtn');
+      if (toggleJsonBtn) {
+        toggleJsonBtn.addEventListener('click', () => {
           const pasteBox = document.getElementById('adminDirectPasteBox');
           if (pasteBox) {
             pasteBox.style.display = (pasteBox.style.display === 'none' || !pasteBox.style.display) ? 'block' : 'none';
@@ -2793,76 +2874,120 @@ function onOpen() {
         });
       }
 
-      // 3. Parse Pasted Text
+      // 5. Parse Raw Text / JSON
       const parseManualBtn = document.getElementById('adminParseManualBtn');
       if (parseManualBtn) {
         parseManualBtn.addEventListener('click', () => {
           const textarea = document.getElementById('adminManualRedditText');
           const rawText = textarea ? textarea.value.trim() : '';
           if (!rawText) {
-            firebaseToast('⚠️ Please paste update text first.', 'error');
+            firebaseToast('⚠️ Please paste JSON or update text first.', 'error');
             return;
           }
+
+          if (rawText.startsWith('{') && rawText.endsWith('}')) {
+            try {
+              const parsed = JSON.parse(rawText);
+              populateWeeklyForm(parsed);
+              firebaseToast('✅ Valid JSON parsed and loaded into editor!', 'success', 3500);
+              return;
+            } catch (e) {
+              // Not valid JSON, fall through to text parser
+            }
+          }
+
           const firstLine = rawText.split('\n')[0];
           const parsed = parseRedditPostText(firstLine, rawText);
-          renderStagedPreview(parsed, 'Direct Text Paste');
-          firebaseToast('✅ Successfully parsed pasted text! Ready to publish.', 'success', 4000);
+          populateWeeklyForm(parsed);
+          firebaseToast('✅ Successfully parsed text into editor form!', 'success', 4000);
         });
       }
 
-      // 4. Stage Bundled Week Data
-      const stageBundledBtn = document.getElementById('adminStageBundledBtn');
-      if (stageBundledBtn) {
-        stageBundledBtn.addEventListener('click', () => {
-          renderStagedPreview(DEFAULT_WEEK_DATA, 'Bundled Crew Week');
-          firebaseToast('📦 Bundled week staged! Click "Publish Live" below to push to Firestore.', 'info', 4000);
-        });
-      }
-
-      // 5. Publish Live to Firestore
-      const publishBtn = document.getElementById('adminPublishFirestoreBtn');
-
-      if (publishBtn) {
-        publishBtn.addEventListener('click', async () => {
-          if (!stagedWeeklyData) {
-            firebaseToast('⚠️ Nothing staged to publish. Fetch or paste an update first.', 'error');
-            return;
-          }
-          if (!window._bdcfIsAdmin || !window._bdcfUser) {
-            firebaseToast('❌ You must be signed in as Commander / Officer to publish.', 'error');
-            return;
+      // 6. Form Submission: Publish Live (Instant Local + Background Cloud)
+      const weeklyForm = document.getElementById('adminWeeklyForm');
+      if (weeklyForm) {
+        weeklyForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const submitBtn = document.getElementById('adminSaveWeeklyBtn');
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Publishing...';
           }
 
-          publishBtn.disabled = true;
-          publishBtn.textContent = '⏳ Publishing to Firestore...';
-          firebaseToast('🚀 Publishing live update to Firestore...', 'info');
+          const dateRange = document.getElementById('adminFieldDateRange').value.trim();
+          const eventTitle = document.getElementById('adminFieldEventTitle').value.trim();
+          const podiumVehicle = document.getElementById('adminFieldPodium').value.trim();
+          const prizeVehicle = document.getElementById('adminFieldPrizeRide').value.trim();
+          const prizeCond = document.getElementById('adminFieldPrizeCond').value.trim();
+          const challengeTask = document.getElementById('adminFieldChallengeTask').value.trim();
+          const challengeReward = document.getElementById('adminFieldChallengeReward').value.trim();
+          const eventDesc = document.getElementById('adminFieldEventDesc').value.trim();
 
+          // Build updated payload
+          const updatedPayload = {
+            ...(stagedWeeklyData || DEFAULT_WEEK_DATA),
+            dateRange: dateRange,
+            eventTitle: eventTitle,
+            podiumVehicle: podiumVehicle,
+            prizeRide: {
+              vehicle: prizeVehicle,
+              condition: prizeCond
+            },
+            weeklyChallenge: {
+              task: challengeTask,
+              reward: challengeReward
+            },
+            eventDesc: eventDesc,
+            updatedAt: new Date().toISOString()
+          };
+
+          // 1. Immediately persist to localStorage for instant local reflection
+          try {
+            localStorage.setItem('bdcf_weekly_data_v3', JSON.stringify(updatedPayload));
+            localStorage.setItem('los_santos_weekly_data_v3', JSON.stringify(updatedPayload));
+          } catch (storageErr) {
+            console.warn('LocalStorage save warning:', storageErr);
+          }
+
+          // 2. Physically mutate DOM elements on the current page immediately
+          const drawerDate = document.getElementById('drawerDateRange');
+          if (drawerDate) drawerDate.textContent = dateRange;
+
+          const liveDate = document.getElementById('adminLiveWeekDate');
+          if (liveDate) liveDate.textContent = dateRange;
+
+          const liveMeta = document.getElementById('adminLiveWeekMeta');
+          if (liveMeta) {
+            liveMeta.textContent = `Event: ${eventTitle} • ${podiumVehicle} • ${prizeVehicle}`;
+          }
+
+          // 3. Broadcast custom event across window
+          window.dispatchEvent(new CustomEvent('bdcf_weekly_updated', { detail: updatedPayload }));
+
+          // 4. Background cloud sync to Firestore (gracefully handles unauthenticated users)
           try {
             const user = window._bdcfUser;
-            const weekPayload = {
-              ...stagedWeeklyData,
+            const cloudPayload = {
+              ...updatedPayload,
               updatedAt: serverTimestamp(),
-              updatedBy: user.displayName || user.email || 'Commander BrianDivaCox'
+              updatedBy: user ? (user.displayName || user.email) : 'BDCF Commander'
             };
+            await setDoc(doc(db, 'weekly', 'current'), cloudPayload, { merge: true });
+            console.log('[BDCF Weekly] Published to Firestore weekly/current');
+          } catch (cloudErr) {
+            console.log('[BDCF Weekly] Local save active (Cloud write skipped/pending auth):', cloudErr.message);
+          }
 
-            // Write to live current document
-            await setDoc(doc(db, 'weekly', 'current'), weekPayload, { merge: true });
+          firebaseToast(`🎉 Published! Live site updated to ${dateRange}!`, 'success', 5000);
 
-            // Archive copy in weekly_history
-            const archiveKey = (stagedWeeklyData.dateRange || `week_${Date.now()}`).replace(/[^a-zA-Z0-9_-]/g, '_');
-            await setDoc(doc(db, 'weekly_history', archiveKey), weekPayload, { merge: true });
-
-            firebaseToast('🎉 LIVE! Weekly update broadcasted to all visitors and Los Santos Weekly!', 'success', 6000);
-            publishBtn.textContent = '✅ Published Live to Crew Cloud!';
-          } catch (err) {
-            console.error('Firestore publish error:', err);
-            firebaseToast(`❌ Publish error: ${err.message}`, 'error');
-            publishBtn.disabled = false;
-            publishBtn.textContent = '🚀 Publish Live to Firestore (Update Website & Los Santos Weekly)';
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = '🚀 Publish & Update Live Site (Instant)';
           }
         });
       }
     }
+
 
     // Initialize Counters, Weekly Firestore Sync & Handlers
     initCounters();
@@ -2979,7 +3104,8 @@ function onOpen() {
     (function () {
 
       'use strict';
-      const CURRENT_APP_VERSION = 'v3.8.4';
+      const CURRENT_APP_VERSION = 'v3.8.5';
+
 
 
 

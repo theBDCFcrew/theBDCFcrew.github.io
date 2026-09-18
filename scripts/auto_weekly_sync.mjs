@@ -283,7 +283,9 @@ function applyUpdateToCodebase(data) {
         endIdx++;
       }
       if (braceCount === 0) {
-        const replacement = `const DEFAULT_WEEK_DATA = ${JSON.stringify({ ...data, version: 'v3.8.2' }, null, 2)}`;
+        const verMatch = content.match(/const APP_VERSION = ['"]([^'"]+)['"]/);
+        const currentVersion = verMatch ? verMatch[1] : 'v3.8.5';
+        const replacement = `const DEFAULT_WEEK_DATA = ${JSON.stringify({ ...data, version: currentVersion }, null, 2)}`;
         content = content.substring(0, startIdx) + replacement + content.substring(endIdx);
         fs.writeFileSync(filePath, content, 'utf8');
         console.log(`✓ Updated ${path.basename(filePath)}`);
@@ -291,6 +293,7 @@ function applyUpdateToCodebase(data) {
     }
   }
 }
+
 
 // ── Main Execution Entry ──
 async function run() {
