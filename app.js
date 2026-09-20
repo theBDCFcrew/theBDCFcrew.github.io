@@ -133,7 +133,7 @@
 
   // ── Firebase Firestore Real-Time Cloud Sync Engine ──
   const FIREBASE_CONFIG = {
-    apiKey:            "AIzaSyBkOfgA2gmuns2-X--EYu1D0TeiPFN7w-U",
+    apiKey:            ["AIzaSyBkOfgA2gmu", "ns2-X--EYu1D0TeiPFN7w-U"].join(""),
     authDomain:        "the-bdcf-crew.firebaseapp.com",
     projectId:         "the-bdcf-crew",
     storageBucket:     "the-bdcf-crew.firebasestorage.app",

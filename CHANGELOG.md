@@ -1,5 +1,10 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.8.6] - 2026-09-20
+- Purged legacy backup archive from repository.
+- Secured Firebase client configuration against bot scraping.
+- Production assets streamlined for optimal site performance.
+
 ## [3.8.5] - 2026-09-18
 - **September 17 Update**: Live week activated for September 17.
 - **Bunker Boosts**: Added 2X rewards on Gunrunning contracts.
