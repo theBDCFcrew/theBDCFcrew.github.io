@@ -15,113 +15,85 @@
 
   // ── Default State & Fallback Current Week Data ──
   const DEFAULT_WEEK_DATA = {
-    version: APP_VERSION,
-    title: "Weekly Bonuses and Discounts - September 17th to September 24th",
-    eventTitle: "Gunrunning & Bunker Week (Business Rivalries)",
-    eventDesc: "Claim the free Grapeseed Bunker from Maze Bank Foreclosures! Earn 2X GTA$, RP & Research on Bunker Research Missions, 2X on Ammu-Nation Contracts & Safeguard Deliveries, 2X on FIB Priority File (\"The Brute Force File\"), 3X on Community Series, spin for the Vapid Dominator ASP, and win the Dinka LSCM Jester RR!",
-    dateRange: "Sep 17 – Sep 24",
-    podiumVehicle: "Vapid Dominator ASP",
-    prizeRide: {
-      vehicle: "Dinka LSCM Jester RR",
-      condition: "Win in the LS Car Meet Series 4 days in a row"
+  "title": "Weekly Bonuses and Discounts - September 24th to October 1st (Not live until ~5am ET on September 24th)",
+  "eventTitle": "GTA Online Weekly Event",
+  "eventDesc": "Boosted payouts, discounts, and rewards for this week.",
+  "dateRange": "September 24 – October 1",
+  "podiumVehicle": "Ocelot Penetrator",
+  "prizeRide": {
+    "vehicle": "Pegassi Zorrusso",
+    "condition": "Win in the LS Car Meet Series for 4 days in a row"
+  },
+  "weeklyChallenge": {
+    "task": "Podium Vehicle",
+    "reward": "$100,000 + Special Bonus"
+  },
+  "timeTrials": {
+    "regular": "Up-n-Atom",
+    "hsw": "Textile City to Stab City",
+    "premiumRace": "Across the Wilderness - Off-Road"
+  },
+  "testRides": [],
+  "salvageRobberies": [
+    {
+      "name": "The Podium Robbery",
+      "vehicle": "Karin Boor",
+      "value": "~$380,000"
     },
-    weeklyChallenge: {
-      task: "Complete 3 Bunker Research Missions",
-      reward: "Camo Ammu-Nation Sweatsuit + GTA$1,000,000 Cash Bonus"
+    {
+      "name": "The Duggan Robbery",
+      "vehicle": "Target Vehicle",
+      "value": "~$340,000"
     },
-    timeTrials: {
-      regular: "Down Chiliad",
-      hsw: "Ron Alternates to Elysian Island",
-      premiumRace: "Down the Drain"
+    {
+      "name": "The Gangbanger Robbery",
+      "vehicle": "Mammoth Patriot Mil-Spec",
+      "value": "~$320,000"
+    }
+  ],
+  "fibPriorityFile": "The Black Box File",
+  "kortzTargets": [
+    "Gone to Seed",
+    "Chat on Fruit",
+    "Juiced"
+  ],
+  "luxuryAutos": [],
+  "pdmShowroom": [],
+  "dailyObjectives": [
+    {
+      "day": "Thursday",
+      "task": "Participate in a Freemode Event"
     },
-    testRides: [
-      "Albany Hermes",
-      "Schyster Deviant",
-      "Übermacht Niobe",
-      "HSW Premium: Pfister Astron Custom"
-    ],
-    salvageRobberies: [
-      { name: "The Podium Robbery", vehicle: "Ocelot Jugular", value: "~$380,000 - $420,000" },
-      { name: "The Duggan Robbery", vehicle: "Pegassi Zorrusso", value: "~$340,000 - $380,000" },
-      { name: "The Gangbanger Robbery", vehicle: "Grotti Stinger GT", value: "~$320,000 - $360,000" }
-    ],
-    fibPriorityFile: "The Brute Force File",
-    kortzTargets: ["Gone to Seed", "Chat on Fruit", "Juiced"],
-    luxuryAutos: ["Pegassi Horus", "Progen Luiva"],
-    pdmShowroom: [
-      { name: "Ocelot XA-21", type: "Super", discount: "30% Off" },
-      { name: "Bravado Half-track", type: "Military", discount: "30% Off" },
-      { name: "Imponte Nightshade", type: "Muscle", discount: "30% Off" },
-      { name: "HVY Nightshark", type: "Armored SUV", discount: "30% Off" },
-      { name: "Pegassi Torero", type: "Sports Classic", discount: "30% Off" }
-    ],
-    dailyObjectives: [
-      { day: "Thursday", task: "Complete a Bunker Research Mission" },
-      { day: "Friday", task: "Deliver an Ammu-Nation Contract" },
-      { day: "Saturday", task: "Sell Bunker Stock" },
-      { day: "Sunday", task: "Spin the Lucky Wheel at Diamond Casino" },
-      { day: "Monday", task: "Complete a Safeguard Delivery" },
-      { day: "Tuesday", task: "Participate in a Community Series Job" },
-      { day: "Wednesday", task: "Test Ride at LS Car Meet" }
-    ],
-    bonuses: [
-      {
-        multiplier: "3X",
-        label: "3X GTA$ & RP",
-        tier: "3x",
-        items: [
-          "🎨 Community Series Jobs"
-        ]
-      },
-      {
-        multiplier: "2X",
-        label: "2X GTA$, RP & Research",
-        tier: "2x",
-        items: [
-          "🔬 Bunker Research Missions",
-          "📦 Ammu-Nation Contracts",
-          "🛡️ Safeguard Deliveries",
-          "📁 FIB Priority File (The Brute Force File)"
-        ]
-      },
-      {
-        multiplier: "2X",
-        label: "2X GTA$",
-        tier: "2x",
-        items: [
-          "🔫 Gunrunning Bunker Sell Missions"
-        ]
-      }
-    ],
-    discounts: [
-      { name: "Grapeseed Bunker", category: "properties", rate: "Free", badgeClass: "rate-free" },
-      { name: "Bunker Properties, Upgrades & Modifications", category: "properties", rate: "40% Off", badgeClass: "rate-40" },
-      { name: "Pfister Astron Custom (SUV / HSW)", category: "vehicles", rate: "70% Off", badgeClass: "rate-50" },
-      { name: "HVY Nightshark (Armored SUV)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Bravado Half-track (Military)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Ocelot XA-21 (Super)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Pegassi Torero (Sports Classic)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Übermacht Niobe (Sports)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Albany Hermes (Muscle)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Imponte Nightshade (Muscle)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Karin Everon (Off-Road)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Lampadati Viseris (Sports Classic)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Schyster Deviant (Muscle)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Shitzu Hakuchou Drag (Motorcycle)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Western Company Rogue (Plane)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Buckingham Shamal (Plane)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-      { name: "Vom Feuer Anti-Aircraft Trailer", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" }
-    ],
-    gunVan: [
-      { name: "Unholy Hellbringer", status: "40% OFF", isFree: false },
-      { name: "Service Carbine", status: "40% OFF (GTA+)", isFree: false },
-      { name: "Railgun", status: "In Stock", isFree: false },
-      { name: "Tactical SMG", status: "In Stock", isFree: false },
-      { name: "Heavy Rifle", status: "In Stock", isFree: false },
-      { name: "Combat Shotgun", status: "In Stock", isFree: false },
-      { name: "Proximity Mines & Grenades", status: "In Stock", isFree: false }
-    ]
-  };
+    {
+      "day": "Friday",
+      "task": "Complete a VIP Work"
+    },
+    {
+      "day": "Saturday",
+      "task": "Participate in a Race"
+    },
+    {
+      "day": "Sunday",
+      "task": "Spin the Lucky Wheel"
+    },
+    {
+      "day": "Monday",
+      "task": "Win a Race"
+    },
+    {
+      "day": "Tuesday",
+      "task": "Complete a Delivery"
+    },
+    {
+      "day": "Wednesday",
+      "task": "Visit the LS Car Meet"
+    }
+  ],
+  "bonuses": [],
+  "discounts": [],
+  "gunVan": [],
+  "version": "v3.8.5"
+};
 
 
 
