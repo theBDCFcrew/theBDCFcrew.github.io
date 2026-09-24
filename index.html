@@ -637,10 +637,10 @@
           <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;">
             <div>
               <div style="font-weight:800; font-size:15px; color:#fff; display:flex; align-items:center; gap:8px;">
-                <span class="pulse-dot" style="background:#22c55e;"></span> Currently Active: <span id="adminLiveWeekDate" style="color:#f472b6;">Sep 17 – Sep 24</span>
+                <span class="pulse-dot" style="background:#22c55e;"></span> Currently Active: <span id="adminLiveWeekDate" style="color:#f472b6;">Sep 24 – Oct 1</span>
               </div>
               <div style="font-size:12px; color:var(--text-muted); margin-top:4px;" id="adminLiveWeekMeta">
-                Event: Gunrunning &amp; Bunker Week • Dominator ASP • Jester RR
+                Event: Nightclubs Week • Ocelot Penetrator • Pegassi Zorrusso
               </div>
             </div>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
@@ -667,22 +667,22 @@
           <div class="form-row" style="display:grid; grid-template-columns: 1fr 2fr; gap:12px;">
             <div class="form-group">
               <label for="adminFieldDateRange" style="font-size:11px; font-weight:700; color:#e2e8f0;">📅 ACTIVE DATES:</label>
-              <input type="text" id="adminFieldDateRange" value="Sep 17 – Sep 24" required style="font-weight:700; color:#38bdf8;" />
+              <input type="text" id="adminFieldDateRange" value="Sep 24 – Oct 1" required style="font-weight:700; color:#38bdf8;" />
             </div>
             <div class="form-group">
               <label for="adminFieldEventTitle" style="font-size:11px; font-weight:700; color:#e2e8f0;">⚡ EVENT THEME / TITLE:</label>
-              <input type="text" id="adminFieldEventTitle" value="Gunrunning & Bunker Week (Business Rivalries)" required />
+              <input type="text" id="adminFieldEventTitle" value="Nightclubs Week: Free Elysian Island Nightclub &amp; 2X Goods" required />
             </div>
           </div>
 
           <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
             <div class="form-group">
               <label for="adminFieldPodium" style="font-size:11px; font-weight:700; color:#e2e8f0;">🎡 PODIUM VEHICLE (CASINO):</label>
-              <input type="text" id="adminFieldPodium" value="Vapid Dominator ASP" required />
+              <input type="text" id="adminFieldPodium" value="Ocelot Penetrator ($880,000)" required />
             </div>
             <div class="form-group">
               <label for="adminFieldPrizeRide" style="font-size:11px; font-weight:700; color:#e2e8f0;">🏁 PRIZE RIDE VEHICLE (LS CAR MEET):</label>
-              <input type="text" id="adminFieldPrizeRide" value="Dinka LSCM Jester RR" required />
+              <input type="text" id="adminFieldPrizeRide" value="Pegassi Zorrusso" required />
             </div>
           </div>
 
@@ -694,17 +694,17 @@
           <div class="form-row" style="display:grid; grid-template-columns: 2fr 1fr; gap:12px;">
             <div class="form-group">
               <label for="adminFieldChallengeTask" style="font-size:11px; font-weight:700; color:#e2e8f0;">🏆 WEEKLY CHALLENGE TASK:</label>
-              <input type="text" id="adminFieldChallengeTask" value="Complete 3 Bunker Research Missions" />
+              <input type="text" id="adminFieldChallengeTask" value="Sell GTA$1,000,000 across all businesses" />
             </div>
             <div class="form-group">
               <label for="adminFieldChallengeReward" style="font-size:11px; font-weight:700; color:#e2e8f0;">💰 CHALLENGE REWARD:</label>
-              <input type="text" id="adminFieldChallengeReward" value="Camo Ammu-Nation Sweatsuit + $1,000,000" />
+              <input type="text" id="adminFieldChallengeReward" value="Retro Fruit Tracksuit + GTA$1,000,000" />
             </div>
           </div>
 
           <div class="form-group">
             <label for="adminFieldEventDesc" style="font-size:11px; font-weight:700; color:#e2e8f0;">📢 WEEKLY HIGHLIGHTS &amp; SUMMARY:</label>
-            <textarea id="adminFieldEventDesc" rows="3">Claim the free Grapeseed Bunker from Maze Bank Foreclosures! Earn 2X GTA$, RP & Research on Bunker Research Missions, 2X on Ammu-Nation Contracts & Safeguard Deliveries, 2X on FIB Priority File ("The Brute Force File"), 3X on Community Series, spin for the Vapid Dominator ASP, and win the Dinka LSCM Jester RR!</textarea>
+            <textarea id="adminFieldEventDesc" rows="3">Claim the 100% Free Elysian Island Nightclub from Maze Bank Foreclosures! Earn 2X GTA$ &amp; RP on Nightclub Sell Missions &amp; Yohan Goods Sourcing, 2X on FIB Priority File ("The Fine Art File"), 3X on Community Series, spin for the Ocelot Penetrator ($880,000), win the Pegassi Zorrusso, and claim the Penaud La Coureuse with Free HSW Upgrade!</textarea>
           </div>
 
           <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
@@ -2422,23 +2422,23 @@ function onOpen() {
     // ══════════════════════════════════════════════
 
     const DEFAULT_WEEK_DATA = {
-      title: "Weekly Bonuses and Discounts - September 17th to September 24th",
-      eventTitle: "Gunrunning & Bunker Week (Business Rivalries)",
-      eventDesc: "Claim the free Grapeseed Bunker from Maze Bank Foreclosures! Earn 2X GTA$, RP & Research on Bunker Research Missions, 2X on Ammu-Nation Contracts & Safeguard Deliveries, 2X on FIB Priority File (\"The Brute Force File\"), 3X on Community Series, spin for the Vapid Dominator ASP, and win the Dinka LSCM Jester RR!",
-      dateRange: "Sep 17 – Sep 24",
-      podiumVehicle: "Vapid Dominator ASP",
+      title: "Weekly Bonuses and Discounts - September 24th to October 1st",
+      eventTitle: "Nightclubs Week: Free Elysian Island Nightclub & 2X Goods",
+      eventDesc: "Claim the 100% Free Elysian Island Nightclub from Maze Bank Foreclosures! Earn 2X GTA$ & RP on Nightclub Sell Missions & Yohan Goods Sourcing, 2X on FIB Priority File (\"The Fine Art File\"), 3X on Community Series, spin for the Ocelot Penetrator ($880,000), win the Pegassi Zorrusso, and claim the Penaud La Coureuse with Free HSW Upgrade!",
+      dateRange: "Sep 24 – Oct 1",
+      podiumVehicle: "Ocelot Penetrator ($880,000)",
       prizeRide: {
-        vehicle: "Dinka LSCM Jester RR",
+        vehicle: "Pegassi Zorrusso",
         condition: "Win in the LS Car Meet Series 4 days in a row"
       },
       weeklyChallenge: {
-        task: "Complete 3 Bunker Research Missions",
-        reward: "Camo Ammu-Nation Sweatsuit + GTA$1,000,000 Cash Bonus"
+        task: "Sell GTA$1,000,000 across all businesses",
+        reward: "Retro Fruit Tracksuit + GTA$1,000,000"
       },
       timeTrials: {
-        regular: "Down Chiliad",
-        hsw: "Ron Alternates to Elysian Island",
-        premiumRace: "Down the Drain"
+        regular: "Calafia Way",
+        hsw: "Textile City to Stab City",
+        premiumRace: "Muscle In"
       },
       testRides: [
         "Albany Hermes",
