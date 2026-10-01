@@ -8,7 +8,7 @@
 
   // ── Version & App Constants ──
   // ── Version & App Constants ──
-  const APP_VERSION = 'v3.8.6';
+  const APP_VERSION = 'v3.8.7';
 
   // ── Default State & Fallback Current Week Data ──
   const DEFAULT_WEEK_DATA = {
@@ -553,20 +553,59 @@
   }
 
   // ── Smart Thursday Reset & Auto-Refresher Engine ──
-  function getLatestPassedResetTime() {
-    const now = new Date();
-    const currentDay = now.getUTCDay(); // 0 is Sun, 4 is Thu
-    let daysSinceThu = (currentDay - 4 + 7) % 7;
-    
-    const lastThu = new Date(now.getTime());
-    lastThu.setUTCDate(now.getUTCDate() - daysSinceThu);
-    lastThu.setUTCHours(10, 0, 0, 0);
+  function getPacificResetTarget(type = 'next', now = new Date()) {
+    const formatter = new Intl.DateTimeFormat("en-US", {
+      timeZone: "America/Los_Angeles",
+      weekday: "short",
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      hour12: false
+    });
+    const parts = formatter.formatToParts(now);
+    const p = {};
+    for (const item of parts) p[item.type] = item.value;
+    const dayMap = { "Sun": 0, "Mon": 1, "Tue": 2, "Wed": 3, "Thu": 4, "Fri": 5, "Sat": 6 };
+    const currentDay = dayMap[p.weekday];
+    const curHour = parseInt(p.hour, 10);
+    const curMinute = parseInt(p.minute, 10);
+    const curSecond = parseInt(p.second, 10);
+    const curYear = parseInt(p.year, 10);
+    const curMonth = parseInt(p.month, 10);
+    const curDay = parseInt(p.day, 10);
 
-    // If today is Thursday but before 10:00 UTC, the latest reset was LAST Thursday
-    if (daysSinceThu === 0 && now.getUTCHours() < 10) {
-      lastThu.setUTCDate(lastThu.getUTCDate() - 7);
+    let offsetDays = 0;
+    if (type === 'next') {
+      offsetDays = (4 - currentDay + 7) % 7;
+      if (offsetDays === 0 && (curHour > 0 || curMinute > 0 || curSecond > 0)) {
+        offsetDays = 7;
+      }
+    } else {
+      offsetDays = -((currentDay - 4 + 7) % 7);
     }
-    return lastThu.getTime();
+
+    const targetCalDate = new Date(Date.UTC(curYear, curMonth - 1, curDay + offsetDays, 12, 0, 0));
+    const tY = targetCalDate.getUTCFullYear();
+    const tM = targetCalDate.getUTCMonth() + 1;
+    const tD = targetCalDate.getUTCDate();
+
+    for (const h of [7, 8]) {
+      const candidate = new Date(Date.UTC(tY, tM - 1, tD, h, 0, 0));
+      const cParts = formatter.formatToParts(candidate);
+      const cp = {};
+      for (const item of cParts) cp[item.type] = item.value;
+      if (parseInt(cp.day, 10) === tD && parseInt(cp.hour, 10) === 0 && parseInt(cp.minute, 10) === 0) {
+        return candidate;
+      }
+    }
+    return new Date(Date.UTC(tY, tM - 1, tD, 7, 0, 0));
+  }
+
+  function getLatestPassedResetTime() {
+    return getPacificResetTarget('latest').getTime();
   }
 
   async function checkAndAutoRefresh() {
@@ -574,7 +613,7 @@
     const lastAutoRefresh = localStorage.getItem('gta_last_reset_checked');
 
     if (!lastAutoRefresh || Number(lastAutoRefresh) < latestResetTime) {
-      console.log('[AutoRefresher] Thursday reset has passed! Checking for new weekly updates...');
+      console.log('[AutoRefresher] Thursday reset (12:00 AM PT) has passed! Checking for new weekly updates...');
       localStorage.setItem('gta_last_reset_checked', String(Date.now()));
       
       // Auto-trigger sync in background
@@ -588,21 +627,7 @@
 
     function calculateNextReset() {
       const now = new Date();
-      const next = new Date(now.getTime());
-      
-      // GTA Online weekly reset is every Thursday at 10:00 UTC (5:00 AM ET)
-      const currentDay = now.getUTCDay(); // 0 is Sun, 4 is Thu
-      let daysUntilThu = (4 - currentDay + 7) % 7;
-
-      if (daysUntilThu === 0) {
-        // Today is Thursday: check if past 10:00 UTC
-        if (now.getUTCHours() >= 10) {
-          daysUntilThu = 7;
-        }
-      }
-
-      next.setUTCDate(now.getUTCDate() + daysUntilThu);
-      next.setUTCHours(10, 0, 0, 0);
+      const next = getPacificResetTarget('next', now);
 
       const diff = next.getTime() - now.getTime();
       if (diff <= 0) return { d: 0, h: 0, m: 0, s: 0, isResetNow: true };

@@ -410,7 +410,7 @@
 
         <div class="drawer-card-label">⏳ NEXT RESET COUNTDOWN</div>
         <div class="drawer-countdown" id="drawerCountdownTimer">--d --h --m --s</div>
-        <div class="drawer-reset-hint">Resets every Thursday at 5:00 AM ET / 10:00 AM UTC</div>
+        <div class="drawer-reset-hint">Resets every Thursday at 12:00 AM PT (Midnight)</div>
       </div>
 
       <!-- Live Crew Presence Card -->
@@ -3059,17 +3059,53 @@ function onOpen() {
         });
       }
 
-      // Live Reset Countdown for Drawer
+      // Live Reset Countdown for Drawer (12:00 AM PT)
       function calculateNextReset() {
         const now = new Date();
-        const next = new Date(now.getTime());
-        const currentDay = now.getUTCDay();
-        let daysUntilThu = (4 - currentDay + 7) % 7;
-        if (daysUntilThu === 0 && now.getUTCHours() >= 10) {
-          daysUntilThu = 7;
+        const formatter = new Intl.DateTimeFormat("en-US", {
+          timeZone: "America/Los_Angeles",
+          weekday: "short",
+          year: "numeric",
+          month: "numeric",
+          day: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+          second: "numeric",
+          hour12: false
+        });
+        const parts = formatter.formatToParts(now);
+        const p = {};
+        for (const item of parts) p[item.type] = item.value;
+        const dayMap = { "Sun": 0, "Mon": 1, "Tue": 2, "Wed": 3, "Thu": 4, "Fri": 5, "Sat": 6 };
+        const currentDay = dayMap[p.weekday];
+        const curHour = parseInt(p.hour, 10);
+        const curMinute = parseInt(p.minute, 10);
+        const curSecond = parseInt(p.second, 10);
+        const curYear = parseInt(p.year, 10);
+        const curMonth = parseInt(p.month, 10);
+        const curDay = parseInt(p.day, 10);
+
+        let offsetDays = (4 - currentDay + 7) % 7;
+        if (offsetDays === 0 && (curHour > 0 || curMinute > 0 || curSecond > 0)) {
+          offsetDays = 7;
         }
-        next.setUTCDate(now.getUTCDate() + daysUntilThu);
-        next.setUTCHours(10, 0, 0, 0);
+
+        const targetCalDate = new Date(Date.UTC(curYear, curMonth - 1, curDay + offsetDays, 12, 0, 0));
+        const tY = targetCalDate.getUTCFullYear();
+        const tM = targetCalDate.getUTCMonth() + 1;
+        const tD = targetCalDate.getUTCDate();
+
+        let next = new Date(Date.UTC(tY, tM - 1, tD, 7, 0, 0));
+        for (const h of [7, 8]) {
+          const candidate = new Date(Date.UTC(tY, tM - 1, tD, h, 0, 0));
+          const cParts = formatter.formatToParts(candidate);
+          const cp = {};
+          for (const item of cParts) cp[item.type] = item.value;
+          if (parseInt(cp.day, 10) === tD && parseInt(cp.hour, 10) === 0 && parseInt(cp.minute, 10) === 0) {
+            next = candidate;
+            break;
+          }
+        }
 
         const diff = next.getTime() - now.getTime();
         if (diff <= 0) return '0d 00h 00m 00s';

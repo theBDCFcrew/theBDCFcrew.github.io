@@ -26,7 +26,7 @@ Official headquarters and operations hub for **The BDCF Crew**, featuring the **
 
 ## ✨ Los Santos Weekly Features (`/LosSantosWeekly`)
 
-- ⏳ **Live Weekly Reset Countdown**: Automatic countdown to Thursday 5:00 AM ET / 10:00 AM UTC reset.
+- ⏳ **Live Weekly Reset Countdown**: Automatic countdown to Thursday 12:00 AM PT (Midnight) reset.
 - 🎯 **Weekly Tasks & Rides**: Casino Podium car, LS Car Meet Prize Ride + conditions, Weekly Challenges, Salvage Yard Robberies, and Time Trials.
 - 📅 **Daily Objectives Streak Tracker**: 7-day checklist (Thursday – Wednesday) with streak reward metrics and local progress saving.
 - 💰 **Dynamic Multipliers & Bonuses**: Real-time detection and display of all active payout multipliers (5X, 4X, 3X, 2.5X, 2X, 1.5X, and speed boosts).

@@ -1,5 +1,11 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.8.7] - 2026-10-01
+- Scheduled weekly reset countdown to 12:00 AM PT midnight.
+- Updated auto-refresh engine to detect Pacific midnight reset.
+- Adjusted GitHub Actions sync workflow for 12:00 AM PT.
+- Upgraded offline service worker cache identifier to v3.8.7.
+
 ## [3.8.6] - 2026-09-20
 - Purged legacy backup archive from repository.
 - Secured Firebase client configuration against bot scraping.
