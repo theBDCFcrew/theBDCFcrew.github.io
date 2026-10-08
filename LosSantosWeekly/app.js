@@ -12,23 +12,23 @@
 
   // ── Default State & Fallback Current Week Data ──
   const DEFAULT_WEEK_DATA = {
-  "title": "Weekly Bonuses and Discounts - October 1st to October 8th (Not live until ~5am ET on October 1st)",
+  "title": "GTA Online Weekly Update Video: October 8–14 🎃 | Mobile-Friendly Vertical Edition",
   "eventTitle": "GTA Online Weekly Event",
   "eventDesc": "Boosted payouts, discounts, and rewards for this week.",
-  "dateRange": "October 1 – October 8",
-  "podiumVehicle": "Lampadati Cinquemila",
+  "dateRange": "Active Week",
+  "podiumVehicle": "TBD",
   "prizeRide": {
-    "vehicle": "Vapid Dominator GTT",
-    "condition": "Place Top 5 in the LS Car Meet Series for three days in a row"
+    "vehicle": "TBD",
+    "condition": "Place Top in LS Car Meet Series"
   },
   "weeklyChallenge": {
-    "task": "Podium Vehicle",
+    "task": "Complete Weekly Challenge",
     "reward": "$100,000 + Special Bonus"
   },
   "timeTrials": {
-    "regular": "Maze Bank Arena",
-    "hsw": "Ron Alternates to Elysian Island",
-    "premiumRace": "Arms Race (Supers)"
+    "regular": "Active",
+    "hsw": "Active",
+    "premiumRace": "Active"
   },
   "testRides": [],
   "salvageRobberies": [
@@ -39,12 +39,12 @@
     },
     {
       "name": "The Duggan Robbery",
-      "vehicle": "Albany Fränken Stange",
+      "vehicle": "Target Vehicle",
       "value": "~$340,000"
     },
     {
       "name": "The Gangbanger Robbery",
-      "vehicle": "Bravado Buffalo EVX",
+      "vehicle": "Target Vehicle",
       "value": "~$320,000"
     }
   ],
