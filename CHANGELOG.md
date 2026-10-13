@@ -1,5 +1,14 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.8.8] - 2026-10-13
+- Activated Halloween 2026 Week 2 verified event data.
+- Added Annis Savestra lucky wheel podium vehicle.
+- Added Declasse Walton L35 car meet prize ride.
+- Enabled 3X Halloween Survivals and Slasher series bonuses.
+- Removed restrictive cloud date guard to prevent sync lockouts.
+- Added resilient multi-mirror cloud fallback pipeline for updates.
+- Upgraded offline service worker cache identifier to v3.8.8.
+
 ## [3.8.7] - 2026-10-01
 - Scheduled weekly reset countdown to 12:00 AM PT midnight.
 - Updated auto-refresh engine to detect Pacific midnight reset.

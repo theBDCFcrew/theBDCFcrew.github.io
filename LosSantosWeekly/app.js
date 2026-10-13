@@ -8,88 +8,158 @@
 
   // ── Version & App Constants ──
   // ── Version & App Constants ──
-  const APP_VERSION = 'v3.8.7';
+  const APP_VERSION = 'v3.8.8';
 
-  // ── Default State & Fallback Current Week Data ──
+  // ── Default State & Fallback Current Week Data (Halloween 2026 Week 2) ──
   const DEFAULT_WEEK_DATA = {
-  "title": "GTA Online Weekly Update Video: October 8–14 🎃 | Mobile-Friendly Vertical Edition",
-  "eventTitle": "GTA Online Weekly Event",
-  "eventDesc": "Boosted payouts, discounts, and rewards for this week.",
-  "dateRange": "Active Week",
-  "podiumVehicle": "TBD",
+  "title": "Weekly Bonuses and Discounts - Oct 8 – 15, 2026",
+  "eventTitle": "Halloween 2026 Week 2: 3X Survivals, Slasher Series & Alien Collectibles",
+  "eventDesc": "Twilight Knife T-Shirt (Free login gift through Oct 15)",
+  "dateRange": "Oct 8 – 15, 2026",
+  "podiumVehicle": "Annis Savestra ($990,000)",
   "prizeRide": {
-    "vehicle": "TBD",
-    "condition": "Place Top in LS Car Meet Series"
+    "vehicle": "Declasse Walton L35",
+    "condition": "Place Top 4 in the LS Car Meet Series for 2 days in a row"
   },
   "weeklyChallenge": {
-    "task": "Complete Weekly Challenge",
-    "reward": "$100,000 + Special Bonus"
+    "task": "Win in two Adversary Modes",
+    "reward": "Pink Skull Emissive Mask + GTA$100,000"
   },
   "timeTrials": {
     "regular": "Active",
     "hsw": "Active",
     "premiumRace": "Active"
   },
-  "testRides": [],
+  "testRides": [
+    "Declasse Vamos",
+    "Dewbauchee Seven-70",
+    "Ocelot Locust"
+  ],
   "salvageRobberies": [
     {
-      "name": "The Podium Robbery",
-      "vehicle": "Target Vehicle",
-      "value": "~$380,000"
+      "car": "Pfister Growler",
+      "claimable": false,
+      "robbery": "The McTony Robbery"
     },
     {
-      "name": "The Duggan Robbery",
-      "vehicle": "Target Vehicle",
-      "value": "~$340,000"
+      "car": "Albany Fränken Stange",
+      "claimable": false,
+      "robbery": "The Gangbanger Robbery"
     },
     {
-      "name": "The Gangbanger Robbery",
-      "vehicle": "Target Vehicle",
-      "value": "~$320,000"
+      "car": "Willard Eudora",
+      "claimable": false,
+      "robbery": "The Podium Robbery"
     }
   ],
-  "fibPriorityFile": "The Black Box File",
+  "fibPriorityFile": "The Fine Art File",
   "kortzTargets": [
     "Gone to Seed",
     "Chat on Fruit",
     "Juiced"
   ],
-  "luxuryAutos": [],
-  "pdmShowroom": [],
-  "dailyObjectives": [
+  "luxuryAutos": [
+    "Dewbauchee Rapid GT X",
+    "Übermacht Sentinel XS4"
+  ],
+  "pdmShowroom": [
+    "Albany Brigham (40% Off)",
+    "Albany Fränken Stange (40% Off)",
+    "Albany Lurcher (40% Off)",
+    "Declasse Tornado Rat Rod (40% Off)",
+    "LCC Sanctus (40% Off)"
+  ],
+  "dailyObjectives": [],
+  "bonuses": [
     {
-      "day": "Thursday",
-      "task": "Participate in a Freemode Event"
+      "hourly": "~$1,900,000/hr",
+      "id": "halloween_survivals_w2",
+      "multiplier": "3x GTA$ & RP",
+      "name": "Halloween Survivals (Ludendorff, Cayo Perico, Alien) — 6X for GTA+",
+      "rate": "$140,000 – $280,000 / Survival",
+      "solo": false,
+      "tier": "S",
+      "tip": "Survive waves of zombies and alien forces for massive payouts and unlocks.",
+      "type": "Survival"
     },
     {
-      "day": "Friday",
-      "task": "Complete a VIP Work"
+      "hourly": "~$1,250,000/hr",
+      "id": "halloween_slasher_w2",
+      "multiplier": "3x GTA$ & RP",
+      "name": "Halloween Featured Series (Slasher & Ramius Slasher)",
+      "rate": "$85,000 – $170,000 / Match",
+      "solo": false,
+      "tier": "S",
+      "tip": "Pitch-black horror battlegrounds with flashlight weapon mechanics.",
+      "type": "Adversary Series"
     },
     {
-      "day": "Saturday",
-      "task": "Participate in a Race"
+      "hourly": "~$1,100,000/hr",
+      "id": "payphone_hits_bonus",
+      "multiplier": "2x GTA$ & RP",
+      "name": "Franklin Payphone Hits (+ GTA$500,000 Bonus for 5 completions)",
+      "rate": "$90,000 – $180,000 / Hit",
+      "solo": true,
+      "tier": "A",
+      "tip": "Hit assassination bonus criteria for maximum payout plus $500k event bonus.",
+      "type": "Freemode Assassination"
     },
     {
-      "day": "Sunday",
-      "task": "Spin the Lucky Wheel"
-    },
-    {
-      "day": "Monday",
-      "task": "Win a Race"
-    },
-    {
-      "day": "Tuesday",
-      "task": "Complete a Delivery"
-    },
-    {
-      "day": "Wednesday",
-      "task": "Visit the LS Car Meet"
+      "hourly": "~$950,000/hr",
+      "id": "collectibles_ufo",
+      "multiplier": "2x GTA$ & RP",
+      "name": "Jack O'Lanterns, Ghosts Exposed & UFO Business Battles",
+      "rate": "$70,000 – $120,000 / Event",
+      "solo": true,
+      "tier": "A",
+      "tip": "Photograph ghosts across Blaine County and collect Jack O'Lantern pumpkins.",
+      "type": "Collectibles & Freemode"
     }
   ],
-  "bonuses": [],
-  "discounts": [],
-  "gunVan": [],
-  "version": "v3.8.7"
+  "discounts": [
+    {
+      "category": "Gear & Gifts",
+      "discount": "100% FREE",
+      "item": "Twilight Knife T-Shirt"
+    },
+    {
+      "category": "Gun Van",
+      "discount": "100% FREE",
+      "item": "Knife Shocker & Baseball Bat"
+    },
+    {
+      "category": "Properties",
+      "discount": "40% OFF",
+      "item": "Agency Properties, Upgrades & Modifications"
+    },
+    {
+      "category": "Halloween Vehicles",
+      "discount": "40% OFF",
+      "item": "LCC Sanctus, Albany Brigham, Albany Lurcher, Fränken Stange, Tornado Rat Rod"
+    },
+    {
+      "category": "Properties & Operations",
+      "discount": "30% OFF",
+      "item": "Benefactor Terrorbyte & Renovations"
+    },
+    {
+      "category": "Vehicles",
+      "discount": "30% OFF",
+      "item": "Annis Remus, BF Club, Bravado Greenwood, Dinka Jester RR, Emperor ETR1, Itali GTO, Hotring Everon, Tempesta, SC1"
+    }
+  ],
+  "gunVan": [
+    "Knife Shocker (100% FREE)",
+    "Baseball Bat (100% FREE)",
+    "Service Carbine (30% OFF)",
+    "Unholy Hellbringer (50% OFF for GTA+)",
+    "Up-n-Atomizer (50% OFF for GTA+)",
+    "Widowmaker (50% OFF for GTA+)",
+    "Railgun",
+    "Tactical SMG",
+    "Pipe Bombs"
+  ],
+  "version": "v3.8.8"
 };
 
 
@@ -123,9 +193,8 @@
       onSnapshot(weeklyDocRef, (snap) => {
         if (snap.exists()) {
           const cloudData = snap.data();
-          // Only accept cloud data if it matches the current active week!
-          // Never let a stale cloud record from a previous week overwrite our updated codebase.
-          if (cloudData && cloudData.dateRange === DEFAULT_WEEK_DATA.dateRange) {
+          // Accept cloud data if valid object with essential vehicle/bonuses payload
+          if (cloudData && (cloudData.podiumVehicle || cloudData.eventTitle || cloudData.dateRange)) {
             currentData = {
               ...DEFAULT_WEEK_DATA,
               ...cloudData,
@@ -133,32 +202,50 @@
             };
             saveData(currentData);
             renderAll();
-            updateLiveIndicator(true, cloudData.dateRange);
-          } else {
-            // Stale cloud week detected in Firestore — enforce current week!
-            currentData = DEFAULT_WEEK_DATA;
-            saveData(currentData);
-            renderAll();
-            updateLiveIndicator(false, DEFAULT_WEEK_DATA.dateRange);
+            updateLiveIndicator(true, cloudData.dateRange || DEFAULT_WEEK_DATA.dateRange);
           }
         }
       }, async () => {
-        // Fallback to Realtime Database
-        try {
-          const rtdbRes = await fetch('https://the-bdcf-crew-default-rtdb.firebaseio.com/weekly/current.json');
-          if (rtdbRes.ok) {
-            const rtdbData = await rtdbRes.json();
-            if (rtdbData && rtdbData.dateRange === DEFAULT_WEEK_DATA.dateRange) {
-              currentData = { ...DEFAULT_WEEK_DATA, ...rtdbData, version: APP_VERSION };
-              saveData(currentData);
-              renderAll();
-            }
-          }
-        } catch (_) {}
+        // Fallback to Realtime Database & Static repository mirrors
+        await syncFromCloudEndpoints();
       });
 
     } catch (err) {
-      console.warn('[LosSantosWeekly] Cloud sync fallback to bundled data:', err);
+      console.warn('[LosSantosWeekly] Cloud Firestore fallback to RTDB/bundled data:', err);
+      await syncFromCloudEndpoints();
+    }
+  }
+
+  async function syncFromCloudEndpoints() {
+    const cloudMirrors = [
+      'https://the-bdcf-crew-default-rtdb.firebaseio.com/weekly/current.json',
+      'https://livecounters-8eaa8-default-rtdb.firebaseio.com/labData/gtaWeekly.json',
+      './data/weekly_current.json',
+      '../data/weekly_current.json'
+    ];
+
+    for (const url of cloudMirrors) {
+      try {
+        const res = await fetch(url);
+        if (res.ok) {
+          const raw = await res.json();
+          if (raw && (raw.podiumVehicle || raw.podium_vehicle || raw.eventTitle || raw.event_name)) {
+            const mapped = {
+              ...DEFAULT_WEEK_DATA,
+              ...raw,
+              podiumVehicle: raw.podiumVehicle || raw.podium_vehicle || DEFAULT_WEEK_DATA.podiumVehicle,
+              eventTitle: raw.eventTitle || raw.event_name || DEFAULT_WEEK_DATA.eventTitle,
+              dateRange: raw.dateRange || raw.week_title || DEFAULT_WEEK_DATA.dateRange,
+              version: APP_VERSION
+            };
+            currentData = mapped;
+            saveData(currentData);
+            renderAll();
+            updateLiveIndicator(true, currentData.dateRange);
+            return;
+          }
+        }
+      } catch (_) {}
     }
   }
 
@@ -409,7 +496,7 @@
       <div class="card bonus-card bonus-${b.tier}" data-tier="${b.tier}">
         <div class="bonus-multiplier-badge">${escapeHTML(b.label)}</div>
         <ul class="bonus-item-list">
-          ${b.items.map(item => `<li>${escapeHTML(item)}</li>`).join('')}
+          ${(Array.isArray(b.items) ? b.items : (b.name ? [b.name] : [])).map(item => `<li>${escapeHTML(item)}</li>`).join('')}
         </ul>
       </div>
     `).join('');
@@ -475,7 +562,7 @@
     }
 
     container.innerHTML = items.map(d => {
-      const isFree = d.rate.toLowerCase().includes('free');
+      const isFree = String(d.rate || d.discount || '').toLowerCase().includes('free');
       let icon = '🚗';
       if (isFree) icon = '🎁';
       else if (d.category === 'properties') icon = '🏢';
@@ -673,18 +760,63 @@
       showToast('📡 Connecting to BDCF Cloud Network...', 'info');
     }
 
+    // Tier 1: Fetch freshest verified payload directly from Firebase cloud RTDB or repo static mirror
+    try {
+      const mirrors = [
+        'https://the-bdcf-crew-default-rtdb.firebaseio.com/weekly/current.json',
+        'https://livecounters-8eaa8-default-rtdb.firebaseio.com/labData/gtaWeekly.json',
+        './data/weekly_current.json',
+        '../data/weekly_current.json'
+      ];
+      for (const mUrl of mirrors) {
+        try {
+          const mRes = await fetch(mUrl);
+          if (mRes.ok) {
+            const mJson = await mRes.json();
+            if (mJson && (mJson.podiumVehicle || mJson.podium_vehicle || mJson.eventTitle || mJson.event_name)) {
+              const mapped = {
+                ...DEFAULT_WEEK_DATA,
+                ...mJson,
+                podiumVehicle: mJson.podiumVehicle || mJson.podium_vehicle || DEFAULT_WEEK_DATA.podiumVehicle,
+                eventTitle: mJson.eventTitle || mJson.event_name || DEFAULT_WEEK_DATA.eventTitle,
+                dateRange: mJson.dateRange || mJson.week_title || DEFAULT_WEEK_DATA.dateRange,
+                version: APP_VERSION
+              };
+              currentData = mapped;
+              saveData(currentData);
+              renderAll();
+              if (!isSilentAutoRefresh) {
+                showToast('✅ Latest Weekly Update synced from BDCF Cloud!', 'success');
+              }
+              const sourceMeta = document.getElementById('redditSourceMeta');
+              if (sourceMeta) {
+                sourceMeta.textContent = `BDCF Cloud Network • Verified Active Week (${currentData.dateRange})`;
+              }
+              return;
+            }
+          }
+        } catch (_) {}
+      }
+    } catch (_) {}
+
+    // Tier 2: Multi-proxy fallback for community feeds
     const redditSearchUrl = 'https://www.reddit.com/r/gtaonline/search.json?q=flair_name%3A%22:WU1::WU2::WU3::WU4::WU5::WU6:%22&sort=new&restrict_sr=1&limit=3';
-    const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(redditSearchUrl);
+    const proxyCandidates = [
+      'https://api.allorigins.win/raw?url=' + encodeURIComponent(redditSearchUrl),
+      'https://corsproxy.io/?' + encodeURIComponent(redditSearchUrl),
+      redditSearchUrl
+    ];
 
     try {
       let res;
-      try {
-        res = await fetch(proxyUrl);
-      } catch (proxyErr) {
-        res = await fetch('./app.js');
+      for (const pUrl of proxyCandidates) {
+        try {
+          res = await fetch(pUrl);
+          if (res && res.ok) break;
+        } catch (_) {}
       }
 
-      if (!res.ok) throw new Error(`HTTP Error ${res.status}`);
+      if (!res || !res.ok) throw new Error("Cloud feed currently unreachable");
       const json = await res.json();
 
       const posts = json?.data?.children;
@@ -942,8 +1074,9 @@
     });
 
     currentData.bonuses.forEach(b => {
-      b.items.forEach(item => {
-        tsv += `Bonus Multiplier\t${b.label}\t${item}\tActive\n`;
+      const itemsList = Array.isArray(b.items) ? b.items : (b.name ? [b.name] : []);
+      itemsList.forEach(item => {
+        tsv += `Bonus Multiplier\t${b.label || b.multiplier || ''}\t${item}\tActive\n`;
       });
     });
 

@@ -16,8 +16,56 @@ function cleanMarkdown(str) {
     .trim();
 }
 
-// ── Multi-Source Fetcher (Direct RSS XML, Reddit JSON, & Proxy Relays) ──
+// ── Multi-Source Fetcher (Cloud Endpoints, Direct RSS XML, & Proxy Relays) ──
 async function fetchWeeklyPost() {
+  // 1. Try Firebase Cloud RTDB first (most reliable upstream sync)
+  try {
+    const cloudUrl = 'https://livecounters-8eaa8-default-rtdb.firebaseio.com/labData/gtaWeekly.json';
+    console.log(`[Sync] Checking Firebase Cloud endpoint: ${cloudUrl}`);
+    const cRes = await fetch(cloudUrl, { signal: AbortSignal.timeout(6000) });
+    if (cRes.ok) {
+      const cData = await cRes.json();
+      if (cData && (cData.podium_vehicle || cData.podiumVehicle)) {
+        console.log(`[Sync] Successfully retrieved verified cloud intel: "${cData.week_title || cData.dateRange}"`);
+        return {
+          isStructured: true,
+          structuredData: {
+            title: `Weekly Bonuses and Discounts - ${cData.week_title || cData.dateRange}`,
+            eventTitle: cData.event_name || cData.eventTitle || "GTA Online Weekly Event",
+            eventDesc: cData.special_claim || cData.eventDesc || "Boosted payouts and bonuses this week.",
+            dateRange: cData.week_title || cData.dateRange,
+            podiumVehicle: cData.podium_vehicle || cData.podiumVehicle,
+            prizeRide: {
+              vehicle: cData.prize_ride || cData.prizeRide?.vehicle || "TBD",
+              condition: cData.prize_ride_challenge || cData.prizeRide?.condition || "Place Top in LS Car Meet Series"
+            },
+            weeklyChallenge: {
+              task: cData.weekly_challenge?.task || "Complete Weekly Challenge",
+              reward: cData.weekly_challenge?.reward || "$100,000 + Special Bonus"
+            },
+            timeTrials: {
+              regular: cData.time_trials?.regular || cData.timeTrials?.regular || "Active",
+              hsw: cData.time_trials?.hsw || cData.timeTrials?.hsw || "Active",
+              premiumRace: cData.time_trials?.premiumRace || cData.timeTrials?.premiumRace || "Active"
+            },
+            testRides: cData.test_track || cData.testRides || [],
+            salvageRobberies: cData.salvage_yard_targets || cData.salvageRobberies || [],
+            fibPriorityFile: cData.fib_priority_file || cData.fibPriorityFile || "The Fine Art File",
+            kortzTargets: cData.kortz_targets || cData.kortzTargets || ["Gone to Seed", "Chat on Fruit", "Juiced"],
+            luxuryAutos: cData.luxury_autos || cData.luxuryAutos || [],
+            pdmShowroom: cData.simeons_pdm || cData.pdmShowroom || [],
+            dailyObjectives: cData.daily_objectives || cData.dailyObjectives || [],
+            bonuses: cData.bonuses || [],
+            discounts: cData.discounts || [],
+            gunVan: cData.gun_van?.weapons || cData.gunVan || []
+          }
+        };
+      }
+    }
+  } catch (cErr) {
+    console.warn('[Sync] Cloud endpoint notice:', cErr.message);
+  }
+
   const sources = [
     {
       type: 'rss',
@@ -299,17 +347,38 @@ function applyUpdateToCodebase(data) {
 async function run() {
   console.log('🌴 [Automated Sync] Checking for live GTA Online Weekly Update...');
   const post = await fetchWeeklyPost();
-  if (!post || !post.title) {
+  if (!post) {
     console.log('[Sync] No new update post found. Codebase remains current.');
     return;
   }
 
-  const parsed = parseWeeklyPost(post.title, post.selftext);
+  let parsed;
+  if (post.isStructured && post.structuredData) {
+    parsed = post.structuredData;
+  } else if (post.title) {
+    parsed = parseWeeklyPost(post.title, post.selftext);
+  } else {
+    console.log('[Sync] Invalid post format.');
+    return;
+  }
+
   console.log(`[Sync] Detected Date Range: "${parsed.dateRange}"`);
   console.log(`[Sync] Podium Vehicle: "${parsed.podiumVehicle}"`);
   console.log(`[Sync] Prize Ride: "${parsed.prizeRide?.vehicle}"`);
 
   applyUpdateToCodebase(parsed);
+
+  // Write static data file
+  try {
+    const dataDir = path.join(rootDir, 'data');
+    if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
+    const staticJsonPath = path.join(dataDir, 'weekly_current.json');
+    fs.writeFileSync(staticJsonPath, JSON.stringify(parsed, null, 2), 'utf8');
+    console.log('✓ Generated static fallback: data/weekly_current.json');
+  } catch (err) {
+    console.warn('[Sync] Could not write static data fallback:', err.message);
+  }
+
   console.log('✓ [Automated Sync] Complete.');
 }
 

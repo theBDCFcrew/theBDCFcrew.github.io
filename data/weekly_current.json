@@ -1,0 +1,149 @@
+{
+  "title": "Weekly Bonuses and Discounts - Oct 8 – 15, 2026",
+  "eventTitle": "Halloween 2026 Week 2: 3X Survivals, Slasher Series & Alien Collectibles",
+  "eventDesc": "Twilight Knife T-Shirt (Free login gift through Oct 15)",
+  "dateRange": "Oct 8 – 15, 2026",
+  "podiumVehicle": "Annis Savestra ($990,000)",
+  "prizeRide": {
+    "vehicle": "Declasse Walton L35",
+    "condition": "Place Top 4 in the LS Car Meet Series for 2 days in a row"
+  },
+  "weeklyChallenge": {
+    "task": "Win in two Adversary Modes",
+    "reward": "Pink Skull Emissive Mask + GTA$100,000"
+  },
+  "timeTrials": {
+    "regular": "Active",
+    "hsw": "Active",
+    "premiumRace": "Active"
+  },
+  "testRides": [
+    "Declasse Vamos",
+    "Dewbauchee Seven-70",
+    "Ocelot Locust"
+  ],
+  "salvageRobberies": [
+    {
+      "car": "Pfister Growler",
+      "claimable": false,
+      "robbery": "The McTony Robbery"
+    },
+    {
+      "car": "Albany Fränken Stange",
+      "claimable": false,
+      "robbery": "The Gangbanger Robbery"
+    },
+    {
+      "car": "Willard Eudora",
+      "claimable": false,
+      "robbery": "The Podium Robbery"
+    }
+  ],
+  "fibPriorityFile": "The Fine Art File",
+  "kortzTargets": [
+    "Gone to Seed",
+    "Chat on Fruit",
+    "Juiced"
+  ],
+  "luxuryAutos": [
+    "Dewbauchee Rapid GT X",
+    "Übermacht Sentinel XS4"
+  ],
+  "pdmShowroom": [
+    "Albany Brigham (40% Off)",
+    "Albany Fränken Stange (40% Off)",
+    "Albany Lurcher (40% Off)",
+    "Declasse Tornado Rat Rod (40% Off)",
+    "LCC Sanctus (40% Off)"
+  ],
+  "dailyObjectives": [],
+  "bonuses": [
+    {
+      "hourly": "~$1,900,000/hr",
+      "id": "halloween_survivals_w2",
+      "multiplier": "3x GTA$ & RP",
+      "name": "Halloween Survivals (Ludendorff, Cayo Perico, Alien) — 6X for GTA+",
+      "rate": "$140,000 – $280,000 / Survival",
+      "solo": false,
+      "tier": "S",
+      "tip": "Survive waves of zombies and alien forces for massive payouts and unlocks.",
+      "type": "Survival"
+    },
+    {
+      "hourly": "~$1,250,000/hr",
+      "id": "halloween_slasher_w2",
+      "multiplier": "3x GTA$ & RP",
+      "name": "Halloween Featured Series (Slasher & Ramius Slasher)",
+      "rate": "$85,000 – $170,000 / Match",
+      "solo": false,
+      "tier": "S",
+      "tip": "Pitch-black horror battlegrounds with flashlight weapon mechanics.",
+      "type": "Adversary Series"
+    },
+    {
+      "hourly": "~$1,100,000/hr",
+      "id": "payphone_hits_bonus",
+      "multiplier": "2x GTA$ & RP",
+      "name": "Franklin Payphone Hits (+ GTA$500,000 Bonus for 5 completions)",
+      "rate": "$90,000 – $180,000 / Hit",
+      "solo": true,
+      "tier": "A",
+      "tip": "Hit assassination bonus criteria for maximum payout plus $500k event bonus.",
+      "type": "Freemode Assassination"
+    },
+    {
+      "hourly": "~$950,000/hr",
+      "id": "collectibles_ufo",
+      "multiplier": "2x GTA$ & RP",
+      "name": "Jack O'Lanterns, Ghosts Exposed & UFO Business Battles",
+      "rate": "$70,000 – $120,000 / Event",
+      "solo": true,
+      "tier": "A",
+      "tip": "Photograph ghosts across Blaine County and collect Jack O'Lantern pumpkins.",
+      "type": "Collectibles & Freemode"
+    }
+  ],
+  "discounts": [
+    {
+      "category": "Gear & Gifts",
+      "discount": "100% FREE",
+      "item": "Twilight Knife T-Shirt"
+    },
+    {
+      "category": "Gun Van",
+      "discount": "100% FREE",
+      "item": "Knife Shocker & Baseball Bat"
+    },
+    {
+      "category": "Properties",
+      "discount": "40% OFF",
+      "item": "Agency Properties, Upgrades & Modifications"
+    },
+    {
+      "category": "Halloween Vehicles",
+      "discount": "40% OFF",
+      "item": "LCC Sanctus, Albany Brigham, Albany Lurcher, Fränken Stange, Tornado Rat Rod"
+    },
+    {
+      "category": "Properties & Operations",
+      "discount": "30% OFF",
+      "item": "Benefactor Terrorbyte & Renovations"
+    },
+    {
+      "category": "Vehicles",
+      "discount": "30% OFF",
+      "item": "Annis Remus, BF Club, Bravado Greenwood, Dinka Jester RR, Emperor ETR1, Itali GTO, Hotring Everon, Tempesta, SC1"
+    }
+  ],
+  "gunVan": [
+    "Knife Shocker (100% FREE)",
+    "Baseball Bat (100% FREE)",
+    "Service Carbine (30% OFF)",
+    "Unholy Hellbringer (50% OFF for GTA+)",
+    "Up-n-Atomizer (50% OFF for GTA+)",
+    "Widowmaker (50% OFF for GTA+)",
+    "Railgun",
+    "Tactical SMG",
+    "Pipe Bombs"
+  ]
+}
