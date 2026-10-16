@@ -293,7 +293,7 @@
     "Baseball Bat",
     "Pipe Bombs"
   ],
-  "version": "v3.8.9"
+  "version": "v3.8.10"
 };
 
 
