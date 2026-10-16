@@ -2,8 +2,9 @@ name: Automated Weekly GTA Update Sync
 
 on:
   schedule:
-    # Runs every Thursday starting at 07:00 UTC (12:00 AM PT) through 14:00 UTC
-    - cron: '0 7,8,9,10,11,12,13,14 * * 4'
+    # Runs Wednesday evening UTC (when PapaXan posts early) and every 2 hours throughout Thursday & Friday
+    - cron: '0 21,22,23 * * 3'
+    - cron: '0 */2 * * 4,5'
   workflow_dispatch:
 
 permissions:
@@ -15,6 +16,8 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -29,11 +32,15 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           if [ -n "$(git status --porcelain)" ]; then
+            VER=$(node -e "const fs=require('fs'); const m=fs.readFileSync('app.js','utf8').match(/APP_VERSION\s*=\s*['\"]([^'\"]+)['\"]/); console.log(m ? m[1] : 'v3.8.9');")
+            RANGE=$(node -e "const fs=require('fs'); const d=JSON.parse(fs.readFileSync('data/weekly_current.json','utf8')); console.log(d.dateRange || 'Active Week');")
             git add .
-            git commit -m "v3.8.2 : [Automated Sync] GTA Online Weekly Update Refreshed"
+            git commit -m "$VER : [Automated Sync] GTA Online Weekly Update ($RANGE)" -m "Mini Summary:
+          - Automatically synced verified GTA Online weekly update for $RANGE.
+          - Updated DEFAULT_WEEK_DATA in app.js and LosSantosWeekly/app.js.
+          - Refreshed staticweekly JSON mirrors and pushed to Firebase RTDB."
+            git pull --rebase origin main
             git push origin main
-
           else
-
             echo "No weekly updates to commit at this time."
           fi

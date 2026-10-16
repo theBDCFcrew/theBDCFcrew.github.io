@@ -1,149 +1,284 @@
 {
-  "title": "Weekly Bonuses and Discounts - Oct 8 – 15, 2026",
-  "eventTitle": "Halloween 2026 Week 2: 3X Survivals, Slasher Series & Alien Collectibles",
-  "eventDesc": "Twilight Knife T-Shirt (Free login gift through Oct 15)",
-  "dateRange": "Oct 8 – 15, 2026",
-  "podiumVehicle": "Annis Savestra ($990,000)",
+  "title": "Weekly Bonuses and Discounts - October 15th to October 22nd",
+  "eventTitle": "3X Halloween Featured Series, Halloween Survivals & Weekly Bonuses",
+  "eventDesc": "Things keep getting stranger in Los Santos as the calendar draws closer to Halloween. Play anytime through October 21 to collect the Butchery and Other Hobbies T-Shirt and throw it back to the Golden Age of Vinewood horror.",
+  "dateRange": "Oct 15 – 22, 2026",
+  "podiumVehicle": "Grotti LSCM Cheetah Classic",
   "prizeRide": {
-    "vehicle": "Declasse Walton L35",
-    "condition": "Place Top 4 in the LS Car Meet Series for 2 days in a row"
+    "vehicle": "Dinka Kanjo SJ",
+    "condition": "Place Top 5 in the LS Car Meet Series"
   },
   "weeklyChallenge": {
-    "task": "Win in two Adversary Modes",
-    "reward": "Pink Skull Emissive Mask + GTA$100,000"
+    "task": "Win three Races",
+    "reward": "Orange Glow Skeletal Onesie and GTA$100,000"
   },
   "timeTrials": {
-    "regular": "Active",
-    "hsw": "Active",
-    "premiumRace": "Active"
+    "regular": "Coast to Coast",
+    "hsw": "Pacific Bluffs to Mount Gordo",
+    "premiumRace": "Criminal Records Locked to Supers"
   },
+  "hswTestRide": "Maibatsu MonstroCiti",
   "testRides": [
-    "Declasse Vamos",
+    "Ocelot Locust",
     "Dewbauchee Seven-70",
-    "Ocelot Locust"
+    "Declasse Vamos"
   ],
   "salvageRobberies": [
     {
-      "car": "Pfister Growler",
-      "claimable": false,
-      "robbery": "The McTony Robbery"
+      "name": "The Podium Robbery",
+      "vehicle": "Albany Fränken Stange (Sports Classic)",
+      "value": "~$350,000 – $400,000",
+      "robbery": "The Podium Robbery",
+      "car": "Albany Fränken Stange (Sports Classic)",
+      "claimable": false
     },
     {
-      "car": "Albany Fränken Stange",
-      "claimable": false,
-      "robbery": "The Gangbanger Robbery"
+      "name": "The Cargo Ship Robbery",
+      "vehicle": "BF Weevil (Compact)",
+      "value": "~$350,000 – $400,000",
+      "robbery": "The Cargo Ship Robbery",
+      "car": "BF Weevil (Compact)",
+      "claimable": false
     },
     {
-      "car": "Willard Eudora",
-      "claimable": false,
-      "robbery": "The Podium Robbery"
+      "name": "The Gangbanger Robbery",
+      "vehicle": "Grotti Itali RSX",
+      "value": "~$350,000 – $400,000",
+      "robbery": "The Gangbanger Robbery",
+      "car": "Grotti Itali RSX",
+      "claimable": false
     }
   ],
-  "fibPriorityFile": "The Fine Art File",
+  "fibPriorityFile": "The Brute Force File",
   "kortzTargets": [
-    "Gone to Seed",
-    "Chat on Fruit",
-    "Juiced"
+    "Twindifference",
+    "Teckels",
+    "A Cast of Characters"
   ],
   "luxuryAutos": [
     "Dewbauchee Rapid GT X",
     "Übermacht Sentinel XS4"
   ],
   "pdmShowroom": [
-    "Albany Brigham (40% Off)",
-    "Albany Fränken Stange (40% Off)",
-    "Albany Lurcher (40% Off)",
-    "Declasse Tornado Rat Rod (40% Off)",
-    "LCC Sanctus (40% Off)"
+    "LCC Sanctus",
+    "Albany Fränken Stange",
+    "Albany Brigham",
+    "Declasse Tornado Rat Rod",
+    "Albany Lurcher"
   ],
-  "dailyObjectives": [],
+  "dailyObjectives": [
+    {
+      "day": "Thursday",
+      "task": "Participate in a Bike Race"
+    },
+    {
+      "day": "Friday",
+      "task": "Participate in the Drag Race Series"
+    },
+    {
+      "day": "Saturday",
+      "task": "Participate in Slasher"
+    },
+    {
+      "day": "Sunday",
+      "task": "Participate in the Stunt Series"
+    },
+    {
+      "day": "Monday",
+      "task": "Participate in the Featured Series"
+    },
+    {
+      "day": "Tuesday",
+      "task": "Participate in the Survival Series"
+    },
+    {
+      "day": "Wednesday",
+      "task": "Participate in VIP Work"
+    }
+  ],
   "bonuses": [
     {
-      "hourly": "~$1,900,000/hr",
-      "id": "halloween_survivals_w2",
-      "multiplier": "3x GTA$ & RP",
-      "name": "Halloween Survivals (Ludendorff, Cayo Perico, Alien) — 6X for GTA+",
-      "rate": "$140,000 – $280,000 / Survival",
-      "solo": false,
-      "tier": "S",
-      "tip": "Survive waves of zombies and alien forces for massive payouts and unlocks.",
-      "type": "Survival"
+      "multiplier": "3X",
+      "label": "3X GTA$ & RP",
+      "tier": "3x",
+      "items": [
+        "Halloween Featured Series: Slasher, Ramius – Slasher",
+        "Halloween Survivals: Ludendorff Cemetery Survival, Cayo Perico Survival, Alien Survivals (6X for GTA+ Members)",
+        "Community Race Series"
+      ]
     },
     {
-      "hourly": "~$1,250,000/hr",
-      "id": "halloween_slasher_w2",
-      "multiplier": "3x GTA$ & RP",
-      "name": "Halloween Featured Series (Slasher & Ramius Slasher)",
-      "rate": "$85,000 – $170,000 / Match",
-      "solo": false,
-      "tier": "S",
-      "tip": "Pitch-black horror battlegrounds with flashlight weapon mechanics.",
-      "type": "Adversary Series"
+      "multiplier": "2X",
+      "label": "2X GTA$ & RP",
+      "tier": "2x",
+      "items": [
+        "Bail Office Standard and Most Wanted Targets",
+        "Dispatch Work",
+        "UFO Business Battles",
+        "Jack O’ Lanterns (4X for GTA+ Members)",
+        "Ghosts Exposed (4X for GTA+ Members)"
+      ]
     },
     {
-      "hourly": "~$1,100,000/hr",
-      "id": "payphone_hits_bonus",
-      "multiplier": "2x GTA$ & RP",
-      "name": "Franklin Payphone Hits (+ GTA$500,000 Bonus for 5 completions)",
-      "rate": "$90,000 – $180,000 / Hit",
-      "solo": true,
-      "tier": "A",
-      "tip": "Hit assassination bonus criteria for maximum payout plus $500k event bonus.",
-      "type": "Freemode Assassination"
-    },
-    {
-      "hourly": "~$950,000/hr",
-      "id": "collectibles_ufo",
-      "multiplier": "2x GTA$ & RP",
-      "name": "Jack O'Lanterns, Ghosts Exposed & UFO Business Battles",
-      "rate": "$70,000 – $120,000 / Event",
-      "solo": true,
-      "tier": "A",
-      "tip": "Photograph ghosts across Blaine County and collect Jack O'Lantern pumpkins.",
-      "type": "Collectibles & Freemode"
+      "multiplier": "BONUS",
+      "label": "SPECIAL EVENT BONUSES & REWARDS",
+      "tier": "2x",
+      "items": [
+        "Play GTA Online through October 21 to receive the Butchery and Other Hobbies T-Shirt",
+        "Complete Don’t Fuck With Dre before October 21 to receive GTA$500,000 within 72 hours of completion",
+        "Complete all Weekly Challenges through November 4 to receive GTA$2,000,000 within 72 hours of completion"
+      ]
     }
   ],
   "discounts": [
     {
-      "category": "Gear & Gifts",
+      "name": "The Shocker (Gun Van)",
+      "item": "The Shocker (Gun Van)",
+      "category": "weapons",
+      "rate": "100% FREE",
       "discount": "100% FREE",
-      "item": "Twilight Knife T-Shirt"
+      "badgeClass": "rate-free"
     },
     {
-      "category": "Gun Van",
-      "discount": "100% FREE",
-      "item": "Knife Shocker & Baseball Bat"
-    },
-    {
-      "category": "Properties",
+      "name": "Agency Properties",
+      "item": "Agency Properties",
+      "category": "properties",
+      "rate": "40% OFF",
       "discount": "40% OFF",
-      "item": "Agency Properties, Upgrades & Modifications"
+      "badgeClass": "rate-40"
     },
     {
-      "category": "Halloween Vehicles",
+      "name": "Agency Upgrades and Modifications",
+      "item": "Agency Upgrades and Modifications",
+      "category": "properties",
+      "rate": "40% OFF",
       "discount": "40% OFF",
-      "item": "LCC Sanctus, Albany Brigham, Albany Lurcher, Fränken Stange, Tornado Rat Rod"
+      "badgeClass": "rate-40"
     },
     {
-      "category": "Properties & Operations",
-      "discount": "30% OFF",
-      "item": "Benefactor Terrorbyte & Renovations"
+      "name": "LCC Sanctus",
+      "item": "LCC Sanctus",
+      "category": "vehicles",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
     },
     {
-      "category": "Vehicles",
+      "name": "Albany Brigham",
+      "item": "Albany Brigham",
+      "category": "vehicles",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
+    },
+    {
+      "name": "Albany Lurcher",
+      "item": "Albany Lurcher",
+      "category": "vehicles",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
+    },
+    {
+      "name": "Albany Fränken Stange",
+      "item": "Albany Fränken Stange",
+      "category": "vehicles",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
+    },
+    {
+      "name": "Declasse Tornado Rat Rod",
+      "item": "Declasse Tornado Rat Rod",
+      "category": "vehicles",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
+    },
+    {
+      "name": "Karin Calico GTF",
+      "item": "Karin Calico GTF",
+      "category": "vehicles",
+      "rate": "30% OFF",
       "discount": "30% OFF",
-      "item": "Annis Remus, BF Club, Bravado Greenwood, Dinka Jester RR, Emperor ETR1, Itali GTO, Hotring Everon, Tempesta, SC1"
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Nagasaki Weaponized Dinghy",
+      "item": "Nagasaki Weaponized Dinghy",
+      "category": "weapons",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Western Company Annihilator",
+      "item": "Western Company Annihilator",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Buckingham Miljet",
+      "item": "Buckingham Miljet",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Annis Hardy",
+      "item": "Annis Hardy",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Buckingham Tug",
+      "item": "Buckingham Tug",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Dinka Sugoi",
+      "item": "Dinka Sugoi",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Vapid Winky",
+      "item": "Vapid Winky",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "BF Raptor",
+      "item": "BF Raptor",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
     }
   ],
   "gunVan": [
-    "Knife Shocker (100% FREE)",
-    "Baseball Bat (100% FREE)",
-    "Service Carbine (30% OFF)",
-    "Unholy Hellbringer (50% OFF for GTA+)",
-    "Up-n-Atomizer (50% OFF for GTA+)",
-    "Widowmaker (50% OFF for GTA+)",
-    "Railgun",
-    "Tactical SMG",
+    "The Shocker – Free",
+    "Service Carbine – 30% off",
+    "Widowmaker – 50% off for GTA+ Members",
+    "Up-n-Atomizer – 50% off for GTA+ Members",
+    "Unholy Hellbringer – 50% off for GTA+ Members",
+    "Precision Rifle",
+    "Combat Shotgun",
+    "El Strickler",
+    "Knife",
+    "Baseball Bat",
     "Pipe Bombs"
   ]
 }

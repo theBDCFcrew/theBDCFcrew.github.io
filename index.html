@@ -667,44 +667,44 @@
           <div class="form-row" style="display:grid; grid-template-columns: 1fr 2fr; gap:12px;">
             <div class="form-group">
               <label for="adminFieldDateRange" style="font-size:11px; font-weight:700; color:#e2e8f0;">📅 ACTIVE DATES:</label>
-              <input type="text" id="adminFieldDateRange" value="Oct 8 – Oct 15" required style="font-weight:700; color:#38bdf8;" />
+              <input type="text" id="adminFieldDateRange" value="Oct 15 – 22, 2026" required style="font-weight:700; color:#38bdf8;" />
             </div>
             <div class="form-group">
               <label for="adminFieldEventTitle" style="font-size:11px; font-weight:700; color:#e2e8f0;">⚡ EVENT THEME / TITLE:</label>
-              <input type="text" id="adminFieldEventTitle" value="Halloween 2026 Week 2: 3X Survivals, Slasher Series &amp; Alien Collectibles" required />
+              <input type="text" id="adminFieldEventTitle" value="3X Halloween Featured Series, Halloween Survivals &amp; Weekly Bonuses" required />
             </div>
           </div>
 
           <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
             <div class="form-group">
               <label for="adminFieldPodium" style="font-size:11px; font-weight:700; color:#e2e8f0;">🎡 PODIUM VEHICLE (CASINO):</label>
-              <input type="text" id="adminFieldPodium" value="Annis Savestra ($990,000)" required />
+              <input type="text" id="adminFieldPodium" value="Grotti LSCM Cheetah Classic" required />
             </div>
             <div class="form-group">
               <label for="adminFieldPrizeRide" style="font-size:11px; font-weight:700; color:#e2e8f0;">🏁 PRIZE RIDE VEHICLE (LS CAR MEET):</label>
-              <input type="text" id="adminFieldPrizeRide" value="Declasse Walton L35" required />
+              <input type="text" id="adminFieldPrizeRide" value="Dinka Kanjo SJ" required />
             </div>
           </div>
 
           <div class="form-group">
             <label for="adminFieldPrizeCond" style="font-size:11px; font-weight:700; color:#e2e8f0;">🏁 PRIZE RIDE CHALLENGE CONDITION:</label>
-            <input type="text" id="adminFieldPrizeCond" value="Place Top 4 in the LS Car Meet Series for 2 days in a row" />
+            <input type="text" id="adminFieldPrizeCond" value="Place Top 5 in the LS Car Meet Series" />
           </div>
 
           <div class="form-row" style="display:grid; grid-template-columns: 2fr 1fr; gap:12px;">
             <div class="form-group">
               <label for="adminFieldChallengeTask" style="font-size:11px; font-weight:700; color:#e2e8f0;">🏆 WEEKLY CHALLENGE TASK:</label>
-              <input type="text" id="adminFieldChallengeTask" value="Win in two Adversary Modes" />
+              <input type="text" id="adminFieldChallengeTask" value="Win three Races" />
             </div>
             <div class="form-group">
               <label for="adminFieldChallengeReward" style="font-size:11px; font-weight:700; color:#e2e8f0;">💰 CHALLENGE REWARD:</label>
-              <input type="text" id="adminFieldChallengeReward" value="Pink Skull Emissive Mask + GTA$100,000" />
+              <input type="text" id="adminFieldChallengeReward" value="Orange Glow Skeletal Onesie and GTA$100,000" />
             </div>
           </div>
 
           <div class="form-group">
             <label for="adminFieldEventDesc" style="font-size:11px; font-weight:700; color:#e2e8f0;">📢 WEEKLY HIGHLIGHTS &amp; SUMMARY:</label>
-            <textarea id="adminFieldEventDesc" rows="3">Celebrate Halloween 2026 in Los Santos! Earn 3X GTA$ &amp; RP on Halloween Survivals (Ludendorff Cemetery, Cayo Perico &amp; Alien Survivals), 3X on Halloween Featured Series (Slasher &amp; Ramius Slasher), 2X on Jack O'Lanterns &amp; Ghosts Exposed, spin for the Annis Savestra ($990,000), win the Declasse Walton L35, claim the free Twilight Knife T-Shirt, and score GTA$500,000 for 5 Payphone Hits!</textarea>
+            <textarea id="adminFieldEventDesc" rows="3">Things keep getting stranger in Los Santos as the calendar draws closer to Halloween. Play anytime through October 21 to collect the Butchery and Other Hobbies T-Shirt and throw it back to the Golden Age of Vinewood horror.</textarea>
           </div>
 
           <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
@@ -2422,88 +2422,290 @@ function onOpen() {
     // ══════════════════════════════════════════════
 
     const DEFAULT_WEEK_DATA = {
-      title: "Weekly Bonuses and Discounts - October 8th to October 15th",
-      eventTitle: "Halloween 2026 Week 2: 3X Survivals, Slasher Series & Alien Collectibles",
-      eventDesc: "Celebrate Halloween 2026 in Los Santos! Earn 3X GTA$ & RP on Halloween Survivals (Ludendorff Cemetery, Cayo Perico & Alien Survivals), 3X on Halloween Featured Series (Slasher & Ramius Slasher), 2X on Jack O'Lanterns & Ghosts Exposed, spin for the Annis Savestra ($990,000), win the Declasse Walton L35, claim the free Twilight Knife T-Shirt, and score GTA$500,000 for 5 Payphone Hits!",
-      dateRange: "Oct 8 – Oct 15",
-      podiumVehicle: "Annis Savestra ($990,000)",
-      prizeRide: {
-        vehicle: "Declasse Walton L35",
-        condition: "Place Top 4 in the LS Car Meet Series for 2 days in a row"
-      },
-      weeklyChallenge: {
-        task: "Win in two Adversary Modes",
-        reward: "Pink Skull Emissive Mask + GTA$100,000"
-      },
-      timeTrials: {
-        regular: "Terminal to Chiliad Mountain State Wilderness",
-        hsw: "Tongva Valley",
-        premiumRace: "The Commute (Sports)"
-      },
-      testRides: [
-        "Declasse Vamos",
-        "Dewbauchee Seven-70",
-        "Ocelot Locust",
-        "HSW Premium: Karin Boor"
-      ],
-      salvageRobberies: [
-        { name: "The McTony Robbery", vehicle: "Pfister Growler", value: "~$380,000 - $420,000" },
-        { name: "The Gangbanger Robbery", vehicle: "Albany Fränken Stange", value: "~$340,000 - $380,000" },
-        { name: "The Podium Robbery", vehicle: "Willard Eudora", value: "~$320,000 - $360,000" }
-      ],
-      dailyObjectives: [
-        { day: "Thursday", task: "Survive the Ludendorff Cemetery Halloween Survival" },
-        { day: "Friday", task: "Participate in the Slasher Featured Series" },
-        { day: "Saturday", task: "Collect Jack O'Lanterns or Photograph a Ghost" },
-        { day: "Sunday", task: "Spin the Lucky Wheel at Diamond Casino" },
-        { day: "Monday", task: "Complete a Payphone Hit via Franklin" },
-        { day: "Tuesday", task: "Complete an Agency Security Contract" },
-        { day: "Wednesday", task: "Test Ride at LS Car Meet" }
-      ],
-      bonuses: [
-        {
-          multiplier: "3X",
-          label: "3X GTA$ & RP",
-          tier: "3x",
-          items: [
-            "🧟 Halloween Survivals (Ludendorff, Cayo Perico & Alien) — 6X for GTA+",
-            "🔪 Halloween Featured Series (Slasher & Ramius Slasher)",
-            "🏎️ San Andreas Super Sport Series (Hotring & Transform Races)",
-            "🎨 Community Race Series"
-          ]
-        },
-        {
-          multiplier: "2X",
-          label: "2X GTA$ & RP",
-          tier: "2x",
-          items: [
-            "🎃 Jack O'Lanterns & Ghosts Exposed Collectibles (4X for GTA+)",
-            "🛸 UFO Business Battles",
-            "📞 Franklin Payphone Hits (Bonus GTA$500,000 for 5 completions)"
-          ]
-        }
-      ],
-      discounts: [
-        { name: "Twilight Knife T-Shirt", category: "apparel", rate: "100% Free", badgeClass: "rate-free" },
-        { name: "Knife Shocker & Baseball Bat (Gun Van)", category: "weapons", rate: "100% Free", badgeClass: "rate-free" },
-        { name: "Agency Properties, Upgrades & Modifications", category: "properties", rate: "40% Off", badgeClass: "rate-40" },
-        { name: "LCC Sanctus (Motorcycle)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
-        { name: "Albany Brigham (Muscle)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
-        { name: "Albany Lurcher (Muscle)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
-        { name: "Albany Fränken Stange (Sports Classic)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
-        { name: "Declasse Tornado Rat Rod (Sports Classic)", category: "vehicles", rate: "40% Off", badgeClass: "rate-40" },
-        { name: "Benefactor Terrorbyte & Renovations", category: "properties", rate: "30% Off", badgeClass: "rate-30" },
-        { name: "Annis Remus (Sports)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-        { name: "BF Club (Compact)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-        { name: "Bravado Greenwood (Muscle)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-        { name: "Dinka Jester RR (Sports)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-        { name: "Emperor ETR1 (Super)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-        { name: "Grotti Itali GTO (Sports)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-        { name: "Karin Hotring Everon (Sports)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-        { name: "Pegassi Tempesta (Super)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" },
-        { name: "Übermacht SC1 (Super)", category: "vehicles", rate: "30% Off", badgeClass: "rate-30" }
+  "title": "Weekly Bonuses and Discounts - October 15th to October 22nd",
+  "eventTitle": "3X Halloween Featured Series, Halloween Survivals & Weekly Bonuses",
+  "eventDesc": "Things keep getting stranger in Los Santos as the calendar draws closer to Halloween. Play anytime through October 21 to collect the Butchery and Other Hobbies T-Shirt and throw it back to the Golden Age of Vinewood horror.",
+  "dateRange": "Oct 15 – 22, 2026",
+  "podiumVehicle": "Grotti LSCM Cheetah Classic",
+  "prizeRide": {
+    "vehicle": "Dinka Kanjo SJ",
+    "condition": "Place Top 5 in the LS Car Meet Series"
+  },
+  "weeklyChallenge": {
+    "task": "Win three Races",
+    "reward": "Orange Glow Skeletal Onesie and GTA$100,000"
+  },
+  "timeTrials": {
+    "regular": "Coast to Coast",
+    "hsw": "Pacific Bluffs to Mount Gordo",
+    "premiumRace": "Criminal Records Locked to Supers"
+  },
+  "hswTestRide": "Maibatsu MonstroCiti",
+  "testRides": [
+    "Ocelot Locust",
+    "Dewbauchee Seven-70",
+    "Declasse Vamos"
+  ],
+  "salvageRobberies": [
+    {
+      "name": "The Podium Robbery",
+      "vehicle": "Albany Fränken Stange (Sports Classic)",
+      "value": "~$350,000 – $400,000",
+      "robbery": "The Podium Robbery",
+      "car": "Albany Fränken Stange (Sports Classic)",
+      "claimable": false
+    },
+    {
+      "name": "The Cargo Ship Robbery",
+      "vehicle": "BF Weevil (Compact)",
+      "value": "~$350,000 – $400,000",
+      "robbery": "The Cargo Ship Robbery",
+      "car": "BF Weevil (Compact)",
+      "claimable": false
+    },
+    {
+      "name": "The Gangbanger Robbery",
+      "vehicle": "Grotti Itali RSX",
+      "value": "~$350,000 – $400,000",
+      "robbery": "The Gangbanger Robbery",
+      "car": "Grotti Itali RSX",
+      "claimable": false
+    }
+  ],
+  "fibPriorityFile": "The Brute Force File",
+  "kortzTargets": [
+    "Twindifference",
+    "Teckels",
+    "A Cast of Characters"
+  ],
+  "luxuryAutos": [
+    "Dewbauchee Rapid GT X",
+    "Übermacht Sentinel XS4"
+  ],
+  "pdmShowroom": [
+    "LCC Sanctus",
+    "Albany Fränken Stange",
+    "Albany Brigham",
+    "Declasse Tornado Rat Rod",
+    "Albany Lurcher"
+  ],
+  "dailyObjectives": [
+    {
+      "day": "Thursday",
+      "task": "Participate in a Bike Race"
+    },
+    {
+      "day": "Friday",
+      "task": "Participate in the Drag Race Series"
+    },
+    {
+      "day": "Saturday",
+      "task": "Participate in Slasher"
+    },
+    {
+      "day": "Sunday",
+      "task": "Participate in the Stunt Series"
+    },
+    {
+      "day": "Monday",
+      "task": "Participate in the Featured Series"
+    },
+    {
+      "day": "Tuesday",
+      "task": "Participate in the Survival Series"
+    },
+    {
+      "day": "Wednesday",
+      "task": "Participate in VIP Work"
+    }
+  ],
+  "bonuses": [
+    {
+      "multiplier": "3X",
+      "label": "3X GTA$ & RP",
+      "tier": "3x",
+      "items": [
+        "Halloween Featured Series: Slasher, Ramius – Slasher",
+        "Halloween Survivals: Ludendorff Cemetery Survival, Cayo Perico Survival, Alien Survivals (6X for GTA+ Members)",
+        "Community Race Series"
       ]
-    };
+    },
+    {
+      "multiplier": "2X",
+      "label": "2X GTA$ & RP",
+      "tier": "2x",
+      "items": [
+        "Bail Office Standard and Most Wanted Targets",
+        "Dispatch Work",
+        "UFO Business Battles",
+        "Jack O’ Lanterns (4X for GTA+ Members)",
+        "Ghosts Exposed (4X for GTA+ Members)"
+      ]
+    },
+    {
+      "multiplier": "BONUS",
+      "label": "SPECIAL EVENT BONUSES & REWARDS",
+      "tier": "2x",
+      "items": [
+        "Play GTA Online through October 21 to receive the Butchery and Other Hobbies T-Shirt",
+        "Complete Don’t Fuck With Dre before October 21 to receive GTA$500,000 within 72 hours of completion",
+        "Complete all Weekly Challenges through November 4 to receive GTA$2,000,000 within 72 hours of completion"
+      ]
+    }
+  ],
+  "discounts": [
+    {
+      "name": "The Shocker (Gun Van)",
+      "item": "The Shocker (Gun Van)",
+      "category": "weapons",
+      "rate": "100% FREE",
+      "discount": "100% FREE",
+      "badgeClass": "rate-free"
+    },
+    {
+      "name": "Agency Properties",
+      "item": "Agency Properties",
+      "category": "properties",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
+    },
+    {
+      "name": "Agency Upgrades and Modifications",
+      "item": "Agency Upgrades and Modifications",
+      "category": "properties",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
+    },
+    {
+      "name": "LCC Sanctus",
+      "item": "LCC Sanctus",
+      "category": "vehicles",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
+    },
+    {
+      "name": "Albany Brigham",
+      "item": "Albany Brigham",
+      "category": "vehicles",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
+    },
+    {
+      "name": "Albany Lurcher",
+      "item": "Albany Lurcher",
+      "category": "vehicles",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
+    },
+    {
+      "name": "Albany Fränken Stange",
+      "item": "Albany Fränken Stange",
+      "category": "vehicles",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
+    },
+    {
+      "name": "Declasse Tornado Rat Rod",
+      "item": "Declasse Tornado Rat Rod",
+      "category": "vehicles",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
+    },
+    {
+      "name": "Karin Calico GTF",
+      "item": "Karin Calico GTF",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Nagasaki Weaponized Dinghy",
+      "item": "Nagasaki Weaponized Dinghy",
+      "category": "weapons",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Western Company Annihilator",
+      "item": "Western Company Annihilator",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Buckingham Miljet",
+      "item": "Buckingham Miljet",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Annis Hardy",
+      "item": "Annis Hardy",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Buckingham Tug",
+      "item": "Buckingham Tug",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Dinka Sugoi",
+      "item": "Dinka Sugoi",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Vapid Winky",
+      "item": "Vapid Winky",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "BF Raptor",
+      "item": "BF Raptor",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    }
+  ],
+  "gunVan": [
+    "The Shocker – Free",
+    "Service Carbine – 30% off",
+    "Widowmaker – 50% off for GTA+ Members",
+    "Up-n-Atomizer – 50% off for GTA+ Members",
+    "Unholy Hellbringer – 50% off for GTA+ Members",
+    "Precision Rifle",
+    "Combat Shotgun",
+    "El Strickler",
+    "Knife",
+    "Baseball Bat",
+    "Pipe Bombs"
+  ],
+  "version": "v3.8.9"
+};
 
 
 
@@ -2791,8 +2993,12 @@ function onOpen() {
 
     // ── Setup Admin Weekly Hub Listeners ──
     function setupWeeklyAdminHandlers() {
-      // 1. Initial population with bundled week
+      // 1. Initial population with bundled week & immediate live JSON check
       populateWeeklyForm(DEFAULT_WEEK_DATA);
+      fetch('./data/weekly_current.json?t=' + Date.now())
+        .then(r => r.ok ? r.json() : null)
+        .then(d => { if (d && d.podiumVehicle) populateWeeklyForm(d); })
+        .catch(() => {});
 
       // 2. 1-Click Quick Auto-Fetch
       const quickFetchBtn = document.getElementById('adminQuickAutoFetchBtn');
@@ -2804,35 +3010,29 @@ function onOpen() {
           firebaseToast('📡 Fetching latest verified GTA Online tunables...', 'info');
 
           try {
-            // Priority 1: Fetch fresh LosSantosWeekly/app.js directly
             let fetchedData = null;
-            try {
-              const res = await fetch('./LosSantosWeekly/app.js?t=' + Date.now());
-              if (res.ok) {
-                const text = await res.text();
-                const match = text.match(/const DEFAULT_WEEK_DATA = (\{[\s\S]*?\n  \};)/);
-                if (match) {
-                  fetchedData = (new Function(`return ${match[1]}`))();
-                }
-              }
-            } catch (e) {
-              console.warn('Local app.js read skipped:', e);
-            }
-
-            // Priority 2: Fetch via GitHub raw if local not found
-            if (!fetchedData) {
+            const candidateUrls = [
+              './data/weekly_current.json?t=' + Date.now(),
+              'https://livecounters-8eaa8-default-rtdb.firebaseio.com/labData/gtaWeekly.json?t=' + Date.now(),
+              'https://raw.githubusercontent.com/theBDCFcrew/theBDCFcrew.github.io/main/data/weekly_current.json?t=' + Date.now()
+            ];
+            for (const url of candidateUrls) {
               try {
-                const res = await fetch('https://raw.githubusercontent.com/theBDCFcrew/theBDCFcrew.github.io/main/LosSantosWeekly/app.js?t=' + Date.now());
+                const res = await fetch(url);
                 if (res.ok) {
-                  const text = await res.text();
-                  const match = text.match(/const DEFAULT_WEEK_DATA = (\{[\s\S]*?\n  \};)/);
-                  if (match) {
-                    fetchedData = (new Function(`return ${match[1]}`))();
+                  const json = await res.json();
+                  if (json && (json.podiumVehicle || json.podium_vehicle)) {
+                    fetchedData = {
+                      ...DEFAULT_WEEK_DATA,
+                      ...json,
+                      podiumVehicle: json.podiumVehicle || json.podium_vehicle,
+                      eventTitle: json.eventTitle || json.event_name,
+                      dateRange: json.dateRange || json.week_title
+                    };
+                    break;
                   }
                 }
-              } catch (e) {
-                console.warn('GitHub raw fetch skipped:', e);
-              }
+              } catch (e) {}
             }
 
             if (fetchedData) {

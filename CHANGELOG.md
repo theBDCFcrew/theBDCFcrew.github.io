@@ -1,5 +1,14 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.8.9] - 2026-10-15
+- Activated October 15 to 22 Halloween weekly event.
+- Added Grotti LSCM Cheetah Classic podium vehicle.
+- Added Dinka Kanjo SJ car meet prize ride.
+- Fixed Thursday auto-sync parser for HTML RSS feeds.
+- Prevented stale cloud cache from overwriting newer weeks.
+- Added dynamic rendering for showrooms and Gun Van.
+- Upgraded offline service worker cache identifier to v3.8.9.
+
 ## [3.8.8] - 2026-10-13
 - Activated Halloween 2026 Week 2 verified event data.
 - Added Annis Savestra lucky wheel podium vehicle.

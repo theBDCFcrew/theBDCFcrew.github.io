@@ -8,158 +8,293 @@
 
   // ── Version & App Constants ──
   // ── Version & App Constants ──
-  const APP_VERSION = 'v3.8.8';
+  const APP_VERSION = 'v3.8.9';
 
   // ── Default State & Fallback Current Week Data (Halloween 2026 Week 2) ──
   const DEFAULT_WEEK_DATA = {
-  "title": "Weekly Bonuses and Discounts - Oct 8 – 15, 2026",
-  "eventTitle": "Halloween 2026 Week 2: 3X Survivals, Slasher Series & Alien Collectibles",
-  "eventDesc": "Twilight Knife T-Shirt (Free login gift through Oct 15)",
-  "dateRange": "Oct 8 – 15, 2026",
-  "podiumVehicle": "Annis Savestra ($990,000)",
+  "title": "Weekly Bonuses and Discounts - October 15th to October 22nd",
+  "eventTitle": "3X Halloween Featured Series, Halloween Survivals & Weekly Bonuses",
+  "eventDesc": "Things keep getting stranger in Los Santos as the calendar draws closer to Halloween. Play anytime through October 21 to collect the Butchery and Other Hobbies T-Shirt and throw it back to the Golden Age of Vinewood horror.",
+  "dateRange": "Oct 15 – 22, 2026",
+  "podiumVehicle": "Grotti LSCM Cheetah Classic",
   "prizeRide": {
-    "vehicle": "Declasse Walton L35",
-    "condition": "Place Top 4 in the LS Car Meet Series for 2 days in a row"
+    "vehicle": "Dinka Kanjo SJ",
+    "condition": "Place Top 5 in the LS Car Meet Series"
   },
   "weeklyChallenge": {
-    "task": "Win in two Adversary Modes",
-    "reward": "Pink Skull Emissive Mask + GTA$100,000"
+    "task": "Win three Races",
+    "reward": "Orange Glow Skeletal Onesie and GTA$100,000"
   },
   "timeTrials": {
-    "regular": "Active",
-    "hsw": "Active",
-    "premiumRace": "Active"
+    "regular": "Coast to Coast",
+    "hsw": "Pacific Bluffs to Mount Gordo",
+    "premiumRace": "Criminal Records Locked to Supers"
   },
+  "hswTestRide": "Maibatsu MonstroCiti",
   "testRides": [
-    "Declasse Vamos",
+    "Ocelot Locust",
     "Dewbauchee Seven-70",
-    "Ocelot Locust"
+    "Declasse Vamos"
   ],
   "salvageRobberies": [
     {
-      "car": "Pfister Growler",
-      "claimable": false,
-      "robbery": "The McTony Robbery"
+      "name": "The Podium Robbery",
+      "vehicle": "Albany Fränken Stange (Sports Classic)",
+      "value": "~$350,000 – $400,000",
+      "robbery": "The Podium Robbery",
+      "car": "Albany Fränken Stange (Sports Classic)",
+      "claimable": false
     },
     {
-      "car": "Albany Fränken Stange",
-      "claimable": false,
-      "robbery": "The Gangbanger Robbery"
+      "name": "The Cargo Ship Robbery",
+      "vehicle": "BF Weevil (Compact)",
+      "value": "~$350,000 – $400,000",
+      "robbery": "The Cargo Ship Robbery",
+      "car": "BF Weevil (Compact)",
+      "claimable": false
     },
     {
-      "car": "Willard Eudora",
-      "claimable": false,
-      "robbery": "The Podium Robbery"
+      "name": "The Gangbanger Robbery",
+      "vehicle": "Grotti Itali RSX",
+      "value": "~$350,000 – $400,000",
+      "robbery": "The Gangbanger Robbery",
+      "car": "Grotti Itali RSX",
+      "claimable": false
     }
   ],
-  "fibPriorityFile": "The Fine Art File",
+  "fibPriorityFile": "The Brute Force File",
   "kortzTargets": [
-    "Gone to Seed",
-    "Chat on Fruit",
-    "Juiced"
+    "Twindifference",
+    "Teckels",
+    "A Cast of Characters"
   ],
   "luxuryAutos": [
     "Dewbauchee Rapid GT X",
     "Übermacht Sentinel XS4"
   ],
   "pdmShowroom": [
-    "Albany Brigham (40% Off)",
-    "Albany Fränken Stange (40% Off)",
-    "Albany Lurcher (40% Off)",
-    "Declasse Tornado Rat Rod (40% Off)",
-    "LCC Sanctus (40% Off)"
+    "LCC Sanctus",
+    "Albany Fränken Stange",
+    "Albany Brigham",
+    "Declasse Tornado Rat Rod",
+    "Albany Lurcher"
   ],
-  "dailyObjectives": [],
+  "dailyObjectives": [
+    {
+      "day": "Thursday",
+      "task": "Participate in a Bike Race"
+    },
+    {
+      "day": "Friday",
+      "task": "Participate in the Drag Race Series"
+    },
+    {
+      "day": "Saturday",
+      "task": "Participate in Slasher"
+    },
+    {
+      "day": "Sunday",
+      "task": "Participate in the Stunt Series"
+    },
+    {
+      "day": "Monday",
+      "task": "Participate in the Featured Series"
+    },
+    {
+      "day": "Tuesday",
+      "task": "Participate in the Survival Series"
+    },
+    {
+      "day": "Wednesday",
+      "task": "Participate in VIP Work"
+    }
+  ],
   "bonuses": [
     {
-      "hourly": "~$1,900,000/hr",
-      "id": "halloween_survivals_w2",
-      "multiplier": "3x GTA$ & RP",
-      "name": "Halloween Survivals (Ludendorff, Cayo Perico, Alien) — 6X for GTA+",
-      "rate": "$140,000 – $280,000 / Survival",
-      "solo": false,
-      "tier": "S",
-      "tip": "Survive waves of zombies and alien forces for massive payouts and unlocks.",
-      "type": "Survival"
+      "multiplier": "3X",
+      "label": "3X GTA$ & RP",
+      "tier": "3x",
+      "items": [
+        "Halloween Featured Series: Slasher, Ramius – Slasher",
+        "Halloween Survivals: Ludendorff Cemetery Survival, Cayo Perico Survival, Alien Survivals (6X for GTA+ Members)",
+        "Community Race Series"
+      ]
     },
     {
-      "hourly": "~$1,250,000/hr",
-      "id": "halloween_slasher_w2",
-      "multiplier": "3x GTA$ & RP",
-      "name": "Halloween Featured Series (Slasher & Ramius Slasher)",
-      "rate": "$85,000 – $170,000 / Match",
-      "solo": false,
-      "tier": "S",
-      "tip": "Pitch-black horror battlegrounds with flashlight weapon mechanics.",
-      "type": "Adversary Series"
+      "multiplier": "2X",
+      "label": "2X GTA$ & RP",
+      "tier": "2x",
+      "items": [
+        "Bail Office Standard and Most Wanted Targets",
+        "Dispatch Work",
+        "UFO Business Battles",
+        "Jack O’ Lanterns (4X for GTA+ Members)",
+        "Ghosts Exposed (4X for GTA+ Members)"
+      ]
     },
     {
-      "hourly": "~$1,100,000/hr",
-      "id": "payphone_hits_bonus",
-      "multiplier": "2x GTA$ & RP",
-      "name": "Franklin Payphone Hits (+ GTA$500,000 Bonus for 5 completions)",
-      "rate": "$90,000 – $180,000 / Hit",
-      "solo": true,
-      "tier": "A",
-      "tip": "Hit assassination bonus criteria for maximum payout plus $500k event bonus.",
-      "type": "Freemode Assassination"
-    },
-    {
-      "hourly": "~$950,000/hr",
-      "id": "collectibles_ufo",
-      "multiplier": "2x GTA$ & RP",
-      "name": "Jack O'Lanterns, Ghosts Exposed & UFO Business Battles",
-      "rate": "$70,000 – $120,000 / Event",
-      "solo": true,
-      "tier": "A",
-      "tip": "Photograph ghosts across Blaine County and collect Jack O'Lantern pumpkins.",
-      "type": "Collectibles & Freemode"
+      "multiplier": "BONUS",
+      "label": "SPECIAL EVENT BONUSES & REWARDS",
+      "tier": "2x",
+      "items": [
+        "Play GTA Online through October 21 to receive the Butchery and Other Hobbies T-Shirt",
+        "Complete Don’t Fuck With Dre before October 21 to receive GTA$500,000 within 72 hours of completion",
+        "Complete all Weekly Challenges through November 4 to receive GTA$2,000,000 within 72 hours of completion"
+      ]
     }
   ],
   "discounts": [
     {
-      "category": "Gear & Gifts",
+      "name": "The Shocker (Gun Van)",
+      "item": "The Shocker (Gun Van)",
+      "category": "weapons",
+      "rate": "100% FREE",
       "discount": "100% FREE",
-      "item": "Twilight Knife T-Shirt"
+      "badgeClass": "rate-free"
     },
     {
-      "category": "Gun Van",
-      "discount": "100% FREE",
-      "item": "Knife Shocker & Baseball Bat"
-    },
-    {
-      "category": "Properties",
+      "name": "Agency Properties",
+      "item": "Agency Properties",
+      "category": "properties",
+      "rate": "40% OFF",
       "discount": "40% OFF",
-      "item": "Agency Properties, Upgrades & Modifications"
+      "badgeClass": "rate-40"
     },
     {
-      "category": "Halloween Vehicles",
+      "name": "Agency Upgrades and Modifications",
+      "item": "Agency Upgrades and Modifications",
+      "category": "properties",
+      "rate": "40% OFF",
       "discount": "40% OFF",
-      "item": "LCC Sanctus, Albany Brigham, Albany Lurcher, Fränken Stange, Tornado Rat Rod"
+      "badgeClass": "rate-40"
     },
     {
-      "category": "Properties & Operations",
-      "discount": "30% OFF",
-      "item": "Benefactor Terrorbyte & Renovations"
+      "name": "LCC Sanctus",
+      "item": "LCC Sanctus",
+      "category": "vehicles",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
     },
     {
-      "category": "Vehicles",
+      "name": "Albany Brigham",
+      "item": "Albany Brigham",
+      "category": "vehicles",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
+    },
+    {
+      "name": "Albany Lurcher",
+      "item": "Albany Lurcher",
+      "category": "vehicles",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
+    },
+    {
+      "name": "Albany Fränken Stange",
+      "item": "Albany Fränken Stange",
+      "category": "vehicles",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
+    },
+    {
+      "name": "Declasse Tornado Rat Rod",
+      "item": "Declasse Tornado Rat Rod",
+      "category": "vehicles",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
+    },
+    {
+      "name": "Karin Calico GTF",
+      "item": "Karin Calico GTF",
+      "category": "vehicles",
+      "rate": "30% OFF",
       "discount": "30% OFF",
-      "item": "Annis Remus, BF Club, Bravado Greenwood, Dinka Jester RR, Emperor ETR1, Itali GTO, Hotring Everon, Tempesta, SC1"
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Nagasaki Weaponized Dinghy",
+      "item": "Nagasaki Weaponized Dinghy",
+      "category": "weapons",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Western Company Annihilator",
+      "item": "Western Company Annihilator",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Buckingham Miljet",
+      "item": "Buckingham Miljet",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Annis Hardy",
+      "item": "Annis Hardy",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Buckingham Tug",
+      "item": "Buckingham Tug",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Dinka Sugoi",
+      "item": "Dinka Sugoi",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Vapid Winky",
+      "item": "Vapid Winky",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "BF Raptor",
+      "item": "BF Raptor",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
     }
   ],
   "gunVan": [
-    "Knife Shocker (100% FREE)",
-    "Baseball Bat (100% FREE)",
-    "Service Carbine (30% OFF)",
-    "Unholy Hellbringer (50% OFF for GTA+)",
-    "Up-n-Atomizer (50% OFF for GTA+)",
-    "Widowmaker (50% OFF for GTA+)",
-    "Railgun",
-    "Tactical SMG",
+    "The Shocker – Free",
+    "Service Carbine – 30% off",
+    "Widowmaker – 50% off for GTA+ Members",
+    "Up-n-Atomizer – 50% off for GTA+ Members",
+    "Unholy Hellbringer – 50% off for GTA+ Members",
+    "Precision Rifle",
+    "Combat Shotgun",
+    "El Strickler",
+    "Knife",
+    "Baseball Bat",
     "Pipe Bombs"
   ],
-  "version": "v3.8.8"
+  "version": "v3.8.9"
 };
 
 
@@ -180,6 +315,99 @@
     appId:             "1:798269256571:web:4077fad17160ee72ec03de"
   };
 
+  // Helper: Parse chronological week start timestamp from dateRange/week_title
+  function getWeekStartTimestamp(dataOrStr) {
+    const str = typeof dataOrStr === 'string'
+      ? dataOrStr
+      : (dataOrStr?.dateRange || dataOrStr?.week_title || dataOrStr?.title || '');
+    if (!str) return 0;
+    const months = {
+      jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
+      jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11
+    };
+    const m = String(str).match(/\b(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+(\d{1,2})/i);
+    if (!m) return 0;
+    const monIdx = months[m[1].slice(0, 3).toLowerCase()];
+    const day = parseInt(m[2], 10);
+    const yearMatch = String(str).match(/\b(202\d)\b/);
+    const year = yearMatch ? parseInt(yearMatch[1], 10) : new Date().getFullYear();
+    return Date.UTC(year, monIdx, day);
+  }
+
+  // Helper: Normalize both Central Command & Web schemas into unified frontend schema
+  function normalizeWeeklyData(raw) {
+    if (!raw || typeof raw !== 'object') return DEFAULT_WEEK_DATA;
+    const mapped = {
+      ...DEFAULT_WEEK_DATA,
+      ...raw,
+      podiumVehicle: raw.podiumVehicle || raw.podium_vehicle || DEFAULT_WEEK_DATA.podiumVehicle,
+      eventTitle: raw.eventTitle || raw.event_name || DEFAULT_WEEK_DATA.eventTitle,
+      eventDesc: raw.eventDesc || raw.special_claim || DEFAULT_WEEK_DATA.eventDesc,
+      dateRange: raw.dateRange || raw.week_title || DEFAULT_WEEK_DATA.dateRange,
+      prizeRide: {
+        vehicle: raw.prizeRide?.vehicle || raw.prize_ride || DEFAULT_WEEK_DATA.prizeRide.vehicle,
+        condition: raw.prizeRide?.condition || raw.prize_ride_challenge || DEFAULT_WEEK_DATA.prizeRide.condition
+      },
+      weeklyChallenge: {
+        task: raw.weeklyChallenge?.task || raw.weekly_challenge?.task || DEFAULT_WEEK_DATA.weeklyChallenge.task,
+        reward: raw.weeklyChallenge?.reward || raw.weekly_challenge?.reward || DEFAULT_WEEK_DATA.weeklyChallenge.reward
+      },
+      fibPriorityFile: raw.fibPriorityFile || raw.fib_priority_file || DEFAULT_WEEK_DATA.fibPriorityFile,
+      testRides: Array.isArray(raw.testRides) ? raw.testRides : (Array.isArray(raw.test_track) ? raw.test_track : DEFAULT_WEEK_DATA.testRides),
+      luxuryAutos: Array.isArray(raw.luxuryAutos) ? raw.luxuryAutos : (Array.isArray(raw.luxury_autos) ? raw.luxury_autos : DEFAULT_WEEK_DATA.luxuryAutos),
+      pdmShowroom: Array.isArray(raw.pdmShowroom) ? raw.pdmShowroom : (Array.isArray(raw.simeons_pdm) ? raw.simeons_pdm : DEFAULT_WEEK_DATA.pdmShowroom),
+      gunVan: Array.isArray(raw.gunVan) ? raw.gunVan : (Array.isArray(raw.gun_van?.weapons) ? raw.gun_van.weapons : DEFAULT_WEEK_DATA.gunVan),
+      version: APP_VERSION
+    };
+
+    const rawSalvage = Array.isArray(raw.salvageRobberies) ? raw.salvageRobberies : (Array.isArray(raw.salvage_yard_targets) ? raw.salvage_yard_targets : null);
+    if (rawSalvage && rawSalvage.length > 0) {
+      mapped.salvageRobberies = rawSalvage.map(r => ({
+        name: r.name || r.robbery || 'Salvage Robbery',
+        vehicle: r.vehicle || r.car || 'Target Vehicle',
+        value: r.value || '~$350,000 – $400,000',
+        robbery: r.robbery || r.name || 'Salvage Robbery',
+        car: r.car || r.vehicle || 'Target Vehicle',
+        claimable: !!r.claimable
+      }));
+    }
+
+    if (Array.isArray(raw.bonuses) && raw.bonuses.length > 0) {
+      mapped.bonuses = raw.bonuses.map(b => {
+        const mult = String(b.multiplier || '2X').split(/\s+/)[0].toUpperCase();
+        return {
+          ...b,
+          multiplier: mult,
+          label: b.label || b.multiplier || `${mult} GTA$ & RP`,
+          tier: (b.tier && b.tier.includes('x')) ? b.tier : mult.toLowerCase().replace('.', '_'),
+          items: Array.isArray(b.items) ? b.items : (b.name ? [b.name] : [])
+        };
+      });
+    }
+
+    if (Array.isArray(raw.discounts) && raw.discounts.length > 0) {
+      mapped.discounts = raw.discounts.map(d => {
+        const rateStr = String(d.rate || d.discount || '30% OFF').toUpperCase();
+        const isFree = rateStr.includes('FREE');
+        let badgeClass = d.badgeClass || 'rate-30';
+        if (isFree) badgeClass = 'rate-free';
+        else if (rateStr.includes('50')) badgeClass = 'rate-50';
+        else if (rateStr.includes('40')) badgeClass = 'rate-40';
+        return {
+          ...d,
+          name: d.name || d.item || 'Discounted Item',
+          item: d.item || d.name || 'Discounted Item',
+          rate: rateStr,
+          discount: rateStr,
+          category: (d.category || 'vehicles').toLowerCase(),
+          badgeClass
+        };
+      });
+    }
+
+    return mapped;
+  }
+
   async function initFirestoreSync() {
     try {
       const { initializeApp } = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js');
@@ -189,40 +417,40 @@
       const db = getFirestore(app);
       const weeklyDocRef = doc(db, 'weekly', 'current');
 
-      // Realtime listener for instant cloud updates
+      // Realtime listener — ONLY accept Firestore snapshot if its week date is >= currentData's week date!
       onSnapshot(weeklyDocRef, (snap) => {
         if (snap.exists()) {
           const cloudData = snap.data();
-          // Accept cloud data if valid object with essential vehicle/bonuses payload
-          if (cloudData && (cloudData.podiumVehicle || cloudData.eventTitle || cloudData.dateRange)) {
-            currentData = {
-              ...DEFAULT_WEEK_DATA,
-              ...cloudData,
-              version: APP_VERSION
-            };
-            saveData(currentData);
-            renderAll();
-            updateLiveIndicator(true, cloudData.dateRange || DEFAULT_WEEK_DATA.dateRange);
+          if (cloudData && (cloudData.podiumVehicle || cloudData.podium_vehicle || cloudData.eventTitle || cloudData.dateRange)) {
+            const normalized = normalizeWeeklyData(cloudData);
+            if (getWeekStartTimestamp(normalized) >= getWeekStartTimestamp(currentData) && normalized.podiumVehicle !== 'TBD') {
+              currentData = normalized;
+              saveData(currentData);
+              renderAll();
+              updateLiveIndicator(true, currentData.dateRange);
+            }
           }
         }
       }, async () => {
-        // Fallback to Realtime Database & Static repository mirrors
         await syncFromCloudEndpoints();
       });
 
     } catch (err) {
       console.warn('[LosSantosWeekly] Cloud Firestore fallback to RTDB/bundled data:', err);
-      await syncFromCloudEndpoints();
     }
   }
 
   async function syncFromCloudEndpoints() {
+    const cb = `?t=${Math.floor(Date.now() / 60000)}`;
     const cloudMirrors = [
-      'https://the-bdcf-crew-default-rtdb.firebaseio.com/weekly/current.json',
-      'https://livecounters-8eaa8-default-rtdb.firebaseio.com/labData/gtaWeekly.json',
-      './data/weekly_current.json',
-      '../data/weekly_current.json'
+      `https://livecounters-8eaa8-default-rtdb.firebaseio.com/labData/gtaWeekly.json${cb}`,
+      `./data/weekly_current.json${cb}`,
+      `../data/weekly_current.json${cb}`,
+      `https://the-bdcf-crew-default-rtdb.firebaseio.com/weekly/current.json${cb}`
     ];
+
+    let newestCandidate = null;
+    let newestTs = getWeekStartTimestamp(currentData);
 
     for (const url of cloudMirrors) {
       try {
@@ -230,23 +458,29 @@
         if (res.ok) {
           const raw = await res.json();
           if (raw && (raw.podiumVehicle || raw.podium_vehicle || raw.eventTitle || raw.event_name)) {
-            const mapped = {
-              ...DEFAULT_WEEK_DATA,
-              ...raw,
-              podiumVehicle: raw.podiumVehicle || raw.podium_vehicle || DEFAULT_WEEK_DATA.podiumVehicle,
-              eventTitle: raw.eventTitle || raw.event_name || DEFAULT_WEEK_DATA.eventTitle,
-              dateRange: raw.dateRange || raw.week_title || DEFAULT_WEEK_DATA.dateRange,
-              version: APP_VERSION
-            };
-            currentData = mapped;
-            saveData(currentData);
-            renderAll();
-            updateLiveIndicator(true, currentData.dateRange);
-            return;
+            const mapped = normalizeWeeklyData(raw);
+            const candidateTs = getWeekStartTimestamp(mapped);
+            if (mapped.podiumVehicle && mapped.podiumVehicle !== 'TBD' && candidateTs >= newestTs) {
+              newestTs = candidateTs;
+              newestCandidate = mapped;
+            }
           }
         }
       } catch (_) {}
     }
+
+    if (newestCandidate) {
+      if (currentData.dateRange && newestCandidate.dateRange && currentData.dateRange !== newestCandidate.dateRange) {
+        taskCheckState = {};
+        saveTaskState();
+      }
+      currentData = newestCandidate;
+      saveData(currentData);
+      renderAll();
+      updateLiveIndicator(true, currentData.dateRange);
+      return true;
+    }
+    return false;
   }
 
   function updateLiveIndicator(isLive, dateRange) {
@@ -258,7 +492,7 @@
       liveStatusText.textContent = isLive ? 'LIVE CLOUD' : 'SAVED DATA';
     }
     if (livePill && isLive) {
-      livePill.title = 'Real-time sync active from The BDCF Crew Firestore';
+      livePill.title = 'Real-time sync active from The BDCF Crew Cloud';
     }
 
     if (redditSourceMeta && dateRange) {
@@ -274,6 +508,8 @@
     initCountdownTimer();
     bindEvents();
     generateAppsScriptCode();
+    // Always query RTDB & static mirrors immediately so stale Firestore docs can never lock the page
+    syncFromCloudEndpoints();
     initFirestoreSync();
     checkAndAutoRefresh();
     setInterval(checkAndAutoRefresh, 15 * 60 * 1000); // Smart check every 15 mins
@@ -285,19 +521,21 @@
     const saved = localStorage.getItem('gta_weekly_data');
     if (saved) {
       try {
-        const parsed = JSON.parse(saved);
-        if (parsed && parsed.dateRange === DEFAULT_WEEK_DATA.dateRange) {
-          currentData = { ...DEFAULT_WEEK_DATA, ...parsed };
+        const parsed = normalizeWeeklyData(JSON.parse(saved));
+        const savedTs = getWeekStartTimestamp(parsed);
+        const defaultTs = getWeekStartTimestamp(DEFAULT_WEEK_DATA);
+        if (parsed && savedTs >= defaultTs && parsed.podiumVehicle && parsed.podiumVehicle !== 'TBD') {
+          currentData = parsed;
         } else {
-          // Outdated cached week detected — automatically upgrade to current week!
-          currentData = DEFAULT_WEEK_DATA;
-          localStorage.setItem('gta_weekly_data', JSON.stringify(DEFAULT_WEEK_DATA));
+          // Outdated cached week detected — automatically upgrade to bundled week!
+          currentData = normalizeWeeklyData(DEFAULT_WEEK_DATA);
+          localStorage.setItem('gta_weekly_data', JSON.stringify(currentData));
         }
       } catch (e) {
-        currentData = DEFAULT_WEEK_DATA;
+        currentData = normalizeWeeklyData(DEFAULT_WEEK_DATA);
       }
     } else {
-      currentData = DEFAULT_WEEK_DATA;
+      currentData = normalizeWeeklyData(DEFAULT_WEEK_DATA);
     }
   }
 
@@ -389,6 +627,66 @@
 
     const premRaceEl = document.getElementById('premiumRaceName');
     if (premRaceEl) premRaceEl.textContent = currentData.timeTrials.premiumRace;
+
+    // Render LS Car Meet Test Track
+    const testRidesEl = document.getElementById('testRidesList');
+    if (testRidesEl && Array.isArray(currentData.testRides) && currentData.testRides.length > 0) {
+      let trHtml = currentData.testRides.map(car => `<div class="test-ride-pill">🚗 ${escapeHTML(car)}</div>`).join('');
+      if (currentData.hswTestRide && currentData.hswTestRide !== 'Active') {
+        trHtml += `<div class="test-ride-pill hsw-pill">⚡ HSW Premium: ${escapeHTML(currentData.hswTestRide)}</div>`;
+      }
+      testRidesEl.innerHTML = trHtml;
+    }
+
+    // Render Luxury Autos Showroom
+    const luxuryEl = document.getElementById('luxuryAutosList');
+    if (luxuryEl && Array.isArray(currentData.luxuryAutos) && currentData.luxuryAutos.length > 0) {
+      luxuryEl.innerHTML = currentData.luxuryAutos.map(car => `
+        <li>
+          <span class="car-bullet">🏎️</span>
+          <div class="car-info">
+            <strong>${escapeHTML(car)}</strong>
+            <span class="car-sub">Rockford Hills Showroom</span>
+          </div>
+          <span class="inspect-tag">Test Drive</span>
+        </li>
+      `).join('');
+    }
+
+    // Render Simeon's Premium Deluxe Motorsport Showroom
+    const pdmEl = document.getElementById('pdmList');
+    if (pdmEl && Array.isArray(currentData.pdmShowroom) && currentData.pdmShowroom.length > 0) {
+      pdmEl.innerHTML = currentData.pdmShowroom.map(car => `
+        <li>
+          <span class="car-bullet">🚗</span>
+          <div class="car-info"><strong>${escapeHTML(car)}</strong></div>
+          <span class="discount-badge-sm">Featured</span>
+        </li>
+      `).join('');
+    }
+
+    // Render Gun Van Featured Stock
+    const gvEl = document.getElementById('gunVanWeaponsList');
+    if (gvEl && Array.isArray(currentData.gunVan) && currentData.gunVan.length > 0) {
+      gvEl.innerHTML = currentData.gunVan.map(w => {
+        const isFree = /free/i.test(w);
+        const isGtaPlus = /gta\+/i.test(w);
+        const isOff = /%\s*off/i.test(w);
+        const parts = w.split(/[–—-]/);
+        const wName = parts[0].trim();
+        const wTag = parts[1] ? parts[1].trim().toUpperCase() : (isFree ? '100% FREE' : 'In Stock');
+        let tagClass = 'tag-instock';
+        if (isFree) tagClass = 'tag-free';
+        else if (isGtaPlus) tagClass = 'tag-gta-plus';
+        else if (isOff) tagClass = 'tag-discount';
+        return `
+          <li class="${isFree ? 'free-weapon-item' : ''}">
+            <div class="weapon-name">${isFree ? '⚡' : '🔫'} <strong>${escapeHTML(wName)}</strong></div>
+            <span class="${tagClass}">${escapeHTML(wTag)}</span>
+          </li>
+        `;
+      }).join('');
+    }
 
     // Apply saved checkbox states
     document.querySelectorAll('.task-check').forEach(chk => {
@@ -761,41 +1059,26 @@
       showToast('📡 Connecting to BDCF Cloud Network...', 'info');
     }
 
-    // Tier 1: Fetch freshest verified payload directly from Firebase cloud RTDB or repo static mirror
+    // Tier 1: Fetch freshest verified payload across all cloud RTDB and static mirrors (validated by week start timestamp)
     try {
-      const mirrors = [
-        'https://the-bdcf-crew-default-rtdb.firebaseio.com/weekly/current.json',
-        'https://livecounters-8eaa8-default-rtdb.firebaseio.com/labData/gtaWeekly.json',
-        './data/weekly_current.json'
-      ];
-      for (const mUrl of mirrors) {
-        try {
-          const mRes = await fetch(mUrl);
-          if (mRes.ok) {
-            const mJson = await mRes.json();
-            if (mJson && (mJson.podiumVehicle || mJson.podium_vehicle || mJson.eventTitle || mJson.event_name)) {
-              const mapped = {
-                ...DEFAULT_WEEK_DATA,
-                ...mJson,
-                podiumVehicle: mJson.podiumVehicle || mJson.podium_vehicle || DEFAULT_WEEK_DATA.podiumVehicle,
-                eventTitle: mJson.eventTitle || mJson.event_name || DEFAULT_WEEK_DATA.eventTitle,
-                dateRange: mJson.dateRange || mJson.week_title || DEFAULT_WEEK_DATA.dateRange,
-                version: APP_VERSION
-              };
-              currentData = mapped;
-              saveData(currentData);
-              renderAll();
-              if (!isSilentAutoRefresh) {
-                showToast('✅ Latest Weekly Update synced from BDCF Cloud!', 'success');
-              }
-              const sourceMeta = document.getElementById('redditSourceMeta');
-              if (sourceMeta) {
-                sourceMeta.textContent = `BDCF Cloud Network • Verified Active Week (${currentData.dateRange})`;
-              }
-              return;
-            }
-          }
-        } catch (_) {}
+      const updated = await syncFromCloudEndpoints();
+      if (updated) {
+        if (!isSilentAutoRefresh) {
+          showToast(`✅ Latest Weekly Update synced (${currentData.dateRange})!`, 'success');
+        }
+        const sourceMeta = document.getElementById('redditSourceMeta');
+        if (sourceMeta) {
+          sourceMeta.textContent = `BDCF Cloud Network • Verified Active Week (${currentData.dateRange})`;
+        }
+        if (refreshBtn && !isSilentAutoRefresh) {
+          refreshBtn.disabled = false;
+          refreshBtn.innerHTML = '<span class="btn-icon">🔄</span> <span class="btn-label">Sync Tunables</span>';
+        }
+        if (drawerSyncBtn) {
+          drawerSyncBtn.disabled = false;
+          drawerSyncBtn.textContent = '🔄 Sync Tunables';
+        }
+        return;
       }
     } catch (_) {}
 
