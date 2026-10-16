@@ -7,8 +7,7 @@
   'use strict';
 
   // ── Version & App Constants ──
-  // ── Version & App Constants ──
-  const APP_VERSION = 'v3.8.9';
+  const APP_VERSION = 'v3.8.10';
 
   // ── Default State & Fallback Current Week Data (Halloween 2026 Week 2) ──
   const DEFAULT_WEEK_DATA = {

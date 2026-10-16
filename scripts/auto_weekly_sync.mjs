@@ -513,6 +513,9 @@ async function pushToCloudMirror(data) {
       salvage_yard_targets: data.salvageRobberies || [],
       fib_priority_file: data.fibPriorityFile || 'Active',
       weekly_challenge: data.weeklyChallenge || {},
+      bonuses: data.matrixBonuses || data.bonuses || [],
+      bonus_groups: data.bonuses || [],
+      special_rewards: data.specialRewards || [],
       gun_van: {
         location: 'Daily Rotating Location',
         discount_item: (data.gunVan && data.gunVan[0]) || 'Featured Weapon',

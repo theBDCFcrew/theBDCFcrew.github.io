@@ -1,5 +1,14 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.8.10] - 2026-10-15
+- Expanded Grinder's Profit Matrix with rich payouts and tips.
+- Added full details for Ludendorff Survivals and Slasher series.
+- Added Bail Office targets and Vincent dispatch mission rewards.
+- Added special event cash rewards and limited clothing unlocks.
+- Prevented blank bonus lines across Discord briefing templates.
+- Dispatched updated briefing directly to Discord live message.
+- Upgraded offline service worker cache identifier to v3.8.10.
+
 ## [3.8.9] - 2026-10-15
 - Activated October 15 to 22 Halloween weekly event.
 - Added Grotti LSCM Cheetah Classic podium vehicle.
