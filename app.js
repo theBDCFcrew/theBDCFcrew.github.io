@@ -74,7 +74,36 @@
     "Declasse Tornado Rat Rod",
     "Albany Lurcher"
   ],
-  "dailyObjectives": [],
+  "dailyObjectives": [
+    {
+      "day": "Thursday",
+      "task": "Participate in a Bike Race"
+    },
+    {
+      "day": "Friday",
+      "task": "Participate in the Drag Race Series"
+    },
+    {
+      "day": "Saturday",
+      "task": "Participate in Slasher"
+    },
+    {
+      "day": "Sunday",
+      "task": "Participate in the Stunt Series"
+    },
+    {
+      "day": "Monday",
+      "task": "Participate in the Featured Series"
+    },
+    {
+      "day": "Tuesday",
+      "task": "Participate in the Survival Series"
+    },
+    {
+      "day": "Wednesday",
+      "task": "Participate in VIP Work"
+    }
+  ],
   "bonuses": [
     {
       "multiplier": "3X",
