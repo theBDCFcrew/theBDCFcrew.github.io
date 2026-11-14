@@ -7,110 +7,97 @@
   'use strict';
 
   // ── Version & App Constants ──
-  const APP_VERSION = 'v3.8.10';
+  const APP_VERSION = 'v3.8.11';
 
-  // ── Default State & Fallback Current Week Data (Halloween 2026 Week 2) ──
+  // ── Default State & Fallback Current Week Data (Nov 12 – 19, 2026) ──
   const DEFAULT_WEEK_DATA = {
-  "title": "Weekly Bonuses and Discounts - November 5th to November 12th",
-  "eventTitle": "3X Mansion Raid, Community Race Series & Weekly Bonuses",
-  "eventDesc": "Set your sights on high-value targets in this week’s GTA Online Heist Event to earn doubled first-time completion bonuses on all the Original Heists, The Doomsday Heist, The Diamond Casino Heist, KnoWay Out Missions, and more. To commemorate The Kortz Center Heist’s inaugural Heist Event, you are guaranteed to find The Outcome of Endeavour on your first attempt this week.",
-  "dateRange": "Nov 5 – 12, 2026",
-  "podiumVehicle": "Överflöd Entity XXR",
+  "title": "Weekly Bonuses and Discounts - November 12th to November 19th",
+  "eventTitle": "4X Freemode Challenges, 3X Stunt Race Series & Community Series, 2X All Contact Missions & Sumo",
+  "eventDesc": "Earn 4X on Freemode Challenges, 3X on Stunt Race Series and Community Series, 2X on All Contact Missions (4x for GTA+ Members, through December 2nd) and Sumo (Remix) and FIB Priority File: The Brute Force File, plus spin for the Karin Everon ($1,475,000) and win the Western Powersurge ($1,605,000)!",
+  "dateRange": "Nov 12 – 19, 2026",
+  "podiumVehicle": "Karin Everon",
   "prizeRide": {
-    "vehicle": "Annis Hellion",
-    "condition": "Place Top 5 in the LS Car Meet Series for 3 days in a row"
+    "vehicle": "Western Powersurge",
+    "condition": "Place Top 4 in a LS Car Meet Series Race for 2 days in a row"
   },
   "weeklyChallenge": {
-    "task": "Win an Adversary Mode",
+    "task": "Win two Stunt Races",
     "reward": "GTA$100,000"
   },
   "timeTrials": {
-    "regular": "LSIA",
-    "hsw": "Del Perro Beach to Murietta Heights",
-    "premiumRace": "At the Races"
+    "regular": "Calafia Way",
+    "hsw": "Sandy Shores",
+    "premiumRace": "Down the Drain"
   },
-  "hswTestRide": "Grotti Brioso r/A",
-  "testRides": [],
+  "hswTestRide": "Weeny Issi Rally",
+  "testRides": [
+    "Übermacht Rebla GTS",
+    "Declasse Impaler LX",
+    "Obey I-Wagen"
+  ],
   "salvageRobberies": [
     {
-      "name": "The Podium Robbery",
-      "vehicle": "Annis Hellion",
-      "value": "~$350,000 – $400,000",
-      "robbery": "The Podium Robbery",
-      "car": "Annis Hellion",
+      "robbery": "The Gangbanger Robbery",
+      "target": "Canis Seminole Frontier",
+      "value": "~$300,000 – $400,000",
       "claimable": false
     },
     {
-      "name": "The Cargo Ship Robbery",
-      "vehicle": "Truffade Z-Type",
-      "value": "~$350,000 – $400,000",
-      "robbery": "The Cargo Ship Robbery",
-      "car": "Truffade Z-Type",
-      "claimable": false
-    },
-    {
-      "name": "The McTony Robbery",
-      "vehicle": "Lampadati Cinquemila",
-      "value": "~$350,000 – $400,000",
       "robbery": "The McTony Robbery",
-      "car": "Lampadati Cinquemila",
+      "target": "Karin Hotring Everon",
+      "value": "~$325,000 – $375,000",
+      "claimable": false
+    },
+    {
+      "robbery": "The Cargo Ship Robbery",
+      "target": "Grotti Stinger TT",
+      "value": "~$350,000 – $400,000",
       "claimable": false
     }
   ],
-  "fibPriorityFile": "The Black Box File",
+  "fibPriorityFile": "The Brute Force File (2X GTA$ & RP)",
   "kortzTargets": [
-    "The Outcome of Endeavour",
-    "To Beat About the Bush",
-    "Hare Oneself Think"
+    "In Excess of Success",
+    "What are Melons?",
+    "Breathless"
   ],
   "luxuryAutos": [
-    "Grotti Veleno GT",
-    "Grotti GT750"
+    "Declasse Tampa GT",
+    "Pfister Astrale"
   ],
   "pdmShowroom": [
-    "Dinka Blista Kanjo",
-    "Grotti Cheetah",
-    "Invetero Coquette D5",
-    "Maibatsu Penumbra FF",
-    "Benefactor Vorschlaghammer"
+    "Declasse Hotring Sabre",
+    "Karin Vivanite",
+    "Obey Tailgater S",
+    "Declasse Tahoma Coupe",
+    "Canis Castigator"
   ],
-  "dailyObjectives": [
-    {
-      "day": "Thursday",
-      "task": "Participate in a Team Deathmatch"
-    },
-    {
-      "day": "Friday",
-      "task": "Participate in Flag War"
-    },
-    {
-      "day": "Saturday",
-      "task": "Complete The Kortz Center Heist Finale"
-    },
-    {
-      "day": "Sunday",
-      "task": "Participate in an Air Race"
-    },
-    {
-      "day": "Monday",
-      "task": "Participate in the Featured Series"
-    },
-    {
-      "day": "Tuesday",
-      "task": "Complete a Diamond Casino Heist Prep"
-    },
-    {
-      "day": "Wednesday",
-      "task": "Play a match of Tennis"
-    }
+  "gunVan": [
+    "Stun Gun (10%, GTA+ 20%)",
+    "Up-n-Atomizer (10%, GTA+ 20%)",
+    "Tactical SMG (40%, GTA+ 40%)",
+    "Combat Shotgun (10%, GTA+ 40%)",
+    "Knife – FREE (100% Off)",
+    "Baseball Bat – FREE (100% Off)",
+    "Throwables: Sticky Bombs, Proximity Mines, Molotovs (10%, GTA+ 20%)",
+    "Body Armor: All Types (10%, GTA+ 80%)"
   ],
   "bonuses": [
+    {
+      "multiplier": "4X",
+      "label": "4X GTA$ & RP",
+      "tier": "4x",
+      "items": [
+        "Freemode Challenges"
+      ]
+    },
     {
       "multiplier": "3X",
       "label": "3X GTA$ & RP",
       "tier": "3x",
       "items": [
-        "Mansion Raid"
+        "Stunt Race Series",
+        "Community Series"
       ]
     },
     {
@@ -118,30 +105,37 @@
       "label": "2X GTA$ & RP",
       "tier": "2x",
       "items": [
-        "Community Race Series"
-      ]
-    },
-    {
-      "multiplier": "2X",
-      "label": "2X GTA$",
-      "tier": "2x",
-      "items": [
-        "First-time completion bonus for all Original Heists, The Doomsday Heist (all Acts), and The Diamond Casino Heist",
-        "First-time completion bonus for KnoWay Out"
+        "All Contact Missions (4x for GTA+ Members, through December 2nd)",
+        "Sumo (Remix)",
+        "FIB Priority File: The Brute Force File"
       ]
     },
     {
       "multiplier": "BONUS",
-      "label": "SPECIAL EVENT BONUSES & REWARDS",
-      "tier": "2x",
+      "label": "SPECIAL BONUSES",
+      "tier": "bonus",
       "items": [
-        "Guaranteed Panther Statue Primary Target in your first run of The Cayo Perico Heist",
-        "Guaranteed The Outcome of Endeavour Primary Target Painting in your first run of The Kortz Center Heist",
-        "Log in to receive The Great Circle Back Mansion Painting Decoration"
+        "Kortz Center Heist No-Death Completion Bonus (GTA$400,000) (+ First-Time Bonus Reset)"
       ]
     }
   ],
   "discounts": [
+    {
+      "name": "Tactical SMG (Gun Van)",
+      "item": "Tactical SMG (Gun Van)",
+      "category": "weapons",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
+    },
+    {
+      "name": "Combat Shotgun (Gun Van – GTA+)",
+      "item": "Combat Shotgun (Gun Van – GTA+)",
+      "category": "weapons",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
+    },
     {
       "name": "Knife (Gun Van)",
       "item": "Knife (Gun Van)",
@@ -159,149 +153,130 @@
       "badgeClass": "rate-free"
     },
     {
-      "name": "High-End Apartments",
-      "item": "High-End Apartments",
-      "category": "vehicles",
-      "rate": "40% OFF",
-      "discount": "40% OFF",
-      "badgeClass": "rate-40"
-    },
-    {
-      "name": "Casino Master Penthouse",
-      "item": "Casino Master Penthouse",
-      "category": "vehicles",
-      "rate": "40% OFF",
-      "discount": "40% OFF",
-      "badgeClass": "rate-40"
-    },
-    {
-      "name": "Casino Master Penthouse Upgrades and Modifications",
-      "item": "Casino Master Penthouse Upgrades and Modifications",
-      "category": "properties",
-      "rate": "40% OFF",
-      "discount": "40% OFF",
-      "badgeClass": "rate-40"
-    },
-    {
-      "name": "Facility Properties",
-      "item": "Facility Properties",
-      "category": "properties",
-      "rate": "40% OFF",
-      "discount": "40% OFF",
-      "badgeClass": "rate-40"
-    },
-    {
-      "name": "Facility Upgrades and Modifications",
-      "item": "Facility Upgrades and Modifications",
-      "category": "properties",
-      "rate": "40% OFF",
-      "discount": "40% OFF",
-      "badgeClass": "rate-40"
-    },
-    {
-      "name": "Cheval Taipan",
-      "item": "Cheval Taipan",
-      "category": "vehicles",
-      "rate": "30% OFF",
-      "discount": "30% OFF",
-      "badgeClass": "rate-30"
-    },
-    {
-      "name": "Benefactor Vorschlaghammer",
-      "item": "Benefactor Vorschlaghammer",
-      "category": "vehicles",
-      "rate": "30% OFF",
-      "discount": "30% OFF",
-      "badgeClass": "rate-30"
-    },
-    {
-      "name": "Invetero Coquette D5",
-      "item": "Invetero Coquette D5",
-      "category": "vehicles",
-      "rate": "30% OFF",
-      "discount": "30% OFF",
-      "badgeClass": "rate-30"
-    },
-    {
-      "name": "Pegassi Reaper",
-      "item": "Pegassi Reaper",
-      "category": "vehicles",
-      "rate": "30% OFF",
-      "discount": "30% OFF",
-      "badgeClass": "rate-30"
-    },
-    {
-      "name": "Maibatsu Penumbra FF",
-      "item": "Maibatsu Penumbra FF",
+      "name": "All Body Armor (Gun Van – GTA+)",
+      "item": "All Body Armor (Gun Van – GTA+)",
       "category": "weapons",
-      "rate": "30% OFF",
-      "discount": "30% OFF",
-      "badgeClass": "rate-30"
+      "rate": "80% OFF",
+      "discount": "80% OFF",
+      "badgeClass": "rate-50"
     },
     {
-      "name": "Western Company Besra",
-      "item": "Western Company Besra",
+      "name": "Canis Castigator",
+      "item": "Canis Castigator",
       "category": "vehicles",
       "rate": "30% OFF",
       "discount": "30% OFF",
       "badgeClass": "rate-30"
     },
     {
-      "name": "Western Rampant Rocket",
-      "item": "Western Rampant Rocket",
+      "name": "Declasse Hotring Sabre",
+      "item": "Declasse Hotring Sabre",
       "category": "vehicles",
       "rate": "30% OFF",
       "discount": "30% OFF",
       "badgeClass": "rate-30"
     },
     {
-      "name": "HVY Insurgent",
-      "item": "HVY Insurgent",
+      "name": "Declasse Impaler LX",
+      "item": "Declasse Impaler LX",
       "category": "vehicles",
       "rate": "30% OFF",
       "discount": "30% OFF",
       "badgeClass": "rate-30"
     },
     {
-      "name": "Dinka Blista Kanjo",
-      "item": "Dinka Blista Kanjo",
+      "name": "Declasse Tahoma Coupe",
+      "item": "Declasse Tahoma Coupe",
       "category": "vehicles",
       "rate": "30% OFF",
       "discount": "30% OFF",
       "badgeClass": "rate-30"
     },
     {
-      "name": "Grotti Cheetah",
-      "item": "Grotti Cheetah",
+      "name": "Dewbauchee Vagner",
+      "item": "Dewbauchee Vagner",
       "category": "vehicles",
       "rate": "30% OFF",
       "discount": "30% OFF",
       "badgeClass": "rate-30"
     },
     {
-      "name": "Grotti Veleno GT (First Time Purchase only. This is something new)",
-      "item": "Grotti Veleno GT (First Time Purchase only. This is something new)",
+      "name": "Karin Vivanite",
+      "item": "Karin Vivanite",
       "category": "vehicles",
-      "rate": "25% OFF",
-      "discount": "25% OFF",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "MTL Wastelander",
+      "item": "MTL Wastelander",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Obey I-Wagen",
+      "item": "Obey I-Wagen",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Obey Tailgater S",
+      "item": "Obey Tailgater S",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Übermacht Rebla GTS",
+      "item": "Übermacht Rebla GTS",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
       "badgeClass": "rate-30"
     }
   ],
-  "gunVan": [
-    "Precision Rifle – 50% off",
-    "Compact EMP Launcher – 40% off for GTA+ Members",
-    "El Strickler",
-    "Sweeper Shotgun",
-    "Widowmaker",
-    "Knuckle Dusters",
-    "Proximity Mines",
-    "Pipe Bombs",
-    "Molotovs",
-    "Baseball Bat – Free",
-    "Knife – Free",
-    "Armor – 80% off for GTA+ Members"
+  "specialRewards": [
+    "Kortz Center Heist No-Death Completion Bonus (GTA$400,000)",
+    "Free Knife in the Gun Van",
+    "Free Baseball Bat in the Gun Van"
   ],
-  "version": "v3.8.10"
+  "dailyObjectives": [
+    {
+      "day": "Thursday",
+      "task": "Participate in Freemode Challenges"
+    },
+    {
+      "day": "Friday",
+      "task": "Complete 1 Stunt Race Series"
+    },
+    {
+      "day": "Saturday",
+      "task": "Beat the Calafia Way Time Trial or a Salvage Yard Robbery"
+    },
+    {
+      "day": "Sunday",
+      "task": "Spin the Lucky Wheel for the Karin Everon"
+    },
+    {
+      "day": "Monday",
+      "task": "Compete in LS Car Meet (Place Top 4 in a LS Car Meet Series Race for 2 days in a row)"
+    },
+    {
+      "day": "Tuesday",
+      "task": "Play 1 All Contact Missions"
+    },
+    {
+      "day": "Wednesday",
+      "task": "Visit the Gun Van and finish Win two Stunt Races"
+    }
+  ],
+  "version": "v3.8.11"
 };
 
 
@@ -342,6 +317,67 @@
   }
 
   // Helper: Normalize both Central Command & Web schemas into unified frontend schema
+  function getExpectedActiveThursdayTimestamp() {
+    const latestReset = new Date(getLatestPassedResetTime());
+    try {
+      const parts = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/Los_Angeles',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      }).formatToParts(latestReset);
+      const p = {};
+      for (const item of parts) p[item.type] = item.value;
+      return Date.UTC(parseInt(p.year, 10), parseInt(p.month, 10) - 1, parseInt(p.day, 10));
+    } catch (_) {
+      return Date.UTC(latestReset.getUTCFullYear(), latestReset.getUTCMonth(), latestReset.getUTCDate());
+    }
+  }
+
+  function normalizeBonusGroupsList(rawList) {
+    if (!Array.isArray(rawList) || rawList.length === 0) return null;
+    // Detect flat matrix format ([{ name, multiplier, rate, ... }]) vs grouped format ([{ multiplier, label, items }])
+    if (!Array.isArray(rawList[0].items) && !Array.isArray(rawList[0].activities) && rawList[0].name) {
+      const grouped = new Map();
+      for (const b of rawList) {
+        const mult = String(b.multiplier || '2X').split(/\s+/)[0].toUpperCase();
+        const tier = mult === 'BONUS' ? 'bonus' : mult.toLowerCase().replace('.', '_');
+        const label = mult === 'BONUS' ? 'SPECIAL BONUSES' : `${mult} GTA$ & RP`;
+        if (!grouped.has(mult)) grouped.set(mult, { multiplier: mult, label, tier, items: [] });
+        grouped.get(mult).items.push(String(b.name).trim());
+      }
+      const rank = { '4X': 0, '3X': 1, '2X': 2, '1.5X': 3, 'BONUS': 4 };
+      return [...grouped.values()].sort((a, b) => (rank[a.multiplier] ?? 9) - (rank[b.multiplier] ?? 9));
+    }
+    return rawList.map(b => {
+      const mult = String(b.multiplier || '2X').split(/\s+/)[0].toUpperCase();
+      return {
+        ...b,
+        multiplier: mult,
+        label: b.label || b.category || b.multiplier || `${mult} GTA$ & RP`,
+        tier: (b.tier && (b.tier.includes('x') || b.tier === 'bonus')) ? b.tier : (mult === 'BONUS' ? 'bonus' : mult.toLowerCase().replace('.', '_')),
+        items: Array.isArray(b.items) ? b.items : (Array.isArray(b.activities) ? b.activities : (b.name ? [b.name] : []))
+      };
+    });
+  }
+
+  const WEEKLY_DAY_NAMES = ["Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday"];
+
+  function normalizeDailyObjectivesList(list) {
+    if (!Array.isArray(list)) return [];
+    return list
+      .map((o, idx) => {
+        const day = (o && typeof o === 'object' && o.day)
+          ? String(o.day).trim()
+          : WEEKLY_DAY_NAMES[idx % WEEKLY_DAY_NAMES.length];
+        const task = typeof o === 'string'
+          ? o.trim()
+          : (o?.task ? String(o.task).trim() : '');
+        return { day, task };
+      })
+      .filter(item => item.task && !/^tba\b/i.test(item.task));
+  }
+
   function normalizeWeeklyData(raw) {
     if (!raw || typeof raw !== 'object') return DEFAULT_WEEK_DATA;
     const mapped = {
@@ -360,6 +396,7 @@
         reward: raw.weeklyChallenge?.reward || raw.weekly_challenge?.reward || DEFAULT_WEEK_DATA.weeklyChallenge.reward
       },
       fibPriorityFile: raw.fibPriorityFile || raw.fib_priority_file || DEFAULT_WEEK_DATA.fibPriorityFile,
+      kortzTargets: Array.isArray(raw.kortzTargets) ? raw.kortzTargets : (Array.isArray(raw.kortz_targets) ? raw.kortz_targets : DEFAULT_WEEK_DATA.kortzTargets),
       testRides: Array.isArray(raw.testRides) ? raw.testRides : (Array.isArray(raw.test_track) ? raw.test_track : DEFAULT_WEEK_DATA.testRides),
       luxuryAutos: Array.isArray(raw.luxuryAutos) ? raw.luxuryAutos : (Array.isArray(raw.luxury_autos) ? raw.luxury_autos : DEFAULT_WEEK_DATA.luxuryAutos),
       pdmShowroom: Array.isArray(raw.pdmShowroom) ? raw.pdmShowroom : (Array.isArray(raw.simeons_pdm) ? raw.simeons_pdm : DEFAULT_WEEK_DATA.pdmShowroom),
@@ -371,25 +408,20 @@
     if (rawSalvage && rawSalvage.length > 0) {
       mapped.salvageRobberies = rawSalvage.map(r => ({
         name: r.name || r.robbery || 'Salvage Robbery',
-        vehicle: r.vehicle || r.car || 'Target Vehicle',
+        vehicle: r.vehicle || r.target || r.car || 'Target Vehicle',
         value: r.value || '~$350,000 – $400,000',
         robbery: r.robbery || r.name || 'Salvage Robbery',
-        car: r.car || r.vehicle || 'Target Vehicle',
+        target: r.target || r.vehicle || r.car || 'Target Vehicle',
+        car: r.car || r.vehicle || r.target || 'Target Vehicle',
         claimable: !!r.claimable
       }));
     }
 
-    if (Array.isArray(raw.bonuses) && raw.bonuses.length > 0) {
-      mapped.bonuses = raw.bonuses.map(b => {
-        const mult = String(b.multiplier || '2X').split(/\s+/)[0].toUpperCase();
-        return {
-          ...b,
-          multiplier: mult,
-          label: b.label || b.multiplier || `${mult} GTA$ & RP`,
-          tier: (b.tier && b.tier.includes('x')) ? b.tier : mult.toLowerCase().replace('.', '_'),
-          items: Array.isArray(b.items) ? b.items : (b.name ? [b.name] : [])
-        };
-      });
+    const groupedBonuses = (Array.isArray(raw.bonus_groups) && raw.bonus_groups.length > 0)
+      ? normalizeBonusGroupsList(raw.bonus_groups)
+      : normalizeBonusGroupsList(raw.bonuses);
+    if (groupedBonuses && groupedBonuses.length > 0) {
+      mapped.bonuses = groupedBonuses;
     }
 
     if (Array.isArray(raw.discounts) && raw.discounts.length > 0) {
@@ -398,7 +430,7 @@
         const isFree = rateStr.includes('FREE');
         let badgeClass = d.badgeClass || 'rate-30';
         if (isFree) badgeClass = 'rate-free';
-        else if (rateStr.includes('50')) badgeClass = 'rate-50';
+        else if (rateStr.includes('50') || rateStr.includes('80')) badgeClass = 'rate-50';
         else if (rateStr.includes('40')) badgeClass = 'rate-40';
         return {
           ...d,
@@ -410,6 +442,13 @@
           badgeClass
         };
       });
+    }
+
+    if (Array.isArray(raw.dailyObjectives)) {
+      const cleanedDaily = normalizeDailyObjectivesList(raw.dailyObjectives);
+      mapped.dailyObjectives = cleanedDaily.length > 0 ? cleanedDaily : normalizeDailyObjectivesList(DEFAULT_WEEK_DATA.dailyObjectives);
+    } else {
+      mapped.dailyObjectives = normalizeDailyObjectivesList(mapped.dailyObjectives);
     }
 
     return mapped;
@@ -424,13 +463,13 @@
       const db = getFirestore(app);
       const weeklyDocRef = doc(db, 'weekly', 'current');
 
-      // Realtime listener — ONLY accept Firestore snapshot if its week date is >= currentData's week date!
+      // Realtime listener — ONLY accept Firestore snapshot if strictly newer (> currentData) to protect against stale docs
       onSnapshot(weeklyDocRef, (snap) => {
         if (snap.exists()) {
           const cloudData = snap.data();
           if (cloudData && (cloudData.podiumVehicle || cloudData.podium_vehicle || cloudData.eventTitle || cloudData.dateRange)) {
             const normalized = normalizeWeeklyData(cloudData);
-            if (getWeekStartTimestamp(normalized) >= getWeekStartTimestamp(currentData) && normalized.podiumVehicle !== 'TBD') {
+            if (getWeekStartTimestamp(normalized) > getWeekStartTimestamp(currentData) && normalized.podiumVehicle !== 'TBD') {
               currentData = normalized;
               saveData(currentData);
               renderAll();
@@ -485,9 +524,10 @@
       saveData(currentData);
       renderAll();
       updateLiveIndicator(true, currentData.dateRange);
-      return true;
     }
-    return false;
+
+    const expectedThuTs = getExpectedActiveThursdayTimestamp();
+    return Boolean(getWeekStartTimestamp(currentData) >= expectedThuTs && currentData?.podiumVehicle && currentData.podiumVehicle !== 'TBD');
   }
 
   function updateLiveIndicator(isLive, dateRange) {
@@ -503,7 +543,7 @@
     }
 
     if (redditSourceMeta && dateRange) {
-      redditSourceMeta.textContent = `Source: r/gtaonline • Synced via BDCF Cloud (${dateRange})`;
+      redditSourceMeta.textContent = `Source: RockstarINTEL • Synced via BDCF Cloud (${dateRange})`;
     }
   }
 
@@ -738,7 +778,8 @@
     const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const todayName = daysOfWeek[new Date().getDay()];
 
-    container.innerHTML = currentData.dailyObjectives.map((obj, idx) => {
+    const dailyList = normalizeDailyObjectivesList(currentData.dailyObjectives);
+    container.innerHTML = dailyList.map((obj, idx) => {
       const taskId = `daily-${obj.day.toLowerCase()}`;
       const isChecked = !!taskCheckState[taskId];
       const isToday = obj.day.toLowerCase() === todayName.toLowerCase();
@@ -987,16 +1028,21 @@
   }
 
   async function checkAndAutoRefresh() {
-    const latestResetTime = getLatestPassedResetTime();
-    const lastAutoRefresh = localStorage.getItem('gta_last_reset_checked');
-
-    if (!lastAutoRefresh || Number(lastAutoRefresh) < latestResetTime) {
-      console.log('[AutoRefresher] Thursday reset (12:00 AM PT) has passed! Checking for new weekly updates...');
-      localStorage.setItem('gta_last_reset_checked', String(Date.now()));
-      
-      // Auto-trigger sync in background
-      await fetchLatestFromReddit(true);
+    const expectedThuTs = getExpectedActiveThursdayTimestamp();
+    const currentTs = getWeekStartTimestamp(currentData);
+    if (currentTs >= expectedThuTs && currentData?.podiumVehicle && currentData.podiumVehicle !== 'TBD') {
+      return;
     }
+
+    const now = Date.now();
+    const lastAttempt = Number(localStorage.getItem('gta_last_sync_attempt') || 0);
+    if (now - lastAttempt < 15 * 60 * 1000) {
+      return;
+    }
+
+    console.log('[AutoRefresher] Active Thursday data missing or stale — polling live RockstarINTEL & BDCF Cloud...');
+    localStorage.setItem('gta_last_sync_attempt', String(now));
+    await fetchLatestFromReddit(true);
   }
 
   // ── Live Countdown Timer to Next Thursday ──
@@ -1048,6 +1094,178 @@
     setInterval(updateTimers, 1000);
   }
 
+  // ── Client-Side RockstarINTEL HTML Parser (Browser DOMParser) ──
+  function parseRockstarIntelClientHtml(rawTitle, rawHtml) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(`<div>${rawHtml || ''}</div>`, 'text/html');
+    const cleanText = (s) => String(s || '').replace(/\u00a0/g, ' ').replace(/\s+/g, ' ').trim();
+    const root = doc.body.firstElementChild || doc.body;
+    const h3s = [...root.querySelectorAll('h3')];
+
+    // Date extraction + Wednesday->Thursday 6-day span normalization
+    const introParts = [];
+    for (let n = root.firstChild; n && n.tagName !== 'H3'; n = n.nextSibling) {
+      introParts.push(n.textContent || '');
+    }
+    const introText = cleanText(introParts.join(' '));
+    const rawDateSpan = introText.match(/from\s+([A-Za-z]+\s+\d{1,2}(?:st|nd|rd|th)?\s+through\s+(?:[A-Za-z]+\s+)?\d{1,2}(?:st|nd|rd|th)?)/i)?.[1]
+      || rawTitle.match(/\(([^)]*\d+[^)]*)\)/)?.[1]
+      || rawTitle;
+
+    const monthsMap = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
+    const shortM = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    let normalizedRange = cleanText(rawDateSpan);
+    const dm = normalizedRange.match(/([A-Za-z]+)\s+(\d{1,2})(?:st|nd|rd|th)?\s*(?:to|through|thru|–|—|-)\s*(?:([A-Za-z]+)\s+)?(\d{1,2})(?:st|nd|rd|th)?(?:,?\s*(202\d))?/i);
+    if (dm && monthsMap[dm[1].slice(0, 3).toLowerCase()] !== undefined) {
+      const m1Idx = monthsMap[dm[1].slice(0, 3).toLowerCase()];
+      const d1 = parseInt(dm[2], 10);
+      const m2Idx = dm[3] ? (monthsMap[dm[3].slice(0, 3).toLowerCase()] ?? m1Idx) : m1Idx;
+      const d2 = parseInt(dm[4], 10);
+      const yr = dm[5] ? parseInt(dm[5], 10) : new Date().getFullYear();
+      const sDt = new Date(Date.UTC(yr, m1Idx, d1));
+      let eDt = new Date(Date.UTC(m2Idx < m1Idx ? yr + 1 : yr, m2Idx, d2));
+      if (Math.round((eDt - sDt) / 86400000) === 6) eDt = new Date(eDt.getTime() + 86400000);
+      const sm1 = shortM[sDt.getUTCMonth()];
+      const sm2 = shortM[eDt.getUTCMonth()];
+      normalizedRange = sm1 === sm2
+        ? `${sm1} ${sDt.getUTCDate()} – ${eDt.getUTCDate()}, ${eDt.getUTCFullYear()}`
+        : `${sm1} ${sDt.getUTCDate()} – ${sm2} ${eDt.getUTCDate()}, ${eDt.getUTCFullYear()}`;
+    }
+
+    const data = JSON.parse(JSON.stringify(DEFAULT_WEEK_DATA));
+    data.title = `Weekly Bonuses and Discounts - ${normalizedRange}`;
+    data.dateRange = normalizedRange;
+    data.podiumVehicle = 'TBD';
+    data.prizeRide = { vehicle: 'TBD', condition: 'Check LS Car Meet Challenge' };
+    data.bonuses = [];
+    data.discounts = [];
+    data.gunVan = [];
+    data.salvageRobberies = [];
+    data.kortzTargets = [];
+    data.specialRewards = [];
+
+    const splitVeh = (s) => cleanText(s).replace(/\.$/, '').split(/\s*(?:,|&|\band\b)\s*/i).map(v => v.replace(/^the\s+/i, '').trim()).filter(Boolean);
+    const classifyCat = (name) => {
+      const l = name.toLowerCase();
+      if (/agency|hangar|facility|bunker|auto shop|bail|property|properties|garage|nightclub|arcade|mc|office|salvage yard/.test(l)) return 'properties';
+      if (/knife|bat|smg|shotgun|rifle|gun|launcher|pistol|weapon|armor|armour/.test(l)) return 'weapons';
+      if (/shirt|outfit|clothing|hat|mask|apparel/.test(l)) return 'apparel';
+      return 'vehicles';
+    };
+
+    const fibExtras = [];
+    for (const h3 of h3s) {
+      const heading = cleanText(h3.textContent).toLowerCase();
+      if (heading.includes('gta+')) break;
+      const nodes = [];
+      for (let el = h3.nextElementSibling; el && el.tagName !== 'H3'; el = el.nextElementSibling) {
+        nodes.push(el);
+      }
+      const secText = cleanText(nodes.map(n => n.textContent).join(' '));
+      const listItems = nodes.flatMap(n => (n.tagName === 'UL' ? [...n.querySelectorAll('li')] : [...n.querySelectorAll('li')])).map(li => cleanText(li.textContent)).filter(Boolean);
+      const firstStrong = cleanText(nodes.map(n => n.querySelector('strong')?.textContent).find(Boolean) || '');
+
+      if (heading.includes('kortz')) {
+        data.kortzTargets = listItems;
+        const m = secText.match(/extra\s+(GTA\$[\d,]+)/i);
+        if (m) data.specialRewards.push(`Kortz Center Heist No-Death Completion Bonus (${m[1]})`);
+      } else if (heading.includes('priority file') || heading.includes('fib')) {
+        const fn = firstStrong || 'Active';
+        const dbl = /double|2x/i.test(secText);
+        data.fibPriorityFile = dbl && !/2x/i.test(fn) ? `${fn} (2X GTA$ & RP)` : fn;
+        if (dbl) fibExtras.push(`FIB Priority File: ${fn}`);
+      } else if (heading.includes('salvage yard')) {
+        data.salvageRobberies = listItems.map(li => {
+          const [rob, ...rest] = li.split(':');
+          const tgt = cleanText(rest.join(':'));
+          return { robbery: cleanText(rob), name: cleanText(rob), target: tgt, vehicle: tgt, value: '~$325,000 – $400,000', claimable: /claimable/i.test(tgt) };
+        });
+      } else if (heading.includes('podium vehicle')) {
+        data.podiumVehicle = firstStrong || secText.match(/win\s+the\s+([^,.]+)/i)?.[1] || 'TBD';
+      } else if (heading.includes('prize ride')) {
+        data.prizeRide.vehicle = firstStrong || secText.match(/unlock\s+the\s+([^,.]+)/i)?.[1] || 'TBD';
+        const cm = secText.match(/(place[^.]+?)\s+to unlock/i);
+        if (cm) data.prizeRide.condition = cleanText(cm[1]).replace(/^place\s+top/i, 'Place Top');
+      } else if (heading.includes('hao') || heading.includes('hsw premium')) {
+        data.hswTestRide = firstStrong || 'TBD';
+      } else if (heading.includes('test track')) {
+        data.testRides = splitVeh(firstStrong || secText);
+      } else if (heading.includes('luxury autos')) {
+        data.luxuryAutos = splitVeh(firstStrong || secText);
+      } else if (heading.includes('premium deluxe') || heading.includes('simeon')) {
+        data.pdmShowroom = splitVeh(firstStrong || secText);
+      } else if (heading.includes('gun van')) {
+        for (const li of listItems) {
+          if (/armor/i.test(li)) continue;
+          const cleanItem = li.replace(/\s*\(FREE\)/i, ' – FREE (100% Off)');
+          data.gunVan.push(cleanItem);
+          const nm = li.replace(/\s*\([^)]*\)/g, '').trim();
+          if (/\bfree\b/i.test(li)) {
+            data.discounts.push({ name: `${nm} (Gun Van)`, item: `${nm} (Gun Van)`, category: 'weapons', rate: '100% FREE', discount: '100% FREE', badgeClass: 'rate-free' });
+          } else {
+            const pM = li.match(/(\d+)%/g);
+            const maxP = pM ? Math.max(...pM.map(x => parseInt(x, 10))) : 0;
+            if (maxP >= 30) {
+              data.discounts.push({ name: `${nm} (Gun Van)`, item: `${nm} (Gun Van)`, category: 'weapons', rate: `${maxP}% OFF`, discount: `${maxP}% OFF`, badgeClass: maxP >= 50 ? 'rate-50' : 'rate-40' });
+            }
+          }
+        }
+        if (/armor/i.test(secText)) data.gunVan.push('Body Armor: All Types (10%, GTA+ 80%)');
+      } else if (heading.includes('premium race')) {
+        data.timeTrials.premiumRace = firstStrong || 'TBD';
+      } else if (heading.includes('hsw time trial')) {
+        data.timeTrials.hsw = firstStrong || 'TBD';
+      } else if (heading.includes('time trial')) {
+        data.timeTrials.regular = firstStrong || 'TBD';
+      } else if (heading.includes('discount')) {
+        let rate = '30% OFF';
+        let badge = 'rate-30';
+        for (const n of nodes) {
+          if (/^H[45]$|^P$/i.test(n.tagName)) {
+            const pctM = cleanText(n.textContent).match(/(\d+)\s*%\s*off/i);
+            if (pctM) {
+              const p = parseInt(pctM[1], 10);
+              rate = `${p}% OFF`;
+              badge = p >= 50 ? 'rate-50' : p >= 40 ? 'rate-40' : 'rate-30';
+            }
+          } else if (n.tagName === 'UL') {
+            for (const li of n.querySelectorAll('li')) {
+              const nm = cleanText(li.textContent);
+              if (nm) data.discounts.push({ name: nm, item: nm, category: classifyCat(nm), rate, discount: rate, badgeClass: badge });
+            }
+          }
+        }
+      } else if (heading.includes('bonus')) {
+        const grouped = new Map();
+        const addB = (mult, item) => {
+          const m = mult.toUpperCase();
+          if (!grouped.has(m)) grouped.set(m, { multiplier: m, label: m === 'BONUS' ? 'SPECIAL BONUSES' : `${m} GTA$ & RP`, tier: m.toLowerCase(), items: [] });
+          grouped.get(m).items.push(item);
+        };
+        for (const li of listItems) {
+          const bm = li.match(/^(\d+x|Double|Triple|Quadruple|Bonus)\s*(?:GTA\$\s*(?:&|and)\s*RP|GTA\$|RP)?\s*(?:on|for)?\s*(.+)$/i);
+          if (bm) addB(bm[1].replace(/quadruple/i, '4X').replace(/triple/i, '3X').replace(/double/i, '2X'), cleanText(bm[2]));
+          else addB('BONUS', li);
+        }
+        fibExtras.forEach(x => addB('2X', x));
+        data.specialRewards.filter(r => /kortz/i.test(r)).forEach(r => addB('BONUS', r));
+        const rank = { '4X': 0, '3X': 1, '2X': 2, '1.5X': 3, 'BONUS': 4 };
+        data.bonuses = [...grouped.values()].sort((a, b) => (rank[a.multiplier] ?? 9) - (rank[b.multiplier] ?? 9));
+      } else if (heading.includes('weekly challenge')) {
+        const tm = secText.match(/[“"']([^”"']+)[”"']/);
+        const rm = secText.match(/(GTA\$[\d,]+)/i);
+        if (tm) data.weeklyChallenge.task = cleanText(tm[1]);
+        if (rm) data.weeklyChallenge.reward = rm[1].toUpperCase();
+      }
+    }
+
+    if (data.bonuses.length > 0) {
+      data.eventTitle = data.bonuses.filter(b => b.multiplier !== 'BONUS').slice(0, 3).map(b => `${b.multiplier} ${b.items.slice(0, 2).map(x => x.replace(/\s*\([^)]*\)/g, '')).join(' & ')}`).join(', ');
+      data.eventDesc = `Earn ${data.bonuses.filter(b => b.multiplier !== 'BONUS').map(b => `${b.multiplier} on ${b.items.join(' & ')}`).join(', ')}, plus Casino Podium ${data.podiumVehicle} and Prize Ride ${data.prizeRide.vehicle}!`;
+    }
+    return data;
+  }
+
   // ── Live Cloud Feed Fetcher & Parser Engine ──
   async function fetchLatestFromReddit(isSilentAutoRefresh = false) {
     const refreshBtn = document.getElementById('refreshRedditBtn');
@@ -1065,10 +1283,10 @@
       showToast('📡 Connecting to BDCF Cloud Network...', 'info');
     }
 
-    // Tier 1: Fetch freshest verified payload across all cloud RTDB and static mirrors (validated by week start timestamp)
+    // Tier 1: Fetch freshest verified payload across all cloud RTDB and static mirrors (verified >= expected Thursday)
     try {
-      const updated = await syncFromCloudEndpoints();
-      if (updated) {
+      const isUpToDate = await syncFromCloudEndpoints();
+      if (isUpToDate) {
         if (!isSilentAutoRefresh) {
           showToast(`✅ Latest Weekly Update synced (${currentData.dateRange})!`, 'success');
         }
@@ -1088,31 +1306,56 @@
       }
     } catch (_) {}
 
-    // Tier 2: Multi-proxy fallback for community feeds
-    const redditSearchUrl = 'https://www.reddit.com/r/gtaonline/search.json?q=flair_name%3A%22:WU1::WU2::WU3::WU4::WU5::WU6:%22&sort=new&restrict_sr=1&limit=3';
-    const proxyCandidates = [
-      'https://api.allorigins.win/raw?url=' + encodeURIComponent(redditSearchUrl),
-      'https://corsproxy.io/?' + encodeURIComponent(redditSearchUrl),
-      redditSearchUrl
+    // Tier 2: Live RockstarINTEL GTA Online RSS Feed (via CORS-friendly rss2json & allorigins relays) + Reddit Tertiary
+    const riRss = 'https://rockstarintel.com/category/gta/gta-online/feed/';
+    const redditRss = 'https://www.reddit.com/r/gtaonline/search.rss?q=title%3A%22Weekly+Bonuses+and+Discounts%22&restrict_sr=1&sort=new';
+    const feedCandidates = [
+      { kind: 'rss2json', source: 'rockstarintel', url: 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(riRss) },
+      { kind: 'xml', source: 'rockstarintel', url: 'https://api.allorigins.win/raw?url=' + encodeURIComponent(riRss) },
+      { kind: 'rss2json', source: 'reddit', url: 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(redditRss) }
     ];
 
     try {
-      let res;
-      for (const pUrl of proxyCandidates) {
+      const expectedThuTs = getExpectedActiveThursdayTimestamp();
+      let parsedData = null;
+
+      for (const candidate of feedCandidates) {
         try {
-          res = await fetch(pUrl);
-          if (res && res.ok) break;
+          const res = await fetch(candidate.url);
+          if (!res || !res.ok) continue;
+
+          let posts = [];
+          if (candidate.kind === 'rss2json') {
+            const json = await res.json();
+            posts = Array.isArray(json?.items) ? json.items.map(it => ({ title: it.title || '', html: it.content || it.description || '' })) : [];
+          } else {
+            const xmlText = await res.text();
+            const xmlDoc = new DOMParser().parseFromString(xmlText, 'text/xml');
+            posts = [...xmlDoc.querySelectorAll('item')].map(item => ({
+              title: item.querySelector('title')?.textContent || '',
+              html: item.getElementsByTagName('content:encoded')[0]?.textContent || item.querySelector('description')?.textContent || ''
+            }));
+          }
+
+          const matched = posts.find(p =>
+            (/GTA Online.*(?:Event Week|Weekly Update)|Weekly Bonuses and Discounts/i.test(p.title))
+            && /Podium Vehicle/i.test(p.html)
+          );
+          if (!matched) continue;
+
+          const parsedCandidate = candidate.source === 'rockstarintel'
+            ? parseRockstarIntelClientHtml(matched.title, matched.html)
+            : parseRedditPostText(matched.title, new DOMParser().parseFromString(matched.html, 'text/html').body.textContent || '');
+
+          const candidateTs = getWeekStartTimestamp(parsedCandidate);
+          if (parsedCandidate && parsedCandidate.podiumVehicle && parsedCandidate.podiumVehicle !== 'TBD' && candidateTs >= getWeekStartTimestamp(currentData) && candidateTs >= expectedThuTs - 7 * 86400000) {
+            parsedData = normalizeWeeklyData(parsedCandidate);
+            break;
+          }
         } catch (_) {}
       }
 
-      if (!res || !res.ok) throw new Error("Cloud feed currently unreachable");
-      const json = await res.json();
-
-      const posts = json?.data?.children;
-      if (!posts || posts.length === 0) throw new Error("No update posts found on cloud feed");
-
-      const latestPost = posts[0].data;
-      const parsedData = parseRedditPostText(latestPost.title, latestPost.selftext);
+      if (!parsedData) throw new Error('Live feeds did not return a newer valid update');
 
       // Check if new week date range detected -> reset checklist for fresh week
       if (currentData.dateRange && parsedData.dateRange && currentData.dateRange !== parsedData.dateRange) {
@@ -1123,21 +1366,45 @@
         }
       }
 
-      saveData(parsedData);
+      currentData = parsedData;
+      saveData(currentData);
       renderAll();
+      updateLiveIndicator(true, currentData.dateRange);
+
+      // Self-healing cloud mirror update (publicly writable livecounters-8eaa8 RTDB only; never write unauthenticated to the-bdcf-crew)
+      if (getWeekStartTimestamp(currentData) >= expectedThuTs && currentData.podiumVehicle !== 'TBD') {
+        try {
+          fetch('https://livecounters-8eaa8-default-rtdb.firebaseio.com/labData/gtaWeekly.json', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              ...currentData,
+              week_title: currentData.dateRange,
+              event_name: currentData.eventTitle,
+              special_claim: currentData.eventDesc,
+              podium_vehicle: currentData.podiumVehicle,
+              prize_ride: currentData.prizeRide?.vehicle || 'TBD',
+              prize_ride_challenge: currentData.prizeRide?.condition || '',
+              bonus_groups: currentData.bonuses || [],
+              last_updated: Math.floor(Date.now() / 1000),
+              source: `RockstarINTEL Client Self-Heal (${currentData.dateRange})`
+            })
+          }).catch(() => {});
+        } catch (_) {}
+      }
 
       if (!isSilentAutoRefresh) {
-        showToast('✅ Latest Weekly Update synced from BDCF Cloud!', 'success');
+        showToast(`✅ Latest Weekly Update synced live (${currentData.dateRange})!`, 'success');
       }
 
       const sourceMeta = document.getElementById('redditSourceMeta');
       if (sourceMeta) {
-        sourceMeta.textContent = `BDCF Cloud Network • Auto-Synced (${parsedData.dateRange || 'Active Week'})`;
+        sourceMeta.textContent = `RockstarINTEL Live • Auto-Synced (${currentData.dateRange || 'Active Week'})`;
       }
     } catch (err) {
-      console.warn("Cloud fetch fallback to bundled data:", err);
+      console.warn('Live fetch fallback to bundled data:', err);
       if (!isSilentAutoRefresh) {
-        showToast('⚠️ Could not reach live feed directly. Using active bundled week data.', 'error');
+        showToast('⚠️ Live feed busy — displaying verified active week data.', 'info');
       }
     } finally {
       if (refreshBtn && !isSilentAutoRefresh) {
@@ -1358,7 +1625,7 @@
     tsv += `Time Trial\tRegular: ${currentData.timeTrials.regular}\tFreemode Challenge\t${taskCheckState['tt-regular'] ? 'Completed' : 'Pending'}\n`;
     tsv += `Time Trial\tHSW: ${currentData.timeTrials.hsw}\tNext-Gen / PC\t${taskCheckState['tt-hsw'] ? 'Completed' : 'Pending'}\n`;
 
-    currentData.dailyObjectives.forEach(d => {
+    normalizeDailyObjectivesList(currentData.dailyObjectives).forEach(d => {
       tsv += `Daily Objective\t${d.day}: ${d.task}\tDaily Streak Reward\t${taskCheckState[`daily-${d.day.toLowerCase()}`] ? 'Completed' : 'Pending'}\n`;
     });
 
@@ -1838,19 +2105,12 @@ function setupThursdayGtaTrigger() {
       fetchBtn.addEventListener('click', async () => {
         fetchBtn.disabled = true;
         fetchBtn.textContent = '⏳ Fetching...';
-        showToast('📡 Checking for latest GTA Online update...', 'info');
+        showToast('📡 Checking RockstarINTEL & BDCF Cloud for latest update...', 'info');
 
         try {
-          const res = await fetch('https://raw.githubusercontent.com/theBDCFcrew/theBDCFcrew.github.io/main/LosSantosWeekly/app.js?t=' + Date.now());
-          if (res.ok) {
-            const text = await res.text();
-            const match = text.match(/const DEFAULT_WEEK_DATA = (\{[\s\S]*?\n  \};)/);
-            if (match) {
-              const freshData = (new Function(`return ${match[1]}`))();
-              populateForm(freshData);
-              showToast(`🎉 Loaded ${freshData.dateRange}: ${freshData.eventTitle}!`, 'success');
-            }
-          }
+          await fetchLatestFromReddit(true);
+          populateForm(currentData);
+          showToast(`✅ Synced ${currentData.dateRange}: ${currentData.eventTitle}!`, 'success');
         } catch (e) {
           populateForm(DEFAULT_WEEK_DATA);
           showToast(`✅ Current verified week loaded: ${DEFAULT_WEEK_DATA.dateRange}`, 'info');

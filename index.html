@@ -299,7 +299,7 @@
 
       <div class="footer-links">
         <button id="footerInstallBtn" class="footer-install-btn" style="display:none;">📲 Install Web App</button>
-        <button id="footerVersionBtn" class="footer-admin-btn" title="View Crew Updates & Changelog">⚡ v3.8.0 Updates</button>
+        <button id="footerVersionBtn" class="footer-admin-btn" title="View Crew Updates & Changelog">⚡ v3.8.11 Updates</button>
         <button id="footerAdminBtn" class="footer-admin-btn">⚙️ Admin Menu</button>
       </div>
 
@@ -307,7 +307,7 @@
   </footer>
 
   <!-- =========================================================================
-       POPUP MODAL WINDOW: CREW UPDATE ALERT (v3.8.0)
+       POPUP MODAL WINDOW: CREW UPDATE ALERT (v3.8.11)
        ========================================================================= -->
   <div id="updateAlertOverlay" class="update-alert-overlay" style="display: none;"></div>
   <div id="updateAlertModal" class="update-alert-modal-container" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="updateAlertTitle">
@@ -317,7 +317,7 @@
         <div>
           <div class="update-headline-row">
             <h3 id="updateAlertTitle">NEW CREW UPDATE</h3>
-            <span class="update-version-tag">v3.8.0</span>
+            <span class="update-version-tag">v3.8.11</span>
           </div>
           <p class="update-subheadline">Set-and-Forget Weekly Sync &amp; Brand Streamline</p>
         </div>
@@ -401,7 +401,7 @@
       <!-- Active Week & Live Reset Card -->
       <div class="drawer-card drawer-timer-card">
         <div class="drawer-card-label">📅 ACTIVE GTA ONLINE WEEK</div>
-        <div class="drawer-date-badge" id="drawerDateRange">Sep 17 – Sep 24</div>
+        <div class="drawer-date-badge" id="drawerDateRange">Nov 12 – 19, 2026</div>
         
         <div class="drawer-divider"></div>
 
@@ -453,7 +453,7 @@
     </div>
 
     <div class="drawer-footer">
-      <span class="drawer-footer-text">The BDCF Crew Headquarters • v3.8.1</span>
+      <span class="drawer-footer-text">The BDCF Crew Headquarters • v3.8.11</span>
     </div>
   </aside>
 
@@ -637,10 +637,10 @@
           <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;">
             <div>
               <div style="font-weight:800; font-size:15px; color:#fff; display:flex; align-items:center; gap:8px;">
-                <span class="pulse-dot" style="background:#22c55e;"></span> Currently Active: <span id="adminLiveWeekDate" style="color:#f472b6;">Sep 24 – Oct 1</span>
+                <span class="pulse-dot" style="background:#22c55e;"></span> Currently Active: <span id="adminLiveWeekDate" style="color:#f472b6;">Nov 12 – 19, 2026</span>
               </div>
               <div style="font-size:12px; color:var(--text-muted); margin-top:4px;" id="adminLiveWeekMeta">
-                Event: Nightclubs Week • Ocelot Penetrator • Pegassi Zorrusso
+                Event: 4X Freemode Challenges, 3X Stunt Race Series &amp; Community Series, 2X All Contact Missions &amp; Sumo • Karin Everon • Western Powersurge
               </div>
             </div>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
@@ -667,44 +667,44 @@
           <div class="form-row" style="display:grid; grid-template-columns: 1fr 2fr; gap:12px;">
             <div class="form-group">
               <label for="adminFieldDateRange" style="font-size:11px; font-weight:700; color:#e2e8f0;">📅 ACTIVE DATES:</label>
-              <input type="text" id="adminFieldDateRange" value="Oct 15 – 22, 2026" required style="font-weight:700; color:#38bdf8;" />
+              <input type="text" id="adminFieldDateRange" value="Nov 12 – 19, 2026" required style="font-weight:700; color:#38bdf8;" />
             </div>
             <div class="form-group">
               <label for="adminFieldEventTitle" style="font-size:11px; font-weight:700; color:#e2e8f0;">⚡ EVENT THEME / TITLE:</label>
-              <input type="text" id="adminFieldEventTitle" value="3X Halloween Featured Series, Halloween Survivals &amp; Weekly Bonuses" required />
+              <input type="text" id="adminFieldEventTitle" value="4X Freemode Challenges, 3X Stunt Race Series &amp; Community Series, 2X All Contact Missions &amp; Sumo" required />
             </div>
           </div>
 
           <div class="form-row" style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
             <div class="form-group">
               <label for="adminFieldPodium" style="font-size:11px; font-weight:700; color:#e2e8f0;">🎡 PODIUM VEHICLE (CASINO):</label>
-              <input type="text" id="adminFieldPodium" value="Grotti LSCM Cheetah Classic" required />
+              <input type="text" id="adminFieldPodium" value="Karin Everon" required />
             </div>
             <div class="form-group">
               <label for="adminFieldPrizeRide" style="font-size:11px; font-weight:700; color:#e2e8f0;">🏁 PRIZE RIDE VEHICLE (LS CAR MEET):</label>
-              <input type="text" id="adminFieldPrizeRide" value="Dinka Kanjo SJ" required />
+              <input type="text" id="adminFieldPrizeRide" value="Western Powersurge" required />
             </div>
           </div>
 
           <div class="form-group">
             <label for="adminFieldPrizeCond" style="font-size:11px; font-weight:700; color:#e2e8f0;">🏁 PRIZE RIDE CHALLENGE CONDITION:</label>
-            <input type="text" id="adminFieldPrizeCond" value="Place Top 5 in the LS Car Meet Series" />
+            <input type="text" id="adminFieldPrizeCond" value="Place Top 4 in a LS Car Meet Series Race for 2 days in a row" />
           </div>
 
           <div class="form-row" style="display:grid; grid-template-columns: 2fr 1fr; gap:12px;">
             <div class="form-group">
               <label for="adminFieldChallengeTask" style="font-size:11px; font-weight:700; color:#e2e8f0;">🏆 WEEKLY CHALLENGE TASK:</label>
-              <input type="text" id="adminFieldChallengeTask" value="Win three Races" />
+              <input type="text" id="adminFieldChallengeTask" value="Win two Stunt Races" />
             </div>
             <div class="form-group">
               <label for="adminFieldChallengeReward" style="font-size:11px; font-weight:700; color:#e2e8f0;">💰 CHALLENGE REWARD:</label>
-              <input type="text" id="adminFieldChallengeReward" value="Orange Glow Skeletal Onesie and GTA$100,000" />
+              <input type="text" id="adminFieldChallengeReward" value="GTA$100,000" />
             </div>
           </div>
 
           <div class="form-group">
             <label for="adminFieldEventDesc" style="font-size:11px; font-weight:700; color:#e2e8f0;">📢 WEEKLY HIGHLIGHTS &amp; SUMMARY:</label>
-            <textarea id="adminFieldEventDesc" rows="3">Things keep getting stranger in Los Santos as the calendar draws closer to Halloween. Play anytime through October 21 to collect the Butchery and Other Hobbies T-Shirt and throw it back to the Golden Age of Vinewood horror.</textarea>
+            <textarea id="adminFieldEventDesc" rows="3">Earn 4X on Freemode Challenges, 3X on Stunt Race Series and Community Series, 2X on All Contact Missions (4X for GTA+ Members) and Sumo (Remix) and FIB Priority File: The Brute Force File, plus spin for the Karin Everon ($1,475,000) and win the Western Powersurge ($1,605,000)!</textarea>
           </div>
 
           <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
@@ -2422,106 +2422,93 @@ function onOpen() {
     // ══════════════════════════════════════════════
 
     const DEFAULT_WEEK_DATA = {
-  "title": "Weekly Bonuses and Discounts - November 5th to November 12th",
-  "eventTitle": "3X Mansion Raid, Community Race Series & Weekly Bonuses",
-  "eventDesc": "Set your sights on high-value targets in this week’s GTA Online Heist Event to earn doubled first-time completion bonuses on all the Original Heists, The Doomsday Heist, The Diamond Casino Heist, KnoWay Out Missions, and more. To commemorate The Kortz Center Heist’s inaugural Heist Event, you are guaranteed to find The Outcome of Endeavour on your first attempt this week.",
-  "dateRange": "Nov 5 – 12, 2026",
-  "podiumVehicle": "Överflöd Entity XXR",
+  "title": "Weekly Bonuses and Discounts - November 12th to November 19th",
+  "eventTitle": "4X Freemode Challenges, 3X Stunt Race Series & Community Series, 2X All Contact Missions & Sumo",
+  "eventDesc": "Earn 4X on Freemode Challenges, 3X on Stunt Race Series and Community Series, 2X on All Contact Missions (4x for GTA+ Members, through December 2nd) and Sumo (Remix) and FIB Priority File: The Brute Force File, plus spin for the Karin Everon ($1,475,000) and win the Western Powersurge ($1,605,000)!",
+  "dateRange": "Nov 12 – 19, 2026",
+  "podiumVehicle": "Karin Everon",
   "prizeRide": {
-    "vehicle": "Annis Hellion",
-    "condition": "Place Top 5 in the LS Car Meet Series for 3 days in a row"
+    "vehicle": "Western Powersurge",
+    "condition": "Place Top 4 in a LS Car Meet Series Race for 2 days in a row"
   },
   "weeklyChallenge": {
-    "task": "Win an Adversary Mode",
+    "task": "Win two Stunt Races",
     "reward": "GTA$100,000"
   },
   "timeTrials": {
-    "regular": "LSIA",
-    "hsw": "Del Perro Beach to Murietta Heights",
-    "premiumRace": "At the Races"
+    "regular": "Calafia Way",
+    "hsw": "Sandy Shores",
+    "premiumRace": "Down the Drain"
   },
-  "hswTestRide": "Grotti Brioso r/A",
-  "testRides": [],
+  "hswTestRide": "Weeny Issi Rally",
+  "testRides": [
+    "Übermacht Rebla GTS",
+    "Declasse Impaler LX",
+    "Obey I-Wagen"
+  ],
   "salvageRobberies": [
     {
-      "name": "The Podium Robbery",
-      "vehicle": "Annis Hellion",
-      "value": "~$350,000 – $400,000",
-      "robbery": "The Podium Robbery",
-      "car": "Annis Hellion",
+      "robbery": "The Gangbanger Robbery",
+      "target": "Canis Seminole Frontier",
+      "value": "~$300,000 – $400,000",
       "claimable": false
     },
     {
-      "name": "The Cargo Ship Robbery",
-      "vehicle": "Truffade Z-Type",
-      "value": "~$350,000 – $400,000",
-      "robbery": "The Cargo Ship Robbery",
-      "car": "Truffade Z-Type",
-      "claimable": false
-    },
-    {
-      "name": "The McTony Robbery",
-      "vehicle": "Lampadati Cinquemila",
-      "value": "~$350,000 – $400,000",
       "robbery": "The McTony Robbery",
-      "car": "Lampadati Cinquemila",
+      "target": "Karin Hotring Everon",
+      "value": "~$325,000 – $375,000",
+      "claimable": false
+    },
+    {
+      "robbery": "The Cargo Ship Robbery",
+      "target": "Grotti Stinger TT",
+      "value": "~$350,000 – $400,000",
       "claimable": false
     }
   ],
-  "fibPriorityFile": "The Black Box File",
+  "fibPriorityFile": "The Brute Force File (2X GTA$ & RP)",
   "kortzTargets": [
-    "The Outcome of Endeavour",
-    "To Beat About the Bush",
-    "Hare Oneself Think"
+    "In Excess of Success",
+    "What are Melons?",
+    "Breathless"
   ],
   "luxuryAutos": [
-    "Grotti Veleno GT",
-    "Grotti GT750"
+    "Declasse Tampa GT",
+    "Pfister Astrale"
   ],
   "pdmShowroom": [
-    "Dinka Blista Kanjo",
-    "Grotti Cheetah",
-    "Invetero Coquette D5",
-    "Maibatsu Penumbra FF",
-    "Benefactor Vorschlaghammer"
+    "Declasse Hotring Sabre",
+    "Karin Vivanite",
+    "Obey Tailgater S",
+    "Declasse Tahoma Coupe",
+    "Canis Castigator"
   ],
-  "dailyObjectives": [
-    {
-      "day": "Thursday",
-      "task": "Participate in a Team Deathmatch"
-    },
-    {
-      "day": "Friday",
-      "task": "Participate in Flag War"
-    },
-    {
-      "day": "Saturday",
-      "task": "Complete The Kortz Center Heist Finale"
-    },
-    {
-      "day": "Sunday",
-      "task": "Participate in an Air Race"
-    },
-    {
-      "day": "Monday",
-      "task": "Participate in the Featured Series"
-    },
-    {
-      "day": "Tuesday",
-      "task": "Complete a Diamond Casino Heist Prep"
-    },
-    {
-      "day": "Wednesday",
-      "task": "Play a match of Tennis"
-    }
+  "gunVan": [
+    "Stun Gun (10%, GTA+ 20%)",
+    "Up-n-Atomizer (10%, GTA+ 20%)",
+    "Tactical SMG (40%, GTA+ 40%)",
+    "Combat Shotgun (10%, GTA+ 40%)",
+    "Knife – FREE (100% Off)",
+    "Baseball Bat – FREE (100% Off)",
+    "Throwables: Sticky Bombs, Proximity Mines, Molotovs (10%, GTA+ 20%)",
+    "Body Armor: All Types (10%, GTA+ 80%)"
   ],
   "bonuses": [
+    {
+      "multiplier": "4X",
+      "label": "4X GTA$ & RP",
+      "tier": "4x",
+      "items": [
+        "Freemode Challenges"
+      ]
+    },
     {
       "multiplier": "3X",
       "label": "3X GTA$ & RP",
       "tier": "3x",
       "items": [
-        "Mansion Raid"
+        "Stunt Race Series",
+        "Community Series"
       ]
     },
     {
@@ -2529,30 +2516,37 @@ function onOpen() {
       "label": "2X GTA$ & RP",
       "tier": "2x",
       "items": [
-        "Community Race Series"
-      ]
-    },
-    {
-      "multiplier": "2X",
-      "label": "2X GTA$",
-      "tier": "2x",
-      "items": [
-        "First-time completion bonus for all Original Heists, The Doomsday Heist (all Acts), and The Diamond Casino Heist",
-        "First-time completion bonus for KnoWay Out"
+        "All Contact Missions (4x for GTA+ Members, through December 2nd)",
+        "Sumo (Remix)",
+        "FIB Priority File: The Brute Force File"
       ]
     },
     {
       "multiplier": "BONUS",
-      "label": "SPECIAL EVENT BONUSES & REWARDS",
-      "tier": "2x",
+      "label": "SPECIAL BONUSES",
+      "tier": "bonus",
       "items": [
-        "Guaranteed Panther Statue Primary Target in your first run of The Cayo Perico Heist",
-        "Guaranteed The Outcome of Endeavour Primary Target Painting in your first run of The Kortz Center Heist",
-        "Log in to receive The Great Circle Back Mansion Painting Decoration"
+        "Kortz Center Heist No-Death Completion Bonus (GTA$400,000) (+ First-Time Bonus Reset)"
       ]
     }
   ],
   "discounts": [
+    {
+      "name": "Tactical SMG (Gun Van)",
+      "item": "Tactical SMG (Gun Van)",
+      "category": "weapons",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
+    },
+    {
+      "name": "Combat Shotgun (Gun Van – GTA+)",
+      "item": "Combat Shotgun (Gun Van – GTA+)",
+      "category": "weapons",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
+    },
     {
       "name": "Knife (Gun Van)",
       "item": "Knife (Gun Van)",
@@ -2570,149 +2564,130 @@ function onOpen() {
       "badgeClass": "rate-free"
     },
     {
-      "name": "High-End Apartments",
-      "item": "High-End Apartments",
-      "category": "vehicles",
-      "rate": "40% OFF",
-      "discount": "40% OFF",
-      "badgeClass": "rate-40"
-    },
-    {
-      "name": "Casino Master Penthouse",
-      "item": "Casino Master Penthouse",
-      "category": "vehicles",
-      "rate": "40% OFF",
-      "discount": "40% OFF",
-      "badgeClass": "rate-40"
-    },
-    {
-      "name": "Casino Master Penthouse Upgrades and Modifications",
-      "item": "Casino Master Penthouse Upgrades and Modifications",
-      "category": "properties",
-      "rate": "40% OFF",
-      "discount": "40% OFF",
-      "badgeClass": "rate-40"
-    },
-    {
-      "name": "Facility Properties",
-      "item": "Facility Properties",
-      "category": "properties",
-      "rate": "40% OFF",
-      "discount": "40% OFF",
-      "badgeClass": "rate-40"
-    },
-    {
-      "name": "Facility Upgrades and Modifications",
-      "item": "Facility Upgrades and Modifications",
-      "category": "properties",
-      "rate": "40% OFF",
-      "discount": "40% OFF",
-      "badgeClass": "rate-40"
-    },
-    {
-      "name": "Cheval Taipan",
-      "item": "Cheval Taipan",
-      "category": "vehicles",
-      "rate": "30% OFF",
-      "discount": "30% OFF",
-      "badgeClass": "rate-30"
-    },
-    {
-      "name": "Benefactor Vorschlaghammer",
-      "item": "Benefactor Vorschlaghammer",
-      "category": "vehicles",
-      "rate": "30% OFF",
-      "discount": "30% OFF",
-      "badgeClass": "rate-30"
-    },
-    {
-      "name": "Invetero Coquette D5",
-      "item": "Invetero Coquette D5",
-      "category": "vehicles",
-      "rate": "30% OFF",
-      "discount": "30% OFF",
-      "badgeClass": "rate-30"
-    },
-    {
-      "name": "Pegassi Reaper",
-      "item": "Pegassi Reaper",
-      "category": "vehicles",
-      "rate": "30% OFF",
-      "discount": "30% OFF",
-      "badgeClass": "rate-30"
-    },
-    {
-      "name": "Maibatsu Penumbra FF",
-      "item": "Maibatsu Penumbra FF",
+      "name": "All Body Armor (Gun Van – GTA+)",
+      "item": "All Body Armor (Gun Van – GTA+)",
       "category": "weapons",
-      "rate": "30% OFF",
-      "discount": "30% OFF",
-      "badgeClass": "rate-30"
+      "rate": "80% OFF",
+      "discount": "80% OFF",
+      "badgeClass": "rate-50"
     },
     {
-      "name": "Western Company Besra",
-      "item": "Western Company Besra",
+      "name": "Canis Castigator",
+      "item": "Canis Castigator",
       "category": "vehicles",
       "rate": "30% OFF",
       "discount": "30% OFF",
       "badgeClass": "rate-30"
     },
     {
-      "name": "Western Rampant Rocket",
-      "item": "Western Rampant Rocket",
+      "name": "Declasse Hotring Sabre",
+      "item": "Declasse Hotring Sabre",
       "category": "vehicles",
       "rate": "30% OFF",
       "discount": "30% OFF",
       "badgeClass": "rate-30"
     },
     {
-      "name": "HVY Insurgent",
-      "item": "HVY Insurgent",
+      "name": "Declasse Impaler LX",
+      "item": "Declasse Impaler LX",
       "category": "vehicles",
       "rate": "30% OFF",
       "discount": "30% OFF",
       "badgeClass": "rate-30"
     },
     {
-      "name": "Dinka Blista Kanjo",
-      "item": "Dinka Blista Kanjo",
+      "name": "Declasse Tahoma Coupe",
+      "item": "Declasse Tahoma Coupe",
       "category": "vehicles",
       "rate": "30% OFF",
       "discount": "30% OFF",
       "badgeClass": "rate-30"
     },
     {
-      "name": "Grotti Cheetah",
-      "item": "Grotti Cheetah",
+      "name": "Dewbauchee Vagner",
+      "item": "Dewbauchee Vagner",
       "category": "vehicles",
       "rate": "30% OFF",
       "discount": "30% OFF",
       "badgeClass": "rate-30"
     },
     {
-      "name": "Grotti Veleno GT (First Time Purchase only. This is something new)",
-      "item": "Grotti Veleno GT (First Time Purchase only. This is something new)",
+      "name": "Karin Vivanite",
+      "item": "Karin Vivanite",
       "category": "vehicles",
-      "rate": "25% OFF",
-      "discount": "25% OFF",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "MTL Wastelander",
+      "item": "MTL Wastelander",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Obey I-Wagen",
+      "item": "Obey I-Wagen",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Obey Tailgater S",
+      "item": "Obey Tailgater S",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Übermacht Rebla GTS",
+      "item": "Übermacht Rebla GTS",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
       "badgeClass": "rate-30"
     }
   ],
-  "gunVan": [
-    "Precision Rifle – 50% off",
-    "Compact EMP Launcher – 40% off for GTA+ Members",
-    "El Strickler",
-    "Sweeper Shotgun",
-    "Widowmaker",
-    "Knuckle Dusters",
-    "Proximity Mines",
-    "Pipe Bombs",
-    "Molotovs",
-    "Baseball Bat – Free",
-    "Knife – Free",
-    "Armor – 80% off for GTA+ Members"
+  "specialRewards": [
+    "Kortz Center Heist No-Death Completion Bonus (GTA$400,000)",
+    "Free Knife in the Gun Van",
+    "Free Baseball Bat in the Gun Van"
   ],
-  "version": "v3.8.9"
+  "dailyObjectives": [
+    {
+      "day": "Thursday",
+      "task": "Participate in Freemode Challenges"
+    },
+    {
+      "day": "Friday",
+      "task": "Complete 1 Stunt Race Series"
+    },
+    {
+      "day": "Saturday",
+      "task": "Beat the Calafia Way Time Trial or a Salvage Yard Robbery"
+    },
+    {
+      "day": "Sunday",
+      "task": "Spin the Lucky Wheel for the Karin Everon"
+    },
+    {
+      "day": "Monday",
+      "task": "Compete in LS Car Meet (Place Top 4 in a LS Car Meet Series Race for 2 days in a row)"
+    },
+    {
+      "day": "Tuesday",
+      "task": "Play 1 All Contact Missions"
+    },
+    {
+      "day": "Wednesday",
+      "task": "Visit the Gun Van and finish Win two Stunt Races"
+    }
+  ],
+  "version": "v3.8.11"
 };
 
 
@@ -2940,6 +2915,15 @@ function onOpen() {
       }
     }
 
+    function getWeekStartTsClient(str) {
+      if (!str) return 0;
+      const mMap = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
+      const m = String(str).match(/\b(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+(\d{1,2})/i);
+      if (!m) return 0;
+      const yrM = String(str).match(/\b(202\d)\b/);
+      return Date.UTC(yrM ? parseInt(yrM[1], 10) : new Date().getFullYear(), mMap[m[1].slice(0, 3).toLowerCase()], parseInt(m[2], 10));
+    }
+
     // ── Realtime Watcher for Live Weekly Update Document in Firestore ──
     function initWeeklyFirestoreSync() {
       try {
@@ -2949,14 +2933,14 @@ function onOpen() {
           const metaEl = document.getElementById('adminLiveWeekMeta');
           if (snap.exists()) {
             const data = snap.data();
+            const bundledTs = getWeekStartTsClient(DEFAULT_WEEK_DATA?.dateRange || DEFAULT_WEEK_DATA?.title);
+            const cloudTs = getWeekStartTsClient(data.dateRange || data.title);
+            if (cloudTs < bundledTs) return; // Ignore stale Firestore snapshot when bundled week is newer
             if (dateEl) dateEl.textContent = data.dateRange || data.title || 'Live Active Week';
             if (metaEl) {
               const updatedStr = data.updatedAt && data.updatedAt.toDate ? data.updatedAt.toDate().toLocaleString() : 'Just now';
               metaEl.innerHTML = `Event: <strong>${data.eventTitle || data.title || 'Weekly Event'}</strong> • Podium: <strong>${data.podiumVehicle || 'N/A'}</strong> <span style="font-size:11px; opacity:0.7;">(Synced: ${updatedStr})</span>`;
             }
-          } else {
-            if (dateEl) dateEl.textContent = 'Not yet initialized in Firestore';
-            if (metaEl) metaEl.textContent = 'Click "Auto-Fetch" or paste text below to publish your first week to Firestore!';
           }
         });
       } catch (err) {
@@ -3353,7 +3337,7 @@ function onOpen() {
     (function () {
 
       'use strict';
-      const CURRENT_APP_VERSION = 'v3.8.5';
+      const CURRENT_APP_VERSION = 'v3.8.11';
 
 
 

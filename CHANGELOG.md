@@ -1,5 +1,14 @@
 # 🌴 Los Santos Weekly — Changelog
 
+## [3.8.11] - 2026-11-13
+- Updated weekly data for Nov 12 to 19 event.
+- Switched live weekly sync source from Reddit to RockstarINTEL.
+- Fixed Thursday reset lockouts with automatic fifteen minute retries.
+- Added Karin Everon podium vehicle and Western Powersurge prize.
+- Enabled 4X Freemode Challenges and 3X Stunt Race bonuses.
+- Added 2X Contact Missions and Sumo Remix featured bonuses.
+- Upgraded offline service worker cache identifier to v3.8.11.
+
 ## [3.8.10] - 2026-10-15
 - Expanded Grinder's Profit Matrix with rich payouts and tips.
 - Added full details for Ludendorff Survivals and Slasher series.

@@ -1,104 +1,91 @@
 {
-  "title": "Weekly Bonuses and Discounts - November 5th to November 12th",
-  "eventTitle": "3X Mansion Raid, Community Race Series & Weekly Bonuses",
-  "eventDesc": "Set your sights on high-value targets in this week’s GTA Online Heist Event to earn doubled first-time completion bonuses on all the Original Heists, The Doomsday Heist, The Diamond Casino Heist, KnoWay Out Missions, and more. To commemorate The Kortz Center Heist’s inaugural Heist Event, you are guaranteed to find The Outcome of Endeavour on your first attempt this week.",
-  "dateRange": "Nov 5 – 12, 2026",
-  "podiumVehicle": "Överflöd Entity XXR",
+  "title": "Weekly Bonuses and Discounts - November 12th to November 19th",
+  "eventTitle": "4X Freemode Challenges, 3X Stunt Race Series & Community Series, 2X All Contact Missions & Sumo",
+  "eventDesc": "Earn 4X on Freemode Challenges, 3X on Stunt Race Series and Community Series, 2X on All Contact Missions (4x for GTA+ Members, through December 2nd) and Sumo (Remix) and FIB Priority File: The Brute Force File, plus spin for the Karin Everon ($1,475,000) and win the Western Powersurge ($1,605,000)!",
+  "dateRange": "Nov 12 – 19, 2026",
+  "podiumVehicle": "Karin Everon",
   "prizeRide": {
-    "vehicle": "Annis Hellion",
-    "condition": "Place Top 5 in the LS Car Meet Series for 3 days in a row"
+    "vehicle": "Western Powersurge",
+    "condition": "Place Top 4 in a LS Car Meet Series Race for 2 days in a row"
   },
   "weeklyChallenge": {
-    "task": "Win an Adversary Mode",
+    "task": "Win two Stunt Races",
     "reward": "GTA$100,000"
   },
   "timeTrials": {
-    "regular": "LSIA",
-    "hsw": "Del Perro Beach to Murietta Heights",
-    "premiumRace": "At the Races"
+    "regular": "Calafia Way",
+    "hsw": "Sandy Shores",
+    "premiumRace": "Down the Drain"
   },
-  "hswTestRide": "Grotti Brioso r/A",
-  "testRides": [],
+  "hswTestRide": "Weeny Issi Rally",
+  "testRides": [
+    "Übermacht Rebla GTS",
+    "Declasse Impaler LX",
+    "Obey I-Wagen"
+  ],
   "salvageRobberies": [
     {
-      "name": "The Podium Robbery",
-      "vehicle": "Annis Hellion",
-      "value": "~$350,000 – $400,000",
-      "robbery": "The Podium Robbery",
-      "car": "Annis Hellion",
+      "robbery": "The Gangbanger Robbery",
+      "target": "Canis Seminole Frontier",
+      "value": "~$300,000 – $400,000",
       "claimable": false
     },
     {
-      "name": "The Cargo Ship Robbery",
-      "vehicle": "Truffade Z-Type",
-      "value": "~$350,000 – $400,000",
-      "robbery": "The Cargo Ship Robbery",
-      "car": "Truffade Z-Type",
-      "claimable": false
-    },
-    {
-      "name": "The McTony Robbery",
-      "vehicle": "Lampadati Cinquemila",
-      "value": "~$350,000 – $400,000",
       "robbery": "The McTony Robbery",
-      "car": "Lampadati Cinquemila",
+      "target": "Karin Hotring Everon",
+      "value": "~$325,000 – $375,000",
+      "claimable": false
+    },
+    {
+      "robbery": "The Cargo Ship Robbery",
+      "target": "Grotti Stinger TT",
+      "value": "~$350,000 – $400,000",
       "claimable": false
     }
   ],
-  "fibPriorityFile": "The Black Box File",
+  "fibPriorityFile": "The Brute Force File (2X GTA$ & RP)",
   "kortzTargets": [
-    "The Outcome of Endeavour",
-    "To Beat About the Bush",
-    "Hare Oneself Think"
+    "In Excess of Success",
+    "What are Melons?",
+    "Breathless"
   ],
   "luxuryAutos": [
-    "Grotti Veleno GT",
-    "Grotti GT750"
+    "Declasse Tampa GT",
+    "Pfister Astrale"
   ],
   "pdmShowroom": [
-    "Dinka Blista Kanjo",
-    "Grotti Cheetah",
-    "Invetero Coquette D5",
-    "Maibatsu Penumbra FF",
-    "Benefactor Vorschlaghammer"
+    "Declasse Hotring Sabre",
+    "Karin Vivanite",
+    "Obey Tailgater S",
+    "Declasse Tahoma Coupe",
+    "Canis Castigator"
   ],
-  "dailyObjectives": [
-    {
-      "day": "Thursday",
-      "task": "Participate in a Team Deathmatch"
-    },
-    {
-      "day": "Friday",
-      "task": "Participate in Flag War"
-    },
-    {
-      "day": "Saturday",
-      "task": "Complete The Kortz Center Heist Finale"
-    },
-    {
-      "day": "Sunday",
-      "task": "Participate in an Air Race"
-    },
-    {
-      "day": "Monday",
-      "task": "Participate in the Featured Series"
-    },
-    {
-      "day": "Tuesday",
-      "task": "Complete a Diamond Casino Heist Prep"
-    },
-    {
-      "day": "Wednesday",
-      "task": "Play a match of Tennis"
-    }
+  "gunVan": [
+    "Stun Gun (10%, GTA+ 20%)",
+    "Up-n-Atomizer (10%, GTA+ 20%)",
+    "Tactical SMG (40%, GTA+ 40%)",
+    "Combat Shotgun (10%, GTA+ 40%)",
+    "Knife – FREE (100% Off)",
+    "Baseball Bat – FREE (100% Off)",
+    "Throwables: Sticky Bombs, Proximity Mines, Molotovs (10%, GTA+ 20%)",
+    "Body Armor: All Types (10%, GTA+ 80%)"
   ],
   "bonuses": [
+    {
+      "multiplier": "4X",
+      "label": "4X GTA$ & RP",
+      "tier": "4x",
+      "items": [
+        "Freemode Challenges"
+      ]
+    },
     {
       "multiplier": "3X",
       "label": "3X GTA$ & RP",
       "tier": "3x",
       "items": [
-        "Mansion Raid"
+        "Stunt Race Series",
+        "Community Series"
       ]
     },
     {
@@ -106,30 +93,37 @@
       "label": "2X GTA$ & RP",
       "tier": "2x",
       "items": [
-        "Community Race Series"
-      ]
-    },
-    {
-      "multiplier": "2X",
-      "label": "2X GTA$",
-      "tier": "2x",
-      "items": [
-        "First-time completion bonus for all Original Heists, The Doomsday Heist (all Acts), and The Diamond Casino Heist",
-        "First-time completion bonus for KnoWay Out"
+        "All Contact Missions (4x for GTA+ Members, through December 2nd)",
+        "Sumo (Remix)",
+        "FIB Priority File: The Brute Force File"
       ]
     },
     {
       "multiplier": "BONUS",
-      "label": "SPECIAL EVENT BONUSES & REWARDS",
-      "tier": "2x",
+      "label": "SPECIAL BONUSES",
+      "tier": "bonus",
       "items": [
-        "Guaranteed Panther Statue Primary Target in your first run of The Cayo Perico Heist",
-        "Guaranteed The Outcome of Endeavour Primary Target Painting in your first run of The Kortz Center Heist",
-        "Log in to receive The Great Circle Back Mansion Painting Decoration"
+        "Kortz Center Heist No-Death Completion Bonus (GTA$400,000) (+ First-Time Bonus Reset)"
       ]
     }
   ],
   "discounts": [
+    {
+      "name": "Tactical SMG (Gun Van)",
+      "item": "Tactical SMG (Gun Van)",
+      "category": "weapons",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
+    },
+    {
+      "name": "Combat Shotgun (Gun Van – GTA+)",
+      "item": "Combat Shotgun (Gun Van – GTA+)",
+      "category": "weapons",
+      "rate": "40% OFF",
+      "discount": "40% OFF",
+      "badgeClass": "rate-40"
+    },
     {
       "name": "Knife (Gun Van)",
       "item": "Knife (Gun Van)",
@@ -147,146 +141,127 @@
       "badgeClass": "rate-free"
     },
     {
-      "name": "High-End Apartments",
-      "item": "High-End Apartments",
-      "category": "vehicles",
-      "rate": "40% OFF",
-      "discount": "40% OFF",
-      "badgeClass": "rate-40"
-    },
-    {
-      "name": "Casino Master Penthouse",
-      "item": "Casino Master Penthouse",
-      "category": "vehicles",
-      "rate": "40% OFF",
-      "discount": "40% OFF",
-      "badgeClass": "rate-40"
-    },
-    {
-      "name": "Casino Master Penthouse Upgrades and Modifications",
-      "item": "Casino Master Penthouse Upgrades and Modifications",
-      "category": "properties",
-      "rate": "40% OFF",
-      "discount": "40% OFF",
-      "badgeClass": "rate-40"
-    },
-    {
-      "name": "Facility Properties",
-      "item": "Facility Properties",
-      "category": "properties",
-      "rate": "40% OFF",
-      "discount": "40% OFF",
-      "badgeClass": "rate-40"
-    },
-    {
-      "name": "Facility Upgrades and Modifications",
-      "item": "Facility Upgrades and Modifications",
-      "category": "properties",
-      "rate": "40% OFF",
-      "discount": "40% OFF",
-      "badgeClass": "rate-40"
-    },
-    {
-      "name": "Cheval Taipan",
-      "item": "Cheval Taipan",
-      "category": "vehicles",
-      "rate": "30% OFF",
-      "discount": "30% OFF",
-      "badgeClass": "rate-30"
-    },
-    {
-      "name": "Benefactor Vorschlaghammer",
-      "item": "Benefactor Vorschlaghammer",
-      "category": "vehicles",
-      "rate": "30% OFF",
-      "discount": "30% OFF",
-      "badgeClass": "rate-30"
-    },
-    {
-      "name": "Invetero Coquette D5",
-      "item": "Invetero Coquette D5",
-      "category": "vehicles",
-      "rate": "30% OFF",
-      "discount": "30% OFF",
-      "badgeClass": "rate-30"
-    },
-    {
-      "name": "Pegassi Reaper",
-      "item": "Pegassi Reaper",
-      "category": "vehicles",
-      "rate": "30% OFF",
-      "discount": "30% OFF",
-      "badgeClass": "rate-30"
-    },
-    {
-      "name": "Maibatsu Penumbra FF",
-      "item": "Maibatsu Penumbra FF",
+      "name": "All Body Armor (Gun Van – GTA+)",
+      "item": "All Body Armor (Gun Van – GTA+)",
       "category": "weapons",
-      "rate": "30% OFF",
-      "discount": "30% OFF",
-      "badgeClass": "rate-30"
+      "rate": "80% OFF",
+      "discount": "80% OFF",
+      "badgeClass": "rate-50"
     },
     {
-      "name": "Western Company Besra",
-      "item": "Western Company Besra",
+      "name": "Canis Castigator",
+      "item": "Canis Castigator",
       "category": "vehicles",
       "rate": "30% OFF",
       "discount": "30% OFF",
       "badgeClass": "rate-30"
     },
     {
-      "name": "Western Rampant Rocket",
-      "item": "Western Rampant Rocket",
+      "name": "Declasse Hotring Sabre",
+      "item": "Declasse Hotring Sabre",
       "category": "vehicles",
       "rate": "30% OFF",
       "discount": "30% OFF",
       "badgeClass": "rate-30"
     },
     {
-      "name": "HVY Insurgent",
-      "item": "HVY Insurgent",
+      "name": "Declasse Impaler LX",
+      "item": "Declasse Impaler LX",
       "category": "vehicles",
       "rate": "30% OFF",
       "discount": "30% OFF",
       "badgeClass": "rate-30"
     },
     {
-      "name": "Dinka Blista Kanjo",
-      "item": "Dinka Blista Kanjo",
+      "name": "Declasse Tahoma Coupe",
+      "item": "Declasse Tahoma Coupe",
       "category": "vehicles",
       "rate": "30% OFF",
       "discount": "30% OFF",
       "badgeClass": "rate-30"
     },
     {
-      "name": "Grotti Cheetah",
-      "item": "Grotti Cheetah",
+      "name": "Dewbauchee Vagner",
+      "item": "Dewbauchee Vagner",
       "category": "vehicles",
       "rate": "30% OFF",
       "discount": "30% OFF",
       "badgeClass": "rate-30"
     },
     {
-      "name": "Grotti Veleno GT (First Time Purchase only. This is something new)",
-      "item": "Grotti Veleno GT (First Time Purchase only. This is something new)",
+      "name": "Karin Vivanite",
+      "item": "Karin Vivanite",
       "category": "vehicles",
-      "rate": "25% OFF",
-      "discount": "25% OFF",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "MTL Wastelander",
+      "item": "MTL Wastelander",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Obey I-Wagen",
+      "item": "Obey I-Wagen",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Obey Tailgater S",
+      "item": "Obey Tailgater S",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
+      "badgeClass": "rate-30"
+    },
+    {
+      "name": "Übermacht Rebla GTS",
+      "item": "Übermacht Rebla GTS",
+      "category": "vehicles",
+      "rate": "30% OFF",
+      "discount": "30% OFF",
       "badgeClass": "rate-30"
     }
   ],
-  "gunVan": [
-    "Precision Rifle – 50% off",
-    "Compact EMP Launcher – 40% off for GTA+ Members",
-    "El Strickler",
-    "Sweeper Shotgun",
-    "Widowmaker",
-    "Knuckle Dusters",
-    "Proximity Mines",
-    "Pipe Bombs",
-    "Molotovs",
-    "Baseball Bat – Free",
-    "Knife – Free",
-    "Armor – 80% off for GTA+ Members"
+  "specialRewards": [
+    "Kortz Center Heist No-Death Completion Bonus (GTA$400,000)",
+    "Free Knife in the Gun Van",
+    "Free Baseball Bat in the Gun Van"
+  ],
+  "dailyObjectives": [
+    {
+      "day": "Thursday",
+      "task": "Participate in Freemode Challenges"
+    },
+    {
+      "day": "Friday",
+      "task": "Complete 1 Stunt Race Series"
+    },
+    {
+      "day": "Saturday",
+      "task": "Beat the Calafia Way Time Trial or a Salvage Yard Robbery"
+    },
+    {
+      "day": "Sunday",
+      "task": "Spin the Lucky Wheel for the Karin Everon"
+    },
+    {
+      "day": "Monday",
+      "task": "Compete in LS Car Meet (Place Top 4 in a LS Car Meet Series Race for 2 days in a row)"
+    },
+    {
+      "day": "Tuesday",
+      "task": "Play 1 All Contact Missions"
+    },
+    {
+      "day": "Wednesday",
+      "task": "Visit the Gun Van and finish Win two Stunt Races"
+    }
   ]
 }
